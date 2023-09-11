@@ -1,14 +1,15 @@
 import axios from 'axios'
+import func from './queryDb.js'
+import Fuse from 'fuse.js'
+
 let drugURL1='https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/'
-let drugURL2='/property/Title/TXT?limit=5'
+let drugURL2='/property/Title/TXT'
 // prolly pubchem
 // pubmed to show studies
 // pubchem gets moa 
-
-const companyURL=''
+const companyURL='http://localhost:3001/companies';
 
 const indicationURL=''
-
 // allow for smiles, company name to be input.
 const showResults=(query, setResults)=>{
     if (!query){
@@ -16,32 +17,53 @@ const showResults=(query, setResults)=>{
     }
     const drugURL=`https://pubchem.ncbi.nlm.nih.gov/rest/autocomplete/compound/${query}/json?limit=6`
     
-    // const promises=[
-    //     axios
-    //     .get(drugURL),
-    //     mongoose fetching
-    // })
-    // ]
-    // return Promise.all(promises)
-    //     .then((responses)=>{
-    //         const compounds=response[0].data.dictionary_terms.compound
-    //         const companies=response[1].data
+    const promises=[
+        axios
+        .get(drugURL),
+        axios
+        .get(companyURL)
+    ]
+    return Promise.all(promises)
+        .then((responses)=>{
+            const fuzzyPattern=new RegExp(`${query}`, 'i');
+            const companyInfo=func.getCompanies(responses[1], fuzzyPattern)
+            const companyNames=companyInfo.map(company=>(company.name))
+            let compounds=null;
+            let completeArr=[];
 
-    //         setResults({
-    //             compounds,
-    //             companies
-    //         })
-    //     })
-    return axios
-    .get(drugURL)
-    .then(response=>{
-        let compounds=response.data.dictionary_terms.compound
-        setResults(compounds)
-    })
-    .catch(()=>{
-        return ([]);
-    }
-    )
+            if (responses[0].data.dictionary_terms){
+                compounds=responses[0].data.dictionary_terms.compound
+                completeArr=[
+                    ...compounds.map((name)=>({name, type: 'compound'})),
+                    ...companyInfo.map((company)=>({name: company.name, ticker:company.ticker, cik:company.cik, type: 'company'})),
+                ]
+            }
+            else{
+                completeArr=[
+                    ...companyInfo.map((company)=>({name:company.name, ticker: company.ticker, cik:company.cik, type: 'company'})),
+                ]
+            }
+            const fuse=new Fuse(completeArr, {
+                keys:['name'],
+                ignoreLocation: true,
+            })
+            setResults(fuse.search(query)
+            .map(result=>result.item))
+            
+            // compounds
+            // ? setResults(compounds.concat(companies))
+            // : setResults(companies)
+        })
+//     return axios
+//     .get(drugURL)
+//     .then(response=>{
+//         let compounds=response.data.dictionary_terms.compound
+//         setResults(compounds)
+//     })
+//     .catch(()=>{
+//         return ([]);
+//     }
+//     )
 }
 
 export default{

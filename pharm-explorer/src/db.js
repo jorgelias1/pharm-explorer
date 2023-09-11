@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import jsonData from './company_tickers.json' assert {type: "json"}
+import jsonData from './companies.json' assert {type: "json"}
 
 if (process.argv.length<3) {
   console.log('give password as argument')
@@ -9,31 +9,32 @@ if (process.argv.length<3) {
 const password = process.argv[2]
 
 const url =
-`mongodb+srv://jorgelias:${password}@cluster0.ozsqwrv.mongodb.net/CIK?retryWrites=true&w=majority`
+`mongodb+srv://jorgelias:${password}@cluster0.ozsqwrv.mongodb.net/Pharm?retryWrites=true&w=majority`
 
 mongoose.set('strictQuery',false)
+export default CompanyModel;
 mongoose.connect(url).then(() => {
   const companySchema = new mongoose.Schema({
-    cik_str: Number,
     ticker: String,
-    title: String,
-  })
+    name: String,
+    cik: Number,
+  });
 
-  const CompanyModel = mongoose.model('CompanyModel', companySchema)
+  const CompanyModel = mongoose.model('CompanyModel', companySchema);
 
   (async () => {
     for (const key in jsonData) {
       if (jsonData.hasOwnProperty(key)) {
-        const entry = jsonData[key]
+        const entry = jsonData[key];
 
         try {
           const newEntry = new CompanyModel({
-            cik_str: entry.cik_str,
             ticker: entry.ticker,
-            title: entry.title,
+            name: entry.name,
+            cik: entry.cik,
           });
 
-          await newEntry.save()
+          await newEntry.save();
         } catch (err) {
           console.error('Error saving entry: ' + err);
         }
@@ -43,16 +44,16 @@ mongoose.connect(url).then(() => {
     // Close the Mongoose connection when all operations are done.
     mongoose.connection.close()
       .then(() => {
-        console.log('Connection closed.')
-        console.log('finished!')
+        console.log('Connection closed.');
+        console.log('finished!');
       })
       .catch((err) => {
-        console.error('Error closing connection: ' + err)
-        console.log('finished with errors')
+        console.error('Error closing connection: ' + err);
+        console.log('finished with errors');
       });
   })();
 })
 .catch((err) => {
-  console.error('Error connecting to MongoDB: ' + err)
-  process.exit(1) // Exit the script if there's a connection error
+  console.error('Error connecting to MongoDB: ' + err);
+  process.exit(1); // Exit the script if there's a connection error
 });

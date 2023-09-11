@@ -1,0 +1,7439 @@
+{
+  "companies": [
+    {
+      "ticker": "LLY",
+      "name": "ELI LILLY & Co",
+      "cik": 59478
+    },
+    {
+      "ticker": "NVO",
+      "name": "NOVO NORDISK A S",
+      "cik": 353278
+    },
+    {
+      "ticker": "JNJ",
+      "name": "JOHNSON & JOHNSON",
+      "cik": 200406
+    },
+    {
+      "ticker": "MRK",
+      "name": "Merck & Co., Inc.",
+      "cik": 310158
+    },
+    {
+      "ticker": "ABBV",
+      "name": "AbbVie Inc.",
+      "cik": 1551152
+    },
+    {
+      "ticker": "TMO",
+      "name": "THERMO FISHER SCIENTIFIC INC.",
+      "cik": 97745
+    },
+    {
+      "ticker": "AZN",
+      "name": "ASTRAZENECA PLC",
+      "cik": 901832
+    },
+    {
+      "ticker": "NVS",
+      "name": "NOVARTIS AG",
+      "cik": 1114448
+    },
+    {
+      "ticker": "PFE",
+      "name": "PFIZER INC",
+      "cik": 78003
+    },
+    {
+      "ticker": "DHR",
+      "name": "DANAHER CORP /DE/",
+      "cik": 313616
+    },
+    {
+      "ticker": "ABT",
+      "name": "ABBOTT LABORATORIES",
+      "cik": 1800
+    },
+    {
+      "ticker": "AMGN",
+      "name": "AMGEN INC",
+      "cik": 318154
+    },
+    {
+      "ticker": "SNY",
+      "name": "Sanofi",
+      "cik": 1121404
+    },
+    {
+      "ticker": "BMY",
+      "name": "BRISTOL MYERS SQUIBB CO",
+      "cik": 14272
+    },
+    {
+      "ticker": "MDT",
+      "name": "Medtronic plc",
+      "cik": 1613103
+    },
+    {
+      "ticker": "SYK",
+      "name": "STRYKER CORP",
+      "cik": 310764
+    },
+    {
+      "ticker": "GILD",
+      "name": "GILEAD SCIENCES, INC.",
+      "cik": 882095
+    },
+    {
+      "ticker": "REGN",
+      "name": "REGENERON PHARMACEUTICALS, INC.",
+      "cik": 872589
+    },
+    {
+      "ticker": "VRTX",
+      "name": "VERTEX PHARMACEUTICALS INC / MA",
+      "cik": 875320
+    },
+    {
+      "ticker": "ZTS",
+      "name": "Zoetis Inc.",
+      "cik": 1555280
+    },
+    {
+      "ticker": "CSLLY",
+      "name": "CSL LTD",
+      "cik": 1274152
+    },
+    {
+      "ticker": "BSX",
+      "name": "BOSTON SCIENTIFIC CORP",
+      "cik": 885725
+    },
+    {
+      "ticker": "GSK",
+      "name": "GSK plc",
+      "cik": 1131399
+    },
+    {
+      "ticker": "TAK",
+      "name": "TAKEDA PHARMACEUTICAL CO LTD",
+      "cik": 1395064
+    },
+    {
+      "ticker": "EW",
+      "name": "Edwards Lifesciences Corp",
+      "cik": 1099800
+    },
+    {
+      "ticker": "MRNA",
+      "name": "Moderna, Inc.",
+      "cik": 1682852
+    },
+    {
+      "ticker": "IDXX",
+      "name": "IDEXX LABORATORIES INC /DE",
+      "cik": 874716
+    },
+    {
+      "ticker": "IQV",
+      "name": "IQVIA HOLDINGS INC.",
+      "cik": 1478242
+    },
+    {
+      "ticker": "DXCM",
+      "name": "DEXCOM INC",
+      "cik": 1093557
+    },
+    {
+      "ticker": "BIIB",
+      "name": "BIOGEN INC.",
+      "cik": 875045
+    },
+    {
+      "ticker": "SGEN",
+      "name": "Seagen Inc.",
+      "cik": 1060736
+    },
+    {
+      "ticker": "HLN",
+      "name": "Haleon plc",
+      "cik": 1900304
+    },
+    {
+      "ticker": "A",
+      "name": "AGILENT TECHNOLOGIES, INC.",
+      "cik": 1090872
+    },
+    {
+      "ticker": "ARGX",
+      "name": "ARGENX SE",
+      "cik": 1697862
+    },
+    {
+      "ticker": "BNTX",
+      "name": "BioNTech SE",
+      "cik": 1776985
+    },
+    {
+      "ticker": "ALGN",
+      "name": "ALIGN TECHNOLOGY INC",
+      "cik": 1097149
+    },
+    {
+      "ticker": "MTD",
+      "name": "METTLER TOLEDO INTERNATIONAL INC/",
+      "cik": 1037646
+    },
+    {
+      "ticker": "ILMN",
+      "name": "ILLUMINA, INC.",
+      "cik": 1110803
+    },
+    {
+      "ticker": "HZNP",
+      "name": "Horizon Therapeutics Public Ltd Co",
+      "cik": 1492426
+    },
+    {
+      "ticker": "GMAB",
+      "name": "GENMAB A/S",
+      "cik": 1434265
+    },
+    {
+      "ticker": "ZBH",
+      "name": "ZIMMER BIOMET HOLDINGS, INC.",
+      "cik": 1136869
+    },
+    {
+      "ticker": "ALNY",
+      "name": "ALNYLAM PHARMACEUTICALS, INC.",
+      "cik": 1178670
+    },
+    {
+      "ticker": "STE",
+      "name": "STERIS plc",
+      "cik": 1757898
+    },
+    {
+      "ticker": "BGNE",
+      "name": "BeiGene, Ltd.",
+      "cik": 1651308
+    },
+    {
+      "ticker": "WBA",
+      "name": "Walgreens Boots Alliance, Inc.",
+      "cik": 1618921
+    },
+    {
+      "ticker": "ICLR",
+      "name": "ICON PLC",
+      "cik": 1060955
+    },
+    {
+      "ticker": "PHG",
+      "name": "KONINKLIJKE PHILIPS NV",
+      "cik": 313216
+    },
+    {
+      "ticker": "LH",
+      "name": "LABORATORY CORP OF AMERICA HOLDINGS",
+      "cik": 920148
+    },
+    {
+      "ticker": "BMRN",
+      "name": "BIOMARIN PHARMACEUTICAL INC",
+      "cik": 1048477
+    },
+    {
+      "ticker": "WAT",
+      "name": "WATERS CORP /DE/",
+      "cik": 1000697
+    },
+    {
+      "ticker": "EXAS",
+      "name": "EXACT SCIENCES CORP",
+      "cik": 1124140
+    },
+    {
+      "ticker": "DGX",
+      "name": "QUEST DIAGNOSTICS INC",
+      "cik": 1022079
+    },
+    {
+      "ticker": "RVTY",
+      "name": "REVVITY, INC.",
+      "cik": 31791
+    },
+    {
+      "ticker": "INCY",
+      "name": "INCYTE CORP",
+      "cik": 879169
+    },
+    {
+      "ticker": "RPRX",
+      "name": "Royalty Pharma plc",
+      "cik": 1802768
+    },
+    {
+      "ticker": "PODD",
+      "name": "INSULET CORP",
+      "cik": 1145197
+    },
+    {
+      "ticker": "VTRS",
+      "name": "Viatris Inc",
+      "cik": 1792044
+    },
+    {
+      "ticker": "SGIOY",
+      "name": "SHIONOGI & CO LTD",
+      "cik": 1281721
+    },
+    {
+      "ticker": "LEGN",
+      "name": "Legend Biotech Corp",
+      "cik": 1801198
+    },
+    {
+      "ticker": "TECH",
+      "name": "BIO-TECHNE Corp",
+      "cik": 842023
+    },
+    {
+      "ticker": "SNN",
+      "name": "SMITH & NEPHEW PLC",
+      "cik": 845982
+    },
+    {
+      "ticker": "BIO",
+      "name": "BIO-RAD LABORATORIES, INC.",
+      "cik": 12208
+    },
+    {
+      "ticker": "RDY",
+      "name": "DR REDDYS LABORATORIES LTD",
+      "cik": 1135951
+    },
+    {
+      "ticker": "SRPT",
+      "name": "Sarepta Therapeutics, Inc.",
+      "cik": 873303
+    },
+    {
+      "ticker": "TEVA",
+      "name": "TEVA PHARMACEUTICAL INDUSTRIES LTD",
+      "cik": 818686
+    },
+    {
+      "ticker": "NBIX",
+      "name": "NEUROCRINE BIOSCIENCES INC",
+      "cik": 914475
+    },
+    {
+      "ticker": "CRL",
+      "name": "CHARLES RIVER LABORATORIES INTERNATIONAL, INC.",
+      "cik": 1100682
+    },
+    {
+      "ticker": "UTHR",
+      "name": "UNITED THERAPEUTICS Corp",
+      "cik": 1082554
+    },
+    {
+      "ticker": "QGEN",
+      "name": "QIAGEN N.V.",
+      "cik": 1015820
+    },
+    {
+      "ticker": "PEN",
+      "name": "Penumbra Inc",
+      "cik": 1321732
+    },
+    {
+      "ticker": "BRKR",
+      "name": "BRUKER CORP",
+      "cik": 1109354
+    },
+    {
+      "ticker": "JAZZ",
+      "name": "Jazz Pharmaceuticals plc",
+      "cik": 1232524
+    },
+    {
+      "ticker": "CTLT",
+      "name": "Catalent, Inc.",
+      "cik": 1596783
+    },
+    {
+      "ticker": "ROIV",
+      "name": "Roivant Sciences Ltd.",
+      "cik": 1635088
+    },
+    {
+      "ticker": "MEDP",
+      "name": "Medpace Holdings, Inc.",
+      "cik": 1668397
+    },
+    {
+      "ticker": "GRFS",
+      "name": "Grifols SA",
+      "cik": 1438569
+    },
+    {
+      "ticker": "SWAV",
+      "name": "Shockwave Medical, Inc.",
+      "cik": 1642545
+    },
+    {
+      "ticker": "EXEL",
+      "name": "EXELIXIS, INC.",
+      "cik": 939767
+    },
+    {
+      "ticker": "KRTX",
+      "name": "Karuna Therapeutics, Inc.",
+      "cik": 1771917
+    },
+    {
+      "ticker": "NTRA",
+      "name": "Natera, Inc.",
+      "cik": 1604821
+    },
+    {
+      "ticker": "INSP",
+      "name": "Inspire Medical Systems, Inc.",
+      "cik": 1609550
+    },
+    {
+      "ticker": "RETA",
+      "name": "REATA PHARMACEUTICALS INC",
+      "cik": 1358762
+    },
+    {
+      "ticker": "ELAN",
+      "name": "Elanco Animal Health Inc",
+      "cik": 1739104
+    },
+    {
+      "ticker": "MASI",
+      "name": "MASIMO CORP",
+      "cik": 937556
+    },
+    {
+      "ticker": "IONS",
+      "name": "IONIS PHARMACEUTICALS INC",
+      "cik": 874015
+    },
+    {
+      "ticker": "OGN",
+      "name": "Organon & Co.",
+      "cik": 1821825
+    },
+    {
+      "ticker": "HALO",
+      "name": "HALOZYME THERAPEUTICS, INC.",
+      "cik": 1159036
+    },
+    {
+      "ticker": "QDEL",
+      "name": "QuidelOrtho Corp",
+      "cik": 1906324
+    },
+    {
+      "ticker": "ASND",
+      "name": "Ascendis Pharma A/S",
+      "cik": 1612042
+    },
+    {
+      "ticker": "GMED",
+      "name": "GLOBUS MEDICAL INC",
+      "cik": 1237831
+    },
+    {
+      "ticker": "ITCI",
+      "name": "Intra-Cellular Therapies, Inc.",
+      "cik": 1567514
+    },
+    {
+      "ticker": "ABCM",
+      "name": "Abcam plc",
+      "cik": 1492074
+    },
+    {
+      "ticker": "APLS",
+      "name": "Apellis Pharmaceuticals, Inc.",
+      "cik": 1492422
+    },
+    {
+      "ticker": "NEOG",
+      "name": "NEOGEN CORP",
+      "cik": 711377
+    },
+    {
+      "ticker": "PCVX",
+      "name": "Vaxcyte, Inc.",
+      "cik": 1649094
+    },
+    {
+      "ticker": "ALKS",
+      "name": "Alkermes plc.",
+      "cik": 1520262
+    },
+    {
+      "ticker": "DNA",
+      "name": "Ginkgo Bioworks Holdings, Inc.",
+      "cik": 1830214
+    },
+    {
+      "ticker": "BBIO",
+      "name": "BridgeBio Pharma, Inc.",
+      "cik": 1743881
+    },
+    {
+      "ticker": "PRGO",
+      "name": "PERRIGO Co plc",
+      "cik": 1585364
+    },
+    {
+      "ticker": "LNTH",
+      "name": "Lantheus Holdings, Inc.",
+      "cik": 1521036
+    },
+    {
+      "ticker": "GH",
+      "name": "Guardant Health, Inc.",
+      "cik": 1576280
+    },
+    {
+      "ticker": "SHC",
+      "name": "Sotera Health Co",
+      "cik": 1822479
+    },
+    {
+      "ticker": "ACAD",
+      "name": "ACADIA PHARMACEUTICALS INC",
+      "cik": 1070494
+    },
+    {
+      "ticker": "SYNH",
+      "name": "Syneos Health, Inc.",
+      "cik": 1610950
+    },
+    {
+      "ticker": "EVO",
+      "name": "Evotec SE",
+      "cik": 1412558
+    },
+    {
+      "ticker": "CRSP",
+      "name": "CRISPR Therapeutics AG",
+      "cik": 1674416
+    },
+    {
+      "ticker": "IMGN",
+      "name": "ImmunoGen, Inc.",
+      "cik": 855654
+    },
+    {
+      "ticker": "NARI",
+      "name": "Inari Medical, Inc.",
+      "cik": 1531048
+    },
+    {
+      "ticker": "AXSM",
+      "name": "Axsome Therapeutics, Inc.",
+      "cik": 1579428
+    },
+    {
+      "ticker": "CERE",
+      "name": "Cerevel Therapeutics Holdings, Inc.",
+      "cik": 1805387
+    },
+    {
+      "ticker": "RVMD",
+      "name": "Revolution Medicines, Inc.",
+      "cik": 1628171
+    },
+    {
+      "ticker": "FOLD",
+      "name": "AMICUS THERAPEUTICS, INC.",
+      "cik": 1178879
+    },
+    {
+      "ticker": "GKOS",
+      "name": "GLAUKOS Corp",
+      "cik": 1192448
+    },
+    {
+      "ticker": "KRYS",
+      "name": "Krystal Biotech, Inc.",
+      "cik": 1711279
+    },
+    {
+      "ticker": "IART",
+      "name": "INTEGRA LIFESCIENCES HOLDINGS CORP",
+      "cik": 917520
+    },
+    {
+      "ticker": "CNMD",
+      "name": "CONMED Corp",
+      "cik": 816956
+    },
+    {
+      "ticker": "CYTK",
+      "name": "CYTOKINETICS INC",
+      "cik": 1061983
+    },
+    {
+      "ticker": "CORT",
+      "name": "CORCEPT THERAPEUTICS INC",
+      "cik": 1088856
+    },
+    {
+      "ticker": "NTLA",
+      "name": "Intellia Therapeutics, Inc.",
+      "cik": 1652130
+    },
+    {
+      "ticker": "INMD",
+      "name": "InMode Ltd.",
+      "cik": 1742692
+    },
+    {
+      "ticker": "MDGL",
+      "name": "MADRIGAL PHARMACEUTICALS, INC.",
+      "cik": 1157601
+    },
+    {
+      "ticker": "IRTC",
+      "name": "iRhythm Technologies, Inc.",
+      "cik": 1388658
+    },
+    {
+      "ticker": "INSM",
+      "name": "INSMED Inc",
+      "cik": 1104506
+    },
+    {
+      "ticker": "DNLI",
+      "name": "Denali Therapeutics Inc.",
+      "cik": 1714899
+    },
+    {
+      "ticker": "INDV",
+      "name": "INDIVIOR PLC",
+      "cik": 1625297
+    },
+    {
+      "ticker": "BHC",
+      "name": "Bausch Health Companies Inc.",
+      "cik": 885590
+    },
+    {
+      "ticker": "PTCT",
+      "name": "PTC THERAPEUTICS, INC.",
+      "cik": 1070081
+    },
+    {
+      "ticker": "BPMC",
+      "name": "Blueprint Medicines Corp",
+      "cik": 1597264
+    },
+    {
+      "ticker": "MLTX",
+      "name": "MoonLake Immunotherapeutics",
+      "cik": 1821586
+    },
+    {
+      "ticker": "LIVN",
+      "name": "LivaNova PLC",
+      "cik": 1639691
+    },
+    {
+      "ticker": "GNNDY",
+      "name": "GN STORE NORD A/S",
+      "cik": 1380366
+    },
+    {
+      "ticker": "ARWR",
+      "name": "ARROWHEAD PHARMACEUTICALS, INC.",
+      "cik": 879407
+    },
+    {
+      "ticker": "IMVT",
+      "name": "Immunovant, Inc.",
+      "cik": 1764013
+    },
+    {
+      "ticker": "PBH",
+      "name": "Prestige Consumer Healthcare Inc.",
+      "cik": 1295947
+    },
+    {
+      "ticker": "AXNX",
+      "name": "Axonics, Inc.",
+      "cik": 1603756
+    },
+    {
+      "ticker": "PRTA",
+      "name": "PROTHENA CORP PUBLIC LTD CO",
+      "cik": 1559053
+    },
+    {
+      "ticker": "ITGR",
+      "name": "Integer Holdings Corp",
+      "cik": 1114483
+    },
+    {
+      "ticker": "PACB",
+      "name": "PACIFIC BIOSCIENCES OF CALIFORNIA, INC.",
+      "cik": 1299130
+    },
+    {
+      "ticker": "CURLF",
+      "name": "Curaleaf Holdings, Inc.",
+      "cik": 1756770
+    },
+    {
+      "ticker": "AKRO",
+      "name": "Akero Therapeutics, Inc.",
+      "cik": 1744659
+    },
+    {
+      "ticker": "IMCR",
+      "name": "Immunocore Holdings plc",
+      "cik": 1671927
+    },
+    {
+      "ticker": "MORF",
+      "name": "Morphic Holding, Inc.",
+      "cik": 1679363
+    },
+    {
+      "ticker": "RARE",
+      "name": "Ultragenyx Pharmaceutical Inc.",
+      "cik": 1515673
+    },
+    {
+      "ticker": "HCM",
+      "name": "HUTCHMED (China) Ltd",
+      "cik": 1648257
+    },
+    {
+      "ticker": "AMPH",
+      "name": "Amphastar Pharmaceuticals, Inc.",
+      "cik": 1297184
+    },
+    {
+      "ticker": "MRTX",
+      "name": "Mirati Therapeutics, Inc.",
+      "cik": 1576263
+    },
+    {
+      "ticker": "ALVO",
+      "name": "Alvotech",
+      "cik": 1898416
+    },
+    {
+      "ticker": "NUVL",
+      "name": "Nuvalent, Inc.",
+      "cik": 1861560
+    },
+    {
+      "ticker": "MRVI",
+      "name": "MARAVAI LIFESCIENCES HOLDINGS, INC.",
+      "cik": 1823239
+    },
+    {
+      "ticker": "ZLAB",
+      "name": "Zai Lab Ltd",
+      "cik": 1704292
+    },
+    {
+      "ticker": "GLPG",
+      "name": "GALAPAGOS NV",
+      "cik": 1421876
+    },
+    {
+      "ticker": "XENE",
+      "name": "Xenon Pharmaceuticals Inc.",
+      "cik": 1582313
+    },
+    {
+      "ticker": "FTRE",
+      "name": "Fortrea Holdings Inc.",
+      "cik": 1965040
+    },
+    {
+      "ticker": "SLRN",
+      "name": "ACELYRIN, Inc.",
+      "cik": 1962918
+    },
+    {
+      "ticker": "NVCR",
+      "name": "NovoCure Ltd",
+      "cik": 1645113
+    },
+    {
+      "ticker": "GTBIF",
+      "name": "Green Thumb Industries Inc.",
+      "cik": 1795139
+    },
+    {
+      "ticker": "RDNT",
+      "name": "RadNet, Inc.",
+      "cik": 790526
+    },
+    {
+      "ticker": "TMDX",
+      "name": "TransMedics Group, Inc.",
+      "cik": 1756262
+    },
+    {
+      "ticker": "HRMY",
+      "name": "Harmony Biosciences Holdings, Inc.",
+      "cik": 1802665
+    },
+    {
+      "ticker": "TLRY",
+      "name": "Tilray Brands, Inc.",
+      "cik": 1731348
+    },
+    {
+      "ticker": "NUVA",
+      "name": "NUVASIVE INC",
+      "cik": 1142596
+    },
+    {
+      "ticker": "PROK",
+      "name": "PROKIDNEY CORP.",
+      "cik": 1850270
+    },
+    {
+      "ticker": "OLK",
+      "name": "Olink Holding AB (publ)",
+      "cik": 1835539
+    },
+    {
+      "ticker": "CVAC",
+      "name": "CureVac N.V.",
+      "cik": 1809122
+    },
+    {
+      "ticker": "VTYX",
+      "name": "Ventyx Biosciences, Inc.",
+      "cik": 1851194
+    },
+    {
+      "ticker": "ATEC",
+      "name": "Alphatec Holdings, Inc.",
+      "cik": 1350653
+    },
+    {
+      "ticker": "VCYT",
+      "name": "VERACYTE, INC.",
+      "cik": 1384101
+    },
+    {
+      "ticker": "NEO",
+      "name": "NEOGENOMICS INC",
+      "cik": 1077183
+    },
+    {
+      "ticker": "SSII",
+      "name": "SS Innovations International, Inc.",
+      "cik": 1676163
+    },
+    {
+      "ticker": "ZNTL",
+      "name": "Zentalis Pharmaceuticals, Inc.",
+      "cik": 1725160
+    },
+    {
+      "ticker": "RXRX",
+      "name": "RECURSION PHARMACEUTICALS, INC.",
+      "cik": 1601830
+    },
+    {
+      "ticker": "BEAM",
+      "name": "Beam Therapeutics Inc.",
+      "cik": 1745999
+    },
+    {
+      "ticker": "DVAX",
+      "name": "DYNAVAX TECHNOLOGIES CORP",
+      "cik": 1029142
+    },
+    {
+      "ticker": "TNDM",
+      "name": "TANDEM DIABETES CARE INC",
+      "cik": 1438133
+    },
+    {
+      "ticker": "SWTX",
+      "name": "SpringWorks Therapeutics, Inc.",
+      "cik": 1773427
+    },
+    {
+      "ticker": "SUPN",
+      "name": "SUPERNUS PHARMACEUTICALS, INC.",
+      "cik": 1356576
+    },
+    {
+      "ticker": "ACLX",
+      "name": "Arcellx, Inc.",
+      "cik": 1786205
+    },
+    {
+      "ticker": "VIR",
+      "name": "Vir Biotechnology, Inc.",
+      "cik": 1706431
+    },
+    {
+      "ticker": "PRCT",
+      "name": "PROCEPT BioRobotics Corp",
+      "cik": 1588978
+    },
+    {
+      "ticker": "IDYA",
+      "name": "IDEAYA Biosciences, Inc.",
+      "cik": 1676725
+    },
+    {
+      "ticker": "PCRX",
+      "name": "Pacira BioSciences, Inc.",
+      "cik": 1396814
+    },
+    {
+      "ticker": "AHCO",
+      "name": "AdaptHealth Corp.",
+      "cik": 1725255
+    },
+    {
+      "ticker": "ABCL",
+      "name": "AbCellera Biologics Inc.",
+      "cik": 1703057
+    },
+    {
+      "ticker": "TGTX",
+      "name": "TG THERAPEUTICS, INC.",
+      "cik": 1001316
+    },
+    {
+      "ticker": "VCEL",
+      "name": "Vericel Corp",
+      "cik": 887359
+    },
+    {
+      "ticker": "RVNC",
+      "name": "Revance Therapeutics, Inc.",
+      "cik": 1479290
+    },
+    {
+      "ticker": "VRNA",
+      "name": "Verona Pharma plc",
+      "cik": 1657312
+    },
+    {
+      "ticker": "RCUS",
+      "name": "Arcus Biosciences, Inc.",
+      "cik": 1724521
+    },
+    {
+      "ticker": "ESTA",
+      "name": "ESTABLISHMENT LABS HOLDINGS INC.",
+      "cik": 1688757
+    },
+    {
+      "ticker": "RYTM",
+      "name": "RHYTHM PHARMACEUTICALS, INC.",
+      "cik": 1649904
+    },
+    {
+      "ticker": "AGIO",
+      "name": "AGIOS PHARMACEUTICALS, INC.",
+      "cik": 1439222
+    },
+    {
+      "ticker": "IOVA",
+      "name": "IOVANCE BIOTHERAPEUTICS, INC.",
+      "cik": 1425205
+    },
+    {
+      "ticker": "ARVN",
+      "name": "ARVINAS, INC.",
+      "cik": 1655759
+    },
+    {
+      "ticker": "CPRX",
+      "name": "CATALYST PHARMACEUTICALS, INC.",
+      "cik": 1369568
+    },
+    {
+      "ticker": "TARO",
+      "name": "TARO PHARMACEUTICAL INDUSTRIES LTD",
+      "cik": 906338
+    },
+    {
+      "ticker": "MYGN",
+      "name": "MYRIAD GENETICS INC",
+      "cik": 899923
+    },
+    {
+      "ticker": "AMLX",
+      "name": "Amylyx Pharmaceuticals, Inc.",
+      "cik": 1658551
+    },
+    {
+      "ticker": "OPK",
+      "name": "OPKO HEALTH, INC.",
+      "cik": 944809
+    },
+    {
+      "ticker": "IRWD",
+      "name": "IRONWOOD PHARMACEUTICALS INC",
+      "cik": 1446847
+    },
+    {
+      "ticker": "VKTX",
+      "name": "Viking Therapeutics, Inc.",
+      "cik": 1607678
+    },
+    {
+      "ticker": "BCRX",
+      "name": "BIOCRYST PHARMACEUTICALS INC",
+      "cik": 882796
+    },
+    {
+      "ticker": "XNCR",
+      "name": "Xencor Inc",
+      "cik": 1326732
+    },
+    {
+      "ticker": "CBAY",
+      "name": "CymaBay Therapeutics, Inc.",
+      "cik": 1042074
+    },
+    {
+      "ticker": "UFPT",
+      "name": "UFP TECHNOLOGIES INC",
+      "cik": 914156
+    },
+    {
+      "ticker": "PRME",
+      "name": "Prime Medicine, Inc.",
+      "cik": 1894562
+    },
+    {
+      "ticker": "CLDX",
+      "name": "Celldex Therapeutics, Inc.",
+      "cik": 744218
+    },
+    {
+      "ticker": "ANIP",
+      "name": "ANI PHARMACEUTICALS INC",
+      "cik": 1023024
+    },
+    {
+      "ticker": "AUPH",
+      "name": "Aurinia Pharmaceuticals Inc.",
+      "cik": 1600620
+    },
+    {
+      "ticker": "ETNB",
+      "name": "89bio, Inc.",
+      "cik": 1785173
+    },
+    {
+      "ticker": "SNDX",
+      "name": "Syndax Pharmaceuticals Inc",
+      "cik": 1395937
+    },
+    {
+      "ticker": "MRUS",
+      "name": "Merus N.V.",
+      "cik": 1651311
+    },
+    {
+      "ticker": "VRNOF",
+      "name": "Verano Holdings Corp.",
+      "cik": 1848416
+    },
+    {
+      "ticker": "RCKT",
+      "name": "ROCKET PHARMACEUTICALS, INC.",
+      "cik": 1281895
+    },
+    {
+      "ticker": "BHVN",
+      "name": "Biohaven Ltd.",
+      "cik": 1935979
+    },
+    {
+      "ticker": "GERN",
+      "name": "GERON CORP",
+      "cik": 886744
+    },
+    {
+      "ticker": "TWST",
+      "name": "Twist Bioscience Corp",
+      "cik": 1581280
+    },
+    {
+      "ticker": "AMRX",
+      "name": "Amneal Pharmaceuticals, Inc.",
+      "cik": 1723128
+    },
+    {
+      "ticker": "RLAY",
+      "name": "Relay Therapeutics, Inc.",
+      "cik": 1812364
+    },
+    {
+      "ticker": "MNKD",
+      "name": "MANNKIND CORP",
+      "cik": 899460
+    },
+    {
+      "ticker": "AVDL",
+      "name": "AVADEL PHARMACEUTICALS PLC",
+      "cik": 1012477
+    },
+    {
+      "ticker": "REPL",
+      "name": "Replimune Group, Inc.",
+      "cik": 1737953
+    },
+    {
+      "ticker": "KNSA",
+      "name": "Kiniksa Pharmaceuticals, Ltd.",
+      "cik": 1730430
+    },
+    {
+      "ticker": "IRON",
+      "name": "Disc Medicine, Inc.",
+      "cik": 1816736
+    },
+    {
+      "ticker": "SAGE",
+      "name": "Sage Therapeutics, Inc.",
+      "cik": 1597553
+    },
+    {
+      "ticker": "APGE",
+      "name": "Apogee Therapeutics, Inc.",
+      "cik": 1974640
+    },
+    {
+      "ticker": "FNA",
+      "name": "Paragon 28, Inc.",
+      "cik": 1531978
+    },
+    {
+      "ticker": "DAWN",
+      "name": "Day One Biopharmaceuticals, Inc.",
+      "cik": 1845337
+    },
+    {
+      "ticker": "LGND",
+      "name": "LIGAND PHARMACEUTICALS INC",
+      "cik": 886163
+    },
+    {
+      "ticker": "PTGX",
+      "name": "Protagonist Therapeutics, Inc",
+      "cik": 1377121
+    },
+    {
+      "ticker": "SMMT",
+      "name": "Summit Therapeutics Inc.",
+      "cik": 1599298
+    },
+    {
+      "ticker": "EQRX",
+      "name": "EQRx, Inc.",
+      "cik": 1843762
+    },
+    {
+      "ticker": "DCPH",
+      "name": "Deciphera Pharmaceuticals, Inc.",
+      "cik": 1654151
+    },
+    {
+      "ticker": "TVTX",
+      "name": "Travere Therapeutics, Inc.",
+      "cik": 1438533
+    },
+    {
+      "ticker": "KYMR",
+      "name": "Kymera Therapeutics, Inc.",
+      "cik": 1815442
+    },
+    {
+      "ticker": "SANA",
+      "name": "Sana Biotechnology, Inc.",
+      "cik": 1770121
+    },
+    {
+      "ticker": "TCNNF",
+      "name": "Trulieve Cannabis Corp.",
+      "cik": 1754195
+    },
+    {
+      "ticker": "COGT",
+      "name": "Cogent Biosciences, Inc.",
+      "cik": 1622229
+    },
+    {
+      "ticker": "KROS",
+      "name": "Keros Therapeutics, Inc.",
+      "cik": 1664710
+    },
+    {
+      "ticker": "MOR",
+      "name": "MorphoSys AG",
+      "cik": 1340243
+    },
+    {
+      "ticker": "CTKB",
+      "name": "Cytek Biosciences, Inc.",
+      "cik": 1831915
+    },
+    {
+      "ticker": "RXST",
+      "name": "RxSight, Inc.",
+      "cik": 1111485
+    },
+    {
+      "ticker": "GPCR",
+      "name": "Structure Therapeutics Inc.",
+      "cik": 1888886
+    },
+    {
+      "ticker": "MIRM",
+      "name": "Mirum Pharmaceuticals, Inc.",
+      "cik": 1759425
+    },
+    {
+      "ticker": "QTRX",
+      "name": "Quanterix Corp",
+      "cik": 1503274
+    },
+    {
+      "ticker": "PLRX",
+      "name": "PLIANT THERAPEUTICS, INC.",
+      "cik": 1746473
+    },
+    {
+      "ticker": "FLGT",
+      "name": "Fulgent Genetics, Inc.",
+      "cik": 1674930
+    },
+    {
+      "ticker": "AVNS",
+      "name": "AVANOS MEDICAL, INC.",
+      "cik": 1606498
+    },
+    {
+      "ticker": "IMTX",
+      "name": "Immatics N.V.",
+      "cik": 1809196
+    },
+    {
+      "ticker": "VALN",
+      "name": "Valneva SE",
+      "cik": 1836564
+    },
+    {
+      "ticker": "ADPT",
+      "name": "Adaptive Biotechnologies Corp",
+      "cik": 1478320
+    },
+    {
+      "ticker": "CRNX",
+      "name": "Crinetics Pharmaceuticals, Inc.",
+      "cik": 1658247
+    },
+    {
+      "ticker": "TMCI",
+      "name": "TREACE MEDICAL CONCEPTS, INC.",
+      "cik": 1630627
+    },
+    {
+      "ticker": "BIOGY",
+      "name": "BioGaia AB/ADR",
+      "cik": 1572957
+    },
+    {
+      "ticker": "BLTE",
+      "name": "BELITE BIO, INC",
+      "cik": 1889109
+    },
+    {
+      "ticker": "INBX",
+      "name": "Inhibrx, Inc.",
+      "cik": 1739614
+    },
+    {
+      "ticker": "ARDX",
+      "name": "ARDELYX, INC.",
+      "cik": 1437402
+    },
+    {
+      "ticker": "SIBN",
+      "name": "SI-BONE, Inc.",
+      "cik": 1459839
+    },
+    {
+      "ticker": "KIDS",
+      "name": "ORTHOPEDIATRICS CORP",
+      "cik": 1425450
+    },
+    {
+      "ticker": "SAVA",
+      "name": "CASSAVA SCIENCES INC",
+      "cik": 1069530
+    },
+    {
+      "ticker": "AMAM",
+      "name": "Ambrx Biopharma Inc.",
+      "cik": 1836056
+    },
+    {
+      "ticker": "ADMA",
+      "name": "ADMA BIOLOGICS, INC.",
+      "cik": 1368514
+    },
+    {
+      "ticker": "NAMS",
+      "name": "NewAmsterdam Pharma Co N.V.",
+      "cik": 1936258
+    },
+    {
+      "ticker": "MDXG",
+      "name": "MIMEDX GROUP, INC.",
+      "cik": 1376339
+    },
+    {
+      "ticker": "PHAR",
+      "name": "Pharming Group N.V.",
+      "cik": 1828316
+    },
+    {
+      "ticker": "PNT",
+      "name": "POINT Biopharma Global Inc.",
+      "cik": 1811764
+    },
+    {
+      "ticker": "INVA",
+      "name": "Innoviva, Inc.",
+      "cik": 1080014
+    },
+    {
+      "ticker": "PHVS",
+      "name": "Pharvaris N.V.",
+      "cik": 1830487
+    },
+    {
+      "ticker": "VERV",
+      "name": "Verve Therapeutics, Inc.",
+      "cik": 1840574
+    },
+    {
+      "ticker": "PHAT",
+      "name": "Phathom Pharmaceuticals, Inc.",
+      "cik": 1783183
+    },
+    {
+      "ticker": "ARCT",
+      "name": "Arcturus Therapeutics Holdings Inc.",
+      "cik": 1768224
+    },
+    {
+      "ticker": "NVAX",
+      "name": "NOVAVAX INC",
+      "cik": 1000694
+    },
+    {
+      "ticker": "COLL",
+      "name": "COLLEGIUM PHARMACEUTICAL, INC",
+      "cik": 1267565
+    },
+    {
+      "ticker": "VRDN",
+      "name": "Viridian Therapeutics, Inc.DE",
+      "cik": 1590750
+    },
+    {
+      "ticker": "VREX",
+      "name": "Varex Imaging Corp",
+      "cik": 1681622
+    },
+    {
+      "ticker": "BCYC",
+      "name": "BICYCLE THERAPEUTICS plc",
+      "cik": 1761612
+    },
+    {
+      "ticker": "RGNX",
+      "name": "REGENXBIO Inc.",
+      "cik": 1590877
+    },
+    {
+      "ticker": "CRON",
+      "name": "Cronos Group Inc.",
+      "cik": 1656472
+    },
+    {
+      "ticker": "VERA",
+      "name": "Vera Therapeutics, Inc.",
+      "cik": 1831828
+    },
+    {
+      "ticker": "OFIX",
+      "name": "Orthofix Medical Inc.",
+      "cik": 884624
+    },
+    {
+      "ticker": "EXAI",
+      "name": "Exscientia plc",
+      "cik": 1865408
+    },
+    {
+      "ticker": "SILK",
+      "name": "Silk Road Medical Inc",
+      "cik": 1397702
+    },
+    {
+      "ticker": "CDMO",
+      "name": "Avid Bioservices, Inc.",
+      "cik": 704562
+    },
+    {
+      "ticker": "TSNDF",
+      "name": "TerrAscend Corp.",
+      "cik": 1778129
+    },
+    {
+      "ticker": "IBRX",
+      "name": "ImmunityBio, Inc.",
+      "cik": 1326110
+    },
+    {
+      "ticker": "KURA",
+      "name": "Kura Oncology, Inc.",
+      "cik": 1422143
+    },
+    {
+      "ticker": "CNTA",
+      "name": "Centessa Pharmaceuticals plc",
+      "cik": 1847903
+    },
+    {
+      "ticker": "NVRO",
+      "name": "NEVRO CORP",
+      "cik": 1444380
+    },
+    {
+      "ticker": "EDIT",
+      "name": "Editas Medicine, Inc.",
+      "cik": 1650664
+    },
+    {
+      "ticker": "DYN",
+      "name": "Dyne Therapeutics, Inc.",
+      "cik": 1818794
+    },
+    {
+      "ticker": "AORT",
+      "name": "ARTIVION, INC.",
+      "cik": 784199
+    },
+    {
+      "ticker": "FDMT",
+      "name": "4D Molecular Therapeutics, Inc.",
+      "cik": 1650648
+    },
+    {
+      "ticker": "OM",
+      "name": "Outset Medical, Inc.",
+      "cik": 1484612
+    },
+    {
+      "ticker": "PRTC",
+      "name": "PureTech Health plc",
+      "cik": 1782999
+    },
+    {
+      "ticker": "OABI",
+      "name": "OmniAb, Inc.",
+      "cik": 1846253
+    },
+    {
+      "ticker": "SPRY",
+      "name": "ARS Pharmaceuticals, Inc.",
+      "cik": 1671858
+    },
+    {
+      "ticker": "NWBO",
+      "name": "NORTHWEST BIOTHERAPEUTICS INC",
+      "cik": 1072379
+    },
+    {
+      "ticker": "ALLO",
+      "name": "Allogene Therapeutics, Inc.",
+      "cik": 1737287
+    },
+    {
+      "ticker": "TYRA",
+      "name": "Tyra Biosciences, Inc.",
+      "cik": 1863127
+    },
+    {
+      "ticker": "RAPT",
+      "name": "RAPT Therapeutics, Inc.",
+      "cik": 1673772
+    },
+    {
+      "ticker": "GNLX",
+      "name": "GENELUX Corp",
+      "cik": 1231457
+    },
+    {
+      "ticker": "AVXL",
+      "name": "ANAVEX LIFE SCIENCES CORP.",
+      "cik": 1314052
+    },
+    {
+      "ticker": "ELVN",
+      "name": "Enliven Therapeutics, Inc.",
+      "cik": 1672619
+    },
+    {
+      "ticker": "ALPN",
+      "name": "ALPINE IMMUNE SCIENCES, INC.",
+      "cik": 1626199
+    },
+    {
+      "ticker": "LYEL",
+      "name": "Lyell Immunopharma, Inc.",
+      "cik": 1806952
+    },
+    {
+      "ticker": "IRMD",
+      "name": "IRADIMED CORP",
+      "cik": 1325618
+    },
+    {
+      "ticker": "BMEA",
+      "name": "Biomea Fusion, Inc.",
+      "cik": 1840439
+    },
+    {
+      "ticker": "TNGX",
+      "name": "Tango Therapeutics, Inc.",
+      "cik": 1819133
+    },
+    {
+      "ticker": "PAHC",
+      "name": "PHIBRO ANIMAL HEALTH CORP",
+      "cik": 1069899
+    },
+    {
+      "ticker": "TSHA",
+      "name": "Taysha Gene Therapies, Inc.",
+      "cik": 1806310
+    },
+    {
+      "ticker": "EOLS",
+      "name": "Evolus, Inc.",
+      "cik": 1570562
+    },
+    {
+      "ticker": "TARS",
+      "name": "Tarsus Pharmaceuticals, Inc.",
+      "cik": 1819790
+    },
+    {
+      "ticker": "RNA",
+      "name": "Avidity Biosciences, Inc.",
+      "cik": 1599901
+    },
+    {
+      "ticker": "AUTL",
+      "name": "Autolus Therapeutics plc",
+      "cik": 1730463
+    },
+    {
+      "ticker": "PETQ",
+      "name": "PetIQ, Inc.",
+      "cik": 1668673
+    },
+    {
+      "ticker": "CABA",
+      "name": "Cabaletta Bio, Inc.",
+      "cik": 1759138
+    },
+    {
+      "ticker": "CRLBF",
+      "name": "Cresco Labs Inc.",
+      "cik": 1832928
+    },
+    {
+      "ticker": "URGN",
+      "name": "UroGen Pharma Ltd.",
+      "cik": 1668243
+    },
+    {
+      "ticker": "GHRS",
+      "name": "GH Research PLC",
+      "cik": 1855129
+    },
+    {
+      "ticker": "ANAB",
+      "name": "ANAPTYSBIO, INC",
+      "cik": 1370053
+    },
+    {
+      "ticker": "CSTL",
+      "name": "CASTLE BIOSCIENCES INC",
+      "cik": 1447362
+    },
+    {
+      "ticker": "HROW",
+      "name": "HARROW HEALTH, INC.",
+      "cik": 1360214
+    },
+    {
+      "ticker": "SRDX",
+      "name": "SURMODICS INC",
+      "cik": 924717
+    },
+    {
+      "ticker": "MLYS",
+      "name": "Mineralys Therapeutics, Inc.",
+      "cik": 1933414
+    },
+    {
+      "ticker": "HLVX",
+      "name": "HilleVax, Inc.",
+      "cik": 1888012
+    },
+    {
+      "ticker": "AGEN",
+      "name": "AGENUS INC",
+      "cik": 1098972
+    },
+    {
+      "ticker": "ME",
+      "name": "23andMe Holding Co.",
+      "cik": 1804591
+    },
+    {
+      "ticker": "ACRS",
+      "name": "Aclaris Therapeutics, Inc.",
+      "cik": 1557746
+    },
+    {
+      "ticker": "CRBU",
+      "name": "Caribou Biosciences, Inc.",
+      "cik": 1619856
+    },
+    {
+      "ticker": "TRDA",
+      "name": "Entrada Therapeutics, Inc.",
+      "cik": 1689375
+    },
+    {
+      "ticker": "CCBG",
+      "name": "CAPITAL CITY BANK GROUP INC",
+      "cik": 726601
+    },
+    {
+      "ticker": "ARQT",
+      "name": "Arcutis Biotherapeutics, Inc.",
+      "cik": 1787306
+    },
+    {
+      "ticker": "TBPH",
+      "name": "Theravance Biopharma, Inc.",
+      "cik": 1583107
+    },
+    {
+      "ticker": "CDNA",
+      "name": "CareDx, Inc.",
+      "cik": 1217234
+    },
+    {
+      "ticker": "CHRS",
+      "name": "Coherus BioSciences, Inc.",
+      "cik": 1512762
+    },
+    {
+      "ticker": "JANX",
+      "name": "Janux Therapeutics, Inc.",
+      "cik": 1817713
+    },
+    {
+      "ticker": "SVRA",
+      "name": "Savara Inc",
+      "cik": 1160308
+    },
+    {
+      "ticker": "ORIC",
+      "name": "Oric Pharmaceuticals, Inc.",
+      "cik": 1796280
+    },
+    {
+      "ticker": "ZYME",
+      "name": "Zymeworks Inc.",
+      "cik": 1937653
+    },
+    {
+      "ticker": "CALT",
+      "name": "Calliditas Therapeutics AB",
+      "cik": 1795579
+    },
+    {
+      "ticker": "OCS",
+      "name": "Oculis Holding AG",
+      "cik": 1953530
+    },
+    {
+      "ticker": "NNOX",
+      "name": "Nano-X Imaging Ltd.",
+      "cik": 1795251
+    },
+    {
+      "ticker": "ALEC",
+      "name": "Alector, Inc.",
+      "cik": 1653087
+    },
+    {
+      "ticker": "AVTE",
+      "name": "Aerovate Therapeutics, Inc.",
+      "cik": 1798749
+    },
+    {
+      "ticker": "PGEN",
+      "name": "PRECIGEN, INC.",
+      "cik": 1356090
+    },
+    {
+      "ticker": "ICPT",
+      "name": "INTERCEPT PHARMACEUTICALS, INC.",
+      "cik": 1270073
+    },
+    {
+      "ticker": "CGEM",
+      "name": "Cullinan Oncology, Inc.",
+      "cik": 1789972
+    },
+    {
+      "ticker": "LQDA",
+      "name": "Liquidia Corp",
+      "cik": 1819576
+    },
+    {
+      "ticker": "MCRB",
+      "name": "Seres Therapeutics, Inc.",
+      "cik": 1609809
+    },
+    {
+      "ticker": "ALDX",
+      "name": "Aldeyra Therapeutics, Inc.",
+      "cik": 1341235
+    },
+    {
+      "ticker": "ANTX",
+      "name": "AN2 Therapeutics, Inc.",
+      "cik": 1880438
+    },
+    {
+      "ticker": "TCMD",
+      "name": "TACTILE SYSTEMS TECHNOLOGY INC",
+      "cik": 1027838
+    },
+    {
+      "ticker": "CGC",
+      "name": "Canopy Growth Corp",
+      "cik": 1737927
+    },
+    {
+      "ticker": "PROC",
+      "name": "Procaps Group, S.A.",
+      "cik": 1863362
+    },
+    {
+      "ticker": "VYGR",
+      "name": "Voyager Therapeutics, Inc.",
+      "cik": 1640266
+    },
+    {
+      "ticker": "ITOS",
+      "name": "iTeos Therapeutics, Inc.",
+      "cik": 1808865
+    },
+    {
+      "ticker": "WVE",
+      "name": "Wave Life Sciences Ltd.",
+      "cik": 1631574
+    },
+    {
+      "ticker": "AMRN",
+      "name": "AMARIN CORP PLC\\UK",
+      "cik": 897448
+    },
+    {
+      "ticker": "LXRX",
+      "name": "LEXICON PHARMACEUTICALS, INC.",
+      "cik": 1062822
+    },
+    {
+      "ticker": "NAUT",
+      "name": "Nautilus Biotechnology, Inc.",
+      "cik": 1808805
+    },
+    {
+      "ticker": "RPTX",
+      "name": "Repare Therapeutics Inc.",
+      "cik": 1808158
+    },
+    {
+      "ticker": "OLMA",
+      "name": "Olema Pharmaceuticals, Inc.",
+      "cik": 1750284
+    },
+    {
+      "ticker": "QURE",
+      "name": "uniQure N.V.",
+      "cik": 1590560
+    },
+    {
+      "ticker": "IGMS",
+      "name": "IGM Biosciences, Inc.",
+      "cik": 1496323
+    },
+    {
+      "ticker": "SCLX",
+      "name": "Scilex Holding Co",
+      "cik": 1820190
+    },
+    {
+      "ticker": "RCEL",
+      "name": "AVITA Medical, Inc.",
+      "cik": 1762303
+    },
+    {
+      "ticker": "NRIX",
+      "name": "Nurix Therapeutics, Inc.",
+      "cik": 1549595
+    },
+    {
+      "ticker": "APLM",
+      "name": "Apollomics Inc.",
+      "cik": 1944885
+    },
+    {
+      "ticker": "BLUE",
+      "name": "bluebird bio, Inc.",
+      "cik": 1293971
+    },
+    {
+      "ticker": "LUNG",
+      "name": "Pulmonx Corp",
+      "cik": 1127537
+    },
+    {
+      "ticker": "HUMA",
+      "name": "Humacyte, Inc.",
+      "cik": 1818382
+    },
+    {
+      "ticker": "AURA",
+      "name": "Aura Biosciences, Inc.",
+      "cik": 1501796
+    },
+    {
+      "ticker": "HYAC",
+      "name": "Haymaker Acquisition Corp. 4",
+      "cik": 1970509
+    },
+    {
+      "ticker": "ICVX",
+      "name": "Icosavax, Inc.",
+      "cik": 1786255
+    },
+    {
+      "ticker": "EWTX",
+      "name": "Edgewise Therapeutics, Inc.",
+      "cik": 1710072
+    },
+    {
+      "ticker": "ERAS",
+      "name": "Erasca, Inc.",
+      "cik": 1761918
+    },
+    {
+      "ticker": "MXCT",
+      "name": "MAXCYTE, INC.",
+      "cik": 1287098
+    },
+    {
+      "ticker": "SQL",
+      "name": "SeqLL, Inc.",
+      "cik": 1605888
+    },
+    {
+      "ticker": "MGTX",
+      "name": "MeiraGTx Holdings plc",
+      "cik": 1735438
+    },
+    {
+      "ticker": "BFLY",
+      "name": "Butterfly Network, Inc.",
+      "cik": 1804176
+    },
+    {
+      "ticker": "NUVB",
+      "name": "Nuvation Bio Inc.",
+      "cik": 1811063
+    },
+    {
+      "ticker": "ALVR",
+      "name": "Allovir, Inc.",
+      "cik": 1754068
+    },
+    {
+      "ticker": "KALV",
+      "name": "KalVista Pharmaceuticals, Inc.",
+      "cik": 1348911
+    },
+    {
+      "ticker": "ORGO",
+      "name": "Organogenesis Holdings Inc.",
+      "cik": 1661181
+    },
+    {
+      "ticker": "PMVP",
+      "name": "PMV Pharmaceuticals, Inc.",
+      "cik": 1699382
+    },
+    {
+      "ticker": "CVRX",
+      "name": "CVRx, Inc.",
+      "cik": 1235912
+    },
+    {
+      "ticker": "MRNS",
+      "name": "MARINUS PHARMACEUTICALS, INC.",
+      "cik": 1267813
+    },
+    {
+      "ticker": "SRRK",
+      "name": "Scholar Rock Holding Corp",
+      "cik": 1727196
+    },
+    {
+      "ticker": "ABOS",
+      "name": "Acumen Pharmaceuticals, Inc.",
+      "cik": 1576885
+    },
+    {
+      "ticker": "EYPT",
+      "name": "EyePoint Pharmaceuticals, Inc.",
+      "cik": 1314102
+    },
+    {
+      "ticker": "CCHWF",
+      "name": "Columbia Care Inc.",
+      "cik": 1776738
+    },
+    {
+      "ticker": "NBTX",
+      "name": "Nanobiotix S.A.",
+      "cik": 1760854
+    },
+    {
+      "ticker": "FULC",
+      "name": "Fulcrum Therapeutics, Inc.",
+      "cik": 1680581
+    },
+    {
+      "ticker": "CERS",
+      "name": "CERUS CORP",
+      "cik": 1020214
+    },
+    {
+      "ticker": "ABUS",
+      "name": "Arbutus Biopharma Corp",
+      "cik": 1447028
+    },
+    {
+      "ticker": "SIGA",
+      "name": "SIGA TECHNOLOGIES INC",
+      "cik": 1010086
+    },
+    {
+      "ticker": "QSI",
+      "name": "Quantum-Si Inc",
+      "cik": 1816431
+    },
+    {
+      "ticker": "SLN",
+      "name": "Silence Therapeutics plc",
+      "cik": 1479615
+    },
+    {
+      "ticker": "TERN",
+      "name": "Terns Pharmaceuticals, Inc.",
+      "cik": 1831363
+    },
+    {
+      "ticker": "SGHT",
+      "name": "Sight Sciences, Inc.",
+      "cik": 1531177
+    },
+    {
+      "ticker": "XERS",
+      "name": "Xeris Biopharma Holdings, Inc.",
+      "cik": 1867096
+    },
+    {
+      "ticker": "DBVT",
+      "name": "DBV Technologies S.A.",
+      "cik": 1613780
+    },
+    {
+      "ticker": "GBIO",
+      "name": "Generation Bio Co.",
+      "cik": 1733294
+    },
+    {
+      "ticker": "ENTA",
+      "name": "ENANTA PHARMACEUTICALS INC",
+      "cik": 1177648
+    },
+    {
+      "ticker": "CBUS",
+      "name": "Cibus, Inc.",
+      "cik": 1705843
+    },
+    {
+      "ticker": "ZIMV",
+      "name": "ZimVie Inc.",
+      "cik": 1876588
+    },
+    {
+      "ticker": "FHTX",
+      "name": "Foghorn Therapeutics Inc.",
+      "cik": 1822462
+    },
+    {
+      "ticker": "VMD",
+      "name": "VIEMED HEALTHCARE, INC.",
+      "cik": 1729149
+    },
+    {
+      "ticker": "INZY",
+      "name": "Inozyme Pharma, Inc.",
+      "cik": 1693011
+    },
+    {
+      "ticker": "CMPX",
+      "name": "Compass Therapeutics, Inc.",
+      "cik": 1738021
+    },
+    {
+      "ticker": "GLASF",
+      "name": "Glass House Brands Inc.",
+      "cik": 1848731
+    },
+    {
+      "ticker": "ASRT",
+      "name": "Assertio Holdings, Inc.",
+      "cik": 1808665
+    },
+    {
+      "ticker": "BKUH",
+      "name": "Bakhu Holdings, Corp.",
+      "cik": 1440153
+    },
+    {
+      "ticker": "ZURA",
+      "name": "Zura Bio Ltd",
+      "cik": 1855644
+    },
+    {
+      "ticker": "VNDA",
+      "name": "Vanda Pharmaceuticals Inc.",
+      "cik": 1347178
+    },
+    {
+      "ticker": "OCUL",
+      "name": "OCULAR THERAPEUTIX, INC",
+      "cik": 1393434
+    },
+    {
+      "ticker": "GLUE",
+      "name": "Monte Rosa Therapeutics, Inc.",
+      "cik": 1826457
+    },
+    {
+      "ticker": "MGNX",
+      "name": "MACROGENICS INC",
+      "cik": 1125345
+    },
+    {
+      "ticker": "STRO",
+      "name": "SUTRO BIOPHARMA, INC.",
+      "cik": 1382101
+    },
+    {
+      "ticker": "CARM",
+      "name": "Carisma Therapeutics Inc.",
+      "cik": 1485003
+    },
+    {
+      "ticker": "SGMT",
+      "name": "Sagimet Biosciences Inc.",
+      "cik": 1400118
+    },
+    {
+      "ticker": "AVIR",
+      "name": "Atea Pharmaceuticals, Inc.",
+      "cik": 1593899
+    },
+    {
+      "ticker": "SCPH",
+      "name": "scPharmaceuticals Inc.",
+      "cik": 1604950
+    },
+    {
+      "ticker": "ARAY",
+      "name": "ACCURAY INC",
+      "cik": 1138723
+    },
+    {
+      "ticker": "ACIU",
+      "name": "AC Immune SA",
+      "cik": 1651625
+    },
+    {
+      "ticker": "AXGN",
+      "name": "Axogen, Inc.",
+      "cik": 805928
+    },
+    {
+      "ticker": "TSVT",
+      "name": "2seventy bio, Inc.",
+      "cik": 1860782
+    },
+    {
+      "ticker": "TNYA",
+      "name": "Tenaya Therapeutics, Inc.",
+      "cik": 1858848
+    },
+    {
+      "ticker": "AKBA",
+      "name": "Akebia Therapeutics, Inc.",
+      "cik": 1517022
+    },
+    {
+      "ticker": "ACRV",
+      "name": "Acrivon Therapeutics, Inc.",
+      "cik": 1781174
+    },
+    {
+      "ticker": "MESO",
+      "name": "MESOBLAST LTD",
+      "cik": 1345099
+    },
+    {
+      "ticker": "IMRX",
+      "name": "Immuneering Corp",
+      "cik": 1790340
+    },
+    {
+      "ticker": "VAXX",
+      "name": "Vaxxinity, Inc.",
+      "cik": 1851657
+    },
+    {
+      "ticker": "ANIK",
+      "name": "Anika Therapeutics, Inc.",
+      "cik": 898437
+    },
+    {
+      "ticker": "ATAI",
+      "name": "ATAI Life Sciences N.V.",
+      "cik": 1840904
+    },
+    {
+      "ticker": "KMDA",
+      "name": "KAMADA LTD",
+      "cik": 1567529
+    },
+    {
+      "ticker": "STOK",
+      "name": "Stoke Therapeutics, Inc.",
+      "cik": 1623526
+    },
+    {
+      "ticker": "NVTA",
+      "name": "Invitae Corp",
+      "cik": 1501134
+    },
+    {
+      "ticker": "SENS",
+      "name": "Senseonics Holdings, Inc.",
+      "cik": 1616543
+    },
+    {
+      "ticker": "ATXS",
+      "name": "Astria Therapeutics, Inc.",
+      "cik": 1454789
+    },
+    {
+      "ticker": "FATE",
+      "name": "FATE THERAPEUTICS INC",
+      "cik": 1434316
+    },
+    {
+      "ticker": "EBS",
+      "name": "Emergent BioSolutions Inc.",
+      "cik": 1367644
+    },
+    {
+      "ticker": "NVCT",
+      "name": "Nuvectis Pharma, Inc.",
+      "cik": 1875558
+    },
+    {
+      "ticker": "VSTM",
+      "name": "Verastem, Inc.",
+      "cik": 1526119
+    },
+    {
+      "ticker": "QIPT",
+      "name": "Quipt Home Medical Corp.",
+      "cik": 1540013
+    },
+    {
+      "ticker": "ALLK",
+      "name": "Allakos Inc.",
+      "cik": 1564824
+    },
+    {
+      "ticker": "GOSS",
+      "name": "Gossamer Bio, Inc.",
+      "cik": 1728117
+    },
+    {
+      "ticker": "TSBX",
+      "name": "Turnstone Biologics Corp.",
+      "cik": 1764974
+    },
+    {
+      "ticker": "THRD",
+      "name": "Third Harmonic Bio, Inc.",
+      "cik": 1923840
+    },
+    {
+      "ticker": "LFCR",
+      "name": "LIFECORE BIOMEDICAL, INC. DE",
+      "cik": 1005286
+    },
+    {
+      "ticker": "PETS",
+      "name": "PETMED EXPRESS INC",
+      "cik": 1040130
+    },
+    {
+      "ticker": "OVID",
+      "name": "Ovid Therapeutics Inc.",
+      "cik": 1636651
+    },
+    {
+      "ticker": "LAB",
+      "name": "STANDARD BIOTOOLS INC.",
+      "cik": 1162194
+    },
+    {
+      "ticker": "LMDX",
+      "name": "LumiraDx Ltd",
+      "cik": 1685428
+    },
+    {
+      "ticker": "OBIO",
+      "name": "Orchestra BioMed Holdings, Inc.",
+      "cik": 1814114
+    },
+    {
+      "ticker": "LCTX",
+      "name": "Lineage Cell Therapeutics, Inc.",
+      "cik": 876343
+    },
+    {
+      "ticker": "TIHE",
+      "name": "Taihe Group, Inc.",
+      "cik": 1066719
+    },
+    {
+      "ticker": "GRCL",
+      "name": "Gracell Biotechnologies Inc.",
+      "cik": 1826492
+    },
+    {
+      "ticker": "MASS",
+      "name": "908 Devices Inc.",
+      "cik": 1555279
+    },
+    {
+      "ticker": "HRTX",
+      "name": "HERON THERAPEUTICS, INC. /DE/",
+      "cik": 818033
+    },
+    {
+      "ticker": "TELA",
+      "name": "TELA Bio, Inc.",
+      "cik": 1561921
+    },
+    {
+      "ticker": "IPHA",
+      "name": "Innate Pharma SA",
+      "cik": 1598599
+    },
+    {
+      "ticker": "VIGL",
+      "name": "Vigil Neuroscience, Inc.",
+      "cik": 1827087
+    },
+    {
+      "ticker": "IFRX",
+      "name": "InflaRx N.V.",
+      "cik": 1708688
+    },
+    {
+      "ticker": "CUTR",
+      "name": "CUTERA INC",
+      "cik": 1162461
+    },
+    {
+      "ticker": "NPCE",
+      "name": "NeuroPace Inc",
+      "cik": 1528287
+    },
+    {
+      "ticker": "YMAB",
+      "name": "Y-mAbs Therapeutics, Inc.",
+      "cik": 1722964
+    },
+    {
+      "ticker": "CRMD",
+      "name": "CorMedix Inc.",
+      "cik": 1410098
+    },
+    {
+      "ticker": "EGRX",
+      "name": "EAGLE PHARMACEUTICALS, INC.",
+      "cik": 827871
+    },
+    {
+      "ticker": "FENC",
+      "name": "FENNEC PHARMACEUTICALS INC.",
+      "cik": 1211583
+    },
+    {
+      "ticker": "DRTS",
+      "name": "Alpha Tau Medical Ltd.",
+      "cik": 1871321
+    },
+    {
+      "ticker": "OMER",
+      "name": "OMEROS CORP",
+      "cik": 1285819
+    },
+    {
+      "ticker": "BVS",
+      "name": "Bioventus Inc.",
+      "cik": 1665988
+    },
+    {
+      "ticker": "RGC",
+      "name": "Regencell Bioscience Holdings Ltd",
+      "cik": 1829667
+    },
+    {
+      "ticker": "XFOR",
+      "name": "X4 Pharmaceuticals, Inc",
+      "cik": 1501697
+    },
+    {
+      "ticker": "YI",
+      "name": "111, Inc.",
+      "cik": 1738906
+    },
+    {
+      "ticker": "CELC",
+      "name": "Celcuity Inc.",
+      "cik": 1603454
+    },
+    {
+      "ticker": "RLYB",
+      "name": "Rallybio Corp",
+      "cik": 1739410
+    },
+    {
+      "ticker": "RPHM",
+      "name": "Reneo Pharmaceuticals, Inc.",
+      "cik": 1637715
+    },
+    {
+      "ticker": "FUSN",
+      "name": "Fusion Pharmaceuticals Inc.",
+      "cik": 1805890
+    },
+    {
+      "ticker": "PRLD",
+      "name": "Prelude Therapeutics Inc",
+      "cik": 1678660
+    },
+    {
+      "ticker": "IKNA",
+      "name": "Ikena Oncology, Inc.",
+      "cik": 1835579
+    },
+    {
+      "ticker": "RENB",
+      "name": "RENOVARO BIOSCIENCES INC.",
+      "cik": 1527728
+    },
+    {
+      "ticker": "IVVD",
+      "name": "Invivyd, Inc.",
+      "cik": 1832038
+    },
+    {
+      "ticker": "OMGA",
+      "name": "Omega Therapeutics, Inc.",
+      "cik": 1850838
+    },
+    {
+      "ticker": "RIGL",
+      "name": "RIGEL PHARMACEUTICALS INC",
+      "cik": 1034842
+    },
+    {
+      "ticker": "PSTX",
+      "name": "Poseida Therapeutics, Inc.",
+      "cik": 1661460
+    },
+    {
+      "ticker": "KGNR",
+      "name": "AMJ Global Technology",
+      "cik": 1593773
+    },
+    {
+      "ticker": "MOLN",
+      "name": "MOLECULAR PARTNERS AG",
+      "cik": 1745114
+    },
+    {
+      "ticker": "CYDY",
+      "name": "CytoDyn Inc.",
+      "cik": 1175680
+    },
+    {
+      "ticker": "LIAN",
+      "name": "LianBio",
+      "cik": 1831283
+    },
+    {
+      "ticker": "RANI",
+      "name": "Rani Therapeutics Holdings, Inc.",
+      "cik": 1856725
+    },
+    {
+      "ticker": "VRCA",
+      "name": "Verrica Pharmaceuticals Inc.",
+      "cik": 1660334
+    },
+    {
+      "ticker": "AEON",
+      "name": "AEON Biopharma, Inc.",
+      "cik": 1837607
+    },
+    {
+      "ticker": "ACB",
+      "name": "AURORA CANNABIS INC",
+      "cik": 1683541
+    },
+    {
+      "ticker": "SELB",
+      "name": "SELECTA BIOSCIENCES INC",
+      "cik": 1453687
+    },
+    {
+      "ticker": "PRAX",
+      "name": "Praxis Precision Medicines, Inc.",
+      "cik": 1689548
+    },
+    {
+      "ticker": "PROF",
+      "name": "Profound Medical Corp.",
+      "cik": 1628808
+    },
+    {
+      "ticker": "ALUR",
+      "name": "ALLURION TECHNOLOGIES, INC.",
+      "cik": 1964979
+    },
+    {
+      "ticker": "ZOM",
+      "name": "Zomedica Corp.",
+      "cik": 1684144
+    },
+    {
+      "ticker": "SMLR",
+      "name": "Semler Scientific, Inc.",
+      "cik": 1554859
+    },
+    {
+      "ticker": "PDSB",
+      "name": "PDS Biotechnology Corp",
+      "cik": 1472091
+    },
+    {
+      "ticker": "ADAP",
+      "name": "Adaptimmune Therapeutics PLC",
+      "cik": 1621227
+    },
+    {
+      "ticker": "ALIM",
+      "name": "ALIMERA SCIENCES INC",
+      "cik": 1267602
+    },
+    {
+      "ticker": "ADVM",
+      "name": "Adverum Biotechnologies, Inc.",
+      "cik": 1501756
+    },
+    {
+      "ticker": "ESPR",
+      "name": "Esperion Therapeutics, Inc.",
+      "cik": 1434868
+    },
+    {
+      "ticker": "PLNHF",
+      "name": "Planet 13 Holdings Inc.",
+      "cik": 1813452
+    },
+    {
+      "ticker": "GNFT",
+      "name": "Genfit S.A.",
+      "cik": 1757064
+    },
+    {
+      "ticker": "PBYI",
+      "name": "PUMA BIOTECHNOLOGY, INC.",
+      "cik": 1401667
+    },
+    {
+      "ticker": "MACK",
+      "name": "MERRIMACK PHARMACEUTICALS INC",
+      "cik": 1274792
+    },
+    {
+      "ticker": "LYRA",
+      "name": "Lyra Therapeutics, Inc.",
+      "cik": 1327273
+    },
+    {
+      "ticker": "TLSI",
+      "name": "TriSalus Life Sciences, Inc.",
+      "cik": 1826667
+    },
+    {
+      "ticker": "ZVRA",
+      "name": "ZEVRA THERAPEUTICS, INC.",
+      "cik": 1434647
+    },
+    {
+      "ticker": "BDTX",
+      "name": "Black Diamond Therapeutics, Inc.",
+      "cik": 1701541
+    },
+    {
+      "ticker": "NGM",
+      "name": "NGM BIOPHARMACEUTICALS INC",
+      "cik": 1426332
+    },
+    {
+      "ticker": "ALXO",
+      "name": "ALX ONCOLOGY HOLDINGS INC",
+      "cik": 1810182
+    },
+    {
+      "ticker": "GRTS",
+      "name": "Gritstone bio, Inc.",
+      "cik": 1656634
+    },
+    {
+      "ticker": "MREO",
+      "name": "Mereo Biopharma Group plc",
+      "cik": 1719714
+    },
+    {
+      "ticker": "ABSI",
+      "name": "Absci Corp",
+      "cik": 1672688
+    },
+    {
+      "ticker": "VOR",
+      "name": "Vor Biopharma Inc.",
+      "cik": 1817229
+    },
+    {
+      "ticker": "SGMO",
+      "name": "SANGAMO THERAPEUTICS, INC",
+      "cik": 1001233
+    },
+    {
+      "ticker": "XOMA",
+      "name": "XOMA Corp",
+      "cik": 791908
+    },
+    {
+      "ticker": "IMMP",
+      "name": "IMMUTEP Ltd",
+      "cik": 1506184
+    },
+    {
+      "ticker": "CORBF",
+      "name": "Global Cord Blood Corp",
+      "cik": 1467808
+    },
+    {
+      "ticker": "SEER",
+      "name": "Seer, Inc.",
+      "cik": 1726445
+    },
+    {
+      "ticker": "ONCY",
+      "name": "ONCOLYTICS BIOTECH INC",
+      "cik": 1129928
+    },
+    {
+      "ticker": "CAPR",
+      "name": "CAPRICOR THERAPEUTICS, INC.",
+      "cik": 1133869
+    },
+    {
+      "ticker": "MNMD",
+      "name": "Mind Medicine (MindMed) Inc.",
+      "cik": 1813814
+    },
+    {
+      "ticker": "ATNM",
+      "name": "Actinium Pharmaceuticals, Inc.",
+      "cik": 1388320
+    },
+    {
+      "ticker": "LRMR",
+      "name": "Larimar Therapeutics, Inc.",
+      "cik": 1374690
+    },
+    {
+      "ticker": "APYX",
+      "name": "Apyx Medical Corp",
+      "cik": 719135
+    },
+    {
+      "ticker": "RTGN",
+      "name": "RetinalGenix Technologies Inc.",
+      "cik": 1836295
+    },
+    {
+      "ticker": "AAWH",
+      "name": "Ascend Wellness Holdings, Inc.",
+      "cik": 1756390
+    },
+    {
+      "ticker": "IMAB",
+      "name": "I-Mab",
+      "cik": 1778016
+    },
+    {
+      "ticker": "RBOT",
+      "name": "Vicarious Surgical Inc.",
+      "cik": 1812173
+    },
+    {
+      "ticker": "AADI",
+      "name": "Aadi Bioscience, Inc.",
+      "cik": 1422142
+    },
+    {
+      "ticker": "XTNT",
+      "name": "Xtant Medical Holdings, Inc.",
+      "cik": 1453593
+    },
+    {
+      "ticker": "OCEA",
+      "name": "Ocean Biomedical, Inc.",
+      "cik": 1869974
+    },
+    {
+      "ticker": "KPTI",
+      "name": "Karyopharm Therapeutics Inc.",
+      "cik": 1503802
+    },
+    {
+      "ticker": "PEPG",
+      "name": "PepGen Inc.",
+      "cik": 1835597
+    },
+    {
+      "ticker": "IVA",
+      "name": "Inventiva S.A.",
+      "cik": 1756594
+    },
+    {
+      "ticker": "XBIT",
+      "name": "XBiotech Inc.",
+      "cik": 1626878
+    },
+    {
+      "ticker": "ATRA",
+      "name": "Atara Biotherapeutics, Inc.",
+      "cik": 1604464
+    },
+    {
+      "ticker": "IPSC",
+      "name": "Century Therapeutics, Inc.",
+      "cik": 1850119
+    },
+    {
+      "ticker": "ANNX",
+      "name": "Annexon, Inc.",
+      "cik": 1528115
+    },
+    {
+      "ticker": "HYPR",
+      "name": "Hyperfine, Inc.",
+      "cik": 1833769
+    },
+    {
+      "ticker": "MRMD",
+      "name": "MARIMED INC.",
+      "cik": 1522767
+    },
+    {
+      "ticker": "CTXR",
+      "name": "Citius Pharmaceuticals, Inc.",
+      "cik": 1506251
+    },
+    {
+      "ticker": "CLPT",
+      "name": "ClearPoint Neuro, Inc.",
+      "cik": 1285550
+    },
+    {
+      "ticker": "INGN",
+      "name": "Inogen Inc",
+      "cik": 1294133
+    },
+    {
+      "ticker": "CCCC",
+      "name": "C4 Therapeutics, Inc.",
+      "cik": 1662579
+    },
+    {
+      "ticker": "INMB",
+      "name": "Inmune Bio, Inc.",
+      "cik": 1711754
+    },
+    {
+      "ticker": "SEEL",
+      "name": "SEELOS THERAPEUTICS, INC.",
+      "cik": 1017491
+    },
+    {
+      "ticker": "TRVI",
+      "name": "Trevi Therapeutics, Inc.",
+      "cik": 1563880
+    },
+    {
+      "ticker": "GMDA",
+      "name": "Gamida Cell Ltd.",
+      "cik": 1600847
+    },
+    {
+      "ticker": "CARA",
+      "name": "Cara Therapeutics, Inc.",
+      "cik": 1346830
+    },
+    {
+      "ticker": "ITHUF",
+      "name": "iANTHUS CAPITAL HOLDINGS, INC.",
+      "cik": 1643154
+    },
+    {
+      "ticker": "MRSN",
+      "name": "Mersana Therapeutics, Inc.",
+      "cik": 1442836
+    },
+    {
+      "ticker": "OPT",
+      "name": "Opthea Ltd",
+      "cik": 1815620
+    },
+    {
+      "ticker": "DSGN",
+      "name": "Design Therapeutics, Inc.",
+      "cik": 1807120
+    },
+    {
+      "ticker": "THRX",
+      "name": "Theseus Pharmaceuticals, Inc.",
+      "cik": 1745020
+    },
+    {
+      "ticker": "OGI",
+      "name": "ORGANIGRAM HOLDINGS INC.",
+      "cik": 1620737
+    },
+    {
+      "ticker": "PLX",
+      "name": "Protalix BioTherapeutics, Inc.",
+      "cik": 1006281
+    },
+    {
+      "ticker": "MGRM",
+      "name": "MONOGRAM ORTHOPAEDICS INC",
+      "cik": 1769759
+    },
+    {
+      "ticker": "OPTN",
+      "name": "OptiNose, Inc.",
+      "cik": 1494650
+    },
+    {
+      "ticker": "JSPR",
+      "name": "Jasper Therapeutics, Inc.",
+      "cik": 1788028
+    },
+    {
+      "ticker": "BNR",
+      "name": "Burning Rock Biotech Ltd",
+      "cik": 1792267
+    },
+    {
+      "ticker": "LBPH",
+      "name": "Longboard Pharmaceuticals, Inc.",
+      "cik": 1832168
+    },
+    {
+      "ticker": "ALT",
+      "name": "Altimmune, Inc.",
+      "cik": 1326190
+    },
+    {
+      "ticker": "ORMP",
+      "name": "ORAMED PHARMACEUTICALS INC.",
+      "cik": 1176309
+    },
+    {
+      "ticker": "SCYX",
+      "name": "SCYNEXIS INC",
+      "cik": 1178253
+    },
+    {
+      "ticker": "JUSHF",
+      "name": "Jushi Holdings Inc.",
+      "cik": 1909747
+    },
+    {
+      "ticker": "PRQR",
+      "name": "ProQR Therapeutics N.V.",
+      "cik": 1612940
+    },
+    {
+      "ticker": "GRPH",
+      "name": "Graphite Bio, Inc.",
+      "cik": 1815776
+    },
+    {
+      "ticker": "ARMP",
+      "name": "Armata Pharmaceuticals, Inc.",
+      "cik": 921114
+    },
+    {
+      "ticker": "DBTX",
+      "name": "Decibel Therapeutics, Inc.",
+      "cik": 1656536
+    },
+    {
+      "ticker": "PRTK",
+      "name": "Paratek Pharmaceuticals, Inc.",
+      "cik": 1178711
+    },
+    {
+      "ticker": "TALS",
+      "name": "Talaris Therapeutics, Inc.",
+      "cik": 1827506
+    },
+    {
+      "ticker": "BDSX",
+      "name": "BIODESIX INC",
+      "cik": 1439725
+    },
+    {
+      "ticker": "CUE",
+      "name": "Cue Biopharma, Inc.",
+      "cik": 1645460
+    },
+    {
+      "ticker": "MLEC",
+      "name": "Moolec Science SA",
+      "cik": 1937737
+    },
+    {
+      "ticker": "IOBT",
+      "name": "IO Biotech, Inc.",
+      "cik": 1865494
+    },
+    {
+      "ticker": "YS",
+      "name": "YS Biopharma Co., Ltd.",
+      "cik": 1946399
+    },
+    {
+      "ticker": "CDXS",
+      "name": "CODEXIS, INC.",
+      "cik": 1200375
+    },
+    {
+      "ticker": "VXRT",
+      "name": "Vaxart, Inc.",
+      "cik": 72444
+    },
+    {
+      "ticker": "EPIX",
+      "name": "ESSA Pharma Inc.",
+      "cik": 1633932
+    },
+    {
+      "ticker": "EVLO",
+      "name": "Evelo Biosciences, Inc.",
+      "cik": 1694665
+    },
+    {
+      "ticker": "BCAB",
+      "name": "BioAtla, Inc.",
+      "cik": 1826892
+    },
+    {
+      "ticker": "INO",
+      "name": "INOVIO PHARMACEUTICALS, INC.",
+      "cik": 1055726
+    },
+    {
+      "ticker": "MNOV",
+      "name": "MEDICINOVA INC",
+      "cik": 1226616
+    },
+    {
+      "ticker": "GLSI",
+      "name": "Greenwich LifeSciences, Inc.",
+      "cik": 1799788
+    },
+    {
+      "ticker": "CDXC",
+      "name": "ChromaDex Corp.",
+      "cik": 1386570
+    },
+    {
+      "ticker": "KOD",
+      "name": "Kodiak Sciences Inc.",
+      "cik": 1468748
+    },
+    {
+      "ticker": "ETON",
+      "name": "Eton Pharmaceuticals, Inc.",
+      "cik": 1710340
+    },
+    {
+      "ticker": "BIVI",
+      "name": "BIOVIE INC.",
+      "cik": 1580149
+    },
+    {
+      "ticker": "CTSO",
+      "name": "Cytosorbents Corp",
+      "cik": 1175151
+    },
+    {
+      "ticker": "ANIX",
+      "name": "Anixa Biosciences Inc",
+      "cik": 715446
+    },
+    {
+      "ticker": "CLLS",
+      "name": "Cellectis S.A.",
+      "cik": 1627281
+    },
+    {
+      "ticker": "CATX",
+      "name": "Perspective Therapeutics, Inc.",
+      "cik": 728387
+    },
+    {
+      "ticker": "TCRX",
+      "name": "TScan Therapeutics, Inc.",
+      "cik": 1783328
+    },
+    {
+      "ticker": "BCTX",
+      "name": "BriaCell Therapeutics Corp.",
+      "cik": 1610820
+    },
+    {
+      "ticker": "DMAC",
+      "name": "DiaMedica Therapeutics Inc.",
+      "cik": 1401040
+    },
+    {
+      "ticker": "HITI",
+      "name": "High Tide Inc.",
+      "cik": 1847409
+    },
+    {
+      "ticker": "NKTR",
+      "name": "NEKTAR THERAPEUTICS",
+      "cik": 906709
+    },
+    {
+      "ticker": "ANVS",
+      "name": "Annovis Bio, Inc.",
+      "cik": 1477845
+    },
+    {
+      "ticker": "ORTX",
+      "name": "Orchard Therapeutics plc",
+      "cik": 1748907
+    },
+    {
+      "ticker": "BTAI",
+      "name": "BioXcel Therapeutics, Inc.",
+      "cik": 1720893
+    },
+    {
+      "ticker": "KZR",
+      "name": "Kezar Life Sciences, Inc.",
+      "cik": 1645666
+    },
+    {
+      "ticker": "OCGN",
+      "name": "Ocugen, Inc.",
+      "cik": 1372299
+    },
+    {
+      "ticker": "FONR",
+      "name": "FONAR CORP",
+      "cik": 355019
+    },
+    {
+      "ticker": "CRVS",
+      "name": "Corvus Pharmaceuticals, Inc.",
+      "cik": 1626971
+    },
+    {
+      "ticker": "ABEO",
+      "name": "ABEONA THERAPEUTICS INC.",
+      "cik": 318306
+    },
+    {
+      "ticker": "TTOO",
+      "name": "T2 Biosystems, Inc.",
+      "cik": 1492674
+    },
+    {
+      "ticker": "KNTE",
+      "name": "Kinnate Biopharma Inc.",
+      "cik": 1797768
+    },
+    {
+      "ticker": "GALT",
+      "name": "GALECTIN THERAPEUTICS INC",
+      "cik": 1133416
+    },
+    {
+      "ticker": "RLMD",
+      "name": "RELMADA THERAPEUTICS, INC.",
+      "cik": 1553643
+    },
+    {
+      "ticker": "AYRWF",
+      "name": "Ayr Wellness Inc.",
+      "cik": 1847462
+    },
+    {
+      "ticker": "ACHV",
+      "name": "ACHIEVE LIFE SCIENCES, INC.",
+      "cik": 949858
+    },
+    {
+      "ticker": "HOWL",
+      "name": "Werewolf Therapeutics, Inc.",
+      "cik": 1785530
+    },
+    {
+      "ticker": "CMRX",
+      "name": "CHIMERIX INC",
+      "cik": 1117480
+    },
+    {
+      "ticker": "GLYC",
+      "name": "GLYCOMIMETICS INC",
+      "cik": 1253689
+    },
+    {
+      "ticker": "AQST",
+      "name": "Aquestive Therapeutics, Inc.",
+      "cik": 1398733
+    },
+    {
+      "ticker": "BLRX",
+      "name": "BioLineRx Ltd.",
+      "cik": 1498403
+    },
+    {
+      "ticker": "AXDX",
+      "name": "Accelerate Diagnostics, Inc",
+      "cik": 727207
+    },
+    {
+      "ticker": "CTMX",
+      "name": "CytomX Therapeutics, Inc.",
+      "cik": 1501989
+    },
+    {
+      "ticker": "CYT",
+      "name": "Cyteir Therapeutics, Inc.",
+      "cik": 1662244
+    },
+    {
+      "ticker": "GNTA",
+      "name": "Genenta Science S.p.A.",
+      "cik": 1838716
+    },
+    {
+      "ticker": "ATOS",
+      "name": "ATOSSA THERAPEUTICS, INC.",
+      "cik": 1488039
+    },
+    {
+      "ticker": "ADCT",
+      "name": "ADC Therapeutics SA",
+      "cik": 1771910
+    },
+    {
+      "ticker": "CGEN",
+      "name": "COMPUGEN LTD",
+      "cik": 1119774
+    },
+    {
+      "ticker": "VNRX",
+      "name": "VOLITIONRX LTD",
+      "cik": 93314
+    },
+    {
+      "ticker": "FGEN",
+      "name": "FIBROGEN INC",
+      "cik": 921299
+    },
+    {
+      "ticker": "XAIR",
+      "name": "Beyond Air, Inc.",
+      "cik": 1641631
+    },
+    {
+      "ticker": "LIFE",
+      "name": "aTYR PHARMA INC",
+      "cik": 1339970
+    },
+    {
+      "ticker": "NOTV",
+      "name": "Inotiv, Inc.",
+      "cik": 720154
+    },
+    {
+      "ticker": "PYXS",
+      "name": "Pyxis Oncology, Inc.",
+      "cik": 1782223
+    },
+    {
+      "ticker": "IXHL",
+      "name": "Incannex Healthcare Ltd",
+      "cik": 1873875
+    },
+    {
+      "ticker": "VERU",
+      "name": "VERU INC.",
+      "cik": 863894
+    },
+    {
+      "ticker": "PRE",
+      "name": "Prenetics Global Ltd",
+      "cik": 1876431
+    },
+    {
+      "ticker": "CELL",
+      "name": "PhenomeX Inc.",
+      "cik": 1689657
+    },
+    {
+      "ticker": "STTK",
+      "name": "Shattuck Labs, Inc.",
+      "cik": 1680367
+    },
+    {
+      "ticker": "CLNN",
+      "name": "Clene Inc.",
+      "cik": 1822791
+    },
+    {
+      "ticker": "MIRA",
+      "name": "MIRA PHARMACEUTICALS, INC.",
+      "cik": 1904286
+    },
+    {
+      "ticker": "MIST",
+      "name": "Milestone Pharmaceuticals Inc.",
+      "cik": 1408443
+    },
+    {
+      "ticker": "SPRB",
+      "name": "SPRUCE BIOSCIENCES, INC.",
+      "cik": 1683553
+    },
+    {
+      "ticker": "FFNTF",
+      "name": "4Front Ventures Corp.",
+      "cik": 1783875
+    },
+    {
+      "ticker": "RVPH",
+      "name": "REVIVA PHARMACEUTICALS HOLDINGS, INC.",
+      "cik": 1742927
+    },
+    {
+      "ticker": "GTHX",
+      "name": "G1 Therapeutics, Inc.",
+      "cik": 1560241
+    },
+    {
+      "ticker": "CSBR",
+      "name": "CHAMPIONS ONCOLOGY, INC.",
+      "cik": 771856
+    },
+    {
+      "ticker": "LUDG",
+      "name": "LUDWIG ENTERPRISES, INC.",
+      "cik": 1960262
+    },
+    {
+      "ticker": "BGXX",
+      "name": "Bright Green Corp",
+      "cik": 1886799
+    },
+    {
+      "ticker": "ELTP",
+      "name": "ELITE PHARMACEUTICALS INC /NV/",
+      "cik": 1053369
+    },
+    {
+      "ticker": "GTH",
+      "name": "Genetron Holdings Ltd",
+      "cik": 1782594
+    },
+    {
+      "ticker": "PSNL",
+      "name": "Personalis, Inc.",
+      "cik": 1527753
+    },
+    {
+      "ticker": "ELMD",
+      "name": "Electromed, Inc.",
+      "cik": 1488917
+    },
+    {
+      "ticker": "ATHA",
+      "name": "Athira Pharma, Inc.",
+      "cik": 1620463
+    },
+    {
+      "ticker": "DRIO",
+      "name": "DarioHealth Corp.",
+      "cik": 1533998
+    },
+    {
+      "ticker": "DRRX",
+      "name": "DURECT CORP",
+      "cik": 1082038
+    },
+    {
+      "ticker": "MDXH",
+      "name": "MDxHealth SA",
+      "cik": 1872529
+    },
+    {
+      "ticker": "NKTX",
+      "name": "Nkarta, Inc.",
+      "cik": 1787400
+    },
+    {
+      "ticker": "CTCX",
+      "name": "Carmell Corp",
+      "cik": 1842939
+    },
+    {
+      "ticker": "ACET",
+      "name": "Adicet Bio, Inc.",
+      "cik": 1720580
+    },
+    {
+      "ticker": "OCUP",
+      "name": "Ocuphire Pharma, Inc.",
+      "cik": 1228627
+    },
+    {
+      "ticker": "APLT",
+      "name": "Applied Therapeutics Inc.",
+      "cik": 1697532
+    },
+    {
+      "ticker": "CRDF",
+      "name": "Cardiff Oncology, Inc.",
+      "cik": 1213037
+    },
+    {
+      "ticker": "KRON",
+      "name": "Kronos Bio, Inc.",
+      "cik": 1741830
+    },
+    {
+      "ticker": "AFMD",
+      "name": "Affimed N.V.",
+      "cik": 1608390
+    },
+    {
+      "ticker": "INTS",
+      "name": "INTENSITY THERAPEUTICS, INC.",
+      "cik": 1567264
+    },
+    {
+      "ticker": "XLO",
+      "name": "Xilio Therapeutics, Inc.",
+      "cik": 1840233
+    },
+    {
+      "ticker": "SYRS",
+      "name": "Syros Pharmaceuticals, Inc.",
+      "cik": 1556263
+    },
+    {
+      "ticker": "MDWD",
+      "name": "MediWound Ltd.",
+      "cik": 1593984
+    },
+    {
+      "ticker": "SPRO",
+      "name": "Spero Therapeutics, Inc.",
+      "cik": 1701108
+    },
+    {
+      "ticker": "BCLI",
+      "name": "BRAINSTORM CELL THERAPEUTICS INC.",
+      "cik": 1137883
+    },
+    {
+      "ticker": "DMTK",
+      "name": "DermTech, Inc.",
+      "cik": 1651944
+    },
+    {
+      "ticker": "IMNM",
+      "name": "Immunome Inc.",
+      "cik": 1472012
+    },
+    {
+      "ticker": "ENZ",
+      "name": "ENZO BIOCHEM INC",
+      "cik": 316253
+    },
+    {
+      "ticker": "ASXC",
+      "name": "ASENSUS SURGICAL, INC.",
+      "cik": 876378
+    },
+    {
+      "ticker": "TLSA",
+      "name": "Tiziana Life Sciences Ltd",
+      "cik": 1723069
+    },
+    {
+      "ticker": "VACC",
+      "name": "Vaccitech plc",
+      "cik": 1828185
+    },
+    {
+      "ticker": "EYEN",
+      "name": "EYENOVIA, INC.",
+      "cik": 1682639
+    },
+    {
+      "ticker": "SRNEQ",
+      "name": "Sorrento Therapeutics, Inc.",
+      "cik": 850261
+    },
+    {
+      "ticker": "ANEB",
+      "name": "Anebulo Pharmaceuticals, Inc.",
+      "cik": 1815974
+    },
+    {
+      "ticker": "IMUX",
+      "name": "IMMUNIC, INC.",
+      "cik": 1280776
+    },
+    {
+      "ticker": "AAGH",
+      "name": "America Great Health",
+      "cik": 1098009
+    },
+    {
+      "ticker": "CLGN",
+      "name": "CollPlant Biotechnologies Ltd",
+      "cik": 1631487
+    },
+    {
+      "ticker": "NSPR",
+      "name": "InspireMD, Inc.",
+      "cik": 1433607
+    },
+    {
+      "ticker": "CDTX",
+      "name": "Cidara Therapeutics, Inc.",
+      "cik": 1610618
+    },
+    {
+      "ticker": "SLGL",
+      "name": "Sol-Gel Technologies Ltd.",
+      "cik": 1684693
+    },
+    {
+      "ticker": "SLDB",
+      "name": "Solid Biosciences Inc.",
+      "cik": 1707502
+    },
+    {
+      "ticker": "ELYM",
+      "name": "Eliem Therapeutics, Inc.",
+      "cik": 1768446
+    },
+    {
+      "ticker": "INCR",
+      "name": "Intercure Ltd.",
+      "cik": 1857030
+    },
+    {
+      "ticker": "IRME",
+      "name": "IR-Med, Inc.",
+      "cik": 1839133
+    },
+    {
+      "ticker": "ZYNE",
+      "name": "Zynerba Pharmaceuticals, Inc.",
+      "cik": 1621443
+    },
+    {
+      "ticker": "CYBN",
+      "name": "CYBIN INC.",
+      "cik": 1833141
+    },
+    {
+      "ticker": "DCTH",
+      "name": "DELCATH SYSTEMS, INC.",
+      "cik": 872912
+    },
+    {
+      "ticker": "PRPH",
+      "name": "ProPhase Labs, Inc.",
+      "cik": 868278
+    },
+    {
+      "ticker": "ELTX",
+      "name": "Elicio Therapeutics, Inc.",
+      "cik": 1601485
+    },
+    {
+      "ticker": "FIXX",
+      "name": "Homology Medicines, Inc.",
+      "cik": 1661998
+    },
+    {
+      "ticker": "CRDL",
+      "name": "Cardiol Therapeutics Inc.",
+      "cik": 1702123
+    },
+    {
+      "ticker": "HRGN",
+      "name": "Harvard Apparatus Regenerative Technology, Inc.",
+      "cik": 1563665
+    },
+    {
+      "ticker": "AVRO",
+      "name": "AVROBIO, Inc.",
+      "cik": 1681087
+    },
+    {
+      "ticker": "LUCD",
+      "name": "Lucid Diagnostics Inc.",
+      "cik": 1799011
+    },
+    {
+      "ticker": "CRIS",
+      "name": "CURIS INC",
+      "cik": 1108205
+    },
+    {
+      "ticker": "HCWB",
+      "name": "HCW Biologics Inc.",
+      "cik": 1828673
+    },
+    {
+      "ticker": "RMTI",
+      "name": "ROCKWELL MEDICAL, INC.",
+      "cik": 1041024
+    },
+    {
+      "ticker": "SHWZ",
+      "name": "Medicine Man Technologies, Inc.",
+      "cik": 1622879
+    },
+    {
+      "ticker": "SURF",
+      "name": "Surface Oncology, Inc.",
+      "cik": 1718108
+    },
+    {
+      "ticker": "CELU",
+      "name": "Celularity Inc",
+      "cik": 1752828
+    },
+    {
+      "ticker": "CVM",
+      "name": "CEL SCI CORP",
+      "cik": 725363
+    },
+    {
+      "ticker": "SCTL",
+      "name": "Societal CDMO, Inc.",
+      "cik": 1588972
+    },
+    {
+      "ticker": "SSIC",
+      "name": "Silver Spike Investment Corp.",
+      "cik": 1843162
+    },
+    {
+      "ticker": "DARE",
+      "name": "Dare Bioscience, Inc.",
+      "cik": 1401914
+    },
+    {
+      "ticker": "MOVE",
+      "name": "Movano Inc.",
+      "cik": 1734750
+    },
+    {
+      "ticker": "NYMXF",
+      "name": "NYMOX PHARMACEUTICAL CORP",
+      "cik": 1018735
+    },
+    {
+      "ticker": "OTLK",
+      "name": "Outlook Therapeutics, Inc.",
+      "cik": 1649989
+    },
+    {
+      "ticker": "TIL",
+      "name": "Instil Bio, Inc.",
+      "cik": 1789769
+    },
+    {
+      "ticker": "ADAG",
+      "name": "Adagene Inc.",
+      "cik": 1818838
+    },
+    {
+      "ticker": "ICAD",
+      "name": "ICAD INC",
+      "cik": 749660
+    },
+    {
+      "ticker": "SERA",
+      "name": "SERA PROGNOSTICS, INC.",
+      "cik": 1534969
+    },
+    {
+      "ticker": "TKNO",
+      "name": "Alpha Teknova, Inc.",
+      "cik": 1850902
+    },
+    {
+      "ticker": "LPTX",
+      "name": "LEAP THERAPEUTICS, INC.",
+      "cik": 1509745
+    },
+    {
+      "ticker": "NERV",
+      "name": "Minerva Neurosciences, Inc.",
+      "cik": 1598646
+    },
+    {
+      "ticker": "EAR",
+      "name": "Eargo, Inc.",
+      "cik": 1719395
+    },
+    {
+      "ticker": "AGLE",
+      "name": "Aeglea BioTherapeutics, Inc.",
+      "cik": 1636282
+    },
+    {
+      "ticker": "CLSD",
+      "name": "Clearside Biomedical, Inc.",
+      "cik": 1539029
+    },
+    {
+      "ticker": "ZYRX",
+      "name": "GLOBAL EARNINGS CAPITAL LTD.",
+      "cik": 1957401
+    },
+    {
+      "ticker": "BWAY",
+      "name": "Brainsway Ltd.",
+      "cik": 1505065
+    },
+    {
+      "ticker": "HOOK",
+      "name": "HOOKIPA Pharma Inc.",
+      "cik": 1760542
+    },
+    {
+      "ticker": "VIRX",
+      "name": "Viracta Therapeutics, Inc.",
+      "cik": 1061027
+    },
+    {
+      "ticker": "LGVN",
+      "name": "Longeveron Inc.",
+      "cik": 1721484
+    },
+    {
+      "ticker": "DTIL",
+      "name": "PRECISION BIOSCIENCES INC",
+      "cik": 1357874
+    },
+    {
+      "ticker": "DYAI",
+      "name": "DYADIC INTERNATIONAL INC",
+      "cik": 1213809
+    },
+    {
+      "ticker": "SONX",
+      "name": "Sonendo, Inc.",
+      "cik": 1407973
+    },
+    {
+      "ticker": "ASMB",
+      "name": "ASSEMBLY BIOSCIENCES, INC.",
+      "cik": 1426800
+    },
+    {
+      "ticker": "RZLT",
+      "name": "Rezolute, Inc.",
+      "cik": 1509261
+    },
+    {
+      "ticker": "ICCM",
+      "name": "IceCure Medical Ltd.",
+      "cik": 1584371
+    },
+    {
+      "ticker": "INKT",
+      "name": "MiNK Therapeutics, Inc.",
+      "cik": 1840229
+    },
+    {
+      "ticker": "PNXP",
+      "name": "PINEAPPLE EXPRESS CANNABIS Co",
+      "cik": 1710495
+    },
+    {
+      "ticker": "HUGE",
+      "name": "FSD Pharma Inc.",
+      "cik": 1771885
+    },
+    {
+      "ticker": "OKYO",
+      "name": "OKYO Pharma Ltd",
+      "cik": 1849296
+    },
+    {
+      "ticker": "SRTS",
+      "name": "Sensus Healthcare, Inc.",
+      "cik": 1494891
+    },
+    {
+      "ticker": "LTRN",
+      "name": "Lantern Pharma Inc.",
+      "cik": 1763950
+    },
+    {
+      "ticker": "MRKR",
+      "name": "Marker Therapeutics, Inc.",
+      "cik": 1094038
+    },
+    {
+      "ticker": "SLNO",
+      "name": "SOLENO THERAPEUTICS INC",
+      "cik": 1484565
+    },
+    {
+      "ticker": "VTGN",
+      "name": "Vistagen Therapeutics, Inc.",
+      "cik": 1411685
+    },
+    {
+      "ticker": "IPA",
+      "name": "ImmunoPrecise Antibodies Ltd.",
+      "cik": 1715925
+    },
+    {
+      "ticker": "PNPL",
+      "name": "PINEAPPLE, INC.",
+      "cik": 1654672
+    },
+    {
+      "ticker": "QNCX",
+      "name": "Quince Therapeutics, Inc.",
+      "cik": 1662774
+    },
+    {
+      "ticker": "FBIO",
+      "name": "Fortress Biotech, Inc.",
+      "cik": 1429260
+    },
+    {
+      "ticker": "STIM",
+      "name": "Neuronetics, Inc.",
+      "cik": 1227636
+    },
+    {
+      "ticker": "NVNO",
+      "name": "enVVeno Medical Corp",
+      "cik": 1661053
+    },
+    {
+      "ticker": "VANI",
+      "name": "Vivani Medical, Inc.",
+      "cik": 1266806
+    },
+    {
+      "ticker": "LVTX",
+      "name": "LAVA Therapeutics NV",
+      "cik": 1840748
+    },
+    {
+      "ticker": "PRTG",
+      "name": "PORTAGE BIOTECH INC.",
+      "cik": 1095435
+    },
+    {
+      "ticker": "CGTX",
+      "name": "COGNITION THERAPEUTICS INC",
+      "cik": 1455365
+    },
+    {
+      "ticker": "MTEM",
+      "name": "Molecular Templates, Inc.",
+      "cik": 1183765
+    },
+    {
+      "ticker": "MYNZ",
+      "name": "MAINZ BIOMED N.V.",
+      "cik": 1874252
+    },
+    {
+      "ticker": "MGTA",
+      "name": "Magenta Therapeutics, Inc.",
+      "cik": 1690585
+    },
+    {
+      "ticker": "CNTB",
+      "name": "Connect Biopharma Holdings Ltd",
+      "cik": 1835268
+    },
+    {
+      "ticker": "EFTR",
+      "name": "eFFECTOR Therapeutics, Inc.",
+      "cik": 1828522
+    },
+    {
+      "ticker": "RAD",
+      "name": "RITE AID CORP",
+      "cik": 84129
+    },
+    {
+      "ticker": "CKPT",
+      "name": "Checkpoint Therapeutics, Inc.",
+      "cik": 1651407
+    },
+    {
+      "ticker": "XGN",
+      "name": "EXAGEN INC.",
+      "cik": 1274737
+    },
+    {
+      "ticker": "ENLV",
+      "name": "Enlivex Therapeutics Ltd.",
+      "cik": 1596812
+    },
+    {
+      "ticker": "AWH",
+      "name": "Aspira Women's Health Inc.",
+      "cik": 926617
+    },
+    {
+      "ticker": "GANX",
+      "name": "Gain Therapeutics, Inc.",
+      "cik": 1819411
+    },
+    {
+      "ticker": "PASG",
+      "name": "Passage BIO, Inc.",
+      "cik": 1787297
+    },
+    {
+      "ticker": "PVCT",
+      "name": "PROVECTUS BIOPHARMACEUTICALS, INC.",
+      "cik": 315545
+    },
+    {
+      "ticker": "MYMD",
+      "name": "MyMD Pharmaceuticals, Inc.",
+      "cik": 1321834
+    },
+    {
+      "ticker": "RWLK",
+      "name": "ReWalk Robotics Ltd.",
+      "cik": 1607962
+    },
+    {
+      "ticker": "NXTC",
+      "name": "NextCure, Inc.",
+      "cik": 1661059
+    },
+    {
+      "ticker": "BOLT",
+      "name": "Bolt Biotherapeutics, Inc.",
+      "cik": 1641281
+    },
+    {
+      "ticker": "CWBHF",
+      "name": "Charlotte's Web Holdings, Inc.",
+      "cik": 1750155
+    },
+    {
+      "ticker": "RPID",
+      "name": "RAPID MICRO BIOSYSTEMS, INC.",
+      "cik": 1380106
+    },
+    {
+      "ticker": "SLS",
+      "name": "SELLAS Life Sciences Group, Inc.",
+      "cik": 1390478
+    },
+    {
+      "ticker": "VTVT",
+      "name": "vTv Therapeutics Inc.",
+      "cik": 1641489
+    },
+    {
+      "ticker": "RSCI",
+      "name": "Redwood Scientific Technologies, Inc.",
+      "cik": 1634394
+    },
+    {
+      "ticker": "BIXT",
+      "name": "BIOXYTRAN, INC",
+      "cik": 1445815
+    },
+    {
+      "ticker": "MIRO",
+      "name": "Miromatrix Medical Inc.",
+      "cik": 1527096
+    },
+    {
+      "ticker": "BIOR",
+      "name": "BIORA THERAPEUTICS, INC.",
+      "cik": 1580063
+    },
+    {
+      "ticker": "HARP",
+      "name": "Harpoon Therapeutics, Inc.",
+      "cik": 1708493
+    },
+    {
+      "ticker": "CODX",
+      "name": "Co-Diagnostics, Inc.",
+      "cik": 1692415
+    },
+    {
+      "ticker": "TXMD",
+      "name": "TherapeuticsMD, Inc.",
+      "cik": 25743
+    },
+    {
+      "ticker": "EIGR",
+      "name": "Eiger BioPharmaceuticals, Inc.",
+      "cik": 1305253
+    },
+    {
+      "ticker": "MTNB",
+      "name": "Matinas BioPharma Holdings, Inc.",
+      "cik": 1582554
+    },
+    {
+      "ticker": "BSGM",
+      "name": "BioSig Technologies, Inc.",
+      "cik": 1530766
+    },
+    {
+      "ticker": "GDTC",
+      "name": "CytoMed Therapeutics Ltd",
+      "cik": 1873093
+    },
+    {
+      "ticker": "NCNA",
+      "name": "NuCana plc",
+      "cik": 1709626
+    },
+    {
+      "ticker": "SABS",
+      "name": "SAB Biotherapeutics, Inc.",
+      "cik": 1833214
+    },
+    {
+      "ticker": "ACHL",
+      "name": "Achilles Therapeutics plc",
+      "cik": 1830749
+    },
+    {
+      "ticker": "LNSR",
+      "name": "LENSAR, Inc.",
+      "cik": 1320350
+    },
+    {
+      "ticker": "UBX",
+      "name": "Unity Biotechnology, Inc.",
+      "cik": 1463361
+    },
+    {
+      "ticker": "DERM",
+      "name": "Journey Medical Corp",
+      "cik": 1867066
+    },
+    {
+      "ticker": "ALGS",
+      "name": "Aligos Therapeutics, Inc.",
+      "cik": 1799448
+    },
+    {
+      "ticker": "TBIO",
+      "name": "Telesis Bio Inc.",
+      "cik": 1850079
+    },
+    {
+      "ticker": "RAIN",
+      "name": "Rain Oncology Inc.",
+      "cik": 1724979
+    },
+    {
+      "ticker": "UTRS",
+      "name": "MINERVA SURGICAL INC",
+      "cik": 1452965
+    },
+    {
+      "ticker": "MSCLF",
+      "name": "Satellos Bioscience Inc.",
+      "cik": 1421642
+    },
+    {
+      "ticker": "CADL",
+      "name": "Candel Therapeutics, Inc.",
+      "cik": 1841387
+    },
+    {
+      "ticker": "MEIP",
+      "name": "MEI Pharma, Inc.",
+      "cik": 1262104
+    },
+    {
+      "ticker": "EVGN",
+      "name": "Evogene Ltd.",
+      "cik": 1574565
+    },
+    {
+      "ticker": "ICCC",
+      "name": "IMMUCELL CORP /DE/",
+      "cik": 811641
+    },
+    {
+      "ticker": "GRUSF",
+      "name": "Grown Rogue International Inc.",
+      "cik": 1463000
+    },
+    {
+      "ticker": "ASLN",
+      "name": "ASLAN Pharmaceuticals Ltd",
+      "cik": 1722926
+    },
+    {
+      "ticker": "HSTI",
+      "name": "High Sierra Technologies, Inc.",
+      "cik": 1365388
+    },
+    {
+      "ticker": "COYA",
+      "name": "Coya Therapeutics, Inc.",
+      "cik": 1835022
+    },
+    {
+      "ticker": "ELDN",
+      "name": "Eledon Pharmaceuticals, Inc.",
+      "cik": 1404281
+    },
+    {
+      "ticker": "CXXIF",
+      "name": "C21 Investments Inc.",
+      "cik": 831609
+    },
+    {
+      "ticker": "RXMD",
+      "name": "Progressive Care Inc.",
+      "cik": 1402945
+    },
+    {
+      "ticker": "SYBX",
+      "name": "SYNLOGIC, INC.",
+      "cik": 1527599
+    },
+    {
+      "ticker": "KALA",
+      "name": "KALA BIO, Inc.",
+      "cik": 1479419
+    },
+    {
+      "ticker": "INAB",
+      "name": "IN8BIO, INC.",
+      "cik": 1740279
+    },
+    {
+      "ticker": "BYSI",
+      "name": "BeyondSpring Inc.",
+      "cik": 1677940
+    },
+    {
+      "ticker": "PAVM",
+      "name": "PAVmed Inc.",
+      "cik": 1624326
+    },
+    {
+      "ticker": "TCRT",
+      "name": "Alaunos Therapeutics, Inc.",
+      "cik": 1107421
+    },
+    {
+      "ticker": "ECOR",
+      "name": "electroCore, Inc.",
+      "cik": 1560258
+    },
+    {
+      "ticker": "IMMX",
+      "name": "Immix Biopharma, Inc.",
+      "cik": 1873835
+    },
+    {
+      "ticker": "PIRS",
+      "name": "PIERIS PHARMACEUTICALS, INC.",
+      "cik": 1583648
+    },
+    {
+      "ticker": "ELEV",
+      "name": "Elevation Oncology, Inc.",
+      "cik": 1783032
+    },
+    {
+      "ticker": "NLTX",
+      "name": "Neoleukin Therapeutics, Inc.",
+      "cik": 1404644
+    },
+    {
+      "ticker": "PHXM",
+      "name": "PHAXIAM Therapeutics S.A.",
+      "cik": 1624422
+    },
+    {
+      "ticker": "VICP",
+      "name": "Vicapsys Life Sciences, Inc.",
+      "cik": 1468639
+    },
+    {
+      "ticker": "CRBP",
+      "name": "Corbus Pharmaceuticals Holdings, Inc.",
+      "cik": 1595097
+    },
+    {
+      "ticker": "NLSP",
+      "name": "NLS Pharmaceutics Ltd.",
+      "cik": 1783036
+    },
+    {
+      "ticker": "CNTG",
+      "name": "Centogene N.V.",
+      "cik": 1757097
+    },
+    {
+      "ticker": "RLFTY",
+      "name": "Relief Therapeutics Holding SA",
+      "cik": 1854078
+    },
+    {
+      "ticker": "COCP",
+      "name": "Cocrystal Pharma, Inc.",
+      "cik": 1412486
+    },
+    {
+      "ticker": "AIM",
+      "name": "AIM ImmunoTech Inc.",
+      "cik": 946644
+    },
+    {
+      "ticker": "CYTH",
+      "name": "Cyclo Therapeutics, Inc.",
+      "cik": 922247
+    },
+    {
+      "ticker": "GDNSF",
+      "name": "Goodness Growth Holdings, Inc.",
+      "cik": 1771706
+    },
+    {
+      "ticker": "ACER",
+      "name": "Acer Therapeutics Inc.",
+      "cik": 1069308
+    },
+    {
+      "ticker": "FBRX",
+      "name": "Forte Biosciences, Inc.",
+      "cik": 1419041
+    },
+    {
+      "ticker": "COEP",
+      "name": "Coeptis Therapeutics Holdings, Inc.",
+      "cik": 1759186
+    },
+    {
+      "ticker": "JUPW",
+      "name": "Jupiter Wellness, Inc.",
+      "cik": 1760903
+    },
+    {
+      "ticker": "RGLS",
+      "name": "Regulus Therapeutics Inc.",
+      "cik": 1505512
+    },
+    {
+      "ticker": "GNPX",
+      "name": "Genprex, Inc.",
+      "cik": 1595248
+    },
+    {
+      "ticker": "AURX",
+      "name": "Nuo Therapeutics, Inc.",
+      "cik": 1091596
+    },
+    {
+      "ticker": "OCX",
+      "name": "Oncocyte Corp",
+      "cik": 1642380
+    },
+    {
+      "ticker": "AGE",
+      "name": "AgeX Therapeutics, Inc.",
+      "cik": 1708599
+    },
+    {
+      "ticker": "ABIO",
+      "name": "ARCA biopharma, Inc.",
+      "cik": 907654
+    },
+    {
+      "ticker": "SNTI",
+      "name": "Senti Biosciences, Inc.",
+      "cik": 1854270
+    },
+    {
+      "ticker": "CASI",
+      "name": "CASI Pharmaceuticals, Inc.",
+      "cik": 1962738
+    },
+    {
+      "ticker": "PETV",
+      "name": "PetVivo Holdings, Inc.",
+      "cik": 1512922
+    },
+    {
+      "ticker": "HEPA",
+      "name": "Hepion Pharmaceuticals, Inc.",
+      "cik": 1583771
+    },
+    {
+      "ticker": "TRIB",
+      "name": "TRINITY BIOTECH PLC",
+      "cik": 888721
+    },
+    {
+      "ticker": "NSYS",
+      "name": "NORTECH SYSTEMS INC",
+      "cik": 722313
+    },
+    {
+      "ticker": "QLI",
+      "name": "Qilian International Holding Group Ltd",
+      "cik": 1779578
+    },
+    {
+      "ticker": "SIEN",
+      "name": "Sientra, Inc.",
+      "cik": 1551693
+    },
+    {
+      "ticker": "VBIV",
+      "name": "VBI Vaccines Inc/BC",
+      "cik": 764195
+    },
+    {
+      "ticker": "EQ",
+      "name": "Equillium, Inc.",
+      "cik": 1746466
+    },
+    {
+      "ticker": "IMUN",
+      "name": "Immune Therapeutics, Inc.",
+      "cik": 1559356
+    },
+    {
+      "ticker": "NRXS",
+      "name": "Neuraxis, INC",
+      "cik": 1933567
+    },
+    {
+      "ticker": "LMNL",
+      "name": "Liminal BioSciences Inc.",
+      "cik": 1351172
+    },
+    {
+      "ticker": "IRIX",
+      "name": "IRIDEX CORP",
+      "cik": 1006045
+    },
+    {
+      "ticker": "LIFD",
+      "name": "LFTD PARTNERS INC.",
+      "cik": 1391135
+    },
+    {
+      "ticker": "OWLT",
+      "name": "Owlet, Inc.",
+      "cik": 1816708
+    },
+    {
+      "ticker": "SNSE",
+      "name": "Sensei Biotherapeutics, Inc.",
+      "cik": 1829802
+    },
+    {
+      "ticker": "PLUR",
+      "name": "Pluri Inc.",
+      "cik": 1158780
+    },
+    {
+      "ticker": "ALZN",
+      "name": "Alzamend Neuro, Inc.",
+      "cik": 1677077
+    },
+    {
+      "ticker": "UNCY",
+      "name": "Unicycive Therapeutics, Inc.",
+      "cik": 1766140
+    },
+    {
+      "ticker": "RMSL",
+      "name": "RemSleep Holdings Inc.",
+      "cik": 1412126
+    },
+    {
+      "ticker": "MDNA",
+      "name": "Medicenna Therapeutics Corp.",
+      "cik": 1807983
+    },
+    {
+      "ticker": "MMNFF",
+      "name": "MedMen Enterprises, Inc.",
+      "cik": 1776932
+    },
+    {
+      "ticker": "IGXT",
+      "name": "IntelGenx Technologies Corp.",
+      "cik": 1098880
+    },
+    {
+      "ticker": "APTO",
+      "name": "Aptose Biosciences Inc.",
+      "cik": 882361
+    },
+    {
+      "ticker": "MBIO",
+      "name": "MUSTANG BIO, INC.",
+      "cik": 1680048
+    },
+    {
+      "ticker": "INIS",
+      "name": "INTERNATIONAL ISOTOPES INC",
+      "cik": 1038277
+    },
+    {
+      "ticker": "PPBT",
+      "name": "PURPLE BIOTECH LTD.",
+      "cik": 1614744
+    },
+    {
+      "ticker": "ACXP",
+      "name": "Acurx Pharmaceuticals, Inc.",
+      "cik": 1736243
+    },
+    {
+      "ticker": "NTRB",
+      "name": "NutriBand Inc.",
+      "cik": 1676047
+    },
+    {
+      "ticker": "TARA",
+      "name": "Protara Therapeutics, Inc.",
+      "cik": 1359931
+    },
+    {
+      "ticker": "BTTX",
+      "name": "Better Therapeutics, Inc.",
+      "cik": 1832415
+    },
+    {
+      "ticker": "OCEL",
+      "name": "Organicell Regenerative Medicine, Inc.",
+      "cik": 1557376
+    },
+    {
+      "ticker": "NRXP",
+      "name": "NRX Pharmaceuticals, Inc.",
+      "cik": 1719406
+    },
+    {
+      "ticker": "AZYO",
+      "name": "AZIYO BIOLOGICS, INC.",
+      "cik": 1708527
+    },
+    {
+      "ticker": "AZTR",
+      "name": "Azitra Inc",
+      "cik": 1701478
+    },
+    {
+      "ticker": "KZIA",
+      "name": "KAZIA THERAPEUTICS LTD",
+      "cik": 1075880
+    },
+    {
+      "ticker": "PTN",
+      "name": "PALATIN TECHNOLOGIES INC",
+      "cik": 911216
+    },
+    {
+      "ticker": "PMD",
+      "name": "PSYCHEMEDICS CORP",
+      "cik": 806517
+    },
+    {
+      "ticker": "CPIX",
+      "name": "CUMBERLAND PHARMACEUTICALS INC",
+      "cik": 1087294
+    },
+    {
+      "ticker": "MAIA",
+      "name": "MAIA Biotechnology, Inc.",
+      "cik": 1878313
+    },
+    {
+      "ticker": "RDGL",
+      "name": "VIVOS INC",
+      "cik": 1449349
+    },
+    {
+      "ticker": "EDXC",
+      "name": "Endexx Corp",
+      "cik": 1109486
+    },
+    {
+      "ticker": "MODD",
+      "name": "Modular Medical, Inc.",
+      "cik": 1074871
+    },
+    {
+      "ticker": "BSEM",
+      "name": "BIOSTEM TECHNOLOGIES",
+      "cik": 1658678
+    },
+    {
+      "ticker": "EVAX",
+      "name": "Evaxion Biotech A/S",
+      "cik": 1828253
+    },
+    {
+      "ticker": "INDP",
+      "name": "Indaptus Therapeutics, Inc.",
+      "cik": 1857044
+    },
+    {
+      "ticker": "TFFP",
+      "name": "TFF Pharmaceuticals, Inc.",
+      "cik": 1733413
+    },
+    {
+      "ticker": "ALID",
+      "name": "Allied Corp.",
+      "cik": 1575295
+    },
+    {
+      "ticker": "VIRI",
+      "name": "Virios Therapeutics, Inc.",
+      "cik": 1818844
+    },
+    {
+      "ticker": "LUMO",
+      "name": "LUMOS PHARMA, INC.",
+      "cik": 1126234
+    },
+    {
+      "ticker": "THTX",
+      "name": "Theratechnologies Inc.",
+      "cik": 1512717
+    },
+    {
+      "ticker": "SSKN",
+      "name": "STRATA Skin Sciences, Inc.",
+      "cik": 1051514
+    },
+    {
+      "ticker": "LFLY",
+      "name": "Leafly Holdings, Inc. /DE",
+      "cik": 1785592
+    },
+    {
+      "ticker": "PMCB",
+      "name": "PharmaCyte Biotech, Inc.",
+      "cik": 1157075
+    },
+    {
+      "ticker": "BMRA",
+      "name": "BIOMERICA INC",
+      "cik": 73290
+    },
+    {
+      "ticker": "CBIO",
+      "name": "CATALYST BIOSCIENCES, INC.",
+      "cik": 1124105
+    },
+    {
+      "ticker": "NMTC",
+      "name": "NEUROONE MEDICAL TECHNOLOGIES Corp",
+      "cik": 1500198
+    },
+    {
+      "ticker": "ACRHF",
+      "name": "Acreage Holdings, Inc.",
+      "cik": 1762359
+    },
+    {
+      "ticker": "LPCN",
+      "name": "Lipocine Inc.",
+      "cik": 1535955
+    },
+    {
+      "ticker": "VAPO",
+      "name": "VAPOTHERM INC",
+      "cik": 1253176
+    },
+    {
+      "ticker": "ZIVO",
+      "name": "Zivo Bioscience, Inc.",
+      "cik": 1101026
+    },
+    {
+      "ticker": "SNWV",
+      "name": "SANUWAVE Health, Inc.",
+      "cik": 1417663
+    },
+    {
+      "ticker": "ENTX",
+      "name": "Entera Bio Ltd.",
+      "cik": 1638097
+    },
+    {
+      "ticker": "MYO",
+      "name": "MYOMO, INC.",
+      "cik": 1369290
+    },
+    {
+      "ticker": "KA",
+      "name": "KINETA, INC./DE",
+      "cik": 1445283
+    },
+    {
+      "ticker": "IGC",
+      "name": "IGC Pharma, Inc.",
+      "cik": 1326205
+    },
+    {
+      "ticker": "CRYM",
+      "name": "Cryomass Technologies, Inc.",
+      "cik": 1533030
+    },
+    {
+      "ticker": "FLGC",
+      "name": "Flora Growth Corp.",
+      "cik": 1790169
+    },
+    {
+      "ticker": "EDSA",
+      "name": "Edesa Biotech, Inc.",
+      "cik": 1540159
+    },
+    {
+      "ticker": "PHGE",
+      "name": "BiomX Inc.",
+      "cik": 1739174
+    },
+    {
+      "ticker": "APDN",
+      "name": "APPLIED DNA SCIENCES INC",
+      "cik": 744452
+    },
+    {
+      "ticker": "CYADY",
+      "name": "Celyad Oncology SA",
+      "cik": 1637890
+    },
+    {
+      "ticker": "PMN",
+      "name": "ProMIS Neurosciences Inc.",
+      "cik": 1374339
+    },
+    {
+      "ticker": "BTCY",
+      "name": "BIOTRICITY INC.",
+      "cik": 1630113
+    },
+    {
+      "ticker": "SKYE",
+      "name": "Skye Bioscience, Inc.",
+      "cik": 1516551
+    },
+    {
+      "ticker": "ONCT",
+      "name": "Oncternal Therapeutics, Inc.",
+      "cik": 1260990
+    },
+    {
+      "ticker": "CFMS",
+      "name": "Conformis Inc",
+      "cik": 1305773
+    },
+    {
+      "ticker": "LSTA",
+      "name": "LISATA THERAPEUTICS, INC.",
+      "cik": 320017
+    },
+    {
+      "ticker": "RNXT",
+      "name": "RenovoRx, Inc.",
+      "cik": 1574094
+    },
+    {
+      "ticker": "NNVC",
+      "name": "NANOVIRICIDES, INC.",
+      "cik": 1379006
+    },
+    {
+      "ticker": "FREQ",
+      "name": "Frequency Therapeutics, Inc.",
+      "cik": 1703647
+    },
+    {
+      "ticker": "CLRB",
+      "name": "Cellectar Biosciences, Inc.",
+      "cik": 1279704
+    },
+    {
+      "ticker": "ACRX",
+      "name": "ACELRX PHARMACEUTICALS INC",
+      "cik": 1427925
+    },
+    {
+      "ticker": "AKTX",
+      "name": "Akari Therapeutics Plc",
+      "cik": 1541157
+    },
+    {
+      "ticker": "TLLTF",
+      "name": "TILT Holdings Inc.",
+      "cik": 1761510
+    },
+    {
+      "ticker": "NRBO",
+      "name": "NeuroBo Pharmaceuticals, Inc.",
+      "cik": 1638287
+    },
+    {
+      "ticker": "CALC",
+      "name": "CalciMedica, Inc.",
+      "cik": 1534133
+    },
+    {
+      "ticker": "SRZN",
+      "name": "Surrozen, Inc./DE",
+      "cik": 1824893
+    },
+    {
+      "ticker": "AXLA",
+      "name": "Axcella Health Inc.",
+      "cik": 1633070
+    },
+    {
+      "ticker": "TNXP",
+      "name": "Tonix Pharmaceuticals Holding Corp.",
+      "cik": 1430306
+    },
+    {
+      "ticker": "BCDA",
+      "name": "BioCardia, Inc.",
+      "cik": 925741
+    },
+    {
+      "ticker": "OSA",
+      "name": "ProSomnus, Inc.",
+      "cik": 1934064
+    },
+    {
+      "ticker": "CNTX",
+      "name": "Context Therapeutics Inc.",
+      "cik": 1842952
+    },
+    {
+      "ticker": "STRR",
+      "name": "STAR EQUITY HOLDINGS, INC.",
+      "cik": 707388
+    },
+    {
+      "ticker": "FRES",
+      "name": "Fresh2 Group Ltd",
+      "cik": 1786511
+    },
+    {
+      "ticker": "GLTO",
+      "name": "Galecto, Inc.",
+      "cik": 1800315
+    },
+    {
+      "ticker": "IINN",
+      "name": "Inspira Technologies OXY B.H.N. Ltd",
+      "cik": 1837493
+    },
+    {
+      "ticker": "ONTX",
+      "name": "Onconova Therapeutics, Inc.",
+      "cik": 1130598
+    },
+    {
+      "ticker": "IVBT",
+      "name": "Innovation1 Biotech Inc.",
+      "cik": 1629205
+    },
+    {
+      "ticker": "MBRX",
+      "name": "Moleculin Biotech, Inc.",
+      "cik": 1659617
+    },
+    {
+      "ticker": "VBLT",
+      "name": "Vascular Biogenics Ltd.",
+      "cik": 1603207
+    },
+    {
+      "ticker": "NHWK",
+      "name": "NightHawk Biosciences, Inc.",
+      "cik": 1476963
+    },
+    {
+      "ticker": "HYEX",
+      "name": "HEALTHY EXTRACTS INC.",
+      "cik": 1630176
+    },
+    {
+      "ticker": "CHEK",
+      "name": "Check-Cap Ltd",
+      "cik": 1610590
+    },
+    {
+      "ticker": "GENE",
+      "name": "GENETIC TECHNOLOGIES LTD",
+      "cik": 1166272
+    },
+    {
+      "ticker": "FZMD",
+      "name": "Fuse Medical, Inc.",
+      "cik": 319016
+    },
+    {
+      "ticker": "ORGS",
+      "name": "Orgenesis Inc.",
+      "cik": 1460602
+    },
+    {
+      "ticker": "FRLN",
+      "name": "Freeline Therapeutics Holdings plc",
+      "cik": 1810031
+    },
+    {
+      "ticker": "KTTA",
+      "name": "Pasithea Therapeutics Corp.",
+      "cik": 1841330
+    },
+    {
+      "ticker": "ETST",
+      "name": "Earth Science Tech, Inc.",
+      "cik": 1538495
+    },
+    {
+      "ticker": "BIAF",
+      "name": "bioAffinity Technologies, Inc.",
+      "cik": 1712762
+    },
+    {
+      "ticker": "COSM",
+      "name": "Cosmos Health Inc.",
+      "cik": 1474167
+    },
+    {
+      "ticker": "XWEL",
+      "name": "XWELL, Inc.",
+      "cik": 1410428
+    },
+    {
+      "ticker": "ACST",
+      "name": "Acasti Pharma Inc.",
+      "cik": 1444192
+    },
+    {
+      "ticker": "RASP",
+      "name": "Rasna Therapeutics Inc.",
+      "cik": 1582249
+    },
+    {
+      "ticker": "ELOX",
+      "name": "Eloxx Pharmaceuticals, Inc.",
+      "cik": 1035354
+    },
+    {
+      "ticker": "ACOR",
+      "name": "Acorda Therapeutics, Inc.",
+      "cik": 1008848
+    },
+    {
+      "ticker": "UNRV",
+      "name": "Unrivaled Brands, Inc.",
+      "cik": 1451512
+    },
+    {
+      "ticker": "GOVX",
+      "name": "GeoVax Labs, Inc.",
+      "cik": 832489
+    },
+    {
+      "ticker": "BCEL",
+      "name": "Atreca, Inc.",
+      "cik": 1532346
+    },
+    {
+      "ticker": "PYPD",
+      "name": "PolyPid Ltd.",
+      "cik": 1611842
+    },
+    {
+      "ticker": "QSAM",
+      "name": "QSAM Biosciences, Inc.",
+      "cik": 1310527
+    },
+    {
+      "ticker": "DOMH",
+      "name": "Dominari Holdings Inc.",
+      "cik": 12239
+    },
+    {
+      "ticker": "AFIB",
+      "name": "Acutus Medical, Inc.",
+      "cik": 1522860
+    },
+    {
+      "ticker": "VCNX",
+      "name": "VACCINEX, INC.",
+      "cik": 1205922
+    },
+    {
+      "ticker": "RLBD",
+      "name": "Real Brands, Inc.",
+      "cik": 1084133
+    },
+    {
+      "ticker": "LVRLF",
+      "name": "CordovaCann Corp.",
+      "cik": 1168981
+    },
+    {
+      "ticker": "VYNE",
+      "name": "VYNE Therapeutics Inc.",
+      "cik": 1566044
+    },
+    {
+      "ticker": "SIGY",
+      "name": "Sigyn Therapeutics, Inc.",
+      "cik": 1642159
+    },
+    {
+      "ticker": "VINC",
+      "name": "Vincerx Pharma, Inc.",
+      "cik": 1796129
+    },
+    {
+      "ticker": "APRE",
+      "name": "Aprea Therapeutics, Inc.",
+      "cik": 1781983
+    },
+    {
+      "ticker": "MDVL",
+      "name": "MedAvail Holdings, Inc.",
+      "cik": 1402479
+    },
+    {
+      "ticker": "BNOX",
+      "name": "BIONOMICS LIMITED/FI",
+      "cik": 1191070
+    },
+    {
+      "ticker": "ALRTF",
+      "name": "ALR Technologies SG Ltd.",
+      "cik": 1930419
+    },
+    {
+      "ticker": "NMRD",
+      "name": "Nemaura Medical Inc.",
+      "cik": 1602078
+    },
+    {
+      "ticker": "MLCT",
+      "name": "MALACHITE INNOVATIONS, INC.",
+      "cik": 1438943
+    },
+    {
+      "ticker": "ERNA",
+      "name": "Eterna Therapeutics Inc.",
+      "cik": 748592
+    },
+    {
+      "ticker": "RWBYF",
+      "name": "Red White & Bloom Brands Inc.",
+      "cik": 1744345
+    },
+    {
+      "ticker": "AKU",
+      "name": "AKUMIN INC.",
+      "cik": 1776197
+    },
+    {
+      "ticker": "LIPO",
+      "name": "LIPELLA PHARMACEUTICALS INC",
+      "cik": 1347242
+    },
+    {
+      "ticker": "ATHX",
+      "name": "ATHERSYS, INC / NEW",
+      "cik": 1368148
+    },
+    {
+      "ticker": "NRSN",
+      "name": "NeuroSense Therapeutics Ltd.",
+      "cik": 1875091
+    },
+    {
+      "ticker": "RVLP",
+      "name": "RVL Pharmaceuticals plc",
+      "cik": 1739426
+    },
+    {
+      "ticker": "AIMD",
+      "name": "Ainos, Inc.",
+      "cik": 1014763
+    },
+    {
+      "ticker": "XRTX",
+      "name": "XORTX Therapeutics Inc.",
+      "cik": 1729214
+    },
+    {
+      "ticker": "LVVV",
+      "name": "LiveWire Ergogenics, Inc.",
+      "cik": 1421289
+    },
+    {
+      "ticker": "ADTX",
+      "name": "Aditxt, Inc.",
+      "cik": 1726711
+    },
+    {
+      "ticker": "CMMB",
+      "name": "Chemomab Therapeutics Ltd.",
+      "cik": 1534248
+    },
+    {
+      "ticker": "BWV",
+      "name": "Blue Water Biotech, Inc.",
+      "cik": 1782107
+    },
+    {
+      "ticker": "CMRA",
+      "name": "Comera Life Sciences Holdings, Inc.",
+      "cik": 1907685
+    },
+    {
+      "ticker": "AEZS",
+      "name": "Aeterna Zentaris Inc.",
+      "cik": 1113423
+    },
+    {
+      "ticker": "IMNN",
+      "name": "Imunon, Inc.",
+      "cik": 749647
+    },
+    {
+      "ticker": "BFRI",
+      "name": "Biofrontera Inc.",
+      "cik": 1858685
+    },
+    {
+      "ticker": "SHPH",
+      "name": "Shuttle Pharmaceuticals Holdings, Inc.",
+      "cik": 1757499
+    },
+    {
+      "ticker": "TRVN",
+      "name": "TREVENA INC",
+      "cik": 1429560
+    },
+    {
+      "ticker": "CANF",
+      "name": "Can-Fite BioPharma Ltd.",
+      "cik": 1536196
+    },
+    {
+      "ticker": "AVCRF",
+      "name": "Avricore Health Inc.",
+      "cik": 1355736
+    },
+    {
+      "ticker": "ENZN",
+      "name": "ENZON PHARMACEUTICALS, INC.",
+      "cik": 727510
+    },
+    {
+      "ticker": "ITRM",
+      "name": "Iterum Therapeutics plc",
+      "cik": 1659323
+    },
+    {
+      "ticker": "IMCC",
+      "name": "IM Cannabis Corp.",
+      "cik": 1792030
+    },
+    {
+      "ticker": "LABP",
+      "name": "Landos Biopharma, Inc.",
+      "cik": 1785345
+    },
+    {
+      "ticker": "TLIS",
+      "name": "Talis Biomedical Corp",
+      "cik": 1584751
+    },
+    {
+      "ticker": "IMRN",
+      "name": "Immuron Ltd",
+      "cik": 1660046
+    },
+    {
+      "ticker": "NSTM",
+      "name": "NovelStem International Corp.",
+      "cik": 912544
+    },
+    {
+      "ticker": "BUDZ",
+      "name": "WEED, INC.",
+      "cik": 1393772
+    },
+    {
+      "ticker": "IKT",
+      "name": "Inhibikase Therapeutics, Inc.",
+      "cik": 1750149
+    },
+    {
+      "ticker": "ATHE",
+      "name": "ALTERITY THERAPEUTICS LTD",
+      "cik": 1131343
+    },
+    {
+      "ticker": "IMPL",
+      "name": "IMPEL PHARMACEUTICALS INC",
+      "cik": 1445499
+    },
+    {
+      "ticker": "SBFM",
+      "name": "Sunshine Biopharma, Inc",
+      "cik": 1402328
+    },
+    {
+      "ticker": "CANN",
+      "name": "TREES Corp (Colorado)",
+      "cik": 1477009
+    },
+    {
+      "ticker": "BMMJ",
+      "name": "BODY & MIND INC.",
+      "cik": 1715611
+    },
+    {
+      "ticker": "BRTX",
+      "name": "BioRestorative Therapies, Inc.",
+      "cik": 1505497
+    },
+    {
+      "ticker": "OTLC",
+      "name": "Oncotelic Therapeutics, Inc.",
+      "cik": 908259
+    },
+    {
+      "ticker": "GTBP",
+      "name": "GT Biopharma, Inc.",
+      "cik": 109657
+    },
+    {
+      "ticker": "ONVO",
+      "name": "ORGANOVO HOLDINGS, INC.",
+      "cik": 1497253
+    },
+    {
+      "ticker": "ARAV",
+      "name": "Aravive, Inc.",
+      "cik": 1513818
+    },
+    {
+      "ticker": "BIMI",
+      "name": "BIMI International Medical Inc.",
+      "cik": 1213660
+    },
+    {
+      "ticker": "FNCH",
+      "name": "Finch Therapeutics Group, Inc.",
+      "cik": 1733257
+    },
+    {
+      "ticker": "PKBO",
+      "name": "Peak Bio, Inc.",
+      "cik": 1834645
+    },
+    {
+      "ticker": "VRPX",
+      "name": "Virpax Pharmaceuticals, Inc.",
+      "cik": 1708331
+    },
+    {
+      "ticker": "PKTX",
+      "name": "ProtoKinetix, Inc.",
+      "cik": 1128189
+    },
+    {
+      "ticker": "GHSI",
+      "name": "Guardion Health Sciences, Inc.",
+      "cik": 1642375
+    },
+    {
+      "ticker": "CING",
+      "name": "Cingulate Inc.",
+      "cik": 1862150
+    },
+    {
+      "ticker": "LSDI",
+      "name": "Lucy Scientific Discovery, Inc.",
+      "cik": 1865127
+    },
+    {
+      "ticker": "MCUJF",
+      "name": "MEDICURE INC",
+      "cik": 1133519
+    },
+    {
+      "ticker": "CVKD",
+      "name": "Cadrenal Therapeutics, Inc.",
+      "cik": 1937993
+    },
+    {
+      "ticker": "AYTU",
+      "name": "AYTU BIOPHARMA, INC",
+      "cik": 1385818
+    },
+    {
+      "ticker": "TMBR",
+      "name": "Timber Pharmaceuticals, Inc.",
+      "cik": 1504167
+    },
+    {
+      "ticker": "APM",
+      "name": "Aptorum Group Ltd",
+      "cik": 1734005
+    },
+    {
+      "ticker": "VERO",
+      "name": "Venus Concept Inc.",
+      "cik": 1409269
+    },
+    {
+      "ticker": "MNPR",
+      "name": "Monopar Therapeutics",
+      "cik": 1645469
+    },
+    {
+      "ticker": "DRUG",
+      "name": "BRIGHT MINDS BIOSCIENCES INC.",
+      "cik": 1827401
+    },
+    {
+      "ticker": "PRPO",
+      "name": "Precipio, Inc.",
+      "cik": 1043961
+    },
+    {
+      "ticker": "GRTX",
+      "name": "Galera Therapeutics, Inc.",
+      "cik": 1563577
+    },
+    {
+      "ticker": "ADMT",
+      "name": "ADM TRONICS UNLIMITED, INC.",
+      "cik": 849401
+    },
+    {
+      "ticker": "NBIO",
+      "name": "Nascent Biotech Inc.",
+      "cik": 1622057
+    },
+    {
+      "ticker": "ODYY",
+      "name": "Odyssey Health, Inc.",
+      "cik": 1626644
+    },
+    {
+      "ticker": "TOVX",
+      "name": "Theriva Biologics, Inc.",
+      "cik": 894158
+    },
+    {
+      "ticker": "IMVIQ",
+      "name": "IMV Inc.",
+      "cik": 1734768
+    },
+    {
+      "ticker": "PULM",
+      "name": "Pulmatrix, Inc.",
+      "cik": 1574235
+    },
+    {
+      "ticker": "MEDS",
+      "name": "TRxADE HEALTH, INC",
+      "cik": 1382574
+    },
+    {
+      "ticker": "NDRA",
+      "name": "ENDRA Life Sciences Inc.",
+      "cik": 1681682
+    },
+    {
+      "ticker": "LEXX",
+      "name": "Lexaria Bioscience Corp.",
+      "cik": 1348362
+    },
+    {
+      "ticker": "TENX",
+      "name": "TENAX THERAPEUTICS, INC.",
+      "cik": 34956
+    },
+    {
+      "ticker": "CYCN",
+      "name": "Cyclerion Therapeutics, Inc.",
+      "cik": 1755237
+    },
+    {
+      "ticker": "SXTP",
+      "name": "60 DEGREES PHARMACEUTICALS, INC.",
+      "cik": 1946563
+    },
+    {
+      "ticker": "AMTI",
+      "name": "Applied Molecular Transport Inc.",
+      "cik": 1801777
+    },
+    {
+      "ticker": "MRZM",
+      "name": "MARIZYME, INC.",
+      "cik": 1413754
+    },
+    {
+      "ticker": "SONN",
+      "name": "Sonnet BioTherapeutics Holdings, Inc.",
+      "cik": 1106838
+    },
+    {
+      "ticker": "CRVO",
+      "name": "CervoMed Inc.",
+      "cik": 1053691
+    },
+    {
+      "ticker": "BPTS",
+      "name": "Biophytis SA",
+      "cik": 1768946
+    },
+    {
+      "ticker": "ISPC",
+      "name": "iSpecimen Inc.",
+      "cik": 1558569
+    },
+    {
+      "ticker": "EMMA",
+      "name": "Emmaus Life Sciences, Inc.",
+      "cik": 822370
+    },
+    {
+      "ticker": "XCUR",
+      "name": "EXICURE, INC.",
+      "cik": 1698530
+    },
+    {
+      "ticker": "ADXN",
+      "name": "Addex Therapeutics Ltd.",
+      "cik": 1574232
+    },
+    {
+      "ticker": "PTIX",
+      "name": "Protagenic Therapeutics, Inc.new",
+      "cik": 1022899
+    },
+    {
+      "ticker": "NAVB",
+      "name": "NAVIDEA BIOPHARMACEUTICALS, INC.",
+      "cik": 810509
+    },
+    {
+      "ticker": "OGEN",
+      "name": "ORAGENICS INC",
+      "cik": 1174940
+    },
+    {
+      "ticker": "THER",
+      "name": "THERALINK TECHNOLOGIES, INC.",
+      "cik": 1362703
+    },
+    {
+      "ticker": "CFRX",
+      "name": "CONTRAFECT Corp",
+      "cik": 1478069
+    },
+    {
+      "ticker": "INFI",
+      "name": "INFINITY PHARMACEUTICALS, INC.",
+      "cik": 1113148
+    },
+    {
+      "ticker": "TCON",
+      "name": "Tracon Pharmaceuticals, Inc.",
+      "cik": 1394319
+    },
+    {
+      "ticker": "CWBR",
+      "name": "CohBar, Inc.",
+      "cik": 1522602
+    },
+    {
+      "ticker": "TTNP",
+      "name": "TITAN PHARMACEUTICALS INC",
+      "cik": 910267
+    },
+    {
+      "ticker": "PCSA",
+      "name": "Processa Pharmaceuticals, Inc.",
+      "cik": 1533743
+    },
+    {
+      "ticker": "ALRN",
+      "name": "AILERON THERAPEUTICS INC",
+      "cik": 1420565
+    },
+    {
+      "ticker": "GTHP",
+      "name": "GUIDED THERAPEUTICS INC",
+      "cik": 924515
+    },
+    {
+      "ticker": "KTRA",
+      "name": "Kintara Therapeutics, Inc.",
+      "cik": 1498382
+    },
+    {
+      "ticker": "ADMP",
+      "name": "Adamis Pharmaceuticals Corp",
+      "cik": 887247
+    },
+    {
+      "ticker": "INTI",
+      "name": "Inhibitor Therapeutics, Inc.",
+      "cik": 1042418
+    },
+    {
+      "ticker": "VVOS",
+      "name": "Vivos Therapeutics, Inc.",
+      "cik": 1716166
+    },
+    {
+      "ticker": "PRFX",
+      "name": "PAINREFORM LTD.",
+      "cik": 1801834
+    },
+    {
+      "ticker": "JAGX",
+      "name": "Jaguar Health, Inc.",
+      "cik": 1585608
+    },
+    {
+      "ticker": "BJDX",
+      "name": "Bluejay Diagnostics, Inc.",
+      "cik": 1704287
+    },
+    {
+      "ticker": "TPST",
+      "name": "Tempest Therapeutics, Inc.",
+      "cik": 1544227
+    },
+    {
+      "ticker": "PSTV",
+      "name": "PLUS THERAPEUTICS, INC.",
+      "cik": 1095981
+    },
+    {
+      "ticker": "CUBT",
+      "name": "Curative Biotechnology Inc",
+      "cik": 1400271
+    },
+    {
+      "ticker": "PXMD",
+      "name": "PaxMedica, Inc.",
+      "cik": 1811623
+    },
+    {
+      "ticker": "IPIX",
+      "name": "Innovation Pharmaceuticals Inc.",
+      "cik": 1355250
+    },
+    {
+      "ticker": "CNSP",
+      "name": "CNS Pharmaceuticals, Inc.",
+      "cik": 1729427
+    },
+    {
+      "ticker": "BNTC",
+      "name": "Benitec Biopharma Inc.",
+      "cik": 1808898
+    },
+    {
+      "ticker": "HOTH",
+      "name": "Hoth Therapeutics, Inc.",
+      "cik": 1711786
+    },
+    {
+      "ticker": "REPCF",
+      "name": "REPLICEL LIFE SCIENCES INC.",
+      "cik": 1205059
+    },
+    {
+      "ticker": "CJJD",
+      "name": "China Jo-Jo Drugstores Holdings, Inc.",
+      "cik": 1856084
+    },
+    {
+      "ticker": "BETRF",
+      "name": "BetterLife Pharma Inc.",
+      "cik": 1464165
+    },
+    {
+      "ticker": "HSCS",
+      "name": "Heart Test Laboratories, Inc.",
+      "cik": 1468492
+    },
+    {
+      "ticker": "AEMD",
+      "name": "AETHLON MEDICAL INC",
+      "cik": 882291
+    },
+    {
+      "ticker": "SSY",
+      "name": "SUNLINK HEALTH SYSTEMS INC",
+      "cik": 96793
+    },
+    {
+      "ticker": "CLVR",
+      "name": "Clever Leaves Holdings Inc.",
+      "cik": 1819615
+    },
+    {
+      "ticker": "MDGS",
+      "name": "Medigus Ltd.",
+      "cik": 1618500
+    },
+    {
+      "ticker": "CELZ",
+      "name": "CREATIVE MEDICAL TECHNOLOGY HOLDINGS, INC.",
+      "cik": 1187953
+    },
+    {
+      "ticker": "ATXI",
+      "name": "AVENUE THERAPEUTICS, INC.",
+      "cik": 1644963
+    },
+    {
+      "ticker": "CHHE",
+      "name": "China Health Industries Holdings, Inc.",
+      "cik": 1309057
+    },
+    {
+      "ticker": "IBIO",
+      "name": "iBio, Inc.",
+      "cik": 1420720
+    },
+    {
+      "ticker": "CDIO",
+      "name": "Cardio Diagnostics Holdings, Inc.",
+      "cik": 1870144
+    },
+    {
+      "ticker": "KOAN",
+      "name": "Resonate Blends, Inc.",
+      "cik": 897078
+    },
+    {
+      "ticker": "VRAX",
+      "name": "Virax Biolabs Group Ltd",
+      "cik": 1885827
+    },
+    {
+      "ticker": "XBIO",
+      "name": "Xenetic Biosciences, Inc.",
+      "cik": 1534525
+    },
+    {
+      "ticker": "TNON",
+      "name": "Tenon Medical, Inc.",
+      "cik": 1560293
+    },
+    {
+      "ticker": "BZYR",
+      "name": "BURZYNSKI RESEARCH INSTITUTE INC",
+      "cik": 724445
+    },
+    {
+      "ticker": "NURO",
+      "name": "NeuroMetrix, Inc.",
+      "cik": 1289850
+    },
+    {
+      "ticker": "CVSI",
+      "name": "CV Sciences, Inc.",
+      "cik": 1510964
+    },
+    {
+      "ticker": "JUVAF",
+      "name": "JUVA LIFE INC./Canada",
+      "cik": 1778651
+    },
+    {
+      "ticker": "SILO",
+      "name": "Silo Pharma, Inc.",
+      "cik": 1514183
+    },
+    {
+      "ticker": "QNRX",
+      "name": "Quoin Pharmaceuticals, Ltd.",
+      "cik": 1671502
+    },
+    {
+      "ticker": "NEXI",
+      "name": "NexImmune, Inc.",
+      "cik": 1538210
+    },
+    {
+      "ticker": "INQD",
+      "name": "Indoor Harvest Corp",
+      "cik": 1572565
+    },
+    {
+      "ticker": "CLSH",
+      "name": "CLS Holdings USA, Inc.",
+      "cik": 1522222
+    },
+    {
+      "ticker": "QLGN",
+      "name": "Qualigen Therapeutics, Inc.",
+      "cik": 1460702
+    },
+    {
+      "ticker": "LIXT",
+      "name": "LIXTE BIOTECHNOLOGY HOLDINGS, INC.",
+      "cik": 1335105
+    },
+    {
+      "ticker": "QRON",
+      "name": "Qrons Inc.",
+      "cik": 1689084
+    },
+    {
+      "ticker": "WINT",
+      "name": "WINDTREE THERAPEUTICS INC /DE/",
+      "cik": 946486
+    },
+    {
+      "ticker": "XTLB",
+      "name": "XTL BIOPHARMACEUTICALS LTD",
+      "cik": 1023549
+    },
+    {
+      "ticker": "ARTL",
+      "name": "ARTELO BIOSCIENCES, INC.",
+      "cik": 1621221
+    },
+    {
+      "ticker": "ENSC",
+      "name": "Ensysce Biosciences, Inc.",
+      "cik": 1716947
+    },
+    {
+      "ticker": "ADXS",
+      "name": "Ayala Pharmaceuticals, Inc.",
+      "cik": 1100397
+    },
+    {
+      "ticker": "PBIO",
+      "name": "PRESSURE BIOSCIENCES INC",
+      "cik": 830656
+    },
+    {
+      "ticker": "PTPI",
+      "name": "Petros Pharmaceuticals, Inc.",
+      "cik": 1815903
+    },
+    {
+      "ticker": "BLPH",
+      "name": "Bellerophon Therapeutics, Inc.",
+      "cik": 1600132
+    },
+    {
+      "ticker": "PHIO",
+      "name": "Phio Pharmaceuticals Corp.",
+      "cik": 1533040
+    },
+    {
+      "ticker": "AXIM",
+      "name": "AXIM BIOTECHNOLOGIES, INC.",
+      "cik": 1514946
+    },
+    {
+      "ticker": "SNPX",
+      "name": "Synaptogenix, Inc.",
+      "cik": 1571934
+    },
+    {
+      "ticker": "UPC",
+      "name": "Universe Pharmaceuticals INC",
+      "cik": 1809616
+    },
+    {
+      "ticker": "CYCC",
+      "name": "Cyclacel Pharmaceuticals, Inc.",
+      "cik": 1130166
+    },
+    {
+      "ticker": "ABVC",
+      "name": "ABVC BIOPHARMA, INC.",
+      "cik": 1173313
+    },
+    {
+      "ticker": "ALLR",
+      "name": "Allarity Therapeutics, Inc.",
+      "cik": 1860657
+    },
+    {
+      "ticker": "RGBP",
+      "name": "Regen BioPharma Inc",
+      "cik": 1589150
+    },
+    {
+      "ticker": "APVO",
+      "name": "Aptevo Therapeutics Inc.",
+      "cik": 1671584
+    },
+    {
+      "ticker": "RDHL",
+      "name": "RedHill Biopharma Ltd.",
+      "cik": 1553846
+    },
+    {
+      "ticker": "ADIL",
+      "name": "ADIAL PHARMACEUTICALS, INC.",
+      "cik": 1513525
+    },
+    {
+      "ticker": "AGRX",
+      "name": "AGILE THERAPEUTICS INC",
+      "cik": 1261249
+    },
+    {
+      "ticker": "BVXV",
+      "name": "BiondVax Pharmaceuticals Ltd.",
+      "cik": 1611747
+    },
+    {
+      "ticker": "ICU",
+      "name": "SeaStar Medical Holding Corp",
+      "cik": 1831868
+    },
+    {
+      "ticker": "PALI",
+      "name": "PALISADE BIO, INC.",
+      "cik": 1357459
+    },
+    {
+      "ticker": "OWPC",
+      "name": "One World Products, Inc.",
+      "cik": 1622244
+    },
+    {
+      "ticker": "ENVB",
+      "name": "Enveric Biosciences, Inc.",
+      "cik": 890821
+    },
+    {
+      "ticker": "HENC",
+      "name": "Hero Technologies Inc.",
+      "cik": 1324736
+    },
+    {
+      "ticker": "TSOI",
+      "name": "THERAPEUTIC SOLUTIONS INTERNATIONAL, INC.",
+      "cik": 1419051
+    },
+    {
+      "ticker": "APTX",
+      "name": "Aptinyx Inc.",
+      "cik": 1674365
+    },
+    {
+      "ticker": "SNGX",
+      "name": "SOLIGENIX, INC.",
+      "cik": 812796
+    },
+    {
+      "ticker": "SZLSF",
+      "name": "STAGEZERO LIFE SCIENCES LTD.",
+      "cik": 1454263
+    },
+    {
+      "ticker": "BIOL",
+      "name": "BIOLASE, INC",
+      "cik": 811240
+    },
+    {
+      "ticker": "ARTH",
+      "name": "Arch Therapeutics, Inc.",
+      "cik": 1537561
+    },
+    {
+      "ticker": "SNOA",
+      "name": "Sonoma Pharmaceuticals, Inc.",
+      "cik": 1367083
+    },
+    {
+      "ticker": "ABTI",
+      "name": "ALTEROLA BIOTECH INC.",
+      "cik": 1442999
+    },
+    {
+      "ticker": "HSDT",
+      "name": "HELIUS MEDICAL TECHNOLOGIES, INC.",
+      "cik": 1610853
+    },
+    {
+      "ticker": "ARDS",
+      "name": "Aridis Pharmaceuticals, Inc.",
+      "cik": 1614067
+    },
+    {
+      "ticker": "ZVSA",
+      "name": "ZyVersa Therapeutics, Inc.",
+      "cik": 1859007
+    },
+    {
+      "ticker": "PLSH",
+      "name": "PANACEA LIFE SCIENCES HOLDINGS, INC.",
+      "cik": 1552189
+    },
+    {
+      "ticker": "IDXG",
+      "name": "INTERPACE BIOSCIENCES, INC.",
+      "cik": 1054102
+    },
+    {
+      "ticker": "REVB",
+      "name": "REVELATION BIOSCIENCES, INC.",
+      "cik": 1810560
+    },
+    {
+      "ticker": "TCBP",
+      "name": "TC BioPharm (Holdings) plc",
+      "cik": 1872812
+    },
+    {
+      "ticker": "HILS",
+      "name": "Hillstream BioPharma Inc.",
+      "cik": 1861657
+    },
+    {
+      "ticker": "BPTH",
+      "name": "BIO-PATH HOLDINGS INC",
+      "cik": 1133818
+    },
+    {
+      "ticker": "INBS",
+      "name": "INTELLIGENT BIO SOLUTIONS INC.",
+      "cik": 1725430
+    },
+    {
+      "ticker": "EVOK",
+      "name": "Evoke Pharma Inc",
+      "cik": 1403708
+    },
+    {
+      "ticker": "PBLA",
+      "name": "Panbela Therapeutics, Inc.",
+      "cik": 1029125
+    },
+    {
+      "ticker": "CNNC",
+      "name": "Cannonau Corp.",
+      "cik": 1410187
+    },
+    {
+      "ticker": "SINT",
+      "name": "Sintx Technologies, Inc.",
+      "cik": 1269026
+    },
+    {
+      "ticker": "NAOV",
+      "name": "NanoVibronix, Inc.",
+      "cik": 1326706
+    },
+    {
+      "ticker": "CPMV",
+      "name": "Mosaic ImmunoEngineering Inc.",
+      "cik": 836564
+    },
+    {
+      "ticker": "GRPS",
+      "name": "Trans American Aquaculture, Inc",
+      "cik": 1990446
+    },
+    {
+      "ticker": "STMH",
+      "name": "Stem Holdings, Inc.",
+      "cik": 1697834
+    },
+    {
+      "ticker": "ENDV",
+      "name": "ENDONOVO THERAPEUTICS, INC.",
+      "cik": 1528172
+    },
+    {
+      "ticker": "DRMA",
+      "name": "Dermata Therapeutics, Inc.",
+      "cik": 1853816
+    },
+    {
+      "ticker": "TIVC",
+      "name": "Tivic Health Systems, Inc.",
+      "cik": 1787740
+    },
+    {
+      "ticker": "BXRX",
+      "name": "Baudax Bio, Inc.",
+      "cik": 1780097
+    },
+    {
+      "ticker": "GRI",
+      "name": "GRI BIO, Inc.",
+      "cik": 1824293
+    },
+    {
+      "ticker": "ATNF",
+      "name": "180 Life Sciences Corp.",
+      "cik": 1690080
+    },
+    {
+      "ticker": "GBLX",
+      "name": "GB SCIENCES INC",
+      "cik": 1165320
+    },
+    {
+      "ticker": "GSAC",
+      "name": "GELSTAT CORP",
+      "cik": 890725
+    },
+    {
+      "ticker": "FRTX",
+      "name": "Fresh Tracks Therapeutics, Inc.",
+      "cik": 819050
+    },
+    {
+      "ticker": "STEK",
+      "name": "Stemtech Corp",
+      "cik": 1511820
+    },
+    {
+      "ticker": "INVO",
+      "name": "INVO Bioscience, Inc.",
+      "cik": 1417926
+    },
+    {
+      "ticker": "NVIV",
+      "name": "INVIVO THERAPEUTICS HOLDINGS CORP.",
+      "cik": 1292519
+    },
+    {
+      "ticker": "CBDY",
+      "name": "Target Group Inc.",
+      "cik": 1586554
+    },
+    {
+      "ticker": "QLIS",
+      "name": "Qualis Innovations, Inc.",
+      "cik": 1871181
+    },
+    {
+      "ticker": "KPRX",
+      "name": "KIORA PHARMACEUTICALS INC",
+      "cik": 1372514
+    },
+    {
+      "ticker": "VTAK",
+      "name": "Catheter Precision, Inc.",
+      "cik": 1716621
+    },
+    {
+      "ticker": "YCBD",
+      "name": "cbdMD, Inc.",
+      "cik": 1644903
+    },
+    {
+      "ticker": "AGTX",
+      "name": "Agentix Corp.",
+      "cik": 1603345
+    },
+    {
+      "ticker": "NXL",
+      "name": "Nexalin Technology, Inc.",
+      "cik": 1527352
+    },
+    {
+      "ticker": "NUWE",
+      "name": "Nuwellis, Inc.",
+      "cik": 1506492
+    },
+    {
+      "ticker": "RSLS",
+      "name": "ReShape Lifesciences Inc.",
+      "cik": 1427570
+    },
+    {
+      "ticker": "LOWLF",
+      "name": "Lowell Farms Inc.",
+      "cik": 1838128
+    },
+    {
+      "ticker": "KGKG",
+      "name": "KONA GOLD BEVERAGE, INC.",
+      "cik": 1802546
+    },
+    {
+      "ticker": "SLRX",
+      "name": "Salarius Pharmaceuticals, Inc.",
+      "cik": 1615219
+    },
+    {
+      "ticker": "RNAZ",
+      "name": "Transcode Therapeutics, Inc.",
+      "cik": 1829635
+    },
+    {
+      "ticker": "BLCM",
+      "name": "BELLICUM PHARMACEUTICALS, INC",
+      "cik": 1358403
+    },
+    {
+      "ticker": "GLMD",
+      "name": "Galmed Pharmaceuticals Ltd.",
+      "cik": 1595353
+    },
+    {
+      "ticker": "NEPT",
+      "name": "Neptune Wellness Solutions Inc.",
+      "cik": 1401395
+    },
+    {
+      "ticker": "RSHN",
+      "name": "RushNet, Inc.",
+      "cik": 1087329
+    },
+    {
+      "ticker": "VYCO",
+      "name": "VYCOR MEDICAL INC",
+      "cik": 1424768
+    },
+    {
+      "ticker": "AMPE",
+      "name": "Ampio Pharmaceuticals, Inc.",
+      "cik": 1411906
+    },
+    {
+      "ticker": "THMO",
+      "name": "ThermoGenesis Holdings, Inc.",
+      "cik": 811212
+    },
+    {
+      "ticker": "DYNT",
+      "name": "DYNATRONICS CORP",
+      "cik": 720875
+    },
+    {
+      "ticker": "CMND",
+      "name": "Clearmind Medicine Inc.",
+      "cik": 1892500
+    },
+    {
+      "ticker": "GLSH",
+      "name": "GELESIS HOLDINGS, INC.",
+      "cik": 1805087
+    },
+    {
+      "ticker": "MOTS",
+      "name": "Motus GI Holdings, Inc.",
+      "cik": 1686850
+    },
+    {
+      "ticker": "GSTC",
+      "name": "GlobeStar Therapeutics Corp",
+      "cik": 1502152
+    },
+    {
+      "ticker": "HSTO",
+      "name": "Histogen Inc.",
+      "cik": 1383701
+    },
+    {
+      "ticker": "INM",
+      "name": "InMed Pharmaceuticals Inc.",
+      "cik": 1728328
+    },
+    {
+      "ticker": "IPCIF",
+      "name": "Intellipharmaceutics International Inc.",
+      "cik": 1474835
+    },
+    {
+      "ticker": "CYTO",
+      "name": "Altamira Therapeutics Ltd.",
+      "cik": 1601936
+    },
+    {
+      "ticker": "BMCS",
+      "name": "BMCS SUMCOIN INDEX FUND, INC.",
+      "cik": 1384066
+    },
+    {
+      "ticker": "VRAYQ",
+      "name": "ViewRay, Inc.",
+      "cik": 1597313
+    },
+    {
+      "ticker": "NBSE",
+      "name": "NeuBase Therapeutics, Inc.",
+      "cik": 1173281
+    },
+    {
+      "ticker": "NBY",
+      "name": "NovaBay Pharmaceuticals, Inc.",
+      "cik": 1389545
+    },
+    {
+      "ticker": "CPHI",
+      "name": "CHINA PHARMA HOLDINGS, INC.",
+      "cik": 1106644
+    },
+    {
+      "ticker": "AKAN",
+      "name": "AKANDA CORP.",
+      "cik": 1888014
+    },
+    {
+      "ticker": "BIOC",
+      "name": "BIOCEPT INC",
+      "cik": 1044378
+    },
+    {
+      "ticker": "MHTX",
+      "name": "MANHATTAN SCIENTIFICS INC",
+      "cik": 1099132
+    },
+    {
+      "ticker": "NXEN",
+      "name": "NEXIEN BIOPHARMA, INC.",
+      "cik": 1625288
+    },
+    {
+      "ticker": "KRBP",
+      "name": "Kiromic Biopharma, Inc.",
+      "cik": 1792581
+    },
+    {
+      "ticker": "FWBI",
+      "name": "First Wave BioPharma, Inc.",
+      "cik": 1604191
+    },
+    {
+      "ticker": "XSNX",
+      "name": "NovAccess Global Inc.",
+      "cik": 1039466
+    },
+    {
+      "ticker": "BBLG",
+      "name": "Bone Biologics Corp",
+      "cik": 1419554
+    },
+    {
+      "ticker": "AVTX",
+      "name": "Avalo Therapeutics, Inc.",
+      "cik": 1534120
+    },
+    {
+      "ticker": "SPRC",
+      "name": "SciSparc Ltd.",
+      "cik": 1611746
+    },
+    {
+      "ticker": "ESMC",
+      "name": "ESCALON MEDICAL CORP",
+      "cik": 862668
+    },
+    {
+      "ticker": "PCYN",
+      "name": "PROCYON CORP",
+      "cik": 812306
+    },
+    {
+      "ticker": "BDRX",
+      "name": "Biodexa Pharmaceuticals Plc",
+      "cik": 1643918
+    },
+    {
+      "ticker": "NBRVF",
+      "name": "Nabriva Therapeutics plc",
+      "cik": 1641640
+    },
+    {
+      "ticker": "NUMD",
+      "name": "Nu-Med Plus, Inc.",
+      "cik": 1543637
+    },
+    {
+      "ticker": "BSPK",
+      "name": "Bespoke Extracts, Inc.",
+      "cik": 1409197
+    },
+    {
+      "ticker": "ECGI",
+      "name": "ECGI Holdings, Inc.",
+      "cik": 1856416
+    },
+    {
+      "ticker": "OPGN",
+      "name": "OPGEN INC",
+      "cik": 1293818
+    },
+    {
+      "ticker": "SCPS",
+      "name": "Scopus BioPharma Inc.",
+      "cik": 1772028
+    },
+    {
+      "ticker": "SXTC",
+      "name": "China SXT Pharmaceuticals, Inc.",
+      "cik": 1723980
+    },
+    {
+      "ticker": "HGEN",
+      "name": "HUMANIGEN, INC",
+      "cik": 1293310
+    },
+    {
+      "ticker": "MNKTQ",
+      "name": "Mallinckrodt plc",
+      "cik": 1567892
+    },
+    {
+      "ticker": "HSTC",
+      "name": "HST Global, Inc.",
+      "cik": 797564
+    },
+    {
+      "ticker": "CSUI",
+      "name": "CANNABIS SUISSE CORP.",
+      "cik": 1680132
+    },
+    {
+      "ticker": "SQZB",
+      "name": "SQZ Biotechnologies Co",
+      "cik": 1604477
+    },
+    {
+      "ticker": "NTRR",
+      "name": "NEUTRA CORP.",
+      "cik": 1512886
+    },
+    {
+      "ticker": "DIGP",
+      "name": "Digipath, Inc.",
+      "cik": 1502966
+    },
+    {
+      "ticker": "NOVNQ",
+      "name": "Novan, Inc.",
+      "cik": 1467154
+    },
+    {
+      "ticker": "HADV",
+      "name": "HEALTH ADVANCE INC.",
+      "cik": 1531477
+    },
+    {
+      "ticker": "RGMP",
+      "name": "Regnum Corp.",
+      "cik": 1716324
+    },
+    {
+      "ticker": "INLB",
+      "name": "Item 9 Labs Corp.",
+      "cik": 1500123
+    },
+    {
+      "ticker": "CANB",
+      "name": "Can B Corp",
+      "cik": 1509957
+    },
+    {
+      "ticker": "VFRM",
+      "name": "Veritas Farms, Inc.",
+      "cik": 1669400
+    },
+    {
+      "ticker": "KAYS",
+      "name": "Kaya Holdings, Inc.",
+      "cik": 1530746
+    },
+    {
+      "ticker": "DVLP",
+      "name": "Golden Developing Solutions, Inc.",
+      "cik": 1736865
+    },
+    {
+      "ticker": "ISCO",
+      "name": "International Stem Cell CORP",
+      "cik": 1355790
+    },
+    {
+      "ticker": "LADX",
+      "name": "LadRx Corp",
+      "cik": 799698
+    },
+    {
+      "ticker": "MJNE",
+      "name": "MJ Holdings, Inc.",
+      "cik": 1456857
+    },
+    {
+      "ticker": "TRLFF",
+      "name": "Maven Brands Inc.",
+      "cik": 1698370
+    },
+    {
+      "ticker": "EVFM",
+      "name": "Evofem Biosciences, Inc.",
+      "cik": 1618835
+    },
+    {
+      "ticker": "GCAN",
+      "name": "Greater Cannabis Company, Inc.",
+      "cik": 1695473
+    },
+    {
+      "ticker": "USAQ",
+      "name": "QHSLab, Inc.",
+      "cik": 856984
+    },
+    {
+      "ticker": "HTGMQ",
+      "name": "HTG MOLECULAR DIAGNOSTICS, INC",
+      "cik": 1169987
+    },
+    {
+      "ticker": "SGBI",
+      "name": "SANGUI BIOTECH INTERNATIONAL INC",
+      "cik": 1104280
+    },
+    {
+      "ticker": "PHBI",
+      "name": "Pharmagreen Biotech Inc.",
+      "cik": 1435181
+    },
+    {
+      "ticker": "RGTPQ",
+      "name": "POLARITYTE, INC.",
+      "cik": 1076682
+    },
+    {
+      "ticker": "EMED",
+      "name": "Electromedical Technologies, Inc",
+      "cik": 1715819
+    },
+    {
+      "ticker": "RBSH",
+      "name": "Rebus Holdings, Inc.",
+      "cik": 1421204
+    },
+    {
+      "ticker": "MYMX",
+      "name": "MYMETICS CORP",
+      "cik": 927761
+    },
+    {
+      "ticker": "BLMS",
+      "name": "BLOOMIOS, INC.",
+      "cik": 1138608
+    },
+    {
+      "ticker": "GNRS",
+      "name": "Greenrose Holding Co Inc.",
+      "cik": 1790665
+    },
+    {
+      "ticker": "IVRN",
+      "name": "Innoveren Scientific, Inc.",
+      "cik": 1591165
+    },
+    {
+      "ticker": "ABMC",
+      "name": "AMERICAN BIO MEDICA CORP",
+      "cik": 896747
+    },
+    {
+      "ticker": "RSPI",
+      "name": "RespireRx Pharmaceuticals Inc.",
+      "cik": 849636
+    },
+    {
+      "ticker": "CSTF",
+      "name": "CuraScientific Corp.",
+      "cik": 1877788
+    },
+    {
+      "ticker": "CYDX",
+      "name": "CYduct Diagnostics, Inc.",
+      "cik": 1388994
+    },
+    {
+      "ticker": "QBIO",
+      "name": "Q BioMed Inc.",
+      "cik": 1596062
+    },
+    {
+      "ticker": "CNBX",
+      "name": "CNBX Pharmaceuticals Inc.",
+      "cik": 1343009
+    },
+    {
+      "ticker": "BBBT",
+      "name": "Black Bird Biotech, Inc.",
+      "cik": 1409999
+    },
+    {
+      "ticker": "ATRX",
+      "name": "Adhera Therapeutics, Inc.",
+      "cik": 737207
+    },
+    {
+      "ticker": "NMTRQ",
+      "name": "9 METERS BIOPHARMA, INC.",
+      "cik": 1551986
+    },
+    {
+      "ticker": "PPCB",
+      "name": "Propanc Biopharma, Inc.",
+      "cik": 1517681
+    },
+    {
+      "ticker": "FORZ",
+      "name": "Forza Innovations Inc",
+      "cik": 1683131
+    },
+    {
+      "ticker": "USRM",
+      "name": "U.S. Stem Cell, Inc.",
+      "cik": 1388319
+    },
+    {
+      "ticker": "SRGAQ",
+      "name": "SURGALIGN HOLDINGS, INC.",
+      "cik": 1760173
+    },
+    {
+      "ticker": "PCNT",
+      "name": "Point of Care Nano-Technology, Inc.",
+      "cik": 1504239
+    },
+    {
+      "ticker": "RTSL",
+      "name": "Rapid Therapeutic Science Laboratories, Inc.",
+      "cik": 1575659
+    },
+    {
+      "ticker": "ATNXQ",
+      "name": "Athenex, Inc.",
+      "cik": 1300699
+    },
+    {
+      "ticker": "CDAKQ",
+      "name": "Codiak BioSciences, Inc.",
+      "cik": 1659352
+    },
+    {
+      "ticker": "NNRX",
+      "name": "NUTRANOMICS, INC.",
+      "cik": 1451433
+    },
+    {
+      "ticker": "PHASQ",
+      "name": "PhaseBio Pharmaceuticals Inc",
+      "cik": 1169245
+    },
+    {
+      "ticker": "RNVA",
+      "name": "Rennova Health, Inc.",
+      "cik": 931059
+    },
+    {
+      "ticker": "ACUR",
+      "name": "ACURA PHARMACEUTICALS, INC",
+      "cik": 786947
+    },
+    {
+      "ticker": "STAB",
+      "name": "Statera Biopharma, Inc.",
+      "cik": 1318641
+    },
+    {
+      "ticker": "ALNAQ",
+      "name": "Allena Pharmaceuticals, Inc.",
+      "cik": 1624658
+    },
+    {
+      "ticker": "LHDXQ",
+      "name": "Lucira Health, Inc.",
+      "cik": 1652724
+    },
+    {
+      "ticker": "PLXPQ",
+      "name": "PLx Pharma Winddown Corp.",
+      "cik": 1497504
+    },
+    {
+      "ticker": "ONCSQ",
+      "name": "ONCOSEC MEDICAL Inc",
+      "cik": 1444307
+    },
+    {
+      "ticker": "CBDL",
+      "name": "CBD Life Sciences Inc.",
+      "cik": 1776073
+    },
+    {
+      "ticker": "NISM",
+      "name": "Newsight Imaging Ltd.",
+      "cik": 1956552
+    },
+    {
+      "ticker": "TURB",
+      "name": "Turbo Energy, S.A.",
+      "cik": 1963439
+    },
+    {
+      "ticker": "XYGJ",
+      "name": "Fortune Joy International Acquisition Corp",
+      "cik": 1885840
+    },
+    {
+      "ticker": "GXXY",
+      "name": "Galexxy Holdings, Inc.",
+      "cik": 1481585
+    },
+    {
+      "ticker": "NMRA",
+      "name": "Neumora Therapeutics, Inc.",
+      "cik": 1885522
+    },
+    {
+      "ticker": "GPAK",
+      "name": "Gamer Pakistan Inc",
+      "cik": 1948884
+    },
+    {
+      "ticker": "SRBK",
+      "name": "SR Bancorp, Inc.",
+      "cik": 1951276
+    },
+    {
+      "ticker": "PMEC",
+      "name": "Primech Holdings Ltd",
+      "cik": 1891944
+    },
+    {
+      "ticker": "INHD",
+      "name": "INNO HOLDINGS INC.",
+      "cik": 1961847
+    },
+    {
+      "ticker": "YMAT",
+      "name": "J-Star Holding Co., Ltd.",
+      "cik": 1875016
+    },
+    {
+      "ticker": "ALEH",
+      "name": "ALE Group Holding Ltd",
+      "cik": 1806905
+    },
+    {
+      "ticker": "RPGL",
+      "name": "Republic Power Group Ltd",
+      "cik": 1912884
+    },
+    {
+      "ticker": "FLXG",
+      "name": "Flexi Group Holdings Ltd",
+      "cik": 1965044
+    },
+    {
+      "ticker": "PFAB",
+      "name": "PreTam Holdings Inc.",
+      "cik": 1975992
+    },
+    {
+      "ticker": "SVMH",
+      "name": "SRIVARU Holding Ltd",
+      "cik": 1973368
+    },
+    {
+      "ticker": "MDLS",
+      "name": "MDNA Life Sciences, Inc.",
+      "cik": 1645108
+    },
+    {
+      "ticker": "GELS",
+      "name": "Gelteq Ltd",
+      "cik": 1920092
+    },
+    {
+      "ticker": "GFCX",
+      "name": "GoodFaith Technology Inc.",
+      "cik": 1937692
+    },
+    {
+      "ticker": "KVYO",
+      "name": "Klaviyo, Inc.",
+      "cik": 1835830
+    },
+    {
+      "ticker": "DRFY",
+      "name": "Droneify Holdings Ltd",
+      "cik": 1947971
+    },
+    {
+      "ticker": "FLYF",
+      "name": "Flewber Global Inc.",
+      "cik": 1864776
+    },
+    {
+      "ticker": "ILLR",
+      "name": "Triller Corp.",
+      "cik": 1936037
+    },
+    {
+      "ticker": "MSTH",
+      "name": "Mystic Holdings Inc./NV",
+      "cik": 1790320
+    },
+    {
+      "ticker": "GDLT",
+      "name": "Greifenberg Digital Ltd",
+      "cik": 1947250
+    },
+    {
+      "ticker": "RPET",
+      "name": "New Ruipeng Pet Group Inc.",
+      "cik": 1841931
+    },
+    {
+      "ticker": "FBYD",
+      "name": "Falcon's Beyond Global, Inc.",
+      "cik": 1937987
+    },
+    {
+      "ticker": "DTCK",
+      "name": "DAVIS COMMODITIES Ltd",
+      "cik": 1949478
+    },
+    {
+      "ticker": "BSME",
+      "name": "MED EIBY Holding Co., Ltd",
+      "cik": 1905951
+    },
+    {
+      "ticker": "EHGO",
+      "name": "EShallGo Inc.",
+      "cik": 1879754
+    },
+    {
+      "ticker": "UMAC",
+      "name": "Unusual Machines, Inc.",
+      "cik": 1956955
+    },
+    {
+      "ticker": "VOCO",
+      "name": "Vocodia Holdings Corp",
+      "cik": 1880431
+    },
+    {
+      "ticker": "WEIB",
+      "name": "Weiss Strategic Interval Fund",
+      "cik": 1717976
+    },
+    {
+      "ticker": "XJET",
+      "name": "XJet Ltd.",
+      "cik": 1960081
+    },
+    {
+      "ticker": "BNPZY",
+      "name": "BNP PARIBAS",
+      "cik": 310732
+    },
+    {
+      "ticker": "AIMA",
+      "name": "Aimfinity Investment Corp. I",
+      "cik": 1903464
+    },
+    {
+      "ticker": "NCEW",
+      "name": "New Century Logistics (BVI) Ltd",
+      "cik": 1968043
+    },
+    {
+      "ticker": "GLXY",
+      "name": "Galaxy Digital Inc.",
+      "cik": 1859392
+    },
+    {
+      "ticker": "AEIB",
+      "name": "AEI CapForce II Investment Corp",
+      "cik": 1875655
+    },
+    {
+      "ticker": "GLXG",
+      "name": "Galaxy Payroll Group Ltd",
+      "cik": 1905920
+    },
+    {
+      "ticker": "CRML",
+      "name": "Critical Metals Corp.",
+      "cik": 1951089
+    },
+    {
+      "ticker": "MTEN",
+      "name": "Mingteng International Corp Inc.",
+      "cik": 1948099
+    },
+    {
+      "ticker": "ZXTY",
+      "name": "ZHONGXING HOLDING GROUP LTD",
+      "cik": 1988979
+    },
+    {
+      "ticker": "EGOX",
+      "name": "Next.e.GO B.V.",
+      "cik": 1942808
+    },
+    {
+      "ticker": "ZTOP",
+      "name": "Zi Toprun Acquisition Corp.",
+      "cik": 1869901
+    },
+    {
+      "ticker": "ZLME",
+      "name": "Zhanling International Ltd",
+      "cik": 1489300
+    },
+    {
+      "ticker": "INTM",
+      "name": "INTERMEDIA CLOUD COMMUNICATIONS, INC.",
+      "cik": 1835104
+    },
+    {
+      "ticker": "VLTO",
+      "name": "Veralto Corp",
+      "cik": 1967680
+    },
+    {
+      "ticker": "RLND",
+      "name": "RoyaLand Co Ltd.",
+      "cik": 1924064
+    },
+    {
+      "ticker": "NBBK",
+      "name": "NB Bancorp, Inc.",
+      "cik": 1979330
+    },
+    {
+      "ticker": "HGIA",
+      "name": "HENGGUANG HOLDING CO, Ltd",
+      "cik": 1868110
+    },
+    {
+      "ticker": "JDRR",
+      "name": "F3 Platform Biologics INC",
+      "cik": 1786888
+    },
+    {
+      "ticker": "CVTO",
+      "name": "Covalto Ltd.",
+      "cik": 1943661
+    },
+    {
+      "ticker": "RVR",
+      "name": "REV Renewables, Inc.",
+      "cik": 1891367
+    },
+    {
+      "ticker": "FPAQ",
+      "name": "FPA ENERGY ACQUISITION CORP.",
+      "cik": 1946485
+    },
+    {
+      "ticker": "LRHC",
+      "name": "La Rosa Holdings Corp.",
+      "cik": 1879403
+    },
+    {
+      "ticker": "KVAC",
+      "name": "Keen Vision Acquisition Corp.",
+      "cik": 1889983
+    },
+    {
+      "ticker": "AITR",
+      "name": "AI Transportation Acquisition Corp",
+      "cik": 1966734
+    },
+    {
+      "ticker": "SAVU",
+      "name": "BioLife4D Corp",
+      "cik": 1714919
+    },
+    {
+      "ticker": "HXHX",
+      "name": "Haoxin Holdings Ltd",
+      "cik": 1936817
+    },
+    {
+      "ticker": "GOSC",
+      "name": "Giant Oak Acquisition Corp",
+      "cik": 1858939
+    },
+    {
+      "ticker": "CAPT",
+      "name": "Captivision Inc.",
+      "cik": 1967478
+    },
+    {
+      "ticker": "TSIO",
+      "name": "Thornburg Strategic Income Opportunities Trust",
+      "cik": 1900830
+    },
+    {
+      "ticker": "WDHI",
+      "name": "Worldwide Diversified Holdings, Inc",
+      "cik": 1826474
+    },
+    {
+      "ticker": "DAZS",
+      "name": "DA AI ZHI SHUI INTERNATIONAL HOLDING GROUP LTD",
+      "cik": 1967078
+    },
+    {
+      "ticker": "NYX",
+      "name": "NYIAX, INC.",
+      "cik": 1679379
+    },
+    {
+      "ticker": "NEAT",
+      "name": "Noble Education Acquisition Corp.",
+      "cik": 1877332
+    },
+    {
+      "ticker": "BZFL",
+      "name": "BOZHI FANGLUE INTERNATIONAL INVESTMENT GROUP CO LTD",
+      "cik": 1959304
+    },
+    {
+      "ticker": "ELGP",
+      "name": "Elate Group, Inc.",
+      "cik": 1885493
+    },
+    {
+      "ticker": "PMTM",
+      "name": "Prometheum, Inc.",
+      "cik": 1718271
+    },
+    {
+      "ticker": "ATGL",
+      "name": "Alpha Technology Group Ltd",
+      "cik": 1967621
+    },
+    {
+      "ticker": "PSIG",
+      "name": "PSI Group Holdings Ltd.",
+      "cik": 1917890
+    },
+    {
+      "ticker": "IMSV",
+      "name": "IMMRSIV Inc.",
+      "cik": 1936574
+    },
+    {
+      "ticker": "LGCL",
+      "name": "Lucas GC Ltd",
+      "cik": 1954694
+    },
+    {
+      "ticker": "LEWY",
+      "name": "LEEWAY SERVICES, INC.",
+      "cik": 1888780
+    },
+    {
+      "ticker": "DVGR",
+      "name": "Digital Virgo Group S.A.",
+      "cik": 1960074
+    },
+    {
+      "ticker": "LBGJ",
+      "name": "Li Bang International Corp Inc.",
+      "cik": 1896425
+    },
+    {
+      "ticker": "ODRS",
+      "name": "Outdoor Specialty Products, Inc.",
+      "cik": 1610718
+    },
+    {
+      "ticker": "RYET",
+      "name": "Ruanyun Edai Technology Inc.",
+      "cik": 1873454
+    },
+    {
+      "ticker": "UFND",
+      "name": "Unifund Financial Technologies, Inc.",
+      "cik": 1978124
+    },
+    {
+      "ticker": "ALKD",
+      "name": "Alkaid Acquisition Corp.",
+      "cik": 1927309
+    },
+    {
+      "ticker": "CDTG",
+      "name": "CDT Environmental Technology Investment Holdings Ltd",
+      "cik": 1793895
+    },
+    {
+      "ticker": "SCIT",
+      "name": "Sancai Holding Group Ltd.",
+      "cik": 1803487
+    },
+    {
+      "ticker": "ACUT",
+      "name": "Accustem Sciences Inc.",
+      "cik": 1850767
+    },
+    {
+      "ticker": "BOUW",
+      "name": "Boustead Wavefront Inc.",
+      "cik": 1909142
+    },
+    {
+      "ticker": "WBUY",
+      "name": "WEBUY GLOBAL LTD",
+      "cik": 1946703
+    },
+    {
+      "ticker": "BGAC",
+      "name": "Biotech Group Acquisition Corp",
+      "cik": 1916902
+    },
+    {
+      "ticker": "MJID",
+      "name": "Majestic Ideal Holdings Ltd",
+      "cik": 1897532
+    },
+    {
+      "ticker": "SKUR",
+      "name": "Sekur Private Data Ltd.",
+      "cik": 1771755
+    },
+    {
+      "ticker": "INTJ",
+      "name": "Intelligent Group Ltd",
+      "cik": 1916416
+    },
+    {
+      "ticker": "ZDYM",
+      "name": "ZHIDING YUEMEI TECHNOLOGY CO., LTD",
+      "cik": 1988932
+    },
+    {
+      "ticker": "CGTH",
+      "name": "Creative Global Technology Holdings Ltd",
+      "cik": 1967822
+    },
+    {
+      "ticker": "RYZB",
+      "name": "RayzeBio, Inc.",
+      "cik": 1825367
+    },
+    {
+      "ticker": "LVER",
+      "name": "Lever Global Corp",
+      "cik": 1932244
+    },
+    {
+      "ticker": "PAPL",
+      "name": "Pineapple Financial Inc.",
+      "cik": 1938109
+    },
+    {
+      "ticker": "PGRM",
+      "name": "Panagram Capital, LLC",
+      "cik": 1884434
+    },
+    {
+      "ticker": "TRSG",
+      "name": "Tungray Technologies Inc",
+      "cik": 1943444
+    },
+    {
+      "ticker": "LIAI",
+      "name": "LEMENG HOLDINGS LTD",
+      "cik": 1887799
+    },
+    {
+      "ticker": "LRE",
+      "name": "LEAD REAL ESTATE CO., LTD",
+      "cik": 1888980
+    },
+    {
+      "ticker": "BRNI",
+      "name": "Beroni Group Ltd",
+      "cik": 1851651
+    },
+    {
+      "ticker": "MDRN",
+      "name": "Modern Mining Technology Corp.",
+      "cik": 1898722
+    },
+    {
+      "ticker": "TDAI",
+      "name": "Thornburg Durable Allocation & Income Trust",
+      "cik": 1904958
+    },
+    {
+      "ticker": "DXYZ",
+      "name": "Destiny Tech100 Inc.",
+      "cik": 1843974
+    },
+    {
+      "ticker": "VSME",
+      "name": "VS MEDIA Holdings Ltd",
+      "cik": 1951294
+    },
+    {
+      "ticker": "WIN",
+      "name": "Garden Stage Ltd",
+      "cik": 1954269
+    },
+    {
+      "ticker": "AQUB",
+      "name": "Aquarius II Acquisition Corp.",
+      "cik": 1863974
+    },
+    {
+      "ticker": "HXSZ",
+      "name": "HONGXU SHANGZENG GLOBAL HOLDING LTD",
+      "cik": 1990204
+    },
+    {
+      "ticker": "AVRW",
+      "name": "Avenir Wellness Solutions, Inc.",
+      "cik": 1643301
+    },
+    {
+      "ticker": "UBXG",
+      "name": "U-BX Technology Ltd.",
+      "cik": 1888525
+    },
+    {
+      "ticker": "JJOC",
+      "name": "JJ Opportunity Corp.",
+      "cik": 1861733
+    },
+    {
+      "ticker": "MDLB",
+      "name": "Medlab Clinical Ltd.",
+      "cik": 1940322
+    },
+    {
+      "ticker": "QETA",
+      "name": "Quetta Acquisition Corp",
+      "cik": 1978528
+    },
+    {
+      "ticker": "DRPO",
+      "name": "Draganfly Inc.",
+      "cik": 1786286
+    },
+    {
+      "ticker": "AMGS",
+      "name": "Prospect Energy Holdings Corp.",
+      "cik": 1974952
+    },
+    {
+      "ticker": "YIBO",
+      "name": "Planet Image International Ltd",
+      "cik": 1868395
+    },
+    {
+      "ticker": "TWEN",
+      "name": "T20 HOLDINGS LTD.",
+      "cik": 1926451
+    },
+    {
+      "ticker": "WETO",
+      "name": "Webus International Ltd.",
+      "cik": 1941158
+    },
+    {
+      "ticker": "OLSI",
+      "name": "Origin Life Sciences, Inc.",
+      "cik": 1573901
+    },
+    {
+      "ticker": "CRGT",
+      "name": "Cortigent, Inc.",
+      "cik": 1958489
+    },
+    {
+      "ticker": "CECL",
+      "name": "CECIL BANCORP INC",
+      "cik": 926865
+    },
+    {
+      "ticker": "HBER",
+      "name": "HUBEIER GROUP LTD.",
+      "cik": 1958839
+    },
+    {
+      "ticker": "AUMB",
+      "name": "AUM Biosciences Ltd",
+      "cik": 1957252
+    },
+    {
+      "ticker": "ODDB",
+      "name": "Odd Burger Corp",
+      "cik": 1949766
+    },
+    {
+      "ticker": "BNTY",
+      "name": "Bounty Minerals, Inc.",
+      "cik": 1935398
+    },
+    {
+      "ticker": "USEE",
+      "name": "USEE ELECTRONIC COMMERCE LTD",
+      "cik": 1970653
+    },
+    {
+      "ticker": "CTWO",
+      "name": "COTWO ADVISORS PHYSICAL EUROPEAN CARBON ALLOWANCE TRUST",
+      "cik": 1958928
+    },
+    {
+      "ticker": "VITT",
+      "name": "Vittoria Ltd",
+      "cik": 1960348
+    },
+    {
+      "ticker": "NNAG",
+      "name": "99 Acquisition Group Inc.",
+      "cik": 1950429
+    },
+    {
+      "ticker": "UNFL",
+      "name": "Unifoil Holdings, Inc.",
+      "cik": 1965671
+    },
+    {
+      "ticker": "BDMD",
+      "name": "Baird Medical Investment Holdings Ltd",
+      "cik": 1982444
+    },
+    {
+      "ticker": "ELEP",
+      "name": "Elephant Oil Corp.",
+      "cik": 1865833
+    },
+    {
+      "ticker": "CKHL",
+      "name": "Chi Ko Holdings Ltd",
+      "cik": 1923171
+    },
+    {
+      "ticker": "FDAN",
+      "name": "FD TECHNOLOGY INC.",
+      "cik": 1874137
+    },
+    {
+      "ticker": "LOBO",
+      "name": "LOBO EV TECHNOLOGIES LTD",
+      "cik": 1932072
+    },
+    {
+      "ticker": "TURO",
+      "name": "Turo Inc.",
+      "cik": 1514587
+    },
+    {
+      "ticker": "HUHU",
+      "name": "HUHUTECH International Group Inc.",
+      "cik": 1945415
+    },
+    {
+      "ticker": "VACX",
+      "name": "Vistas Acquisition Co II Inc.",
+      "cik": 1865249
+    },
+    {
+      "ticker": "CBIH",
+      "name": "Cannabis Bioscience International Holdings, Inc.",
+      "cik": 1411057
+    },
+    {
+      "ticker": "OPHV",
+      "name": "Opti-Harvest, Inc.",
+      "cik": 1753945
+    },
+    {
+      "ticker": "FBGL",
+      "name": "FBS Global Ltd",
+      "cik": 1938534
+    },
+    {
+      "ticker": "NVNI",
+      "name": "Nvni Group Ltd",
+      "cik": 1965143
+    },
+    {
+      "ticker": "CCTG",
+      "name": "CCSC Technology International Holdings Ltd",
+      "cik": 1931717
+    },
+    {
+      "ticker": "RVGO",
+      "name": "RVELOCITY, INC.",
+      "cik": 1886444
+    },
+    {
+      "ticker": "SCRP",
+      "name": "Scripps Safe, Inc.",
+      "cik": 1912498
+    },
+    {
+      "ticker": "FUPEY",
+      "name": "Fuchs Petrolub SE/ADR",
+      "cik": 1534043
+    },
+    {
+      "ticker": "CNCL",
+      "name": "CANCER CAPITAL CORP",
+      "cik": 1130889
+    },
+    {
+      "ticker": "SFWJ",
+      "name": "Software Effective Solutions, Corp.",
+      "cik": 1919847
+    },
+    {
+      "ticker": "AIRE",
+      "name": "reAlpha Tech Corp.",
+      "cik": 1859199
+    },
+    {
+      "ticker": "IAMR",
+      "name": "Medical Industries of the Americas",
+      "cik": 1728162
+    },
+    {
+      "ticker": "SLDX",
+      "name": "Stella Diagnostics, Inc.",
+      "cik": 1827620
+    },
+    {
+      "ticker": "FLCT",
+      "name": "Felicitex Therapeutics Inc.",
+      "cik": 1912287
+    },
+    {
+      "ticker": "CJOY",
+      "name": "Cine Top Culture Holdings Ltd.",
+      "cik": 1895159
+    },
+    {
+      "ticker": "SUBL",
+      "name": "BioLingus (Cayman) Ltd",
+      "cik": 1966522
+    },
+    {
+      "ticker": "BCGF",
+      "name": "BCGF Acquisition Corp.",
+      "cik": 1932629
+    },
+    {
+      "ticker": "AFJK",
+      "name": "Aimei Health Technology Co., Ltd.",
+      "cik": 1979005
+    },
+    {
+      "ticker": "YBZN",
+      "name": "Yi Po International Holdings Ltd",
+      "cik": 1885514
+    },
+    {
+      "ticker": "MISN",
+      "name": "Mission Control Acquisition Corp.",
+      "cik": 1969981
+    },
+    {
+      "ticker": "EMTX",
+      "name": "EMULATE THERAPEUTICS, INC.",
+      "cik": 1254348
+    },
+    {
+      "ticker": "MXRX",
+      "name": "MED-X, INC.",
+      "cik": 1620704
+    },
+    {
+      "ticker": "NTCL",
+      "name": "NetClass Technology Inc",
+      "cik": 1927578
+    },
+    {
+      "ticker": "EPWK",
+      "name": "EPWK Holdings Ltd.",
+      "cik": 1900720
+    },
+    {
+      "ticker": "ANVI",
+      "name": "ANVI GLOBAL HOLDINGS, INC.",
+      "cik": 1570132
+    },
+    {
+      "ticker": "MDRI",
+      "name": "Midori Group Inc.",
+      "cik": 1910053
+    },
+    {
+      "ticker": "SFLM",
+      "name": "SFLMaven Corp.",
+      "cik": 1086313
+    },
+    {
+      "ticker": "NONOF",
+      "name": "NOVO NORDISK A S",
+      "cik": 353278
+    },
+    {
+      "ticker": "AZNCF",
+      "name": "ASTRAZENECA PLC",
+      "cik": 901832
+    },
+    {
+      "ticker": "NVSEF",
+      "name": "NOVARTIS AG",
+      "cik": 1114448
+    },
+    {
+      "ticker": "SNYNF",
+      "name": "Sanofi",
+      "cik": 1121404
+    },
+    {
+      "ticker": "CMXHF",
+      "name": "CSL LTD",
+      "cik": 1274152
+    },
+    {
+      "ticker": "GLAXF",
+      "name": "GSK plc",
+      "cik": 1131399
+    },
+    {
+      "ticker": "LDDD",
+      "name": "Longduoduo Co Ltd",
+      "cik": 1892316
+    },
+    {
+      "ticker": "PRDS",
+      "name": "PARDES BIOSCIENCES, INC.",
+      "cik": 1822711
+    },
+    {
+      "ticker": "FBIOP",
+      "name": "Fortress Biotech, Inc.",
+      "cik": 1429260
+    },
+    {
+      "ticker": "SIOX",
+      "name": "Sio Gene Therapies Inc.",
+      "cik": 1636050
+    },
+    {
+      "ticker": "CYCCP",
+      "name": "Cyclacel Pharmaceuticals, Inc.",
+      "cik": 1130166
+    },
+    {
+      "ticker": "ACRDF",
+      "name": "Acreage Holdings, Inc.",
+      "cik": 1762359
+    },
+    {
+      "ticker": "TMDIF",
+      "name": "TITAN MEDICAL INC",
+      "cik": 840551
+    },
+    {
+      "ticker": "PMEDF",
+      "name": "Predictmedix Inc.",
+      "cik": 1868079
+    },
+    {
+      "ticker": "APGN",
+      "name": "Apexigen, Inc.",
+      "cik": 1814140
+    },
+    {
+      "ticker": "MNK",
+      "name": "Mallinckrodt plc",
+      "cik": 1567892
+    },
+    {
+      "ticker": "ACGN",
+      "name": "Aceragen, Inc.",
+      "cik": 861838
+    },
+    {
+      "ticker": "WSRC",
+      "name": "WESTERN SIERRA RESOURCE Corp",
+      "cik": 42050
+    },
+    {
+      "ticker": "RGRX",
+      "name": "REGENERX BIOPHARMACEUTICALS INC",
+      "cik": 707511
+    },
+    {
+      "ticker": "ENDPQ",
+      "name": "Endo International plc",
+      "cik": 1593034
+    },
+    {
+      "ticker": "AGNPF",
+      "name": "Algernon Pharmaceuticals Inc.",
+      "cik": 1642178
+    },
+    {
+      "ticker": "SNNC",
+      "name": "Sibannac, Inc.",
+      "cik": 1313938
+    },
+    {
+      "ticker": "CENBF",
+      "name": "CEN BIOTECH INC",
+      "cik": 1653821
+    },
+    {
+      "ticker": "VYNT",
+      "name": "Vyant Bio, Inc.",
+      "cik": 1349929
+    },
+    {
+      "ticker": "IMUC",
+      "name": "EOM Pharmaceutical Holdings, Inc.",
+      "cik": 822411
+    },
+    {
+      "ticker": "ONCR",
+      "name": "Oncorus, Inc.",
+      "cik": 1671818
+    },
+    {
+      "ticker": "PTEIQ",
+      "name": "POLARITYTE, INC.",
+      "cik": 1076682
+    },
+    {
+      "ticker": "PHCG",
+      "name": "Pure Harvest Corporate Group, Inc.",
+      "cik": 1351573
+    },
+    {
+      "ticker": "CLCS",
+      "name": "Cell Source, Inc.",
+      "cik": 1569340
+    },
+    {
+      "ticker": "CELUW",
+      "name": "Celularity Inc",
+      "cik": 1752828
+    },
+    {
+      "ticker": "XOMAO",
+      "name": "XOMA Corp",
+      "cik": 791908
+    },
+    {
+      "ticker": "XOMAP",
+      "name": "XOMA Corp",
+      "cik": 791908
+    },
+    {
+      "ticker": "SBFMW",
+      "name": "Sunshine Biopharma, Inc",
+      "cik": 1402328
+    },
+    {
+      "ticker": "SABSW",
+      "name": "SAB Biotherapeutics, Inc.",
+      "cik": 1833214
+    },
+    {
+      "ticker": "NRXPW",
+      "name": "NRX Pharmaceuticals, Inc.",
+      "cik": 1719406
+    },
+    {
+      "ticker": "STRRP",
+      "name": "STAR EQUITY HOLDINGS, INC.",
+      "cik": 707388
+    }
+  ]
+}
