@@ -27,12 +27,12 @@ const showResults=(query, setResults)=>{
         .then((responses)=>{
             const fuzzyPattern=new RegExp(`${query}`, 'i');
             const companyInfo=func.getCompanies(responses[1], fuzzyPattern)
-            const companyNames=companyInfo.map(company=>(company.name))
             let compounds=null;
             let completeArr=[];
 
             if (responses[0].data.dictionary_terms){
                 compounds=responses[0].data.dictionary_terms.compound
+                compounds=compounds.slice(0,2)
                 completeArr=[
                     ...compounds.map((name)=>({name, type: 'compound'})),
                     ...companyInfo.map((company)=>({name: company.name, ticker:company.ticker, cik:company.cik, type: 'company'})),
@@ -49,10 +49,6 @@ const showResults=(query, setResults)=>{
             })
             setResults(fuse.search(query)
             .map(result=>result.item))
-            
-            // compounds
-            // ? setResults(compounds.concat(companies))
-            // : setResults(companies)
         })
 //     return axios
 //     .get(drugURL)
