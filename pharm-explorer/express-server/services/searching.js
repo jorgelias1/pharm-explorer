@@ -33,6 +33,7 @@ const showResults=(query, setResults)=>{
             if (responses[0].data.dictionary_terms){
                 compounds=responses[0].data.dictionary_terms.compound
                 compounds=compounds.slice(0,2)
+                
                 completeArr=[
                     ...compounds.map((name)=>({name, type: 'compound'})),
                     ...companyInfo.map((company)=>({name: company.name, ticker:company.ticker, cik:company.cik, type: 'company'})),
