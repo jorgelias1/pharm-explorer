@@ -95,34 +95,109 @@ const getTrialsLogic=(name)=>{
 const getPressReleases=()=>{
   return axios.get(`http://127.0.0.1:3001/api/pressReleases`)
 }
-const filterPressReleases=()=>{
-  
+const filterPressReleases=async (urlArray)=>{
+  const regexArray = [
+    '\\b(?:expect\\s)?(?:topline\\s+(?:data|results|submission|study))[^.;]*?\\s+(?:expected\\s+(?:in|through|for|to\\s+be)|on\\s+track\\s+for|end\\s|in\\s|report\\s+(?:to(?:p)?line\\s+results)?\\s+in|expected|anticipated\\s+(?:\\.{3})?\\s*((?:(?:first|second|third|fourth)\\s+)?(?:date|in|for|by|Q\\d)[^;]*?))[^;]*?\\s+(?:the\\s+)?(((?:\\w+\\s+)?(?:\\d{1,4}(?:st|nd|rd|th)?(?:[/\\s]\\d{1,4})?|(?:mid-)?(?:\\w+\\s+)?\\d{1,4}(?:[/\\s]\\d{1,4})?|Q\\d))\\b).*?',
+    '\\btopline\\s+(?:data|results)\\s+(?:from|of|in)\\s+(?:.*?\\s+)?(((?:expected|readout)\\s+(?:early\\s+)?((?:(?:first|second|third|fourth)\\s+)?(?:\\w+\\s+)?(?:\\.{3})?\\s*\\d{1,4}(?:\\s*[HQ]\\d)?)\\b)).*?',
+    '\\btopline\\s+data[^.;]*?\\s+(((?:expected|read\\s+out|on\\s+track\\sto\\s+(?:report\\s+to(?:p)?line\\s+data|read\\s+out))[^.;]*?\\s+(?:early\\s+)?((?:(?:first|second|third|fourth)\\s+)?(?:\\w+\\s+)?(?:\\.{3})?\\s*\\d{4})\\b)).*?',
+    '\\b(((?:report\\s+to(?:p)?line\\s+data|share\\s+topline\\s+data|expects\\s+to\\s+report\\s+to(?:p)?line\\s+results)\\s+(?:in\\s+(?:the\\s+)?)?(((?:(?:first|second|third|fourth)\\s+)?quarter\\s+of\\s+\\d{4})\\b))).*?',
+    '\\b(((?:report\\s+to(?:p)?line\\s+data|share\\s+topline\\s+data|expects\\s+to\\s+report\\s+to(?:p)?line\\s+results)[^.;]*?(?:in\\s+(?:the\\s+)?)?(((?:(?:first|second|third|fourth)\\s+)?quarter\\s+of\\s+\\d{4})\\b))).*?',
+    '\\b(on\\s+track\\s+to\\s+report\\s+topline\\s+data\\s+(((?:(?:first|second|third|fourth)\\s+)?(?:in|for|on\\s+track\\s+to|read\\s+out\\s+in)\\s+(?:the\\s+)?(?:early\\s+)?((?:\\w+\\s+)?(?:\\.{3})?\\s*\\d{4}))\\b)).*?',
+    '\\b(?:\\(?)PDUFA(?:\\))?[^.!?]*?(?:date|action date|target action date)[^.!?]*?(\\d{4})\\b'
+]
+const dateExpression = [
+  '\\b((?:(?:first|second|third|fourth|middle)\\s+)?(?:(?:Q\\d|quarter|first-half|second-half|half|mid-|end\\s+of|late))[^.]*?)\\s+?(((?:\\w+\\s+)?(?:\\d{1,4}(?:st|nd|rd|th)?(?:[/\\s]\\d{1,4})?|(?:mid-|end\\s+of)?(?:\\w+\\s+)?\\d{1,4}(?:[/\\s]\\d{1,4})?|Q\\d)|(?:[A-Z][a-z]+)\\s+\\d{1,2}))\\b',
+  '\\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+(?:(?:\\d{1,2},\\s+)?(?:of\\s+)?)\\d{4}\\b',
+];
+
+const relevantInfo=[];
+const maxConcurrentRequests=10;
+const delayBetweenRequests=1000;
+let currentRequestCount=0;
+  // thorough filtering of urls
+  console.log('length:', urlArray.length)
+  for (let i=0, n=urlArray.length; i<20; i++){
+    const url=urlArray[i].filingUrl
+    const cik=urlArray[i].cik;
+
+    (async ()=>{
+      try{
+        const response=await axios.get(url)
+        if (response.status===200){
+          // get first 750 words from the file to filter
+          const htmlContent=response.data
+          const $=load(htmlContent)
+          const text=$('body').text()
+          const limitedText=text.split(' ').slice(0, 750).join(' ')   
+          // find matching expressions + dates
+          // identify the type of event this is
+          let matchedSentence=null;
+          let matchedDate=null;
+          let type=null;
+          const PDUFAptrn = new RegExp(`\\b(?:\\(?)PDUFA(?:\\)?)\\b`, 'i');
+          const PDUFADatePtrn = new RegExp(`\\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+(?:(?:\\d{1,2},\\s+)?(?:of\\s+)?)\\d{4}\\b`, 'i');
+          for (const regexpression of regexArray){
+            let regex = new RegExp(regexpression, 'i')
+            const match=limitedText.match(regex)
+            // check for match and determine event type
+            if (match){
+              matchedSentence=match[0];
+              type = matchedSentence.match(PDUFAptrn)
+              ? 'PDUFA'
+              : 'topline'
+              // check if sentence has valid date structure
+              for (const exp of dateExpression){
+                let date = new RegExp(exp, 'i')
+                const dateMatch=matchedSentence.match(date)
+                if(dateMatch){
+                  matchedDate=dateMatch[0]
+                  if (type==='PDUFA' && !matchedSentence.match(PDUFADatePtrn)){
+                    matchedDate=null;
+                  }
+                  break;
+                }
+              }
+            }
+          }
+          if (matchedSentence && matchedDate){
+          relevantInfo.push({
+            matchedSentence,
+            matchedDate,
+            cik,
+            type,
+            url,
+          })
+        }
+        }
+      } catch (error){
+        console.error(error)
+      }
+  })()
+  // ensure no more than 10 axios requests/second
+  currentRequestCount++;
+  if ((currentRequestCount % maxConcurrentRequests)===0){
+    console.log('waiting', i)
+    await new Promise(resolve=>setTimeout(resolve, delayBetweenRequests))
+  }
 }
-// async function pressReleasesLogic(){
-//   // wait for SEC page to render content
-//   const browser=await puppeteer.launch();
-//   const page=await browser.newPage();
+  // filter out any duplicate events
+  const filteredEvents=checkForDuplicates(relevantInfo)
+  return filteredEvents
+}
 
-//   await page.goto('https://www.sec.gov/edgar/search/#/q=%25E2%2580%259Ctopline%2520results%25E2%2580%259D%2520AND%2520%25E2%2580%259Cexpects%2520to%2520report%2520topline%2520results%2520in%25E2%2580%259D%2520OR%2520%2522topline%2520results%2520expected%2520in%25E2%2580%259D%2520OR%2520%25E2%2580%259Ctopline%2520results%2520by%2522&dateRange=custom&startdt=2023-01-01&enddt=2023-09-16')
-//   await page.waitForSelector('.table tbody tr')
-//   const htmlContent=await page.content();
-//   const $ =load(htmlContent)
-
-//   const urls=[];
-
-//   $('.table tr').each((index, element)=>{
-//     console.log('start')
-//     const fileName=$(element).find('td a').attr('data-file-name')
-//     const fileNumber=$(element).find('td a').attr('data-adsh').replace(/-/g, '')
-//     const cik=$(element).find('td.cik.d-none').text().replace('CIK ', '').replace(/0+/, '')
-//     const filingUrl=`https://www.sec.gov/Archives/edgar/data/${cik}/${fileNumber}/${fileName}`
-    
-//     urls.push(filingUrl);
-//   })
-
-//   await browser.close();
-//   return urls;
-// }
+const checkForDuplicates=(events)=>{
+  console.log('checking')
+  const tmpSet=new Set();
+  const uniqueEvents=[];
+  for (const item of events){
+    const key=`${item.matchedSentence}-${item.matchedDate}-${item.cik}`
+    if (!tmpSet.has(key)){
+      tmpSet.add(key);
+      uniqueEvents.push(item);
+    }
+  }
+  return uniqueEvents
+}
 export default{
     getCompanies,
     getSVG,
@@ -132,5 +207,5 @@ export default{
     getTrials,
     getTrialsLogic,
     getPressReleases,
-    // pressReleasesLogic,
+    filterPressReleases,
 }

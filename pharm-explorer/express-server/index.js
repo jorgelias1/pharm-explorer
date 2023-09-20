@@ -64,44 +64,68 @@ app.get('/api/trials/:name', (request, response)=>{
 })
 app.get('/api/pressReleases', async(request, response)=>{
   async function pressReleasesLogic(){
+    const e=Date.now()
     // wait for SEC page to render content
-    const browser=await puppeteer.launch({
-      headless:'new'
-    });
-    const page=await browser.newPage();
-    const searchUrl=`https://www.sec.gov/edgar/search/#/q=%25E2%2580%259Ctopline%2520results%25E2%2580%259D%2520AND%2520%25E2%2580%259Cexpects%2520to%2520report%2520topline%2520results%2520in%25E2%2580%259D%2520OR%2520%2522topline%2520results%2520expected%2520in%25E2%2580%259D%2520OR%2520%25E2%2580%259Ctopline%2520results%2520by%25E2%2580%259D&dateRange=custom&category=form-cat1&startdt=2023-03-01&enddt=2023-09-16`
-    let allFileUrls=[]
-    let tmpUrl
-    for (let i=0;i<10;i++){
-      tmpUrl=searchUrl+`&page=${i+1}`
-      allFileUrls.push(tmpUrl)
-    }
-    await page.goto(searchUrl)
-    await page.waitForSelector('.table tbody tr')
-    const htmlContent=await page.content();
-    const $ =load(htmlContent)
-  
-    const urls=[];
-  
-    $('.table tr').each((index, element)=>{
-      if ($(element).find('td a').attr('data-adsh')){
-        const fileName=$(element).find('td a').attr('data-file-name')
-        const fileNumber=$(element).find('td a').attr('data-adsh').replace(/-/g, '')
-        const cik=$(element).find('td.cik.d-none').text().replace('CIK ', '').replace(/^0+/, '')
-        const filingUrl=`https://www.sec.gov/Archives/edgar/data/${cik}/${fileNumber}/${fileName}`
+    
+    let allFileUrls=[];
+    let searchUrl;
+    for (let i=0;i<2;i++){
+      searchUrl = (i===0)
+      ? `https://www.sec.gov/edgar/search/#/q=%2522topline%2520results%2522%2520OR%2520%2522topline%2520data%25E2%2580%259D%2520AND%2520%2522expects%2522%2520OR%2520%2522expected%2520by%2522%2520OR%2520%2522anticipated%2522&dateRange=custom&category=form-cat1&startdt=2023-03-01&enddt=2023-09-16`
+      : `https://www.sec.gov/edgar/search/#/q=PDUFA&dateRange=custom&category=form-cat1&startdt=2023-03-01&enddt=2023-09-16`
+    try{
+      const browser=await puppeteer.launch({
+        headless:'new'
+      });
+      const page=await browser.newPage();
+      await page.goto(searchUrl)
+      let hasNextPage=true;
+      let pageIndex=1;
+      while (hasNextPage){
+        await page.waitForSelector('.table tbody tr')
+        const htmlContent=await page.content();
+        const $ =load(htmlContent)
         
-        urls.push(filingUrl);
+        const noResultsDiv=await page.$('div#no-results-grid[style="display: none;"]')
+        if (!noResultsDiv){
+          hasNextPage=false;
+        }
+        else{
+        $('.table tr').each((index, element)=>{
+          if ($(element).find('td a').attr('data-adsh')){
+            const fileName=$(element).find('td a').attr('data-file-name')
+            const fileNumber=$(element).find('td a').attr('data-adsh').replace(/-/g, '')
+            const cik=$(element).find('td.cik.d-none').text().replace('CIK ', '').replace(/^0+/, '')
+            const filingUrl=`https://www.sec.gov/Archives/edgar/data/${cik}/${fileNumber}/${fileName}`;
+            
+            (i===0) 
+            ? allFileUrls.push({filingUrl, cik})
+            : allFileUrls.push({filingUrl, cik, newVersion: '2'})
+          }
+        })
+        let nextPageUrl=searchUrl+`&page=${pageIndex+1}`
+        pageIndex++;
+        await page.goto(nextPageUrl)
       }
-    })
-  
-    await browser.close();
-    return urls;
-  }
+    }
+      await page.close();
+      await browser.close();
+      }
+      catch(error) {
+        console.error(error)
+      } 
+      } 
+      const d=Date.now()
+      console.log(d-e)
+      return allFileUrls
+    }
   try{
     const urls=await pressReleasesLogic();
-    response.send(urls)
-  } catch(e){console.error(e)}
-
+    const responses=await svg.filterPressReleases(urls)
+    response.send(responses)
+  } catch(e){
+    console.error(e)
+  } 
 })
 
 const PORT = 3001
