@@ -97,17 +97,18 @@ const getPressReleases=()=>{
 }
 const filterPressReleases=async (urlArray)=>{
   const regexArray = [
-    '\\b(?:expect\\s)?(?:topline\\s+(?:data|results|submission|study))[^.;]*?\\s+(?:expected\\s+(?:in|through|for|to\\s+be)|on\\s+track\\s+for|end\\s|in\\s|report\\s+(?:to(?:p)?line\\s+results)?\\s+in|expected|anticipated\\s+(?:\\.{3})?\\s*((?:(?:first|second|third|fourth)\\s+)?(?:date|in|for|by|Q\\d)[^;]*?))[^;]*?\\s+(?:the\\s+)?(((?:\\w+\\s+)?(?:\\d{1,4}(?:st|nd|rd|th)?(?:[/\\s]\\d{1,4})?|(?:mid-)?(?:\\w+\\s+)?\\d{1,4}(?:[/\\s]\\d{1,4})?|Q\\d))\\b).*?',
+    '\\b(?:expect\\s)?(?:topline\\s+(?:data|results|submission|study))[^.;]*?\\s+(?:expected\\s+(?:in|through|for|to\\s+be)|on\\s+track\\s+for|end\\s|in\\s|report\\s+(?:to(?:p)?line\\s+results)?\\s+in|expected|anticipated\\s+(?:\\.{3})?\\s*((?:(?:first|second|third|fourth)\\s+)?(?:date|in|for|by|Q\\d|(?:1|2)\\H)[^;]*?))[^;]*?\\s+(?:the\\s+)?(((?:\\w+\\s+)?(?:\\d{1,4}(?:st|nd|rd|th)?(?:[/\\s]\\d{1,4})?|(?:mid-)?(?:\\w+\\s+)?\\d{1,4}(?:[/\\s]\\d{1,4})?|Q\\d))\\b).*?',
     '\\btopline\\s+(?:data|results)\\s+(?:from|of|in)\\s+(?:.*?\\s+)?(((?:expected|readout)\\s+(?:early\\s+)?((?:(?:first|second|third|fourth)\\s+)?(?:\\w+\\s+)?(?:\\.{3})?\\s*\\d{1,4}(?:\\s*[HQ]\\d)?)\\b)).*?',
     '\\btopline\\s+data[^.;]*?\\s+(((?:expected|read\\s+out|on\\s+track\\sto\\s+(?:report\\s+to(?:p)?line\\s+data|read\\s+out))[^.;]*?\\s+(?:early\\s+)?((?:(?:first|second|third|fourth)\\s+)?(?:\\w+\\s+)?(?:\\.{3})?\\s*\\d{4})\\b)).*?',
     '\\b(((?:report\\s+to(?:p)?line\\s+data|share\\s+topline\\s+data|expects\\s+to\\s+report\\s+to(?:p)?line\\s+results)\\s+(?:in\\s+(?:the\\s+)?)?(((?:(?:first|second|third|fourth)\\s+)?quarter\\s+of\\s+\\d{4})\\b))).*?',
     '\\b(((?:report\\s+to(?:p)?line\\s+data|share\\s+topline\\s+data|expects\\s+to\\s+report\\s+to(?:p)?line\\s+results)[^.;]*?(?:in\\s+(?:the\\s+)?)?(((?:(?:first|second|third|fourth)\\s+)?quarter\\s+of\\s+\\d{4})\\b))).*?',
     '\\b(on\\s+track\\s+to\\s+report\\s+topline\\s+data\\s+(((?:(?:first|second|third|fourth)\\s+)?(?:in|for|on\\s+track\\s+to|read\\s+out\\s+in)\\s+(?:the\\s+)?(?:early\\s+)?((?:\\w+\\s+)?(?:\\.{3})?\\s*\\d{4}))\\b)).*?',
-    '\\b(?:\\(?)PDUFA(?:\\))?[^.!?]*?(?:date|action date|target action date)[^.!?]*?(\\d{4})\\b'
+    '(?:[^\n.;-]{0,140}(\\b(?:\\(?)PDUFA(?:\\))?[^.:!?]{0,40}?(?:date|action date|target action date)(?!\\s+\\w*date\\b)[^.!?]{0,40}?(\\d{4})\\b))'
 ]
 const dateExpression = [
-  '\\b((?:(?:first|second|third|fourth|middle)\\s+)?(?:(?:Q\\d|quarter|first-half|second-half|half|mid-|end\\s+of|late))[^.]*?)\\s+?(((?:\\w+\\s+)?(?:\\d{1,4}(?:st|nd|rd|th)?(?:[/\\s]\\d{1,4})?|(?:mid-|end\\s+of)?(?:\\w+\\s+)?\\d{1,4}(?:[/\\s]\\d{1,4})?|Q\\d)|(?:[A-Z][a-z]+)\\s+\\d{1,2}))\\b',
+  '\\b((?:(?:first|second|third|fourth|middle)\\s+)?(?:(?:Q\\d\\s|(?:1|2)\\H\\s|quarter\\s|first-half\\s|second-half\\s|half\\s|mid-|mid\\s|end\\s+of\\s|late\\s))[^.]*?)+?(((?:\\w+\\s+)?(?:\\d{1,4}(?:st|nd|rd|th)?(?:[/\\s]\\d{1,4})?|(?:mid-|end\\s+of)?(?:\\w+\\s+)?\\d{1,4}(?:[/\\s]\\d{1,4})?|Q\\d)|(?:[A-Z][a-z]+)\\s+\\d{1,2}))\\b',
   '\\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+(?:(?:\\d{1,2},\\s+)?(?:of\\s+)?)\\d{4}\\b',
+
 ];
 
 const relevantInfo=[];
@@ -116,7 +117,7 @@ const delayBetweenRequests=1000;
 let currentRequestCount=0;
   // thorough filtering of urls
   console.log('length:', urlArray.length)
-  for (let i=0, n=urlArray.length; i<20; i++){
+  for (let i=0, n=urlArray.length; i<10; i++){
     const url=urlArray[i].filingUrl
     const cik=urlArray[i].cik;
 
@@ -134,6 +135,7 @@ let currentRequestCount=0;
           let matchedSentence=null;
           let matchedDate=null;
           let type=null;
+          
           const PDUFAptrn = new RegExp(`\\b(?:\\(?)PDUFA(?:\\)?)\\b`, 'i');
           const PDUFADatePtrn = new RegExp(`\\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+(?:(?:\\d{1,2},\\s+)?(?:of\\s+)?)\\d{4}\\b`, 'i');
           for (const regexpression of regexArray){
@@ -147,11 +149,16 @@ let currentRequestCount=0;
               : 'topline'
               // check if sentence has valid date structure
               for (const exp of dateExpression){
-                let date = new RegExp(exp, 'i')
+                let date = (type==='topline')
+                ? new RegExp(exp, 'i')
+                : new RegExp(exp, 'ig')
                 const dateMatch=matchedSentence.match(date)
                 if(dateMatch){
-                  matchedDate=dateMatch[0]
-                  if (type==='PDUFA' && !matchedSentence.match(PDUFADatePtrn)){
+                  matchedDate=dateMatch[0]                 
+                  if (type==='PDUFA'){
+                    matchedDate=dateMatch[dateMatch.length-1]
+                  }
+                  if (type==='PDUFA' && (!matchedDate.match(PDUFADatePtrn)||matchedDate.length>23)){
                     matchedDate=null;
                   }
                   break;
@@ -180,17 +187,29 @@ let currentRequestCount=0;
     await new Promise(resolve=>setTimeout(resolve, delayBetweenRequests))
   }
 }
-  // filter out any duplicate events
-  const filteredEvents=checkForDuplicates(relevantInfo)
-  return filteredEvents
+
+  // (1)getTickers
+  const eventsAndTickers=await getTickers(relevantInfo)
+  // (2)standardize dates to prepare for filtering and sorting
+  const standardizedEvents=standardizeDates(eventsAndTickers)
+  // (3)filter out any duplicate events.
+  const filteredEvents=checkForDuplicates(standardizedEvents)
+  // (4)filter past events
+  const finalEvents=filterPastDates(filteredEvents)
+  return finalEvents;
 }
 
 const checkForDuplicates=(events)=>{
-  console.log('checking')
+  // current tmpSet
   const tmpSet=new Set();
+  // database set returned from db function.
+  // const dbSet=returnedSetFromFunction;
   const uniqueEvents=[];
   for (const item of events){
-    const key=`${item.matchedSentence}-${item.matchedDate}-${item.cik}`
+    const key=`${item.matchedSentence}-${item.matchedDate}-${item.cik}-${item.type}`
+    // if item is not in tmpSet-
+    // or in the database,
+    // push it to uniqueEvents.
     if (!tmpSet.has(key)){
       tmpSet.add(key);
       uniqueEvents.push(item);
@@ -198,6 +217,110 @@ const checkForDuplicates=(events)=>{
   }
   return uniqueEvents
 }
+const standardizeDates=(events)=>{
+    const quarterPtrn=new RegExp('\\b(?:Q(\\d)|((?:first|second|third|fourth))\\s+quarter)\\s+(?:of\\s+)?(\\d{1,4})\\b', 'i');
+    const halfPtrn=new RegExp('\\b(?:((?:1|2))\\H|((?:first|second))\\s+half)\\s+(?:of\\s+)?(\\d{1,4})\\b','i');
+    const middlePtrn=new RegExp('\\b((?:mid\\s|mid-|middle\\s))+(?:of\\s+)?(\\d{1,4})\\b','i');
+    const endPtrn=new RegExp('\\b((?:end|late))\\s+(?:of\\s+)?(\\d{1,4})\\b','i');
+    const standardPtrn=new RegExp('\\b((?:January|February|March|April|May|June|July|August|September|October|November|December))\\s+(?:(?:(\\d{1,2}),\\s+)?(?:of\\s+)?)(\\d{4})\\b');
+
+    const datePatternArray=[
+      {pattern: quarterPtrn, quarter: true},
+      {pattern: halfPtrn, half: true},
+      {pattern: middlePtrn, middle: true},
+      {pattern: endPtrn, end: true},
+      {pattern: standardPtrn, standard: true},
+    ]
+    const numberMap={
+      first: 1,
+      second: 2,
+      third: 3,
+      fourth: 4,
+    }
+      const standardizedEvents=[];
+      events.map(event=>{
+      for (const pattern of datePatternArray){
+        let month=null;
+        let day=null;
+        let year=null;
+        const match = event.matchedDate.match(pattern.pattern)
+        if (match){
+          if (pattern.quarter){
+            const num=match[1]||numberMap[match[2]]
+            month=num*3
+            day='28'
+            year=match[match.length-1]
+            event.standardDate=`${month}/${day}/${year}`
+          }
+          else if (pattern.half){
+            const num=match[1]||numberMap[match[2]]
+            month=num*6
+            day='28'
+            year=match[match.length-1]
+            event.standardDate=`${month}/${day}/${year}`
+          }
+          else if (pattern.middle){
+            month=8
+            day='31'
+            year=match[match.length-1]
+            event.standardDate=`${month}/${day}/${year}`
+          }
+          else if (pattern.end){
+            month=12
+            day='31'
+            year=match[match.length-1]
+            event.standardDate=`${month}/${day}/${year}`
+          }
+          else if (pattern.standard){
+            month=match[1]
+            day=match[2]||'28'
+            if (day.length===1){
+              day='0'+day
+            }
+            year=match[match.length-1]
+            event.standardDate=`${month}/${day}/${year}`
+          }
+        }
+        if (month){
+          standardizedEvents.push(event)
+        }
+      }
+    })
+    return (standardizedEvents)
+}
+const filterPastDates=(events)=>{
+  const finalEvents=events.filter(event=>{
+    const currentDate = new Date();
+    const eventDate = new Date(event.standardDate);
+
+    return eventDate > currentDate;
+  })
+  return finalEvents;
+}
+const getTickers = async (events)=>{
+  const companyURL = 'http://localhost:3001/companies'
+  const newEvents = await Promise.all(
+    events.map(async event=>{
+      const eventCIK = new RegExp(`${event.cik}`)
+      try{
+      const response = await axios.get(companyURL)
+      const match=response.data.find(item=>{
+        return item.cik.match(eventCIK)
+      })
+      if (match){
+        event.ticker=match.ticker
+      }
+        console.log(event)
+        return event
+    } catch (error){
+      console.error(error)
+    }
+    })
+  )
+    return newEvents;
+}
+
+  
 export default{
     getCompanies,
     getSVG,

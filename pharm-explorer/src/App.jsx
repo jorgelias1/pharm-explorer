@@ -12,10 +12,9 @@ import './App.css'
 // const Results=()=>{
   
 // }
-const MainMenuCard=({text})=>{
-  
+const MainMenuCard=({text, handleClick})=>{
   return(
-    <div><button>{text}</button></div>
+    <div><button onClick={handleClick}>{text}</button></div>
   )
 }
 const Button=({text})=>{
@@ -268,13 +267,18 @@ const MainLayout=({children})=>{
     display:'flex',
     gap: '4rem',
   }
+  const handleCalendarClick=()=>{
+    svg
+    .getPressReleases()
+    .then(re=>console.log(re.data))
+  }
   return(
   <>
     <h1>hello</h1>
     <div style={mainStyle}>
       <MainMenuCard text='Paper Trading' />
       {children}
-      <MainMenuCard text='calendars' />
+      <MainMenuCard text='calendars' handleClick={handleCalendarClick}/>
     </div>
   </>
   )
@@ -282,11 +286,11 @@ const MainLayout=({children})=>{
 const App=()=>{
   const [query, setQuery]=useState(null);
   const [searchResults, setSearchResults]=useState([]);
-  useEffect(()=>{
-    svg
-    .getPressReleases()
-    .then(re=>console.log(re.data))
-  }, [])
+  // useEffect(()=>{
+  //   svg
+  //   .getPressReleases()
+  //   .then(re=>console.log(re.data))
+  // }, [])
   return (
     <Router>
         <Routes>
