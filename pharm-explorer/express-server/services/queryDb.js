@@ -117,7 +117,7 @@ const delayBetweenRequests=1000;
 let currentRequestCount=0;
   // thorough filtering of urls
   console.log('length:', urlArray.length)
-  for (let i=0, n=urlArray.length; i<10; i++){
+  for (let i=0, n=urlArray.length; i<200; i++){
     const url=urlArray[i].filingUrl
     const cik=urlArray[i].cik;
 
@@ -193,24 +193,28 @@ let currentRequestCount=0;
   // (2)standardize dates to prepare for filtering and sorting
   const standardizedEvents=standardizeDates(eventsAndTickers)
   // (3)filter out any duplicate events.
-  const filteredEvents=checkForDuplicates(standardizedEvents)
+  const filteredEvents=await checkForDuplicates(standardizedEvents)
   // (4)filter past events
   const finalEvents=filterPastDates(filteredEvents)
+  // post the final data to the database
+  // axios
+  // .post('http://127.0.0.1:3001/api/postEvents', finalEvents)
+  // .catch(error=>console.error(error))
   return finalEvents;
 }
 
-const checkForDuplicates=(events)=>{
+const checkForDuplicates=async(events)=>{
   // current tmpSet
   const tmpSet=new Set();
   // database set returned from db function.
-  // const dbSet=returnedSetFromFunction;
+  const response = await axios.get('http://127.0.0.1:3001/keys')
+  const dbSet=response.data;
   const uniqueEvents=[];
   for (const item of events){
     const key=`${item.matchedSentence}-${item.matchedDate}-${item.cik}-${item.type}`
-    // if item is not in tmpSet-
-    // or in the database,
-    // push it to uniqueEvents.
-    if (!tmpSet.has(key)){
+    // if the current event is not already in the database 
+    // and not in the current array, add it to the unique array
+    if (!tmpSet.has(key) && !(dbSet.includes(key))){
       tmpSet.add(key);
       uniqueEvents.push(item);
     }
@@ -243,6 +247,10 @@ const standardizeDates=(events)=>{
         let month=null;
         let day=null;
         let year=null;
+        if (!event){
+          console.log(event)
+          break;
+        }
         const match = event.matchedDate.match(pattern.pattern)
         if (match){
           if (pattern.quarter){
@@ -310,7 +318,6 @@ const getTickers = async (events)=>{
       if (match){
         event.ticker=match.ticker
       }
-        console.log(event)
         return event
     } catch (error){
       console.error(error)

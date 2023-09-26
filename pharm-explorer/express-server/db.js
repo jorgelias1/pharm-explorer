@@ -9,42 +9,41 @@ const pool = new pg.Pool({
     port: 5432,
     ssl: {
         rejectUnauthorized: true,
-        ca: fs.readFileSync('../../../../tmp/certs/global-bundle.pem'),
+        ca: fs.readFileSync('./global-bundle.pem'),
     }
 });
 
-const getDbEvents=async()=>{
-    // case 1: no events
-    // case 2: there are events
+const getDbKeys=async()=>{
     const query = 'SELECT * from "events"';
     try {
-        pool.connect();
-        const result = pool.query(query);
+        const result = await pool.query(query);
+        let dbSet = [];
         if (result.rows.length===0){
-            
+            return dbSet;
         }
+        for (const row of result.rows){
+            const key=`${row.sentence}-${row.matcheddate}-${row.cik}-${row.type}`
+            dbSet.push(key)
+        }
+        return dbSet;
+    } catch (error){
+        console.error(error)
     }
 }
-
-const postToDb=(events)=>{
-    const query = 'SELECT NOW() AS current_time';
-    pool.connect()
-    // Use the pool to query the database
-    pool.query(query, (err, result) => {
-    if (err) {
-        console.error('Error connecting to the database:', err);
-    } else {
-        // If the query was successful, log the current time
-        console.log('Connected to the database. Current time:', result.rows[0].current_time);
+const postToDb = async (events)=>{
+    try {
+        for (const event of events){
+        const query = `INSERT INTO events 
+        (type, ticker, url, sentence, matcheddate, standarddate, cik) 
+        VALUES (${event.type}, ${event.ticker}, ${event.url}, ${event.matchedSentence}, ${event.matchedDate}, ${event.standardDate}, ${event.cik})`;
+        // Use the pool to query the database
+        await pool.query(query)
+        }
+    } catch (error){
+        console.error(error)
     }
-
-    // Close the database connection
-    pool.end();
-    console.log('Connection to the database has been closed')
-    });
 }
-
 export default{
-    getDbEvents,
+    getDbKeys,
     postToDb,
 }

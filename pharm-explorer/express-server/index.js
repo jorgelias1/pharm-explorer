@@ -4,6 +4,7 @@ import cors from 'cors'
 import svg from './services/queryDb.js'
 import puppeteer from 'puppeteer'
 import {load} from 'cheerio'
+import db from './db.js'
 
 app.use(cors())
 
@@ -127,7 +128,20 @@ app.get('/api/pressReleases', async(request, response)=>{
     console.error(e)
   } 
 })
-
+app.get('/keys', async(request, response)=>{
+  const re=await db.getDbKeys()
+  response.send(re)
+})
+app.use(express.json())
+app.post('/api/postEvents', async (request, response)=>{
+  const events=request.body
+  try{
+    await db.postToDb(events);
+    response.status(200)
+  } catch (error){
+    console.error(error)
+  }
+})
 const PORT = 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
