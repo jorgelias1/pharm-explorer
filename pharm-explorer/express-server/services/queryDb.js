@@ -97,18 +97,17 @@ const getPressReleases=()=>{
 }
 const filterPressReleases=async (urlArray)=>{
   const regexArray = [
-    '\\b(?:expect\\s)?(?:topline\\s+(?:data|results|submission|study))[^.;]*?\\s+(?:expected\\s+(?:in|through|for|to\\s+be)|on\\s+track\\s+for|end\\s|in\\s|report\\s+(?:to(?:p)?line\\s+results)?\\s+in|expected|anticipated\\s+(?:\\.{3})?\\s*((?:(?:first|second|third|fourth)\\s+)?(?:date|in|for|by|Q\\d|(?:1|2)\\H)[^;]*?))[^;]*?\\s+(?:the\\s+)?(((?:\\w+\\s+)?(?:\\d{1,4}(?:st|nd|rd|th)?(?:[/\\s]\\d{1,4})?|(?:mid-)?(?:\\w+\\s+)?\\d{1,4}(?:[/\\s]\\d{1,4})?|Q\\d))\\b).*?',
-    '\\btopline\\s+(?:data|results)\\s+(?:from|of|in)\\s+(?:.*?\\s+)?(((?:expected|readout)\\s+(?:early\\s+)?((?:(?:first|second|third|fourth)\\s+)?(?:\\w+\\s+)?(?:\\.{3})?\\s*\\d{1,4}(?:\\s*[HQ]\\d)?)\\b)).*?',
-    '\\btopline\\s+data[^.;]*?\\s+(((?:expected|read\\s+out|on\\s+track\\sto\\s+(?:report\\s+to(?:p)?line\\s+data|read\\s+out))[^.;]*?\\s+(?:early\\s+)?((?:(?:first|second|third|fourth)\\s+)?(?:\\w+\\s+)?(?:\\.{3})?\\s*\\d{4})\\b)).*?',
-    '\\b(((?:report\\s+to(?:p)?line\\s+data|share\\s+topline\\s+data|expects\\s+to\\s+report\\s+to(?:p)?line\\s+results)\\s+(?:in\\s+(?:the\\s+)?)?(((?:(?:first|second|third|fourth)\\s+)?quarter\\s+of\\s+\\d{4})\\b))).*?',
-    '\\b(((?:report\\s+to(?:p)?line\\s+data|share\\s+topline\\s+data|expects\\s+to\\s+report\\s+to(?:p)?line\\s+results)[^.;]*?(?:in\\s+(?:the\\s+)?)?(((?:(?:first|second|third|fourth)\\s+)?quarter\\s+of\\s+\\d{4})\\b))).*?',
-    '\\b(on\\s+track\\s+to\\s+report\\s+topline\\s+data\\s+(((?:(?:first|second|third|fourth)\\s+)?(?:in|for|on\\s+track\\s+to|read\\s+out\\s+in)\\s+(?:the\\s+)?(?:early\\s+)?((?:\\w+\\s+)?(?:\\.{3})?\\s*\\d{4}))\\b)).*?',
-    '(?:[^\n.;-]{0,140}(\\b(?:\\(?)PDUFA(?:\\))?[^.:!?]{0,40}?(?:date|action date|target action date)(?!\\s+\\w*date\\b)[^.!?]{0,40}?(\\d{4})\\b))'
-]
+    '(?:[^\n.;•]*?(\\b(?:expect\\s)?(?:topline\\s+(?:data|results|submission|study))[^.;]*?\\s+(?:expected\\s+(?:in|through|for|to\\s+be)|on\\s+track\\s+for|end\\s|in\\s|report\\s+(?:to(?:p)?line\\s+results)?\\s+in|expected|anticipated\\s+(?:\\.{3})?\\s*((?:(?:first|second|third|fourth)\\s+)?(?:date|in|for|by|Q\\d|(?:1|2)\\H)[^;]*?))[^;\n]*?\\s+(?:the\\s+)?(((?:\\w+\\s+)?(?:\\d{1,4}(?:st|nd|rd|th)?(?:[/\\s]\\d{1,4})?|(?:mid-)?(?:\\w+\\s+)?\\d{1,4}(?:[/\\s]\\d{1,4})?|Q\\d))\\b).*?))',
+    '(?:[^\n.;•]*?(\\btopline\\s+(?:data|results)\\s+(?:from|of|in)\\s+(?:.*?\\s+)?(((?:expected|readout)\\s+(?:early\\s+)?((?:(?:first|second|third|fourth)\\s+)?(?:\\w+\\s+)?(?:\\.{3})?\\s*\\d{1,4}(?:\\s*[HQ]\\d)?)\\b)).*?))',
+    '(?:[^\n.;•]*?(\\btopline\\s+data[^.;]*?\\s+(((?:expected|read\\s+out|on\\s+track\\sto\\s+(?:report\\s+to(?:p)?line\\s+data|read\\s+out))[^.;]*?\\s+(?:early\\s+)?((?:(?:first|second|third|fourth)\\s+)?(?:\\w+\\s+)?(?:\\.{3})?\\s*\\d{4})\\b)).*?))',
+    '(?:[^\n.;•]*?(\\b(((?:report\\s+to(?:p)?line\\s+data|share\\s+topline\\s+data|expects\\s+to\\s+report\\s+to(?:p)?line\\s+results)\\s+(?:in\\s+(?:the\\s+)?)?(((?:(?:first|second|third|fourth)\\s+)?quarter\\s+of\\s+\\d{4})\\b))).*?))',
+    '(?:[^\n.;•]*?(\\b(((?:report\\s+to(?:p)?line\\s+data|share\\s+topline\\s+data|expects\\s+to\\s+report\\s+to(?:p)?line\\s+results)[^.;]*?(?:in\\s+(?:the\\s+)?)?(((?:(?:first|second|third|fourth)\\s+)?quarter\\s+of\\s+\\d{4})\\b))).*?))',
+    '(?:[^\n.;•]*?(\\b(on\\s+track\\s+to\\s+report\\s+topline\\s+data\\s+(((?:(?:first|second|third|fourth)\\s+)?(?:in|for|on\\s+track\\s+to|read\\s+out\\s+in)\\s+(?:the\\s+)?(?:early\\s+)?((?:\\w+\\s+)?(?:\\.{3})?\\s*\\d{4}))\\b)).*?))',
+    '(?:[^\n.;•]*?(\\b(?:\\(?)PDUFA(?:\\))?[^.:!?]{0,40}?(?:date|action date|target action date)(?!\\s+\\w*date\\b)[^.!?]{0,40}?(\\d{4})\\b))'
+] 
 const dateExpression = [
-  '\\b((?:(?:first|second|third|fourth|middle)\\s+)?(?:(?:Q\\d\\s|(?:1|2)\\H\\s|quarter\\s|first-half\\s|second-half\\s|half\\s|mid-|mid\\s|end\\s+of\\s|late\\s))[^.]*?)+?(((?:\\w+\\s+)?(?:\\d{1,4}(?:st|nd|rd|th)?(?:[/\\s]\\d{1,4})?|(?:mid-|end\\s+of)?(?:\\w+\\s+)?\\d{1,4}(?:[/\\s]\\d{1,4})?|Q\\d)|(?:[A-Z][a-z]+)\\s+\\d{1,2}))\\b',
   '\\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+(?:(?:\\d{1,2},\\s+)?(?:of\\s+)?)\\d{4}\\b',
-
+  '\\b((?:(?:first|second|third|fourth|middle)\\s+)?(?:(?:Q\\d\\s|(?:1|2)\\H\\s|quarter\\s|first-half\\s|second-half\\s|half\\s|mid-|mid\\s|middle\\s|end\\s+of\\s|late\\s))[^.]*?)+?(((?:\\w+\\s+)?(?:\\d{1,4}(?:st|nd|rd|th)?(?:[/\\s]\\d{1,4})?|(?:mid-|end\\s+of)?(?:\\w+\\s+)?\\d{1,4}(?:[/\\s]\\d{1,4})?|Q\\d)|(?:[A-Z][a-z]+)\\s+\\d{1,2}))\\b',
 ];
 
 const relevantInfo=[];
@@ -129,30 +128,40 @@ let currentRequestCount=0;
           const htmlContent=response.data
           const $=load(htmlContent)
           const text=$('body').text()
-          const limitedText=text.split(' ').slice(0, 750).join(' ')   
+          // const limitedText=text.split(' ').slice(0, 750).join(' ')   
           // find matching expressions + dates
           // identify the type of event this is
           let matchedSentence=null;
           let matchedDate=null;
           let type=null;
-          
+          let conciseSentence=null;
+          let phase=null;
+          let stage=null;
+
+          const phasePtrn= new RegExp(`(?:phase|phase\\s)+(?:(?:1|i)|(?:2|ii)|(?:3|iii)|(?:4|iiii))+(?:a|b)?`, 'i');
           const PDUFAptrn = new RegExp(`\\b(?:\\(?)PDUFA(?:\\)?)\\b`, 'i');
           const PDUFADatePtrn = new RegExp(`\\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+(?:(?:\\d{1,2},\\s+)?(?:of\\s+)?)\\d{4}\\b`, 'i');
+          let toplineCount=0, pdufaCount=0;
           for (const regexpression of regexArray){
             let regex = new RegExp(regexpression, 'i')
-            const match=limitedText.match(regex)
+            const match=text.match(regex)
             // check for match and determine event type
             if (match){
               matchedSentence=match[0];
-              type = matchedSentence.match(PDUFAptrn)
+              conciseSentence=match[1];
+              phase = matchedSentence.match(phasePtrn)
+              type = conciseSentence.match(PDUFAptrn)
               ? 'PDUFA'
-              : 'topline'
+              : 'topline';
+              type==='PDUFA'
+              ? pdufaCount++
+              : toplineCount++;
               // check if sentence has valid date structure
               for (const exp of dateExpression){
                 let date = (type==='topline')
                 ? new RegExp(exp, 'i')
                 : new RegExp(exp, 'ig')
-                const dateMatch=matchedSentence.match(date)
+                const dateMatch=conciseSentence.match(date)
                 if(dateMatch){
                   matchedDate=dateMatch[0]                 
                   if (type==='PDUFA'){
@@ -164,17 +173,27 @@ let currentRequestCount=0;
                   break;
                 }
               }
+            let typeCount;
+            if (type==='topline'){
+              stage = phase ? phase[0] : null;
+              typeCount=toplineCount;
+            }
+            else if(type==='PDUFA'){
+              stage='Advanced';
+              typeCount=pdufaCount;
+            }
+            if (matchedSentence && matchedDate && typeCount<=1){
+              relevantInfo.push({
+                matchedSentence,
+                matchedDate,
+                cik,
+                type,
+                url,
+                stage,
+              })
+            }
             }
           }
-          if (matchedSentence && matchedDate){
-          relevantInfo.push({
-            matchedSentence,
-            matchedDate,
-            cik,
-            type,
-            url,
-          })
-        }
         }
       } catch (error){
         console.error(error)
@@ -187,7 +206,7 @@ let currentRequestCount=0;
     await new Promise(resolve=>setTimeout(resolve, delayBetweenRequests))
   }
 }
-
+console.log('refining results...')
   // (1)getTickers
   const eventsAndTickers=await getTickers(relevantInfo)
   // (2)standardize dates to prepare for filtering and sorting
@@ -196,10 +215,12 @@ let currentRequestCount=0;
   const filteredEvents=await checkForDuplicates(standardizedEvents)
   // (4)filter past events
   const finalEvents=filterPastDates(filteredEvents)
+  console.log('finished! posting...')
   // post the final data to the database
-  // axios
-  // .post('http://127.0.0.1:3001/api/postEvents', finalEvents)
-  // .catch(error=>console.error(error))
+  axios
+  .post('http://127.0.0.1:3001/api/postEvents', finalEvents)
+  .then(console.log('posted! all done :)'))
+  .catch(error=>console.error(error))
   return finalEvents;
 }
 
@@ -211,7 +232,7 @@ const checkForDuplicates=async(events)=>{
   const dbSet=response.data;
   const uniqueEvents=[];
   for (const item of events){
-    const key=`${item.matchedSentence}-${item.matchedDate}-${item.cik}-${item.type}`
+    const key=`${item.standardDate}-${item.cik}-${item.type}`
     // if the current event is not already in the database 
     // and not in the current array, add it to the unique array
     if (!tmpSet.has(key) && !(dbSet.includes(key))){
@@ -247,10 +268,6 @@ const standardizeDates=(events)=>{
         let month=null;
         let day=null;
         let year=null;
-        if (!event){
-          console.log(event)
-          break;
-        }
         const match = event.matchedDate.match(pattern.pattern)
         if (match){
           if (pattern.quarter){
@@ -303,24 +320,33 @@ const filterPastDates=(events)=>{
 
     return eventDate > currentDate;
   })
+  // we shld implement authorization for routes to deleting/posting.
+  axios
+  .delete('http://127.0.0.1:3001/api/deleteEvents')
+  .then(console.log('cleaned up db'))
+  .catch(error=>console.error(error))
+
   return finalEvents;
 }
 const getTickers = async (events)=>{
   const companyURL = 'http://localhost:3001/companies'
+  const response = await axios.get(companyURL)
   const newEvents = await Promise.all(
     events.map(async event=>{
       const eventCIK = new RegExp(`${event.cik}`)
       try{
-      const response = await axios.get(companyURL)
       const match=response.data.find(item=>{
         return item.cik.match(eventCIK)
       })
       if (match){
         event.ticker=match.ticker
       }
-        return event
+      else{
+        event.ticker=null
+      }
+      return event
     } catch (error){
-      console.error(error)
+      console.log(event.cik)
     }
     })
   )

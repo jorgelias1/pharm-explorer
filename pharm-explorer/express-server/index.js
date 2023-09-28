@@ -63,6 +63,16 @@ app.get('/api/trials/:name', (request, response)=>{
   })
   .catch(error=>console.error(error))
 })
+const dateFromMonthsAgo=(monthsAgo)=>{
+  const today=new Date();
+  today.setMonth(today.getMonth()-monthsAgo)
+
+  const year=today.getFullYear();
+  const month=String(today.getMonth()+1).padStart(2,'0')
+  const day=String(today.getDate()).padStart(2,'0')
+
+  return `${year}-${month}-${day}`
+}
 app.get('/api/pressReleases', async(request, response)=>{
   async function pressReleasesLogic(){
     const e=Date.now()
@@ -70,11 +80,21 @@ app.get('/api/pressReleases', async(request, response)=>{
     
     let allFileUrls=[];
     let searchUrl;
-    for (let i=0;i<2;i++){
+    let retry;
+    let tryCount=0;
+    const today=dateFromMonthsAgo(0);
+    const oldDate=dateFromMonthsAgo(6);
+    const olderDate=dateFromMonthsAgo(10);
+    // u shld add more search urls from the sec to maybe make ur results more robust, 
+    for (let i=0;i<3;i++){
       searchUrl = (i===0)
-      ? `https://www.sec.gov/edgar/search/#/q=%2522topline%2520results%2522%2520OR%2520%2522topline%2520data%25E2%2580%259D%2520AND%2520%2522expects%2522%2520OR%2520%2522expected%2520by%2522%2520OR%2520%2522anticipated%2522&dateRange=custom&category=form-cat1&startdt=2023-03-01&enddt=2023-09-16`
-      : `https://www.sec.gov/edgar/search/#/q=PDUFA&dateRange=custom&category=form-cat1&startdt=2023-03-01&enddt=2023-09-16`
+      ? `https://www.sec.gov/edgar/search/#/q=%2522topline%2520results%2522%2520OR%2520%2522topline%2520data%25E2%2580%259D%2520AND%2520%2522expects%2522%2520OR%2520%2522expected%2520by%2522%2520OR%2520%2522anticipated%2522&dateRange=custom&category=form-cat1&startdt=${olderDate}&enddt=${today}`
+      : (i===1) 
+      ? `https://www.sec.gov/edgar/search/#/q=PDUFA%2520OR%2520present%2520topline%2520data%2520OR%2520results&dateRange=custom&category=form-cat1&startdt=${olderDate}&enddt=${today}`
+      : `https://www.sec.gov/edgar/search/#/q=PDUFA&dateRange=custom&category=form-cat1&startdt=${oldDate}&enddt=${today}`
+      
     try{
+      retry=async()=>{
       const browser=await puppeteer.launch({
         headless:'new'
       });
@@ -83,13 +103,14 @@ app.get('/api/pressReleases', async(request, response)=>{
       let hasNextPage=true;
       let pageIndex=1;
       while (hasNextPage){
-        await page.waitForSelector('.table tbody tr')
+        await page.waitForSelector('.table tbody tr', {timeout: 15000})
         const htmlContent=await page.content();
         const $ =load(htmlContent)
         
         const noResultsDiv=await page.$('div#no-results-grid[style="display: none;"]')
         if (!noResultsDiv){
           hasNextPage=false;
+          console.log('url', i, 'terminated at page index:', pageIndex)
         }
         else{
         $('.table tr').each((index, element)=>{
@@ -111,9 +132,19 @@ app.get('/api/pressReleases', async(request, response)=>{
     }
       await page.close();
       await browser.close();
+      } 
+      if (tryCount<4){
+        await retry();
       }
+    }
       catch(error) {
-        console.error(error)
+        if (tryCount>3){
+          console.error(error)
+          return null;
+        }
+        console.log('retrying... attempt: ', tryCount)
+        tryCount++;
+        await retry();
       } 
       } 
       const d=Date.now()
@@ -139,6 +170,14 @@ app.post('/api/postEvents', async (request, response)=>{
     await db.postToDb(events);
     response.status(200)
   } catch (error){
+    console.error(error)
+  }
+})
+app.delete('/api/deleteEvents', async (request, response)=>{
+  try{
+    await db.removeEvents();
+    response.status(200)
+  } catch(error){
     console.error(error)
   }
 })
