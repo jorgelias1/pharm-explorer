@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import searchService from '../express-server/services/searching'
 import svg from '../express-server/services/queryDb'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useAsyncError } from 'react-router-dom'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import axios from 'axios'
 
@@ -69,7 +69,7 @@ const Search=({setQuery, query, setSearchResults, searchResults})=>{
     })
   }
   const handleDrugClick=(item)=>{
-    console.log(item.name, 'drugs!')
+    console.log(item, 'drugs!')
     navigate('/drug')
   }
   const handleHover=(e)=>{
@@ -263,14 +263,21 @@ const DrugPage=()=>{
   return <div>Hello, Drug</div>
 }
 const MainLayout=({children})=>{
+  const navigate=useNavigate();
   const mainStyle={
     display:'flex',
     gap: '4rem',
   }
   const handleCalendarClick=()=>{
-    svg
-    .getPressReleases()
-    .then(re=>console.log(re.data))
+    // for routine uploading to database
+    // svg
+    // .getPressReleases()
+    // .then(re=>console.log(re.data))
+
+    // for getting calendar events from db: 
+
+    // axios request to new getEvents route.
+    navigate('/calendar')
   }
   return(
   <>
@@ -283,14 +290,59 @@ const MainLayout=({children})=>{
   </>
   )
 }
+const CalendarPage=()=>{
+  const [calendarEvents, setCalendarEvents]=useState(null);
+  const getEvents=async()=>{
+    const events = await axios.get('http://127.0.0.1:3001/api/events')
+    setCalendarEvents(events.data)
+  }
+  getEvents();
+  return (
+    <>
+    <div onClick={()=>{svg.getPressReleases()}}>hello, calendar</div>
+    <table>
+        <thead>
+            <tr>
+                <th>ticker</th>
+                <th>catalyst type</th>
+                <th>status</th>
+                <th>info</th>
+                <th>date</th>
+                <th>src</th>
+            </tr>
+        </thead>
+        <tbody>
+          {/* actual data once its loaded. */}
+          {calendarEvents && (calendarEvents.map(event=>{
+            return <CalendarRow key={event.id} event={event}/>
+          })
+        )}
+        </tbody>
+    </table>
+    </>
+  )
+}
+const CalendarRow=({event})=>{
+  event.catalyst=(event.type==='topline') 
+  ? 'topline data expected'
+  : 'PDUFA date'
+  return(
+      <tr>
+          <td>{event.ticker || 
+          <a href={event.url}>see source</a>}
+          </td>
+          <td>{event.catalyst}</td>
+          <td>{event.stage || 'unknown'}</td>
+          <td>{event.sentence}</td>
+          <td>{event.date}</td>
+          <td><a href={event.url}>source</a></td>
+      </tr>
+  )
+}
 const App=()=>{
   const [query, setQuery]=useState(null);
   const [searchResults, setSearchResults]=useState([]);
-  // useEffect(()=>{
-  //   svg
-  //   .getPressReleases()
-  //   .then(re=>console.log(re.data))
-  // }, [])
+
   return (
     <Router>
         <Routes>
@@ -306,6 +358,7 @@ const App=()=>{
              />
           <Route path='/company' element ={<CompanyPage query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults}/>} />
           <Route path='/drug' element={<DrugPage />} />
+          <Route path='/calendar' element={<CalendarPage />} />
         </Routes>
     </Router>
   )

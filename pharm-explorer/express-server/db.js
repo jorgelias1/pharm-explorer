@@ -34,8 +34,8 @@ const postToDb = async (events)=>{
     try {
         for (const event of events){
         const query = `INSERT INTO events 
-        (type, ticker, url, sentence, matcheddate, standarddate, cik, stage) 
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
+        (type, ticker, url, sentence, matcheddate, standarddate, cik, stage, postdate) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
         // post all events to the database
         await pool.query(query, 
             [
@@ -46,13 +46,15 @@ const postToDb = async (events)=>{
             event.matchedDate, 
             event.standardDate, 
             event.cik, 
-            event.stage
+            event.stage,
+            event.postDate,
         ])
         }
     } catch (error){
         console.error(error)
     }
 }
+// load events from db into array
 const getEvents=async()=>{
     const events=[];
     const query = `SELECT * FROM events ORDER BY
@@ -72,11 +74,18 @@ const getEvents=async()=>{
         tmpObj.cik=row.cik;
         tmpObj.stage=row.stage;
         tmpObj.id=row.id;
+        tmpObj.postDate=row.postdate;
         events.push(tmpObj);
     }
     return events;
 }
-const removeEvents=async()=>{
+const removeEvents=async(events)=>{
+    events.forEach(async (event)=>{
+        const query=`DELETE FROM events WHERE id = $1`
+        await pool.query(query, [event.id])
+    })
+}
+const removePastEvents=async()=>{
     const events=await getEvents();
     const eventsToBeRemoved=events.filter(event=>{
         const currentDate=new Date();
@@ -84,14 +93,13 @@ const removeEvents=async()=>{
 
         return eventDate<currentDate
     })
-    eventsToBeRemoved.forEach(async (event)=>{
-        const query=`DELETE FROM events WHERE id = $1`
-        await pool.query(query, event.id)
-    })
+    removeEvents(eventsToBeRemoved);
 }
+
 export default{
     getDbKeys,
     postToDb,
     getEvents,
     removeEvents,
+    removePastEvents,
 }
