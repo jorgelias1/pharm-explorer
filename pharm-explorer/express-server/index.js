@@ -1,12 +1,14 @@
 import express from 'express'
 const app = express()
 import cors from 'cors'
-import svg from './services/queryDb.js'
+import svg from './services/axiosRequests.js'
+import scrape from '../cron/regex-engine.js'
 import puppeteer from 'puppeteer'
 import {load} from 'cheerio'
 import db from './db.js'
 import drug from './services/drug.js'
 import {Buffer} from 'buffer'
+import backendRequests from './services/backendRequests.js'
 
 app.use(cors())
 
@@ -36,15 +38,13 @@ app.get('/api/svg', (request, response) => {
   })
 app.get('/api/sec/:cik/:ticker/', (request, response)=>{
     let {cik, ticker}=request.params;
-    svg.getSECLogic(cik, ticker)
+    backendRequests.getSECLogic(cik, ticker)
     .then(re=>{
-
         const allResponses=[
           re[0].data,
           re[1].data,
           re[2].data,
           re[3].data,
-          
         ]
         response.send(allResponses)
     })
@@ -52,6 +52,12 @@ app.get('/api/sec/:cik/:ticker/', (request, response)=>{
         console.error(error)
     })
   })
+app.get('/api/quote/:ticker', (request, response)=>{
+  const {ticker} = request.params
+  backendRequests
+  .getQuote(ticker)
+  .then(re=>{response.send(re.data)})
+})
 app.get('/api/trials/:name', (request, response)=>{
   let {name}=request.params;
   svg.getTrialsLogic(name)
@@ -207,7 +213,7 @@ app.get('/api/pressReleases', async(request, response)=>{
     }
   try{
     const urls=await pressReleasesLogic();
-    const responses=await svg.filterPressReleases(urls)
+    const responses=await scrape.filterPressReleases(urls)
     response.send(responses)
   } catch(e){
     console.error(e)
@@ -231,7 +237,7 @@ app.post('/api/postEvents', async (request, response)=>{
     console.error(error)
   }
 })
-app.delete('/api/deletePastEvents', async (request, response)=>{
+app.delete('/api/pastEvents', async (request, response)=>{
   try{
     await db.removePastEvents();
     response.status(200)
@@ -239,7 +245,7 @@ app.delete('/api/deletePastEvents', async (request, response)=>{
     console.error(error)
   }
 })
-app.delete('/api/deleteEvents', async (request, response)=>{
+app.delete('/api/duplicates', async (request, response)=>{
   const events=request.body
   try{
     await db.removeEvents(events);
@@ -248,33 +254,50 @@ app.delete('/api/deleteEvents', async (request, response)=>{
     console.error(error)
   }
 })
-app.get('/getDrugData/:name', async (request, response)=>{
+app.get('/drugData/:name', async (request, response)=>{
   const {name} = request.params
   const re = await drug.getDrugLogic(name);
   const synonyms=re[1].data.InformationList.Information[0].Synonym.slice(0,12)
   const pubmed = await drug.queryPubmed(synonyms)
+  let fda;
+  try{
+    fda = await drug.getFDA(name)
+    fda=fda.data
+  } catch{
+    fda=null;
+  }
 
   const moaArray=pubmed.slice(0,12);
   const pubmedArray=pubmed.slice(12,24);
-  const patentArray=re[4].data.InformationList.Information[0].PatentID
   const MOA=drug.findMoa(moaArray, synonyms)
   const pubmedTrials=drug.findPubmedTrials(pubmedArray)
+  let assays;
+  try{
+    assays=await drug.getAssays(name)
+    assays=assays.data
+  } catch{
+    assays=null
+  }
   const pngData=re[3].data
   const croppedImage=await drug.cropImageToCompound(pngData, 10)
   const base64=Buffer.from(croppedImage).toString('base64')
-
   const allResponses=[
     name,
     re[0].data,
     re[1].data,
     re[2].data,
     base64,
-    re[4].data,
-    re[5].data,
+    fda,
+    assays,
     MOA,
     pubmedTrials,
   ]
   response.send(allResponses)
+})
+app.get('/api/catalysts/:ticker', async(request, response)=>{
+  const {ticker}=request.params
+  const catalysts = await db.getCompanyCatalysts(ticker)
+  response.send(catalysts)
 })
 const PORT = 3001
 app.listen(PORT, () => {

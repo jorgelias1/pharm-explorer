@@ -1,42 +1,183 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  gap:3rem;
+  padding:0.5rem;
+  background: linear-gradient(to right, rgb(0, 0, 0), rgb(46, 46, 46));
+  border-bottom: 2px solid black;
+  z-index: 1;
+  overflow:hidden;
+}
+.sticky{
+  position:sticky;
+  top: 0;
+  background-color: rgb(36,36,36);
+}
+.secondSticky{
+  position:sticky;
+  top:0;
+  background-color: rgb(20,20,20);
+}
+.flexLeft{
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1rem;
+  font-size: large;
+}
+.logo{
+  max-width: 3rem;
+  background-color: white;
+  transform: scaleX(-1);
+}
+.warning{
+  color: rgb(237, 102, 102);
+  background-color: rgba(200, 200, 200, 0.283);
+  padding:0.3rem;
+  border-radius: 0.5rem;
+}
+.universalStyle{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  align-content: center;
+  background-color: black;
+  width:100%;
+  position:relative;
+  overflow: hidden;
+}
+.stickyContainer{
+  position: relative;
+}
+.flexHorizontal{
+  display:flex;
+  justify-content: space-evenly;
+}
+.background{
+  width:130%;
+  height:100%;
+  background-color: rgba(36,36,36,0.5);
+  position:absolute;
+  z-index: 1;
+  backdrop-filter: blur(3px);
+}
+.overlay{
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-60%);
+  color:white;
+  padding:0.5rem;
+  border-radius: 0.5rem;
+}
+.scrollTable{
+  max-height: 30rem;
+  overflow: auto;
+  position: relative;
+  margin: 1rem;
+  background-color: rgb(20,20,20);
+  border-radius: 2rem;
+  border: 2px solid rgb(74, 74, 74);
+}
+td, th{
+  border: 1px solid rgb(74, 74, 74);
+  padding:0.8rem
+}
+table{
+  border-collapse: collapse;
+}
+.form{
+  background: radial-gradient( rgba(20,10,10, 1), rgba(20, 20, 20, 1));
+  color: white;
+  padding: 1rem;
+  border: 0.15rem solid rgba(168, 168, 168, 0.8);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  min-width: 30rem;
+  min-height: 23rem;
+}
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.diagonal-rectangle {
+  position: absolute;
+  width: 68rem; 
+  height: 2rem;
+  background: linear-gradient(to right, rgba(155,155,155, 0.5), rgba(36, 36, 36, 0)); /* Adjust the color and opacity */
+  transform: rotate(17deg) translate(-43rem, 7rem);
+  z-index: 1;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.diagonal-rectangle:nth-child(1) {
+  top: 0; 
+  left: 0; 
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.diagonal-rectangle:nth-child(2) {
+  top: -0.5rem; 
+  left: 0; 
+  height:1rem;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.diagonal-rectangle:nth-child(3) {
+  top: -0.1rem; 
+  left: 0;
+  height:1rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.diagonal-rectangle:nth-child(4) {
+  top: -0.3rem;
+  left: 0; 
+  height:0.3rem;
 }
-
-.card {
-  padding: 2em;
+.diagonal-rectangle:nth-child(5) {
+  top: -0.3rem;
+  left: 0; 
+  height:0.3rem;
+  transform: rotate(17deg) translate(-43rem, 7rem);
 }
-
-.read-the-docs {
-  color: #888;
+.diagonal-rectangle:nth-child(6) {
+  top: -0.3rem;
+  left: 0; 
+  height:0.3rem;
+  transform: rotate(17deg) translate(-43rem, 10rem);
+}
+input[type='search']{
+  min-height: 2rem;
+  border-radius: 0.5rem;
+  min-width: 13rem;
+}
+input{
+  min-height: 2rem;
+  border-radius: 0.5rem;
+  max-width: 4rem;
+}
+.separator{
+  min-height: 0.1rem;
+  max-height: 0.1rem;
+  min-width: 90%;
+  background:rgba(168, 168, 168, 0.5);
+}
+select{
+  max-width: 5rem;
+  text-align: center;
+}
+.formRow{
+  display: flex;
+  justify-content: space-evenly;
+  gap:5rem;
+  margin:0.5rem;
 }

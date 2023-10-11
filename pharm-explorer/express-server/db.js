@@ -95,11 +95,18 @@ const removePastEvents=async()=>{
     })
     removeEvents(eventsToBeRemoved);
 }
-
+const getCompanyCatalysts=async(ticker)=>{
+    const events = await getEvents();
+    const companyCatalysts = events.filter(event=>{
+        return event.ticker===ticker
+    })
+    return companyCatalysts
+}
 export default{
     getDbKeys,
     postToDb,
     getEvents,
     removeEvents,
     removePastEvents,
+    getCompanyCatalysts,
 }

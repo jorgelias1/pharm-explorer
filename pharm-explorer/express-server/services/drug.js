@@ -5,16 +5,14 @@ import { createCanvas, loadImage } from 'canvas'
 const baseUrl='http://127.0.0.1:3001/'
 
 const getDrugData=async(name)=>{
-    return axios.get(`${baseUrl}getDrugData/${name}`)
+    return axios.get(`${baseUrl}drugData/${name}`)
 }
-const getDrugLogic=(name)=>{
+const getDrugLogic=async (name)=>{
     const promises=[
         axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${name}/property/MolecularFormula,MolecularWeight,InChIKey,CanonicalSmiles/json`),
         axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${name}/synonyms/json`),
         axios.get(`https://clinicaltrials.gov/api/v2/studies?format=json&query.intr=${name}`),
         axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${name}/PNG?image_size=500x500`, {responseType: 'arraybuffer'}),
-        axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${name}/xrefs/PatentID/json`),
-        axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${name}/assaysummary/json`),
     ]
     return Promise.all(promises)
 }
@@ -30,6 +28,12 @@ const queryPubmed=(synonyms)=>{
         )
     }
     return Promise.all(promises.concat(trialPromises))
+}
+const getAssays=(name)=>{
+    return axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${name}/assaysummary/json`)
+}
+const getFDA=async(name)=>{
+    return axios.get(`https://api.fda.gov/drug/drugsfda.json?search=${name}&limit=5`)
 }
 const findMoa=(htmlArray, synonyms)=>{
     for (const htmlFile of htmlArray){
@@ -87,6 +91,9 @@ const findPubmedTrials=(htmlArray)=>{
                 trials.push({text, url})
             }
         });
+        if (trials.length>50){
+            break;
+        }
     }
     return trials;
 }
@@ -166,4 +173,6 @@ export default {
     findMoa,
     findPubmedTrials,
     cropImageToCompound,
+    getFDA,
+    getAssays,
 }

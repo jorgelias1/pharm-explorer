@@ -1,16 +1,12 @@
 import axios from 'axios'
-import func from './queryDb.js'
+import func from './axiosRequests.js'
 import Fuse from 'fuse.js'
 
 let drugURL1='https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/'
 let drugURL2='/property/Title/TXT'
-// prolly pubchem
-// pubmed to show studies
-// pubchem gets moa 
+
 const companyURL='http://localhost:3001/companies';
 
-const indicationURL=''
-// allow for smiles, company name to be input.
 const showResults=(query, setResults)=>{
     if (!query){
         return Promise.resolve('no query found');
@@ -45,24 +41,30 @@ const showResults=(query, setResults)=>{
                 ]
             }
             const fuse=new Fuse(completeArr, {
-                keys:['name'],
+                keys:['name', 'ticker'],
                 ignoreLocation: true,
             })
             setResults(fuse.search(query)
             .map(result=>result.item))
         })
-//     return axios
-//     .get(drugURL)
-//     .then(response=>{
-//         let compounds=response.data.dictionary_terms.compound
-//         setResults(compounds)
-//     })
-//     .catch(()=>{
-//         return ([]);
-//     }
-//     )
+}
+const tradeResults = async (query, setResults)=>{
+    if (!query){
+        return Promise.resolve('no query found');
+    }
+    const response = await axios.get(companyURL)
+    const fuzzyPattern=new RegExp(`${query}`, 'i');
+    const companyInfo=func.getCompanies(response, fuzzyPattern)
+    const searchResults=companyInfo.map(company=>({name: company.name, ticker: company.ticker, cik: company.cik, type: 'company'}))
+    const fuse=new Fuse(searchResults, {
+        keys:['name', 'ticker'],
+        ignoreLocation: true,
+    })
+    setResults(fuse.search(query)
+    .map(result=>result.item))
 }
 
 export default{
     showResults,
+    tradeResults,
 }

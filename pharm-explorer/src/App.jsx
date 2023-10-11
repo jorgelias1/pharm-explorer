@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react'
 import searchService from '../express-server/services/searching'
-import svg from '../express-server/services/queryDb'
+import svg from '../express-server/services/axiosRequests'
+import scrape from '../cron/regex-engine'
 import { BrowserRouter as Router, Routes, Route, useAsyncError } from 'react-router-dom'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
+import drugModule from '../express-server/services/drug.js'
 import axios from 'axios'
+import logo from './assets/53.svg'
+import {BioactivityTable, PubmedTrials, PastInvestigators, Indications, FDAStatus} from './components/drug-component.jsx'
 
 import './App.css'
-// header component
-// flex cont component
 
-// const Results=()=>{
-  
-// }
 const MainMenuCard=({text, handleClick})=>{
   return(
     <div><button onClick={handleClick}>{text}</button></div>
@@ -23,10 +22,13 @@ const Button=({text})=>{
   )
 }
 // logic for company/drug search
-const Search=({setQuery, query, setSearchResults, searchResults})=>{
+const Search=({setQuery, query, setSearchResults, searchResults, trade, setamt})=>{
   const navigate=useNavigate();
   const [svgURL, setSvgURL]=useState('');
   const [loading, setLoading]=useState(false);
+  let placeholder = trade 
+  ? 'Search for a Ticker or Name'
+  : 'Search for a drug or company'
   // get icon URL
   useEffect(()=>{
       svg.getSVG().then(response=>{setSvgURL(response.data)})
@@ -43,7 +45,7 @@ const Search=({setQuery, query, setSearchResults, searchResults})=>{
   }
   if (loading){
     resultWrapper.borderColor='yellow';
-    resultWrapper.boxShadow='0 0 20px white';
+    resultWrapper.boxShadow='0 0 20px black';
   }
   const flexV={
     display:'flex',
@@ -54,23 +56,44 @@ const Search=({setQuery, query, setSearchResults, searchResults})=>{
   }
   // when user input changes, reflect in searchResults
   useEffect(() => {
-    searchService
-    .showResults(query, setSearchResults)
+    if (!trade){
+      searchService
+        .showResults(query, setSearchResults)
+    } else {
+      searchService
+        .tradeResults(query, setSearchResults)
+    }
   }, [query]);
   
   const handleCompanyClick=(item)=>{
     setLoading(true);
-    svg.getSEC(item)
+    if(!trade){
+      svg.getSEC(item)
+      .then(response=>{
+        let data=response.data
+        navigate(`/company/`, {state :{data}})
+      })
+    } else{
+      svg.getQuote(item)
+        .then(re=>{
+          console.log(re)
+          const data=re.data
+          setamt([data[0].price, item.ticker])
+        })
+    }
+    setQuery(null)
+    setLoading(false)
+  }
+  const handleDrugClick=(item)=>{
+    const compoundName=item.name
+    setLoading(true);
+    drugModule.getDrugData(compoundName)
     .then(response=>{
       setLoading(false);
       let data=response.data
-      navigate(`/company/`, {state :{data}})
+      navigate(`/drug`, {state :{data}})
       setQuery(null)
     })
-  }
-  const handleDrugClick=(item)=>{
-    console.log(item, 'drugs!')
-    navigate('/drug')
   }
   const handleHover=(e)=>{
     e.target.style.backgroundColor='#EBF5FD';
@@ -87,31 +110,33 @@ const Search=({setQuery, query, setSearchResults, searchResults})=>{
   let all=null;
   if (searchResults){
     all=searchResults.map(item=>{
-    return(
-    (item.type==='company') 
-    ?(<div key={item.ticker+item.name} onClick={()=>handleCompanyClick(item)}
-      onMouseEnter={handleHover}
-      onMouseLeave={handleLeave}
-      style={optionStyle}>
-      {item.name} (${item.ticker})</div>)
-    :(<div key={item.name} onClick={()=>handleDrugClick(item)}
-      onMouseEnter={handleHover}
-      onMouseLeave={handleLeave}
-      style={optionStyle}>
-      <img src={svgURL} style={{width: '0.8rem'}}/>
-      {' '}{item.name}
-      </div>)
-    )
-  }
-)
+      return(
+      (item.type==='company') 
+      ?(<div key={item.ticker+item.name} onClick={()=>handleCompanyClick(item)}
+        onMouseEnter={handleHover}
+        onMouseLeave={handleLeave}
+        style={optionStyle}>
+        {item.name} (${item.ticker})</div>)
+      :(<div key={item.name} onClick={()=>handleDrugClick(item)}
+        onMouseEnter={handleHover}
+        onMouseLeave={handleLeave}
+        style={optionStyle}>
+        <img src={svgURL} style={{width: '0.8rem'}}/>
+        {' '}{item.name}
+        </div>)
+      )
+    }
+  )
   }
   return (
     <form style={flexV}>
-      <input onChange={search} type='search' placeholder='search...' autoFocus/>
+      <div>
+      <input onChange={search} type='search' placeholder={placeholder} autoFocus/>
+      <Button text='submit'/>
+      </div>
       <div style={resultWrapper}>
         {all}
       </div>
-      <Button text='submit'/>
     </form>
   )
 }
@@ -120,6 +145,7 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
   const navigate=useNavigate();
   const location = useLocation();
   const [trialData, setTrialData]=useState(null);
+  const [catalysts, setCatalysts]=useState(null);
 
   const roundVal=(val)=>{
     
@@ -142,10 +168,15 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
   const profile=data[2][0]
   const ratios=data[3][0]
   const filings=data[0].filings.recent
+  const ticker=profile.symbol
   useEffect(()=>{
     svg.getTrials(profile.companyName)
     .then(response=>{
     setTrialData(response.data[0])
+    axios.get(`http://127.0.0.1:3001/api/catalysts/${ticker}`)
+    .then(re=>{
+      setCatalysts(re.data)
+    })
   })
   }, [profile.companyName])
   const imgStyle={
@@ -154,8 +185,9 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
   const scrollTable={
     maxHeight:'20rem',
     overflow: 'auto',
+    position: 'relative',
   }
-  const trialTable=trialData && (trialData.map(trial=>{
+  const trialTableBody=trialData && (trialData.map(trial=>{
     return <TrialTableRow trial={trial} key={trial.protocolSection.identificationModule.nctId}/>
  }))
   let index=null, shares=null;
@@ -167,6 +199,7 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
   }
 
   let financial;
+  const title='Upcoming Clinical Trials';
   data[1].facts['us-gaap']
   ? financial=data[1].facts['us-gaap'] 
   : financial=data[1].facts['ifrs-full']
@@ -207,11 +240,19 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
       P/E: {roundVal(ratios.priceEarningsRatioTTM)}
     </div>
   </div>
-  {trialData && (
+  {catalysts && <CalendarTable calendarEvents={catalysts} />}
+  <CTGovTable trialData={trialData} trialTableBody={trialTableBody} scrollTable={scrollTable} title={title}/>
+  </>
+  )
+
+}
+const CTGovTable=({trialData, trialTableBody, scrollTable, title})=>{
+  if (trialData && trialData.length>0){
+  return (
     <div style={scrollTable}>
     <table>
-      <caption>Upcoming Clinical Trials</caption>
-      <thead>
+      <caption>{title}</caption>
+      <thead className='sticky'>
         <tr>
           <th>Completion Date (est)</th>
           <th>Phase</th>
@@ -223,104 +264,453 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
         </tr>
       </thead>
       <tbody>
-      {trialTable}
+      {trialTableBody}
       </tbody>
     </table>
     </div>
-  )}
-  </>
   )
-
+  }
 }
 const TrialTableRow=({trial})=>{
     const base=trial.protocolSection
     const date=base.statusModule
     const NCTID=base.identificationModule.nctId
-    const interventions=base.armsInterventionsModule.interventions
-    const desc=base.descriptionModule.briefSummary
-    const [showDesc, setShowDesc]=useState(false);
-    const read=()=>{setShowDesc(!showDesc)}
-    const rowStyle={
-      maxHeight:'8rem',
-      overflow: 'auto',
-    }
-    return(
-      <tr key={NCTID}>
-        <td>{date.completionDateStruct.date}</td>
-        <td>{(base.designModule.phases && base.designModule.phases.length>1) ? (base.designModule.phases[0]+', '+base.designModule.phases[1]) : base.designModule.phases}</td>
-        <td><a href={`https://clinicaltrials.gov/study/${NCTID}`}>
-        {NCTID}
-        </a>
-        </td>
-        <td>{base.designModule.enrollmentInfo.count}</td>
-        <td>{interventions&& interventions.length>0 ? interventions.map(intervention=>intervention.name+', ') : interventions}</td>
-        <td><div onClick={read} style={rowStyle}>{showDesc ? desc : 'click to read'}</div></td>
-        <td>{date.startDateStruct.date}</td>
-      </tr>
-    )
+    if (base.armsInterventionsModule){
+      const interventions=base.armsInterventionsModule.interventions
+      const desc=base.descriptionModule.briefSummary
+      const [showDesc, setShowDesc]=useState(false);
+      const read=()=>{setShowDesc(!showDesc)}
+      const rowStyle={
+        maxHeight:'8rem',
+        overflow: 'auto',
+      }
+      if (date.completionDateStruct){return(
+        <tr key={NCTID}>
+          <td>{date.completionDateStruct.date}</td>
+          <td>{(base.designModule.phases && base.designModule.phases.length>1) ? (base.designModule.phases[0]+', '+base.designModule.phases[1]) : base.designModule.phases}</td>
+          <td><a href={`https://clinicaltrials.gov/study/${NCTID}`}>
+          {NCTID}
+          </a>
+          </td>
+          <td>{base.designModule.enrollmentInfo.count}</td>
+          <td>{interventions&& interventions.length>0 ? interventions.map(intervention=>intervention.name+', ') : interventions}</td>
+          <td><div onClick={read} style={rowStyle}>{showDesc ? desc : 'click to read'}</div></td>
+          <td>{date.startDateStruct.date}</td>
+        </tr>
+      )
+      }
+  }
 }
 const DrugPage=()=>{
-  return <div>Hello, Drug</div>
-}
-const MainLayout=({children})=>{
-  const navigate=useNavigate();
-  const mainStyle={
-    display:'flex',
-    gap: '4rem',
+  const navigate = useNavigate();
+  const location = useLocation();
+  const scrollTable={
+    maxHeight:'20rem',
+    overflow: 'auto',
+    margin: '1rem',
+    position: 'relative',
+    backgroundColor: 'rgb(36,36,36)'
   }
-  const handleCalendarClick=()=>{
-    // for routine uploading to database
-    // svg
-    // .getPressReleases()
-    // .then(re=>console.log(re.data))
-
-    // for getting calendar events from db: 
-
-    // axios request to new getEvents route.
-    navigate('/calendar')
+  useEffect(()=>{
+    if (!location.state){
+      navigate('/')
+    }
+  }, [location.state, navigate])
+  if (!location.state){
+    return null;
   }
-  return(
+  const {data}=location.state
+  const name=data[0]
+  const png=data[4]
+  const fdaStatus=data[5]
+
+  const mechanismOfAction=data[7]
+  const properties=data[1].PropertyTable.Properties[0]
+  let bioactivityColumns=null, bioactivityRows=null, remove=null, activeRows=null;
+  if (data[6]){
+    bioactivityColumns=data[6].Table.Columns.Column;
+    bioactivityRows=data[6].Table.Row
+    remove=[1,2,3]
+    activeRows=bioactivityRows.filter(row=>{
+    return row.Cell[4]==='Active'
+  })
+  }
+  const trialData=data[3].studies
+  const imgSrc = `data:image/png;base64,${png}`
+  const flexVertical={
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  }
+  const flexHorizontal={
+    display: 'flex',
+    gap: '1rem',
+    justifyContent: 'space-evenly'
+  }
+  const miniFlex={
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
+    marginBottom: '1rem'
+  }
+  const title=`Clinical Trials with ${name} (US)`
+  const trialTableBody=trialData && (trialData.map(trial=>{
+    return <TrialTableRow trial={trial} key={trial.protocolSection.identificationModule.nctId}/>
+ }))
+  return (
   <>
-    <h1>hello</h1>
-    <div style={mainStyle}>
-      <MainMenuCard text='Paper Trading' />
-      {children}
-      <MainMenuCard text='calendars' handleClick={handleCalendarClick}/>
+  {mechanismOfAction ? 
+  <>
+  <div style={flexHorizontal}>
+    <div style={flexVertical}>
+      <img src={imgSrc} style={{minWidth: '15rem', maxHeight: '25rem', maxWidth: '25rem',boxShadow: '0 0 10px white', margin: '0.5rem', padding: '0.5rem', backgroundColor: 'rgb(245,245,245)', borderRadius: '5px'}}/>
     </div>
+    <div style={flexVertical}>
+      <div>
+      <h2>{name}</h2>
+      <a href={mechanismOfAction.url}>
+      Mechanism of Action: 
+      </a>
+      {mechanismOfAction.text}
+      </div>
+      <div style={{marginTop: '1rem'}}>
+        <PastInvestigators trialData={trialData}/>
+      </div>
+    </div>
+  </div>
+  <div style={miniFlex}>
+    <div>Formula: {properties.MolecularFormula}</div>
+    <div>Mr: {properties.MolecularWeight} amu</div>
+    <div>SMILES: {properties.CanonicalSMILES}</div>
+  </div>
+  </>
+  : 
+  <div>
+    <div style={flexHorizontal}>
+      <div style={flexVertical}>
+        <img src={imgSrc} style={{minWidth: '15rem', maxHeight: '20rem',boxShadow: '0 0 10px white', margin: '0.5rem', padding: '0.5rem', backgroundColor: 'rgb(245,245,245)', borderRadius: '5px'}}/>
+      </div>
+      <div style={flexVertical}>
+        <h2>{name}</h2>
+        <div>
+          <PastInvestigators trialData={trialData}/>
+        </div>
+      </div>
+    </div>
+    <div style={miniFlex}>
+      <div>Formula: {properties.MolecularFormula}</div>
+      <div>Mr: {properties.MolecularWeight} amu</div>
+      <div>SMILES: {properties.CanonicalSMILES}</div>
+    </div>
+  </div>
+}
+  <FDAStatus fdaStatus={fdaStatus} />
+  <Indications trialData={trialData} />
+  <CTGovTable trialData={trialData} trialTableBody={trialTableBody} scrollTable={scrollTable} title={title}/>
+  <PubmedTrials pubmedArray={data[8]} scrollTable={scrollTable}/>
+  <div style={scrollTable}>
+    {data[6] && <BioactivityTable bioactivityColumns={bioactivityColumns} activeRows={activeRows} remove={remove}/>}
+  </div>
   </>
   )
 }
+
+const PaperTradePage=({setQuery, query, setSearchResults, searchResults})=>{
+  const [tradeForm, setTradeForm] = useState(false)
+  const [currentCash, setCurrentCash] = useState(0);
+  const [history, updateHistory] = useState([]);
+  const [positions, updatePositions] = useState([]);
+  const trade=true;
+  let signedIn=false;
+  const roundVal=(val)=>{
+    return Number(parseFloat(val).toFixed(2))
+  }
+  const getPositions=()=>{
+    if (!signedIn){
+      // return positions (current array without)
+      console.log('not signed in')
+    }
+  }
+  const calculateCash=()=>{
+    if (!signedIn && history.length===0){
+      if (history.length===0){
+        return 10000
+      } 
+    } else {
+      // axios call to database and see current cash
+      return currentCash
+    }
+  }
+  console.log(currentCash)
+  console.log(history)
+  useEffect(() => {
+    setCurrentCash(calculateCash());
+  }, [signedIn])
+
+  const handleTradeClick=()=>{
+    setTradeForm(true);
+    setQuery(null)
+  }
+  return(
+    <div style={{position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', padding:'none', }}>
+      <h2>Paper Trading</h2>
+      {!signedIn && (
+      <div className='warning' style={{width: '100%'}}>Warning: You are not signed in; your history, including any trades you make, will not be saved. 
+      <div>To save your history, <button>sign in</button> or <button>create an account.</button></div></div>
+      )}
+      <PortfolioTable signedIn={signedIn} positions={positions} cashTotal={currentCash}/>
+      <button onClick={handleTradeClick} style={{maxWidth: '8rem'}}>Trade</button>
+      {tradeForm && (
+        <Overlay content={<TradeForm setTradeForm={setTradeForm} trade={trade} query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults} updateCash={setCurrentCash} cash={currentCash} history={history} updateHistory={updateHistory} positions={positions} updatePositions={updatePositions} roundVal={roundVal}/>}/>
+      )}
+    </div>
+  )
+}
+const Overlay=({content})=>{
+  return(
+    <div className='background'>
+      <div className='overlay'>
+        {content}
+      </div>
+    </div>
+  )
+}
+const TradeForm=({setTradeForm, trade, query, setQuery, searchResults, setSearchResults, updateCash, cash, history, updateHistory, positions, updatePositions, roundVal})=>{
+  const [transactionAmount, setTransactionAmount] = useState(null);
+  const [selectedTransaction, setSelectedTransaction] = useState('buy')
+  const [quantity, setQuantity] = useState(1)
+  const [error1, setError1]=useState(false)
+  const [error2, setError2]=useState(false)
+  const [success, setSuccess]=useState(false)
+  const errors=['insufficient funds','insufficient shares']
+  let quote;
+  let ticker;
+  transactionAmount ? quote=roundVal(((transactionAmount[0]*quantity))/quantity) : null
+  transactionAmount ? ticker=transactionAmount[1] : null
+  const executeTrade=()=>{
+    const Trade = function(){
+      this.type=selectedTransaction
+      this.ticker=ticker
+      this.quantity=quantity
+      this.price=quote
+      this.transactionAmount=(quote*quantity).toFixed(2)
+    }
+    const trade = new Trade();
+    console.log(history)
+    // define a boolean to see if the trade is valid. 
+    const bool=selectedTransaction==='buy'
+    ? buy()
+    : selectedTransaction==='sell'
+    ? sell()
+    : selectedTransaction==='sell short'
+    ? short()
+    : buyToCover()
+    if (bool){
+      setSuccess(true)
+      setError1(false)
+      setError2(false)
+      updateHistory(history.concat(trade));
+      updatePositions(positions.concat(trade))
+    } else{
+      setSuccess(false)
+    }
+  }
+  const buy=()=>{
+    // check for sufficient cash
+    if (roundVal((quote*quantity)) > cash){
+      setError1(true)
+      return false;
+    } 
+    updateCash(roundVal(cash-(quote*quantity)))
+    return true;
+  }
+  const sell=()=>{
+    // check for sufficient shares
+    const sellShares=true;
+    if (!enoughShares(trade, sellShares)){
+      setError2(true)
+      return false;
+    } 
+    updateCash(roundVal(cash+(quote*quantity)))
+    return true;
+  }
+  const short=()=>{
+    // unlimited leverage. no limits.
+    updateCash(roundVal(cash+(quote*quantity)))
+    return true;
+  }
+  const buyToCover=()=>{
+    // check for sufficient shares
+    const coverShares=true;
+    if (!enoughShares(trade, coverShares)){
+      setError2(true)
+      return false;
+    }
+    updateCash(roundVal(cash-(quote*quantity)))
+    return true;
+  }
+  const enoughShares=(trade, sellShares, coverShares)=>{
+    let sameTickers;
+    if (sellShares){
+      sameTickers = positions.filter(position=>{
+        return (position.ticker===trade.ticker && position.type==='buy')
+      })
+    } else {
+      sameTickers = positions.filter(position=>{
+        return (position.ticker===trade.ticker && position.type==='sell short')
+      })
+    }
+    const positionQuantity = sameTickers.reduce((sum, position)=>position.quantity+sum, 0)
+    if (positionQuantity >= trade.quantity){
+      return true
+    }
+    return false
+  }
+  return(
+    <div className='form'>
+      <div style={{minWidth: '100%', display:'flex', flexDirection: 'column', gap: '1rem'}}>
+        <div style={{fontSize: '1.1rem', fontWeight: 'bold'}}>Available Cash: ${cash}</div>
+        <Search query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults} trade={trade} setamt={setTransactionAmount}/>
+        <div className='separator'></div>
+      </div>
+      {transactionAmount && <div><b>${transactionAmount[1]}</b> quote: ${quote}</div>}
+      <TransactionType setSelectedTransaction={setSelectedTransaction} selectedTransaction={selectedTransaction} quantity={quantity} setQuantity={setQuantity}/>
+      {transactionAmount && (
+        <div>Transaction Amount: ${(quote*quantity).toFixed(2)}</div>
+      )}
+      {error1 && (<div className='warning'>{errors[0]}</div>)} 
+      {error2 && (<div className='warning'>{errors[1]}</div>)}
+      {success && <div>success!</div>}
+      <button onClick={executeTrade}>confirm trade</button>
+      <button onClick={()=>setTradeForm(false)}>close</button>
+    </div>
+  )
+}
+const TransactionType=({setSelectedTransaction, selectedTransaction, quantity, setQuantity})=>{
+  const options=['buy', 'sell', 'sell short', 'buy to cover short']
+  const handleChange=(e)=>{
+    setSelectedTransaction(e.target.value)
+  }
+  const handleQuantity=(e)=>{
+    setQuantity(e.target.value)
+  }
+  return(
+  <div>
+    <div className='formRow'>
+      <div>Action:</div>
+      <select onChange={handleChange} value={selectedTransaction}>
+        <option disabled value='choose'>choose</option>
+        {options.map(option=>
+        <option key={option} value={option}>{option}</option>
+        )}
+      </select>
+    </div>
+    <div className="separator"></div>
+    <div className='formRow'>
+        Quantity: <input type='number' placeholder='1' onChange={handleQuantity} value={quantity}></input>
+    </div>
+  </div>
+  )
+}
+const PortfolioTable=({positions, cashTotal})=>{
+  
+  const columns=['type','ticker', 'qty', 'current value', 'day change(val/%)', 'total gain/loss', 'thesis']
+  return(
+  <div className='scrollTable'>
+    <table>
+      <thead>
+        <tr>
+            {columns.map(columnName=>
+              <th key={columnName}>{columnName}</th>
+              )}
+        </tr>
+      </thead>
+      <tbody>
+        {positions.length===0
+        ? <tr><td colSpan={columns.length}>No Open Positions</td></tr>
+        : positions.map((position, index)=>{
+          return(
+          <tr key={index}>
+            {Object.entries(position).map(value=>
+              <td key={value+position}>{value[1]}</td>
+          )}
+          </tr>
+          )
+        })}
+      </tbody>
+      <tfoot> 
+        <tr>   
+          <td colSpan={2}>Cash Total: ${cashTotal}</td>
+          <td colSpan={columns.length-2}>Account Value: </td>
+        </tr>  
+      </tfoot>
+    </table>
+  </div>
+  )
+}
+
 const CalendarPage=()=>{
   const [calendarEvents, setCalendarEvents]=useState(null);
+  const [filterForm, showFilterForm]=useState(false);
+  const displayFilters=()=>{
+    showFilterForm(true);
+  }
   const getEvents=async()=>{
     const events = await axios.get('http://127.0.0.1:3001/api/events')
     setCalendarEvents(events.data)
   }
   getEvents();
   return (
-    <>
-    <div onClick={()=>{svg.getPressReleases()}}>hello, calendar</div>
-    <table>
-        <thead>
-            <tr>
-                <th>ticker</th>
-                <th>catalyst type</th>
-                <th>status</th>
-                <th>info</th>
-                <th>date</th>
-                <th>src</th>
-            </tr>
-        </thead>
-        <tbody>
-          {/* actual data once its loaded. */}
-          {calendarEvents && (calendarEvents.map(event=>{
-            return <CalendarRow key={event.id} event={event}/>
-          })
-        )}
-        </tbody>
-    </table>
-    </>
+    <div style={{position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', padding:'none', }}>
+
+      <div onClick={()=>{scrape.getPressReleases()}}>hello, calendar</div>
+      <button onClick={displayFilters}>Filter Content</button>
+      {filterForm && (
+        <Overlay content={FilterForm(showFilterForm)}/>
+      )}
+      <CalendarTable calendarEvents={calendarEvents}/>
+    </div>
   )
+}
+const FilterForm=(showFilterForm)=>{
+  return(
+    <div className='form'>
+      <div>Select Filter Criteria</div>
+      <div>
+        <div>Phase 1</div>
+        <div>Phase 2</div>
+        <div>Phase 3</div>
+
+      </div>
+      <button onClick={()=>showFilterForm(false)}>Close</button>
+    </div>
+  )
+}
+const CalendarTable=({calendarEvents})=>{
+  if (calendarEvents && calendarEvents.length>0){
+    return(
+    <div className='scrollTable'>
+      <table>
+          <thead>
+              <tr className='secondSticky'>
+                  <th>ticker</th>
+                  <th>catalyst type</th>
+                  <th>status</th>
+                  <th>info</th>
+                  <th>date</th>
+                  <th>src</th>
+              </tr>
+          </thead>
+          <tbody>
+            {(calendarEvents.map(event=>{
+              return <CalendarRow key={event.id} event={event}/>
+            })
+          )}
+          </tbody>
+      </table>
+      </div>
+    )
+  }
 }
 const CalendarRow=({event})=>{
   event.catalyst=(event.type==='topline') 
@@ -339,27 +729,104 @@ const CalendarRow=({event})=>{
       </tr>
   )
 }
+const HomeLayout=({children})=>{
+  const navigate=useNavigate();
+  const mainStyle={
+    display:'flex',
+    gap: '4rem',
+    justifyContent: 'center'
+  }
+  const handleCalendarClick=()=>{
+    navigate('/calendar')
+  }
+  const handleTradeClick=()=>{
+    navigate('/trade')
+  }
+  return(
+  <div style={{position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '20rem', padding:'none', }}>
+    <h1>hello</h1>
+    <div style={mainStyle}>
+      <MainMenuCard text='Paper Trading' handleClick={handleTradeClick}/>
+      {children}
+      <MainMenuCard text='calendars' handleClick={handleCalendarClick}/>
+    </div>
+  </div>
+  )
+}
+const Header=()=>{
+  const navigate=useNavigate()
+  const handleHomeClick=()=>{
+    navigate('/')
+  }
+  const handleTradeClick=()=>{
+    navigate('/trade')
+  }
+  const handleCalendarClick=()=>{
+    navigate('/calendar')
+  }
+  const handleHover=(e)=>{
+    e.target.style.cursor='pointer'
+  }
+  return(
+    <div className='header' onMouseEnter={handleHover}>
+        <div className='diagonal-rectangle'></div>
+        <div className='diagonal-rectangle'></div>
+        <div className='diagonal-rectangle'></div>
+        <div className='diagonal-rectangle'></div>
+        <div className='diagonal-rectangle'></div>
+        <div className='diagonal-rectangle'></div>
+      <div className='flexLeft' onClick={handleHomeClick}>
+        <img src={logo} style={{maxWidth: '3rem', backgroundColor: 'white', transform:'scaleX(-1)'}}/>
+        <b>Pharm Explorer</b>
+      </div>
+      <div onClick={handleHomeClick}>home</div>
+      <div onClick={handleTradeClick}>trade</div>
+      <div onClick={handleCalendarClick}>calendar</div>
+    </div>
+  )
+}
+const Layout=({children})=>{
+  const universalStyle={
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent: 'center',
+    justifyContent: 'center',
+    minHeight: '100vh',
+    padding: '1rem'
+  }
+  return(
+    <>
+      <Header />
+      <div style={universalStyle}>
+        {children}
+      </div>
+    </>
+  )
+}
 const App=()=>{
   const [query, setQuery]=useState(null);
   const [searchResults, setSearchResults]=useState([]);
 
   return (
     <Router>
+      <Layout>
         <Routes>
         <Route path='/'
             element={
-              <MainLayout>
+              <HomeLayout>
             <Search 
               setQuery={setQuery} 
               query={query} 
               setSearchResults={setSearchResults} 
               searchResults={searchResults} />
-              </MainLayout>}
+              </HomeLayout>}
              />
+          <Route path='/trade' element={<PaperTradePage query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults}/>} />
           <Route path='/company' element ={<CompanyPage query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults}/>} />
           <Route path='/drug' element={<DrugPage />} />
           <Route path='/calendar' element={<CalendarPage />} />
         </Routes>
+      </Layout>
     </Router>
   )
 }
