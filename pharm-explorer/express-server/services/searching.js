@@ -2,9 +2,6 @@ import axios from 'axios'
 import func from './axiosRequests.js'
 import Fuse from 'fuse.js'
 
-let drugURL1='https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/'
-let drugURL2='/property/Title/TXT'
-
 const companyURL='http://localhost:3001/companies';
 
 const showResults=(query, setResults)=>{

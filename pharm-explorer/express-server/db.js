@@ -102,6 +102,35 @@ const getCompanyCatalysts=async(ticker)=>{
     })
     return companyCatalysts
 }
+const getPositions = async(id)=>{
+    const query = 'SELECT * FROM positions WHERE user_cognito_sub = $1'
+    const result = await pool.query(query, [id])
+    let positions=[];
+    for (const row of result.rows){
+        let tmpObj={};
+        tmpObj.id=row.id;
+        tmpObj.type=row.type;
+        tmpObj.ticker=row.ticker;
+        tmpObj.quantity=row.quantity;
+        tmpObj.price=row.price;
+        tmpObj.initialAvgPrice=row.initialAvgPrice;
+        positions.push(tmpObj);
+    }
+    return positions
+}
+const getHistory =  async(id)=>{
+    const query = 'SELECT * FROM history WHERE user_cognito_sub = $1'
+    const result = await pool.query(query, [id])
+    let positions=[];
+    for (const row of result.rows){
+        let tmpObj={};
+        for (const prop in row){
+            tmpObj[prop] = row[prop]
+        }
+        positions.push(tmpObj);
+    }
+    return positions
+}
 export default{
     getDbKeys,
     postToDb,
@@ -109,4 +138,5 @@ export default{
     removeEvents,
     removePastEvents,
     getCompanyCatalysts,
+    getPositions,
 }

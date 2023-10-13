@@ -9,13 +9,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  align-content: center;
   gap:3rem;
   padding:0.5rem;
   background: linear-gradient(to right, rgb(0, 0, 0), rgb(46, 46, 46));
   border-bottom: 2px solid black;
-  z-index: 1;
-  overflow:hidden;
+  z-index: 2;
+  overflow: hidden;
 }
 .sticky{
   position:sticky;
@@ -66,7 +65,7 @@
   justify-content: space-evenly;
 }
 .background{
-  width:130%;
+  width:101.5%;
   height:100%;
   background-color: rgba(36,36,36,0.5);
   position:absolute;
@@ -75,7 +74,7 @@
 }
 .overlay{
   position: absolute;
-  z-index: 2;
+  z-index: 0.5;
   display: flex;
   align-items: center;
   top:50%;
@@ -115,7 +114,6 @@ table{
   min-width: 30rem;
   min-height: 23rem;
 }
-
 .diagonal-rectangle {
   position: absolute;
   width: 68rem; 
@@ -165,6 +163,11 @@ input{
   border-radius: 0.5rem;
   max-width: 4rem;
 }
+input[type='search']{
+  min-height: 3rem;
+  border-radius: 0.5rem;
+  min-width: 15rem;
+}
 .separator{
   min-height: 0.1rem;
   max-height: 0.1rem;
@@ -180,4 +183,17 @@ select{
   justify-content: space-evenly;
   gap:5rem;
   margin:0.5rem;
+}
+Button[type='search']{
+  z-index: 2;
+  transform: translate(-3rem, 0.38rem);
+  border-radius: 2rem;
+  min-height: 3.2rem;
+}
+.headerOption{
+  min-height: 2.7rem;
+  min-width: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

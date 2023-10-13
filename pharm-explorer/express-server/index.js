@@ -29,13 +29,6 @@ function formatDate(dateStr) {
   return `${year}-${formattedMonth}-${day}`;
 }
 
-app.get('/api/svg', (request, response) => {
-    svg.getSvgUrl()
-    .then(url=>{
-        response.send(url)
-    })
-    .catch(error=>{console.error(error)})
-  })
 app.get('/api/sec/:cik/:ticker/', (request, response)=>{
     let {cik, ticker}=request.params;
     backendRequests.getSECLogic(cik, ticker)
@@ -298,6 +291,11 @@ app.get('/api/catalysts/:ticker', async(request, response)=>{
   const {ticker}=request.params
   const catalysts = await db.getCompanyCatalysts(ticker)
   response.send(catalysts)
+})
+app.get('/api/positions/:id', async(request, response)=>{
+  const {id} =request.params
+  const positions = await db.getPositions(id)
+  response.send(positions)
 })
 const PORT = 3001
 app.listen(PORT, () => {

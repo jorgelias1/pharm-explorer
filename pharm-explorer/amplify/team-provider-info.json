@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-pharmexplorer-dev-203203-authRole",
+      "UnauthRoleArn": "arn:aws:iam::086519842133:role/amplify-pharmexplorer-dev-203203-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::086519842133:role/amplify-pharmexplorer-dev-203203-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-pharmexplorer-dev-203203-deployment",
+      "UnauthRoleName": "amplify-pharmexplorer-dev-203203-unauthRole",
+      "StackName": "amplify-pharmexplorer-dev-203203",
+      "StackId": "arn:aws:cloudformation:us-west-1:086519842133:stack/amplify-pharmexplorer-dev-203203/158cc390-6979-11ee-9f16-02458343c581",
+      "AmplifyAppId": "d3sf9z49botsl5"
+    },
+    "categories": {
+      "auth": {
+        "pharmexplorerab8b6e11": {}
+      }
+    }
+  }
+}

@@ -128,3 +128,34 @@ export const FDAStatus=({fdaStatus})=>{
       </>
     )
   }
+export const Svg=()=>{
+    return(
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="8" viewBox="0 0 48 16" transform="rotate(-45) translate(5, 0) scale(1, 1.17)">
+        <rect x="4" y="0" width="24" height="16" rx="4" ry="4" fill="#000"/>
+        <circle cx="8" cy="8" r="8" fill="#000"/>
+        <circle cx="8" cy="8" r="6" fill="#fff"/>
+        <rect x="4" y="2" width="24" height="12" rx="4" ry="4" fill="#fff"/>
+        <rect x="18" y="0" width="16" height="16" rx="2" ry="4" fill="#000" />
+        <circle cx="32" cy="8" r="8" fill="#000" />
+        <path d="M22 2 Q 32 1.5, 35 2.5" fill="none" stroke="#fff" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+    )
+}
+export const SearchIcon=()=>{
+    return(
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+    )
+}

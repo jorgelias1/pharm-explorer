@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
 import searchService from '../express-server/services/searching'
-import svg from '../express-server/services/axiosRequests'
+import service from '../express-server/services/axiosRequests'
 import scrape from '../cron/regex-engine'
 import { BrowserRouter as Router, Routes, Route, useAsyncError } from 'react-router-dom'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import drugModule from '../express-server/services/drug.js'
 import axios from 'axios'
 import logo from './assets/53.svg'
-import {BioactivityTable, PubmedTrials, PastInvestigators, Indications, FDAStatus} from './components/drug-component.jsx'
-
+import {BioactivityTable, PubmedTrials, PastInvestigators, Indications, FDAStatus, Svg, SearchIcon} from './components/drug-component.jsx'
+import { Amplify, Auth } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 import './App.css'
 
 const MainMenuCard=({text, handleClick})=>{
@@ -17,22 +19,24 @@ const MainMenuCard=({text, handleClick})=>{
   )
 }
 const Button=({text})=>{
+  if (text!=='submit'){
   return(
-    <button>{text}</button>
+    <button type={text}>{text}</button>
   )
+  } else {
+    return(
+      <button type='search'><SearchIcon/></button>
+    )
+  }
 }
 // logic for company/drug search
 const Search=({setQuery, query, setSearchResults, searchResults, trade, setamt})=>{
   const navigate=useNavigate();
-  const [svgURL, setSvgURL]=useState('');
   const [loading, setLoading]=useState(false);
   let placeholder = trade 
   ? 'Search for a Ticker or Name'
   : 'Search for a drug or company'
   // get icon URL
-  useEffect(()=>{
-      svg.getSVG().then(response=>{setSvgURL(response.data)})
-  }, [])
   const resultWrapper={
     backgroundColor:'white',
     color:'black',
@@ -68,21 +72,21 @@ const Search=({setQuery, query, setSearchResults, searchResults, trade, setamt})
   const handleCompanyClick=(item)=>{
     setLoading(true);
     if(!trade){
-      svg.getSEC(item)
+      service.getSEC(item)
       .then(response=>{
         let data=response.data
         navigate(`/company/`, {state :{data}})
+        setLoading(false)
       })
     } else{
-      svg.getQuote(item)
+      service.getQuote(item)
         .then(re=>{
-          console.log(re)
           const data=re.data
           setamt([data[0].price, item.ticker])
+          setLoading(false)
         })
     }
     setQuery(null)
-    setLoading(false)
   }
   const handleDrugClick=(item)=>{
     const compoundName=item.name
@@ -116,12 +120,12 @@ const Search=({setQuery, query, setSearchResults, searchResults, trade, setamt})
         onMouseEnter={handleHover}
         onMouseLeave={handleLeave}
         style={optionStyle}>
-        {item.name} (${item.ticker})</div>)
+        (${item.ticker}) {item.name} </div>)
       :(<div key={item.name} onClick={()=>handleDrugClick(item)}
         onMouseEnter={handleHover}
         onMouseLeave={handleLeave}
         style={optionStyle}>
-        <img src={svgURL} style={{width: '0.8rem'}}/>
+        <Svg/>
         {' '}{item.name}
         </div>)
       )
@@ -129,7 +133,7 @@ const Search=({setQuery, query, setSearchResults, searchResults, trade, setamt})
   )
   }
   return (
-    <form style={flexV}>
+    <div style={flexV}>
       <div>
       <input onChange={search} type='search' placeholder={placeholder} autoFocus/>
       <Button text='submit'/>
@@ -137,7 +141,8 @@ const Search=({setQuery, query, setSearchResults, searchResults, trade, setamt})
       <div style={resultWrapper}>
         {all}
       </div>
-    </form>
+      {loading && <Loading/>}
+    </div>
   )
 }
 
@@ -170,7 +175,7 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
   const filings=data[0].filings.recent
   const ticker=profile.symbol
   useEffect(()=>{
-    svg.getTrials(profile.companyName)
+    service.getTrials(profile.companyName)
     .then(response=>{
     setTrialData(response.data[0])
     axios.get(`http://127.0.0.1:3001/api/catalysts/${ticker}`)
@@ -420,16 +425,20 @@ const PaperTradePage=({setQuery, query, setSearchResults, searchResults})=>{
   const [currentCash, setCurrentCash] = useState(0);
   const [history, updateHistory] = useState([]);
   const [positions, updatePositions] = useState([]);
+  const [signedIn, setSignedIn] = useState(false)
   const trade=true;
-  let signedIn=false;
   const roundVal=(val)=>{
     return Number(parseFloat(val).toFixed(2))
   }
-  const getPositions=()=>{
+  const getPositions=async()=>{
     if (!signedIn){
-      // return positions (current array without)
-      console.log('not signed in')
+      return positions
+    } else{
+      
+      updatePositions(service.getPositions())
     }
+    // else make axios call to db and get positions+history.
+    // set the positions' ??price/value column and price?? to the current price (finprep->price+'changes' endpoints)
   }
   const calculateCash=()=>{
     if (!signedIn && history.length===0){
@@ -441,10 +450,10 @@ const PaperTradePage=({setQuery, query, setSearchResults, searchResults})=>{
       return currentCash
     }
   }
-  console.log(currentCash)
-  console.log(history)
+  console.log(history, positions)
   useEffect(() => {
     setCurrentCash(calculateCash());
+    getPositions()
   }, [signedIn])
 
   const handleTradeClick=()=>{
@@ -481,77 +490,88 @@ const TradeForm=({setTradeForm, trade, query, setQuery, searchResults, setSearch
   const [quantity, setQuantity] = useState(1)
   const [error1, setError1]=useState(false)
   const [error2, setError2]=useState(false)
+  const [error3, setError3]=useState(false);
   const [success, setSuccess]=useState(false)
-  const errors=['insufficient funds','insufficient shares']
+  const errors=['insufficient funds','insufficient shares', 'invalid input']
   let quote;
   let ticker;
   transactionAmount ? quote=roundVal(((transactionAmount[0]*quantity))/quantity) : null
   transactionAmount ? ticker=transactionAmount[1] : null
   const executeTrade=()=>{
+    let bool;
+    if (!ticker || !(quantity>0)){
+      setError3(true)
+      bool=false
+      return
+    }
     const Trade = function(){
       this.type=selectedTransaction
       this.ticker=ticker
       this.quantity=quantity
       this.price=quote
       this.transactionAmount=(quote*quantity).toFixed(2)
+      this.initialAvgPrice=quote
     }
     const trade = new Trade();
     console.log(history)
     // define a boolean to see if the trade is valid. 
-    const bool=selectedTransaction==='buy'
-    ? buy()
+    bool=selectedTransaction==='buy'
+    ? buy(trade)
     : selectedTransaction==='sell'
-    ? sell()
+    ? sell(trade)
     : selectedTransaction==='sell short'
-    ? short()
-    : buyToCover()
+    ? short(trade)
+    : buyToCover(trade)
     if (bool){
       setSuccess(true)
       setError1(false)
       setError2(false)
-      updateHistory(history.concat(trade));
-      updatePositions(positions.concat(trade))
+      setError3(false)
+      setQuery(null)
+      updateHistory(history.concat({type: trade.type, ticker: trade.ticker, quantity: trade.quantity, price: trade.price}));
     } else{
       setSuccess(false)
     }
   }
-  const buy=()=>{
+  const buy=(trade)=>{
     // check for sufficient cash
     if (roundVal((quote*quantity)) > cash){
       setError1(true)
       return false;
     } 
-    updateCash(roundVal(cash-(quote*quantity)))
+    updateCash(subtract(cash, quote*quantity))
+    updatePositions(consolidatePosition(trade, add))
     return true;
   }
-  const sell=()=>{
+  const sell=(trade)=>{
     // check for sufficient shares
-    const sellShares=true;
-    if (!enoughShares(trade, sellShares)){
+    if (!enoughShares(trade)){
       setError2(true)
       return false;
     } 
-    updateCash(roundVal(cash+(quote*quantity)))
+    updateCash(add(cash, quote*quantity))
+    updatePositions(consolidatePosition(trade, subtract))
     return true;
   }
-  const short=()=>{
+  const short=(trade)=>{
     // unlimited leverage. no limits.
-    updateCash(roundVal(cash+(quote*quantity)))
+    updateCash(add(cash, quote*quantity))
+    updatePositions(consolidatePosition(trade, add))
     return true;
   }
-  const buyToCover=()=>{
+  const buyToCover=(trade)=>{
     // check for sufficient shares
-    const coverShares=true;
-    if (!enoughShares(trade, coverShares)){
+    if (!enoughShares(trade)){
       setError2(true)
       return false;
     }
-    updateCash(roundVal(cash-(quote*quantity)))
+    updateCash(subtract(cash, quote*quantity))
+    updatePositions(consolidatePosition(trade, subtract))
     return true;
   }
-  const enoughShares=(trade, sellShares, coverShares)=>{
+  const enoughShares=(trade)=>{
     let sameTickers;
-    if (sellShares){
+    if (trade.type==='sell'){
       sameTickers = positions.filter(position=>{
         return (position.ticker===trade.ticker && position.type==='buy')
       })
@@ -565,6 +585,47 @@ const TradeForm=({setTradeForm, trade, query, setQuery, searchResults, setSearch
       return true
     }
     return false
+  }
+  const consolidatePosition=(trade, operation)=>{
+    let found=false;
+    const consolidated = positions.map(position=>{
+      if (position.ticker===trade.ticker && (position.type===trade.type 
+        || ((position.type==='buy'||position.type==='sell')&&(trade.type==='buy'||trade.type==='sell')&&(trade.type!==position.type))
+        || ((position.type==='buy to cover short'||position.type==='sell short')&&(trade.type==='buy to cover short'||trade.type==='sell short')&&(trade.type!==position.type)))){
+        let newPrice, newInitialPrice;
+        // if adding to a position, since we are calculating positions as totals,
+        // then the price will reflect the addition to the position.
+        // else, the average will not change with removal (since its the same average)
+        if (trade.type==='buy' || trade.type==='sell short'){
+          newPrice=meanPrice(position.price, position.quantity, trade.price, trade.quantity);
+          newInitialPrice=meanPrice(position.initialAvgPrice, position.quantity, trade.price, trade.quantity)
+        } else{
+          newPrice=position.price;
+          newInitialPrice=position.initialAvgPrice;
+        }
+        const newQuantity=operation(position.quantity,trade.quantity);
+        found=true;
+        return {...position, price: newPrice, quantity: newQuantity, initialAvgPrice: newInitialPrice}
+      } 
+      return position
+    })
+    if (!found){
+      return positions.concat(trade)
+    }
+    const filterConsolidated = consolidated.filter(position=>position.quantity!==0)
+    return filterConsolidated;
+  }
+  const meanPrice=(currentPrice, currentQty, tradePrice, tradeQty)=>{
+    const avg = 
+    (add((currentPrice*currentQty),(tradePrice*tradeQty)))
+    /(add(currentQty,tradeQty))
+    return avg;
+  }
+  const subtract=(a,b)=>{
+    return roundVal(a-b)
+  }
+  const add=(a,b)=>{
+    return roundVal(a+b)
   }
   return(
     <div className='form'>
@@ -580,6 +641,7 @@ const TradeForm=({setTradeForm, trade, query, setQuery, searchResults, setSearch
       )}
       {error1 && (<div className='warning'>{errors[0]}</div>)} 
       {error2 && (<div className='warning'>{errors[1]}</div>)}
+      {error3 && (<div className='warning'>{errors[2]}</div>)}
       {success && <div>success!</div>}
       <button onClick={executeTrade}>confirm trade</button>
       <button onClick={()=>setTradeForm(false)}>close</button>
@@ -592,7 +654,7 @@ const TransactionType=({setSelectedTransaction, selectedTransaction, quantity, s
     setSelectedTransaction(e.target.value)
   }
   const handleQuantity=(e)=>{
-    setQuantity(e.target.value)
+    setQuantity(Number(e.target.value))
   }
   return(
   <div>
@@ -615,6 +677,7 @@ const TransactionType=({setSelectedTransaction, selectedTransaction, quantity, s
 const PortfolioTable=({positions, cashTotal})=>{
   
   const columns=['type','ticker', 'qty', 'current value', 'day change(val/%)', 'total gain/loss', 'thesis']
+  // day chg, current value(data.price*qty) are values received from the axios call
   return(
   <div className='scrollTable'>
     <table>
@@ -631,9 +694,13 @@ const PortfolioTable=({positions, cashTotal})=>{
         : positions.map((position, index)=>{
           return(
           <tr key={index}>
-            {Object.entries(position).map(value=>
-              <td key={value+position}>{value[1]}</td>
-          )}
+            <td>{position.type}</td>
+            <td>{position.ticker}</td>
+            <td>{position.quantity}</td>
+            <td>{position.quantity*position.price}</td>
+            <td>axios call</td>
+            <td>{(position.initialAvgPrice*position.quantity)-position.price}</td>
+            <td><button>click to add your thesis</button></td>
           </tr>
           )
         })}
@@ -779,9 +846,9 @@ const Header=()=>{
         <img src={logo} style={{maxWidth: '3rem', backgroundColor: 'white', transform:'scaleX(-1)'}}/>
         <b>Pharm Explorer</b>
       </div>
-      <div onClick={handleHomeClick}>home</div>
-      <div onClick={handleTradeClick}>trade</div>
-      <div onClick={handleCalendarClick}>calendar</div>
+      <div onClick={handleHomeClick} className='headerOption'>home</div>
+      <div onClick={handleTradeClick} className='headerOption'>trade</div>
+      <div onClick={handleCalendarClick} className='headerOption'>calendar</div>
     </div>
   )
 }
@@ -801,6 +868,13 @@ const Layout=({children})=>{
         {children}
       </div>
     </>
+  )
+}
+const Loading=()=>{
+  return(
+    <div className="background">
+        loading...
+    </div>
   )
 }
 const App=()=>{

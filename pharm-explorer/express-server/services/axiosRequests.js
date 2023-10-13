@@ -1,6 +1,5 @@
 import axios from 'axios'
-import OAuth from 'oauth-1.0a'
-import crypto from 'crypto'
+const baseUrl= 'http://127.0.0.1:3001'
 
 const getCompanies=(response, fuzzyPattern)=>{
   const filteredData=response.data.filter(item=>{
@@ -18,61 +17,16 @@ const getCompanies=(response, fuzzyPattern)=>{
   }
   return companies
  }
- 
-const getSVG=()=>{
-    return axios.get('http://127.0.0.1:3001/api/svg')
-}
-const getSvgUrl = () => {
-    const iconId = '4477632';
-    const apikey = '1445d0ba0dc94fdf967062479562436e';
-    const secret = 'ddd4495bcb8748fc9975ebc06e24f55b';
-  
-    return new Promise((resolve, reject) => {
-      const oauth = OAuth({
-        consumer: { key: apikey, secret: secret },
-        signature_method: 'HMAC-SHA1',
-        hash_function(base_string, key) {
-          const hmac = crypto.createHmac('sha1', key)
-          hmac.update(base_string)
-          return hmac.digest('base64')
-        },
-      })
-  
-      const apiEndpoint = `https://api.thenounproject.com/v2/icon/${iconId}`;
-      const requestData = {
-        url: apiEndpoint,
-        method: 'GET',
-      }
-      const authorization = oauth.authorize(requestData);
-      const axiosInstance = axios.create({
-        headers: {
-          Authorization: oauth.toHeader(authorization).Authorization,
-        },
-      })
-  
-      // Make the authenticated API request
-      axiosInstance
-        .get(apiEndpoint)
-        .then((response) => {
-          const svgURL = response.data.icon.thumbnail_url;
-          resolve(svgURL);
-        })
-        .catch((error) => {
-          console.log('Error:')
-          reject(error)
-        })
-    })
-  }
 const getSEC=(item)=>{
-    return axios.get(`http://127.0.0.1:3001/api/sec/${item.cik}/${item.ticker}`)
+    return axios.get(`${baseUrl}/api/sec/${item.cik}/${item.ticker}`)
 }
 const getQuote=(item)=>{
-  return axios.get(`http://127.0.0.1:3001/api/quote/${item.ticker}`)
+  return axios.get(`${baseUrl}/api/quote/${item.ticker}`)
 }
 const getTrials=(name)=>{
     name=name.split(' ')
     name=name[0]
-  return axios.get(`http://127.0.0.1:3001/api/trials/${name}`)
+  return axios.get(`${baseUrl}/api/trials/${name}`)
 }
 const getTrialsLogic=(name)=>{
   const Promises=[
@@ -83,7 +37,7 @@ const getTrialsLogic=(name)=>{
 }
 
 const getCik = async (name)=>{
-  const companyURL = 'http://localhost:3001/companies'
+  const companyURL = `http://localhost:3001/companies`
   const response = await axios.get(companyURL)
   const entityName = new RegExp(`${name.replace(',', ',?')}`, 'i')
   let cik=null;
@@ -100,13 +54,15 @@ const getCik = async (name)=>{
     }
     return cik;
 }
+const getPositions=(id)=>{
+  return axios.get(`${baseUrl}/api/positions/${id}`)
+}
 export default{
     getCompanies,
-    getSVG,
-    getSvgUrl,
     getSEC,
     getTrials,
     getTrialsLogic,
     getCik,
     getQuote,
+    getPositions,
 }
