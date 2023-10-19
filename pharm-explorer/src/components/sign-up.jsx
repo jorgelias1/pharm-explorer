@@ -116,7 +116,7 @@ export const SignUpButton=()=>{
     return(
         <>
             <button onClick={()=>showSignUpForm(true)} className='position'>Sign Up</button>
-            {sigâUpForm && (<div className='position2'><Overlay content={<SignUpForm showSignUpForm={showSignUpForm}/>}/></div>)}
+            {signUpForm && (<div className='position2'><Overlay content={<SignUpForm showSignUpForm={showSignUpForm}/>}/></div>)}
         </>
     )
 }
@@ -140,14 +140,14 @@ export const SubscribeForm=()=>{
       TopicArn: company.topicArn,
       Endpoint: email,
     }
-    sns.subscribe(params, (err, data)=>{
-      if (err){
-        console.error(err)
-      } else {
-        setValid(true)
-        service.addToSubscriptions(user, {topicArn: company.topicArn, subscriptionArn: data.subscriptionArn})
-      }
-    })
+    // sns.subscribe(params, (err, data)=>{
+    //   if (err){
+    //     console.error(err)
+    //   } else {
+    //     setValid(true)
+    //     service.addToSubscriptions(user, {topicArn: company.topicArn, subscriptionArn: data.subscriptionArn})
+    //   }
+    // })
   }
   return(
     <div>
@@ -171,17 +171,18 @@ export const UnSubscribeForm=()=>{
     const re1 = await service.getSubscriptions(user);
     const re2 = await service.getArn();
     const arnSubs = re1.data.rows[0].subscriptions
-    const subs = re2.data.companies.filter(
-      company=>arnSubs.includes(company.topicArn))
-    if (subs.length===0){
-      setNoSubs(true);
-      return
-    } 
-    setNoSubs(false)
+    console.log(arnSubs)
+    // const subs = re2.data.companies.filter(
+    //   company=>arnSubs.includes(company.topicArn))
+    // if (subs.length===0){
+    //   setNoSubs(true);
+    //   return
+    // } 
+    // setNoSubs(false)
     const email = user.attributes.email
     const params = {
       Protocol: 'email',
-      TopicArn: company.topicArn,
+      // TopicArn: company.topicArn,
       Endpoint: email,
     }
     // sns.subscribe(params, (err)=>{
