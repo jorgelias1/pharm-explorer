@@ -1,6 +1,6 @@
 {
   "auth": {
-    "pharmexplorerab8b6e11": {
+    "pharmexplorerc6490d86c6490d86": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -16,7 +16,9 @@
           "EMAIL"
         ],
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "verificationMechanisms": [
           "EMAIL"
         ]

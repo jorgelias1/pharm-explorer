@@ -54,8 +54,50 @@ const getCik = async (name)=>{
     }
     return cik;
 }
+const addUserToDb=(user)=>{
+  console.log(user)
+  return axios.post(`${baseUrl}/api/users`, user)
+}
 const getPositions=(id)=>{
   return axios.get(`${baseUrl}/api/positions/${id}`)
+}
+const getHistory=(id)=>{
+  return axios.get(`${baseUrl}/api/history/${id}`)
+}
+const getCash=(id)=>{
+  return axios.get(`${baseUrl}/api/cash/${id}`)
+}
+const postTrade=(id, trade, found)=>{
+  return axios.post(`${baseUrl}/api/trade/${id}`, {trade, found})
+}
+const postCash=(id, cash)=>{
+  return axios.post(`${baseUrl}/api/newCash/${id}`, {
+    headers: {
+      'Content-Type': 'application/json', 
+    }, data: cash,
+  })
+}
+const deletePosition=(id, position)=>{
+  return axios.post(`${baseUrl}/api/position/${id}`, position)
+}
+const postHistory = (id, trade)=>{
+  return axios.post(`${baseUrl}/api/history/${id}`, trade)
+}
+const getArn = () =>{
+  return axios.get(`${baseUrl}/api/companies`)
+}
+const addToSubscriptions = (user, arns) =>{
+  const topicArn = arns.topicArn
+  user = {...user, subscriptionArn: arns.subscriptionArn}
+  return axios.post(`${baseUrl}/api/${topicArn}`, user)
+}
+const removeFromSubscriptions = (user, topicArn)=>{
+  const sub = user.attributes.sub
+  return axios.delete(`${baseUrl}/api/${topicArn}/${sub}`)
+}
+const getSubscriptions = (user) =>{
+  const sub = user.attributes.sub
+  return axios.get(`${baseUrl}/api/subscriptions/${sub}`)
 }
 export default{
     getCompanies,
@@ -64,5 +106,16 @@ export default{
     getTrialsLogic,
     getCik,
     getQuote,
+    addUserToDb,
     getPositions,
+    getCash,
+    postTrade,
+    postCash,
+    deletePosition,
+    postHistory,
+    getHistory,
+    getArn,
+    addToSubscriptions,
+    removeFromSubscriptions,
+    getSubscriptions,
 }

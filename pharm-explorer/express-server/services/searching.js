@@ -5,7 +5,7 @@ import Fuse from 'fuse.js'
 const companyURL='http://localhost:3001/companies';
 
 const showResults=(query, setResults)=>{
-    if (!query){
+    if (query===''){
         return Promise.resolve('no query found');
     }
     const drugURL=`https://pubchem.ncbi.nlm.nih.gov/rest/autocomplete/compound/${query}/json?limit=6`
@@ -46,7 +46,7 @@ const showResults=(query, setResults)=>{
         })
 }
 const tradeResults = async (query, setResults)=>{
-    if (!query){
+    if (query===''){
         return Promise.resolve('no query found');
     }
     const response = await axios.get(companyURL)

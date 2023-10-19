@@ -1,10 +1,8 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "pharmexplorerab8b6e11_identitypool_ab8b6e11",
-    "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "pharmeab8b6e11",
-    "userPoolName": "pharmexplorerab8b6e11_userpool_ab8b6e11",
+    "resourceNameTruncated": "pharme036628a8",
+    "userPoolName": "pharmexplorer036628a8_userpool_036628a8",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -15,7 +13,7 @@
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
     "emailVerificationSubject": "Your verification code",
-    "emailVerificationMessage": "Your verification code is {####}",
+    "emailVerificationMessage": "<div>Welcome to PharmExplorer!</div> <p>Your verification code is {####}</p>",
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
@@ -31,14 +29,26 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "pharmeab8b6e11_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "pharme036628a8_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "ab8b6e11",
-    "resourceName": "pharmexplorerab8b6e11",
-    "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "sharedId": "036628a8",
+    "resourceName": "pharmexplorer036628a8036628a8",
+    "authSelections": "userPoolOnly",
+    "useDefault": "manual",
+    "usernameAttributes": [
+      "email"
+    ],
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": {
+      "CustomMessage": [
+        "verification-link"
+      ]
+    },
+    "hostedUI": false,
     "userPoolGroupList": [],
     "serviceName": "Cognito",
+    "verificationBucketName": "pharmexplorer036628a8036628a8verificationbucket",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true
   }

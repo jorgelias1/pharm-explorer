@@ -8,9 +8,9 @@ import drugModule from '../express-server/services/drug.js'
 import axios from 'axios'
 import logo from './assets/53.svg'
 import {BioactivityTable, PubmedTrials, PastInvestigators, Indications, FDAStatus, Svg, SearchIcon} from './components/drug-component.jsx'
-import { Amplify, Auth } from 'aws-amplify';
-import awsconfig from './aws-exports';
-Amplify.configure(awsconfig);
+import { SignUpForm, Overlay, LoginForm } from './components/sign-up'
+import { PaperTradePage } from './components/trading'
+
 import './App.css'
 
 const MainMenuCard=({text, handleClick})=>{
@@ -30,7 +30,7 @@ const Button=({text})=>{
   }
 }
 // logic for company/drug search
-const Search=({setQuery, query, setSearchResults, searchResults, trade, setamt})=>{
+export const Search=({setQuery, query, setSearchResults, searchResults, trade, setamt})=>{
   const navigate=useNavigate();
   const [loading, setLoading]=useState(false);
   let placeholder = trade 
@@ -45,15 +45,12 @@ const Search=({setQuery, query, setSearchResults, searchResults, trade, setamt})
     display: !query ? 'none': 'block',
     fontSize: '1rem',
     textAlign:'left',
-    transition: 'border-color 0.4s ease, box-shadow 0.4s ease'
+    transition: 'border-color 0.4s ease, box-shadow 0.4s ease',
+    maxWidth:'100%',
   }
   if (loading){
     resultWrapper.borderColor='yellow';
     resultWrapper.boxShadow='0 0 20px black';
-  }
-  const flexV={
-    display:'flex',
-    flexDirection:'column',
   }
   const search=(event)=>{
     setQuery(event.target.value)
@@ -86,7 +83,7 @@ const Search=({setQuery, query, setSearchResults, searchResults, trade, setamt})
           setLoading(false)
         })
     }
-    setQuery(null)
+    setQuery('')
   }
   const handleDrugClick=(item)=>{
     const compoundName=item.name
@@ -120,7 +117,7 @@ const Search=({setQuery, query, setSearchResults, searchResults, trade, setamt})
         onMouseEnter={handleHover}
         onMouseLeave={handleLeave}
         style={optionStyle}>
-        (${item.ticker}) {item.name} </div>)
+        (${item.ticker}) | {item.name} </div>)
       :(<div key={item.name} onClick={()=>handleDrugClick(item)}
         onMouseEnter={handleHover}
         onMouseLeave={handleLeave}
@@ -133,13 +130,14 @@ const Search=({setQuery, query, setSearchResults, searchResults, trade, setamt})
   )
   }
   return (
-    <div style={flexV}>
-      <div>
-      <input onChange={search} type='search' placeholder={placeholder} autoFocus/>
-      <Button text='submit'/>
+    <div className='container'>
+      <div className='searchContainer'>
+        <input onChange={search} type='search' placeholder={placeholder} autoFocus value={query}/>
+        <Button text='submit'/>
       </div>
       <div style={resultWrapper}>
-        {all}
+        <div style={{maxWidth: '18rem', marginLeft: '0.1rem', padding: '0.05rem', background: 'rgba(0,0,0,0.3)', borderRadius: '4rem'}}></div>
+          {all}
       </div>
       {loading && <Loading/>}
     </div>
@@ -209,7 +207,7 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
   ? financial=data[1].facts['us-gaap'] 
   : financial=data[1].facts['ifrs-full']
   return (
-  <>
+  <div className='all'>
   <Search query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults}/>
   <div><img src={profile.image} style={imgStyle}></img>{profile.companyName} ({profile.exchangeShortName} - {profile.country}) </div>
   
@@ -247,7 +245,7 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
   </div>
   {catalysts && <CalendarTable calendarEvents={catalysts} />}
   <CTGovTable trialData={trialData} trialTableBody={trialTableBody} scrollTable={scrollTable} title={title}/>
-  </>
+  </div>
   )
 
 }
@@ -306,7 +304,7 @@ const TrialTableRow=({trial})=>{
       }
   }
 }
-const DrugPage=()=>{
+const DrugPage=({query, setQuery, searchResults, setSearchResults})=>{
   const navigate = useNavigate();
   const location = useLocation();
   const scrollTable={
@@ -363,7 +361,8 @@ const DrugPage=()=>{
     return <TrialTableRow trial={trial} key={trial.protocolSection.identificationModule.nctId}/>
  }))
   return (
-  <>
+  <div className='all'>
+  <Search query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults}/>
   {mechanismOfAction ? 
   <>
   <div style={flexHorizontal}>
@@ -416,302 +415,6 @@ const DrugPage=()=>{
   <div style={scrollTable}>
     {data[6] && <BioactivityTable bioactivityColumns={bioactivityColumns} activeRows={activeRows} remove={remove}/>}
   </div>
-  </>
-  )
-}
-
-const PaperTradePage=({setQuery, query, setSearchResults, searchResults})=>{
-  const [tradeForm, setTradeForm] = useState(false)
-  const [currentCash, setCurrentCash] = useState(0);
-  const [history, updateHistory] = useState([]);
-  const [positions, updatePositions] = useState([]);
-  const [signedIn, setSignedIn] = useState(false)
-  const trade=true;
-  const roundVal=(val)=>{
-    return Number(parseFloat(val).toFixed(2))
-  }
-  const getPositions=async()=>{
-    if (!signedIn){
-      return positions
-    } else{
-      
-      updatePositions(service.getPositions())
-    }
-    // else make axios call to db and get positions+history.
-    // set the positions' ??price/value column and price?? to the current price (finprep->price+'changes' endpoints)
-  }
-  const calculateCash=()=>{
-    if (!signedIn && history.length===0){
-      if (history.length===0){
-        return 10000
-      } 
-    } else {
-      // axios call to database and see current cash
-      return currentCash
-    }
-  }
-  console.log(history, positions)
-  useEffect(() => {
-    setCurrentCash(calculateCash());
-    getPositions()
-  }, [signedIn])
-
-  const handleTradeClick=()=>{
-    setTradeForm(true);
-    setQuery(null)
-  }
-  return(
-    <div style={{position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', padding:'none', }}>
-      <h2>Paper Trading</h2>
-      {!signedIn && (
-      <div className='warning' style={{width: '100%'}}>Warning: You are not signed in; your history, including any trades you make, will not be saved. 
-      <div>To save your history, <button>sign in</button> or <button>create an account.</button></div></div>
-      )}
-      <PortfolioTable signedIn={signedIn} positions={positions} cashTotal={currentCash}/>
-      <button onClick={handleTradeClick} style={{maxWidth: '8rem'}}>Trade</button>
-      {tradeForm && (
-        <Overlay content={<TradeForm setTradeForm={setTradeForm} trade={trade} query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults} updateCash={setCurrentCash} cash={currentCash} history={history} updateHistory={updateHistory} positions={positions} updatePositions={updatePositions} roundVal={roundVal}/>}/>
-      )}
-    </div>
-  )
-}
-const Overlay=({content})=>{
-  return(
-    <div className='background'>
-      <div className='overlay'>
-        {content}
-      </div>
-    </div>
-  )
-}
-const TradeForm=({setTradeForm, trade, query, setQuery, searchResults, setSearchResults, updateCash, cash, history, updateHistory, positions, updatePositions, roundVal})=>{
-  const [transactionAmount, setTransactionAmount] = useState(null);
-  const [selectedTransaction, setSelectedTransaction] = useState('buy')
-  const [quantity, setQuantity] = useState(1)
-  const [error1, setError1]=useState(false)
-  const [error2, setError2]=useState(false)
-  const [error3, setError3]=useState(false);
-  const [success, setSuccess]=useState(false)
-  const errors=['insufficient funds','insufficient shares', 'invalid input']
-  let quote;
-  let ticker;
-  transactionAmount ? quote=roundVal(((transactionAmount[0]*quantity))/quantity) : null
-  transactionAmount ? ticker=transactionAmount[1] : null
-  const executeTrade=()=>{
-    let bool;
-    if (!ticker || !(quantity>0)){
-      setError3(true)
-      bool=false
-      return
-    }
-    const Trade = function(){
-      this.type=selectedTransaction
-      this.ticker=ticker
-      this.quantity=quantity
-      this.price=quote
-      this.transactionAmount=(quote*quantity).toFixed(2)
-      this.initialAvgPrice=quote
-    }
-    const trade = new Trade();
-    console.log(history)
-    // define a boolean to see if the trade is valid. 
-    bool=selectedTransaction==='buy'
-    ? buy(trade)
-    : selectedTransaction==='sell'
-    ? sell(trade)
-    : selectedTransaction==='sell short'
-    ? short(trade)
-    : buyToCover(trade)
-    if (bool){
-      setSuccess(true)
-      setError1(false)
-      setError2(false)
-      setError3(false)
-      setQuery(null)
-      updateHistory(history.concat({type: trade.type, ticker: trade.ticker, quantity: trade.quantity, price: trade.price}));
-    } else{
-      setSuccess(false)
-    }
-  }
-  const buy=(trade)=>{
-    // check for sufficient cash
-    if (roundVal((quote*quantity)) > cash){
-      setError1(true)
-      return false;
-    } 
-    updateCash(subtract(cash, quote*quantity))
-    updatePositions(consolidatePosition(trade, add))
-    return true;
-  }
-  const sell=(trade)=>{
-    // check for sufficient shares
-    if (!enoughShares(trade)){
-      setError2(true)
-      return false;
-    } 
-    updateCash(add(cash, quote*quantity))
-    updatePositions(consolidatePosition(trade, subtract))
-    return true;
-  }
-  const short=(trade)=>{
-    // unlimited leverage. no limits.
-    updateCash(add(cash, quote*quantity))
-    updatePositions(consolidatePosition(trade, add))
-    return true;
-  }
-  const buyToCover=(trade)=>{
-    // check for sufficient shares
-    if (!enoughShares(trade)){
-      setError2(true)
-      return false;
-    }
-    updateCash(subtract(cash, quote*quantity))
-    updatePositions(consolidatePosition(trade, subtract))
-    return true;
-  }
-  const enoughShares=(trade)=>{
-    let sameTickers;
-    if (trade.type==='sell'){
-      sameTickers = positions.filter(position=>{
-        return (position.ticker===trade.ticker && position.type==='buy')
-      })
-    } else {
-      sameTickers = positions.filter(position=>{
-        return (position.ticker===trade.ticker && position.type==='sell short')
-      })
-    }
-    const positionQuantity = sameTickers.reduce((sum, position)=>position.quantity+sum, 0)
-    if (positionQuantity >= trade.quantity){
-      return true
-    }
-    return false
-  }
-  const consolidatePosition=(trade, operation)=>{
-    let found=false;
-    const consolidated = positions.map(position=>{
-      if (position.ticker===trade.ticker && (position.type===trade.type 
-        || ((position.type==='buy'||position.type==='sell')&&(trade.type==='buy'||trade.type==='sell')&&(trade.type!==position.type))
-        || ((position.type==='buy to cover short'||position.type==='sell short')&&(trade.type==='buy to cover short'||trade.type==='sell short')&&(trade.type!==position.type)))){
-        let newPrice, newInitialPrice;
-        // if adding to a position, since we are calculating positions as totals,
-        // then the price will reflect the addition to the position.
-        // else, the average will not change with removal (since its the same average)
-        if (trade.type==='buy' || trade.type==='sell short'){
-          newPrice=meanPrice(position.price, position.quantity, trade.price, trade.quantity);
-          newInitialPrice=meanPrice(position.initialAvgPrice, position.quantity, trade.price, trade.quantity)
-        } else{
-          newPrice=position.price;
-          newInitialPrice=position.initialAvgPrice;
-        }
-        const newQuantity=operation(position.quantity,trade.quantity);
-        found=true;
-        return {...position, price: newPrice, quantity: newQuantity, initialAvgPrice: newInitialPrice}
-      } 
-      return position
-    })
-    if (!found){
-      return positions.concat(trade)
-    }
-    const filterConsolidated = consolidated.filter(position=>position.quantity!==0)
-    return filterConsolidated;
-  }
-  const meanPrice=(currentPrice, currentQty, tradePrice, tradeQty)=>{
-    const avg = 
-    (add((currentPrice*currentQty),(tradePrice*tradeQty)))
-    /(add(currentQty,tradeQty))
-    return avg;
-  }
-  const subtract=(a,b)=>{
-    return roundVal(a-b)
-  }
-  const add=(a,b)=>{
-    return roundVal(a+b)
-  }
-  return(
-    <div className='form'>
-      <div style={{minWidth: '100%', display:'flex', flexDirection: 'column', gap: '1rem'}}>
-        <div style={{fontSize: '1.1rem', fontWeight: 'bold'}}>Available Cash: ${cash}</div>
-        <Search query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults} trade={trade} setamt={setTransactionAmount}/>
-        <div className='separator'></div>
-      </div>
-      {transactionAmount && <div><b>${transactionAmount[1]}</b> quote: ${quote}</div>}
-      <TransactionType setSelectedTransaction={setSelectedTransaction} selectedTransaction={selectedTransaction} quantity={quantity} setQuantity={setQuantity}/>
-      {transactionAmount && (
-        <div>Transaction Amount: ${(quote*quantity).toFixed(2)}</div>
-      )}
-      {error1 && (<div className='warning'>{errors[0]}</div>)} 
-      {error2 && (<div className='warning'>{errors[1]}</div>)}
-      {error3 && (<div className='warning'>{errors[2]}</div>)}
-      {success && <div>success!</div>}
-      <button onClick={executeTrade}>confirm trade</button>
-      <button onClick={()=>setTradeForm(false)}>close</button>
-    </div>
-  )
-}
-const TransactionType=({setSelectedTransaction, selectedTransaction, quantity, setQuantity})=>{
-  const options=['buy', 'sell', 'sell short', 'buy to cover short']
-  const handleChange=(e)=>{
-    setSelectedTransaction(e.target.value)
-  }
-  const handleQuantity=(e)=>{
-    setQuantity(Number(e.target.value))
-  }
-  return(
-  <div>
-    <div className='formRow'>
-      <div>Action:</div>
-      <select onChange={handleChange} value={selectedTransaction}>
-        <option disabled value='choose'>choose</option>
-        {options.map(option=>
-        <option key={option} value={option}>{option}</option>
-        )}
-      </select>
-    </div>
-    <div className="separator"></div>
-    <div className='formRow'>
-        Quantity: <input type='number' placeholder='1' onChange={handleQuantity} value={quantity}></input>
-    </div>
-  </div>
-  )
-}
-const PortfolioTable=({positions, cashTotal})=>{
-  
-  const columns=['type','ticker', 'qty', 'current value', 'day change(val/%)', 'total gain/loss', 'thesis']
-  // day chg, current value(data.price*qty) are values received from the axios call
-  return(
-  <div className='scrollTable'>
-    <table>
-      <thead>
-        <tr>
-            {columns.map(columnName=>
-              <th key={columnName}>{columnName}</th>
-              )}
-        </tr>
-      </thead>
-      <tbody>
-        {positions.length===0
-        ? <tr><td colSpan={columns.length}>No Open Positions</td></tr>
-        : positions.map((position, index)=>{
-          return(
-          <tr key={index}>
-            <td>{position.type}</td>
-            <td>{position.ticker}</td>
-            <td>{position.quantity}</td>
-            <td>{position.quantity*position.price}</td>
-            <td>axios call</td>
-            <td>{(position.initialAvgPrice*position.quantity)-position.price}</td>
-            <td><button>click to add your thesis</button></td>
-          </tr>
-          )
-        })}
-      </tbody>
-      <tfoot> 
-        <tr>   
-          <td colSpan={2}>Cash Total: ${cashTotal}</td>
-          <td colSpan={columns.length-2}>Account Value: </td>
-        </tr>  
-      </tfoot>
-    </table>
   </div>
   )
 }
@@ -796,6 +499,35 @@ const CalendarRow=({event})=>{
       </tr>
   )
 }
+// Pop-up msg that fades
+const Message=({msg})=>{
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(false); 
+    }, 1000)
+
+    return () => {
+      clearTimeout(timer);
+    }
+  }, []);
+
+  return visible ? (
+    <div className='fade'>{msg}</div>
+  ) : null;
+}
+const SignUpPage=()=>{
+  return (
+    <div>
+      <SignUpForm/>
+    </div>
+  )
+}
+const LogInPage=()=>{
+  return(
+    <LoginForm/>
+  )
+}
 const HomeLayout=({children})=>{
   const navigate=useNavigate();
   const mainStyle={
@@ -810,7 +542,7 @@ const HomeLayout=({children})=>{
     navigate('/trade')
   }
   return(
-  <div style={{position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '20rem', padding:'none', }}>
+  <div className='all'>
     <h1>hello</h1>
     <div style={mainStyle}>
       <MainMenuCard text='Paper Trading' handleClick={handleTradeClick}/>
@@ -849,6 +581,8 @@ const Header=()=>{
       <div onClick={handleHomeClick} className='headerOption'>home</div>
       <div onClick={handleTradeClick} className='headerOption'>trade</div>
       <div onClick={handleCalendarClick} className='headerOption'>calendar</div>
+      <div onClick={()=>navigate('/signUp')} className='headerOption'>sign up</div>
+      <div onClick={()=>navigate('/logIn')} className='headerOption'>log in</div>
     </div>
   )
 }
@@ -864,21 +598,31 @@ const Layout=({children})=>{
   return(
     <>
       <Header />
+      <Nav />
       <div style={universalStyle}>
         {children}
       </div>
     </>
   )
 }
-const Loading=()=>{
+const Nav = ()=>{
   return(
-    <div className="background">
-        loading...
+    <div style={{display: 'flex', justifyContent: 'flex-end', margin: '1rem'}}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill='white' transform='scale(-1, 1)'>
+          <rect x="7" y="5" width="18" height="2"/>
+          <rect x="7" y="11" width="12.5" height="2"/>
+          <rect x="7" y="17" width="10" height="2"/>
+      </svg>
     </div>
   )
 }
+const Loading=()=>{
+  return(
+    <div className='loading'>loading...</div>
+  )
+}
 const App=()=>{
-  const [query, setQuery]=useState(null);
+  const [query, setQuery]=useState('');
   const [searchResults, setSearchResults]=useState([]);
 
   return (
@@ -897,8 +641,10 @@ const App=()=>{
              />
           <Route path='/trade' element={<PaperTradePage query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults}/>} />
           <Route path='/company' element ={<CompanyPage query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults}/>} />
-          <Route path='/drug' element={<DrugPage />} />
+          <Route path='/drug' element={<DrugPage query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults}/>} />
           <Route path='/calendar' element={<CalendarPage />} />
+          <Route path='/signUp' element={<SignUpPage/>}/>
+          <Route path='/logIn' element={<LogInPage/>}/>
         </Routes>
       </Layout>
     </Router>

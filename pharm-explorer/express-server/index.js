@@ -9,8 +9,10 @@ import db from './db.js'
 import drug from './services/drug.js'
 import {Buffer} from 'buffer'
 import backendRequests from './services/backendRequests.js'
+import axios from 'axios'
 
 app.use(cors())
+app.use(express.json())
 
 function formatDate(dateStr) {
   const months = [
@@ -103,7 +105,7 @@ app.get('/api/pressReleases', async(request, response)=>{
     const today=dateFromMonthsAgo(0);
     const oldDate=dateFromMonthsAgo(6);
     const olderDate=dateFromMonthsAgo(9);
-
+    
     const searchUrls=[
       `https://www.sec.gov/edgar/search/#/q=%2522topline%2520results%2522%2520OR%2520%2522topline%2520data%25E2%2580%259D%2520AND%2520%2522expects%2522%2520OR%2520%2522expected%2520by%2522%2520OR%2520%2522anticipated%2522&dateRange=custom&category=form-cat1&startdt=${today}&enddt=${today}`,
       `https://www.sec.gov/edgar/search/#/q=PDUFA%2520OR%2520present%2520topline%2520data%2520OR%2520results&dateRange=custom&category=form-cat1&startdt=${today}&enddt=${today}`,
@@ -220,7 +222,6 @@ app.get('/api/events', async (request, response)=>{
   const re=await db.getEvents();
   response.send(re);
 })
-app.use(express.json())
 app.post('/api/postEvents', async (request, response)=>{
   const events=request.body
   try{
@@ -292,10 +293,66 @@ app.get('/api/catalysts/:ticker', async(request, response)=>{
   const catalysts = await db.getCompanyCatalysts(ticker)
   response.send(catalysts)
 })
+app.post('/api/users', async(request, response)=>{
+  const user=request.body
+  await db.addUserToDb(user)
+  console.log('success!')
+})
 app.get('/api/positions/:id', async(request, response)=>{
   const {id} =request.params
   const positions = await db.getPositions(id)
   response.send(positions)
+})
+app.get('/api/cash/:id', async(request, response)=>{
+  const {id}=request.params
+  const cash = await db.getCash(id)
+  response.send(cash)
+})
+app.post('/api/newCash/:id', async(request, response)=>{
+  const {id} = request.params
+  const cash = request.body
+  await db.postCash(id, cash.data)
+})
+app.post('/api/trade/:id', async (request, response)=>{
+  const {id} = request.params
+  const trade = request.body
+  await db.updatePositions(id, trade.trade, trade.found)
+})
+app.post('/api/position/:id', async(request, response)=>{
+  const {id} = request.params
+  const position = request.body
+  await db.deletePosition(id, position)
+})
+app.post('/api/history/:id', async(request, response)=>{
+  const {id} = request.params
+  const position = request.body
+  await db.addToHistory(id, position)
+})
+app.get('/api/history/:id', async(request, response)=>{
+  const {id} = request.params
+  const history = await db.getHistory(id)
+  response.send(history)
+})
+app.get('/api/companies', async(request, response)=>{
+  const re = await axios.get('https://json-server-companies.s3.us-west-1.amazonaws.com/companies.json')
+  response.send(re.data)
+})
+app.post('/api/:topicArn', async(request, response)=>{
+  const user = request.body
+  const {topicArn} = request.params
+  await db.addToSubcriptions(user, topicArn)
+  response.send('success')
+})
+app.delete('/api/:topicArn/:sub', async(request, response)=>{
+  const {sub} = request.params
+  const {topicArn} = request.params
+  await db.removeFromSubscriptions(sub, topicArn)
+  response.send('success')
+})
+app.get('/api/subscriptions/:sub', async(request, response)=>{
+  const {sub} = request.params
+  const re = await db.getSubscriptions(sub)
+  response.send(re)
 })
 const PORT = 3001
 app.listen(PORT, () => {

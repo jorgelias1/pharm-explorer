@@ -9,7 +9,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap:3rem;
   padding:0.5rem;
   background: linear-gradient(to right, rgb(0, 0, 0), rgb(46, 46, 46));
   border-bottom: 2px solid black;
@@ -33,6 +32,8 @@
   gap: 1rem;
   margin-left: 1rem;
   font-size: large;
+  flex: 4;
+  z-index: 1;
 }
 .logo{
   max-width: 3rem;
@@ -156,17 +157,22 @@ table{
 input[type='search']{
   min-height: 2rem;
   border-radius: 0.5rem;
-  min-width: 13rem;
+  min-width: 15rem;
 }
 input{
   min-height: 2rem;
   border-radius: 0.5rem;
   max-width: 4rem;
+  font-size: 1rem;
 }
 input[type='search']{
   min-height: 3rem;
   border-radius: 0.5rem;
-  min-width: 15rem;
+  width: 15rem;
+  background-color: rgba(0,0,0,0);
+  border-color: transparent;
+  color:black;
+  outline:none;
 }
 .separator{
   min-height: 0.1rem;
@@ -185,10 +191,13 @@ select{
   margin:0.5rem;
 }
 Button[type='search']{
-  z-index: 2;
-  transform: translate(-3rem, 0.38rem);
-  border-radius: 2rem;
-  min-height: 3.2rem;
+  border-radius: 1.5rem;
+  height: 2.5rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 .headerOption{
   min-height: 2.7rem;
@@ -196,4 +205,51 @@ Button[type='search']{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex:1;
+  z-index: 2;
+}
+.searchContainer{
+  display: flex;
+  background: white;
+  border-radius: 2rem;
+  justify-content: center;
+  align-items: center;
+  padding-left:0.4rem;
+  padding-right: 0.4rem;
+  width: 17.5rem;
+}
+.none .separator{
+  min-width: 30rem;
+}
+.all{
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  gap:2rem;
+  align-items: center;
+  min-height: 100vh;
+  padding: none;
+}
+.loading{
+  z-index: 2;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  padding: 2%;
+  left:-1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(36, 36, 36, 0.5);
+  backdrop-filter: blur(3px);
+}
+.container{
+  position:relative;
+  background-color: white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border-radius: 2rem;
+  min-width:18rem;
+  max-width: 19rem;
 }

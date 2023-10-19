@@ -102,6 +102,14 @@ const getCompanyCatalysts=async(ticker)=>{
     })
     return companyCatalysts
 }
+const addUserToDb = async(user)=>{
+    try{
+        const query = 'INSERT INTO users (cognito_sub, username, email) VALUES ($1, $2, $3)'
+        await pool.query(query, [user.attributes.sub, user.username, user.attributes.email])
+    } catch(error){
+        console.error(error)
+    }
+}
 const getPositions = async(id)=>{
     const query = 'SELECT * FROM positions WHERE user_cognito_sub = $1'
     const result = await pool.query(query, [id])
@@ -113,7 +121,7 @@ const getPositions = async(id)=>{
         tmpObj.ticker=row.ticker;
         tmpObj.quantity=row.quantity;
         tmpObj.price=row.price;
-        tmpObj.initialAvgPrice=row.initialAvgPrice;
+        tmpObj.initialAvgPrice=row.initialavgprice;
         positions.push(tmpObj);
     }
     return positions
@@ -131,6 +139,81 @@ const getHistory =  async(id)=>{
     }
     return positions
 }
+const getCash = async(id)=>{
+    const query = 'SELECT cash FROM users WHERE cognito_sub = $1'
+    const cash = await pool.query(query, [id])
+    return cash
+}
+const postCash = async(id, cash)=>{
+    try{
+    const query = 'UPDATE users SET cash = $1 WHERE cognito_sub = $2'
+    await pool.query(query, [Number(cash), id])
+    } 
+    catch(error){console.error(error)}
+}
+const updatePositions=async(id, trade, found)=>{
+    try{
+        if (found===false){
+            const query = 'INSERT INTO positions (user_cognito_sub, type, ticker, quantity, price, initialavgprice) VALUES ($1, $2, $3, $4, $5, $6)'
+            await pool.query(query, [id, trade.type, trade.ticker, trade.quantity, trade.price, trade.initialAvgPrice])
+    } else{
+        const query = 'UPDATE positions SET price = $1, quantity = $2, initialavgprice = $3 WHERE user_cognito_sub = $4 AND ticker = $5 AND type = $6'
+        await pool.query(query, [trade.price, trade.quantity, trade.initialAvgPrice, id, trade.ticker, trade.type])
+    } console.log('success!!!')
+    } 
+    catch(error){console.error(error)}
+}
+const deletePosition=async(id, position)=>{
+    try{
+        const query = 'DELETE FROM positions WHERE user_cognito_sub = $1 AND ticker = $2 AND type = $3'
+        await pool.query(query, [id, position.ticker, position.type])
+    } catch(error){
+        console.error(error)
+    }
+}  
+const addToHistory = async(id, trade)=>{
+    try{
+        const query = 'INSERT INTO history (user_cognito_sub, type, ticker, quantity, price, initialavgprice) VALUES ($1, $2, $3, $4, $5, $6)'
+        await pool.query(query, [id, trade.type, trade.ticker, trade.quantity, trade.price, trade.initialAvgPrice])
+    } catch(error){
+        console.error(error)
+    }
+}
+const addToSubcriptions = async(user, arn)=>{
+    const sub = user.attributes.sub;
+    const subscriptionArn = user.subscriptionArn;
+    const obj = {subscriptionArn, topicArn: arn}
+    try{
+        const query = 
+        `UPDATE users 
+        SET subscriptions = array_append(subscriptions, $1::json)
+        WHERE cognito_sub = $2`
+        await pool.query(query, [obj, sub])
+    } catch(error){
+        console.error(error)
+    }
+}
+const removeFromSubscriptions = async(sub, arn)=>{
+    try{
+        const query = 
+        `UPDATE users 
+        SET subscriptions = array_remove(subscriptions, $1::json)
+        WHERE cognito_sub = $2`
+        await pool.query(query, [arn, sub])
+    } catch(error){
+        console.error(error)
+    }
+}
+const getSubscriptions = async(sub)=>{
+    try{
+        const query = 
+        `SELECT subscriptions FROM users WHERE cognito_sub = $1`
+        const re = await pool.query(query, [sub])
+        return re
+    } catch(error){
+        console.error(error)
+    }
+}
 export default{
     getDbKeys,
     postToDb,
@@ -138,5 +221,15 @@ export default{
     removeEvents,
     removePastEvents,
     getCompanyCatalysts,
+    addUserToDb,
     getPositions,
+    getCash,
+    postCash,
+    updatePositions,
+    deletePosition,
+    addToHistory,
+    getHistory,
+    addToSubcriptions,
+    removeFromSubscriptions,
+    getSubscriptions,
 }

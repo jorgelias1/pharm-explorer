@@ -1,10 +1,8 @@
 export type AmplifyDependentResourcesAttributes = {
   "auth": {
-    "pharmexplorerab8b6e11": {
+    "pharmexplorerc6490d86c6490d86": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
-      "IdentityPoolId": "string",
-      "IdentityPoolName": "string",
       "UserPoolArn": "string",
       "UserPoolId": "string",
       "UserPoolName": "string"

@@ -1,4 +1,3 @@
-
 export const BioactivityTable=({bioactivityColumns, activeRows, remove})=>{
     let i=0;
     return (<table>
@@ -90,44 +89,47 @@ export const Indications=({trialData})=>{
   }
   
 export const FDAStatus=({fdaStatus})=>{
-    const miniFlex={
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-evenly',
-      marginBottom: '1rem'
-    }
-    let approvalsNotShown;
-    let approvedSubmissions;
-    if (fdaStatus){
-      approvalsNotShown=fdaStatus.meta.results.total-fdaStatus.meta.results.limit;
-      const tmpSet=new Set()
-      approvedSubmissions=fdaStatus.results.filter(submission=>{
-        if (!tmpSet.has(submission.sponsor_name)){
-          tmpSet.add(submission.sponsor_name)
+  // check to see if the drug is FDA approved
+  const miniFlex={
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
+    marginBottom: '1rem'
+  }
+  let approvalsNotShown;
+  let approvedSubmissions;
+  if (fdaStatus){
+    approvalsNotShown=fdaStatus.meta.results.total-fdaStatus.meta.results.limit;
+    const tmpSet=new Set()
+    approvedSubmissions=fdaStatus.results.filter(submission=>{
+      if (!tmpSet.has(submission.sponsor_name)){
+        tmpSet.add(submission.sponsor_name)
+        if (submission.submissions){
           return(submission.submissions[0].submission_status==='AP')
         }
-      });
-    }
-    return (
-      <>
-      { !fdaStatus ?
-        <div style={{marginBottom: '1rem'}}>
-        Not FDA Approved
-        </div>
-        : 
-        <>
-          <div>FDA Approved to:</div>
-          <div style={miniFlex}>
-          {approvedSubmissions.map(submission=>
-            <div key={submission.application_number}>
-              {submission.sponsor_name}
-            </div>)} and {approvalsNotShown} more
-          </div>
-        </>
-      } 
-      </>
-    )
+      }
+    });
   }
+  return (
+    <>
+    { !fdaStatus ?
+      <div style={{marginBottom: '1rem'}}>
+      Not FDA Approved
+      </div>
+      : 
+      <>
+        <div>FDA Approved to:</div>
+        <div style={miniFlex}>
+        {approvedSubmissions.map(submission=>
+          <div key={submission.application_number}>
+            {submission.sponsor_name}
+          </div>)} and {approvalsNotShown} more
+        </div>
+      </>
+    } 
+    </>
+  )
+}
 export const Svg=()=>{
     return(
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="8" viewBox="0 0 48 16" transform="rotate(-45) translate(5, 0) scale(1, 1.17)">
