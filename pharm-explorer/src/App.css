@@ -253,3 +253,34 @@ Button[type='search']{
   min-width:18rem;
   max-width: 19rem;
 }
+.wrapper{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-evenly;
+}
+.nav{
+  z-index: 2;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+.sidebar{
+  z-index: 1;
+  display:flex;
+  flex-direction: column;
+  margin-top: 4rem;
+  align-items: center;
+  position:absolute;
+  width:25%;
+  height:100vh;
+  background: black;
+  top:0;
+  right:0;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+.slide{
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}

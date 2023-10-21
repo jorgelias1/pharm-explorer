@@ -10,6 +10,7 @@ import logo from './assets/53.svg'
 import {BioactivityTable, PubmedTrials, PastInvestigators, Indications, FDAStatus, Svg, SearchIcon} from './components/drug-component.jsx'
 import { SignUpForm, Overlay, LoginForm } from './components/sign-up'
 import { PaperTradePage } from './components/trading'
+import {Options} from './functions/filterOptions'
 
 import './App.css'
 
@@ -422,6 +423,7 @@ const DrugPage=({query, setQuery, searchResults, setSearchResults})=>{
 const CalendarPage=()=>{
   const [calendarEvents, setCalendarEvents]=useState(null);
   const [filterForm, showFilterForm]=useState(false);
+  const [filter, clearFilter] = useState(0);
   const displayFilters=()=>{
     showFilterForm(true);
   }
@@ -429,29 +431,30 @@ const CalendarPage=()=>{
     const events = await axios.get('http://127.0.0.1:3001/api/events')
     setCalendarEvents(events.data)
   }
-  getEvents();
+  useEffect(()=>{
+    getEvents()
+  }, [filter])
   return (
     <div style={{position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', padding:'none', }}>
 
       <div onClick={()=>{scrape.getPressReleases()}}>hello, calendar</div>
-      <button onClick={displayFilters}>Filter Content</button>
+      <div style={{display: 'flex', gap: '1rem'}}>
+        <button onClick={displayFilters}>Filter Content</button>
+        <button onClick={()=>{clearFilter(filter+1)}}>clear filters</button>
+      </div>
       {filterForm && (
-        <Overlay content={FilterForm(showFilterForm)}/>
+        <Overlay content={<FilterForm showFilterForm={showFilterForm} calendarEvents={calendarEvents} setCalendarEvents={setCalendarEvents} clearFilter={clearFilter} filter={filter}/>}/>
       )}
       <CalendarTable calendarEvents={calendarEvents}/>
     </div>
   )
 }
-const FilterForm=(showFilterForm)=>{
+const FilterForm=({showFilterForm, calendarEvents, setCalendarEvents, clearFilter, filter})=>{
   return(
     <div className='form'>
       <div>Select Filter Criteria</div>
-      <div>
-        <div>Phase 1</div>
-        <div>Phase 2</div>
-        <div>Phase 3</div>
-
-      </div>
+      <Options events={calendarEvents} setEvents={setCalendarEvents}/>
+      <button onClick={()=>{clearFilter(filter+1)}}>clear filters</button>
       <button onClick={()=>showFilterForm(false)}>Close</button>
     </div>
   )
@@ -552,6 +555,15 @@ const HomeLayout=({children})=>{
   </div>
   )
 }
+const Sidebar=()=>{
+  return(
+    <div>
+        <div>About</div>
+        <div>Manage Subscriptions</div>
+        <div>sp</div>
+    </div>
+  )
+}
 const Header=()=>{
   const navigate=useNavigate()
   const handleHomeClick=()=>{
@@ -606,14 +618,21 @@ const Layout=({children})=>{
   )
 }
 const Nav = ()=>{
+  const [sidebar, showSidebar] = useState(false)
+
   return(
-    <div style={{display: 'flex', justifyContent: 'flex-end', margin: '1rem'}}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill='white' transform='scale(-1, 1)'>
-          <rect x="7" y="5" width="18" height="2"/>
-          <rect x="7" y="11" width="12.5" height="2"/>
-          <rect x="7" y="17" width="10" height="2"/>
+    <>
+    <div className={`${!sidebar ? 'slide' : 'sidebar'}`}>
+    {sidebar && <Sidebar />}
+    </div>
+    <div className='nav'>
+      <svg onClick={()=>showSidebar(!sidebar)}style={{padding:'1rem'}} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill='white' transform='scale(-1, 1)'>
+          <rect x="7" y="4" width="18" height="3"/>
+          <rect x="7" y="10.5" width="16" height="3"/>
+          <rect x="7" y="17" width="15" height="3"/>
       </svg>
     </div>
+    </>
   )
 }
 const Loading=()=>{

@@ -86,18 +86,24 @@ const postHistory = (id, trade)=>{
 const getArn = () =>{
   return axios.get(`${baseUrl}/api/companies`)
 }
-const addToSubscriptions = (user, arns) =>{
-  const topicArn = arns.topicArn
-  user = {...user, subscriptionArn: arns.subscriptionArn}
-  return axios.post(`${baseUrl}/api/${topicArn}`, user)
+const subscribe=(params)=>{
+  return axios.post(`${baseUrl}/api/subscribe`, params)
 }
-const removeFromSubscriptions = (user, topicArn)=>{
+const addToSubscriptions = (user, topicArn) =>{
+  user = {...user, topicArn}
+  return axios.post(`${baseUrl}/api/subscription`, user)
+}
+const unsubscribe = (topicArn, user)=>{
   const sub = user.attributes.sub
-  return axios.delete(`${baseUrl}/api/${topicArn}/${sub}`)
+  const email = user.attributes.email
+  return axios.post(`${baseUrl}/api/${topicArn}/${sub}`, {email})
 }
 const getSubscriptions = (user) =>{
   const sub = user.attributes.sub
   return axios.get(`${baseUrl}/api/subscriptions/${sub}`)
+}
+const submitThesis=(position, text, sub)=>{
+  return axios.post(`${baseUrl}/api/thesis`, {position, text, sub})
 }
 export default{
     getCompanies,
@@ -115,7 +121,9 @@ export default{
     postHistory,
     getHistory,
     getArn,
+    subscribe,
     addToSubscriptions,
-    removeFromSubscriptions,
+    unsubscribe,
     getSubscriptions,
+    submitThesis,
 }

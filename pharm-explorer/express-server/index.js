@@ -10,6 +10,15 @@ import drug from './services/drug.js'
 import {Buffer} from 'buffer'
 import backendRequests from './services/backendRequests.js'
 import axios from 'axios'
+import dotenv from 'dotenv'
+dotenv.config()
+import AWS from 'aws-sdk'
+AWS.config.update({
+  region: 'us-west-1',
+  accessKeyId: process.env.ACCESSKEYID,
+  secretAccessKey: process.env.SECRETACCESSKEYID,
+})
+const sns = new AWS.SNS()
 
 app.use(cors())
 app.use(express.json())
@@ -337,22 +346,59 @@ app.get('/api/companies', async(request, response)=>{
   const re = await axios.get('https://json-server-companies.s3.us-west-1.amazonaws.com/companies.json')
   response.send(re.data)
 })
-app.post('/api/:topicArn', async(request, response)=>{
+app.post('/api/subscription', async(request, response)=>{
   const user = request.body
-  const {topicArn} = request.params
+  const topicArn = user.topicArn
   await db.addToSubcriptions(user, topicArn)
   response.send('success')
 })
-app.delete('/api/:topicArn/:sub', async(request, response)=>{
-  const {sub} = request.params
-  const {topicArn} = request.params
-  await db.removeFromSubscriptions(sub, topicArn)
-  response.send('success')
+// app.post('/api/:topicArn/:sub', async(request, response)=>{
+//   const {topicArn, sub} = request.params
+//   const email = request.body
+//   const params = {TopicArn: topicArn}
+//   sns.listSubscriptionsByTopic(params, (err, data) => {
+//     if (err) {
+//       console.error('Error listing subscriptions by topic:', err);
+//     } else {
+//       const match = data.Subscriptions.find(sub=>sub.Endpoint===email.email)
+//       const subArn = match.SubscriptionArn
+//       sns.unsubscribe({ SubscriptionArn: subArn }, (err, data) => {
+//         if (err) {
+//             console.error('Error unsubscribing user:', err);
+//         } else {
+//             console.log('User unsubscribed successfully.');
+//             db.removeFromSubscriptions(sub, topicArn)
+//             response.send('success')
+//         }
+//     });
+//     }
+//   });
+// })
+app.post('/api/subscribe', async(request, response)=>{
+  const base = request.body
+  const params = {Protocol: base.Protocol, TopicArn: base.TopicArn, Endpoint: base.Endpoint}
+  const user = base.user
+  const company = base.company
+  sns.subscribe(params, (err)=>{
+    if (err){
+      console.error(err)
+    } else {
+      console.log('no error')
+      svg.addToSubscriptions(user, company.topicArn)
+    }
+  })
+  response.send('success').status(200)
 })
 app.get('/api/subscriptions/:sub', async(request, response)=>{
   const {sub} = request.params
   const re = await db.getSubscriptions(sub)
   response.send(re)
+})
+app.post('/api/thesis', async(request, response)=>{
+  const obj = request.body
+  const sub = obj.sub
+  await db.postThesis(sub, obj)
+  response.send('success')
 })
 const PORT = 3001
 app.listen(PORT, () => {

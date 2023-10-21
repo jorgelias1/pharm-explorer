@@ -4,6 +4,7 @@ import { Search } from '../App';
 import service from '../../express-server/services/axiosRequests'
 import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
+// import tradeService from '../functions/trading'
 Amplify.configure(awsconfig);
 
 export const PaperTradePage=({setQuery, query, setSearchResults, searchResults})=>{
@@ -300,6 +301,8 @@ export const PaperTradePage=({setQuery, query, setSearchResults, searchResults})
     )
   }
   const PortfolioTable=({positions, cashTotal, signedIn})=>{
+    const [thesis, setThesis] = useState(false)
+    const [desc, setDesc] = useState(false)
     let i = 0;
     const calculateGainLoss=(position)=>{
       const value = !(position.type==='buy')
@@ -310,6 +313,8 @@ export const PaperTradePage=({setQuery, query, setSearchResults, searchResults})
     const columns=['action','ticker', 'qty', 'current value', '% of portfolio', 'total gain/loss', 'thesis']
     // day chg, current value(data.price*qty) are values received from the axios call
     return(
+    <>
+    {thesis && <ThesisTemplate props={thesis} setVisible={setThesis} user={signedIn}/>}
     <div className='scrollTable'>
       <table>
         <thead>
@@ -332,7 +337,7 @@ export const PaperTradePage=({setQuery, query, setSearchResults, searchResults})
               <td>${position.quantity*position.price}</td>
               <td>{parseFloat(100*(position.quantity*position.price)/(i+cashTotal)).toFixed(2)}%</td>
               <td>${calculateGainLoss(position)}</td>
-              <td>{signedIn ? (<button>click to add your thesis</button>) : ('you must be signed to add your thesis')}</td>
+              <td>{(signedIn && !position.thesis) ? (<button onClick={()=>setThesis({position, pct: parseFloat(100*(position.quantity*position.price)/(i+cashTotal)).toFixed(2)})}>click to add your thesis</button>) : (signedIn && position.thesis) ? <button onClick={()=>setThesis({position, pct: parseFloat(100*(position.quantity*position.price)/(i+cashTotal)).toFixed(2)})}>click to see thesis</button> : ('you must be signed to add your thesis')}</td>
             </tr>
             )
           })}
@@ -345,5 +350,34 @@ export const PaperTradePage=({setQuery, query, setSearchResults, searchResults})
         </tfoot>
       </table>
     </div>
+    </>
+    )
+  }
+  const ThesisTemplate=({props, setVisible, user})=>{
+    const [text, updateText] = useState('')
+    const position = props.position
+    const pct = props.pct
+    const submitThesis=async(position, text, user)=>{
+      try{
+      await service.submitThesis(position, text, user)
+      } catch(err){
+        console.log(err)
+      }
+    }
+
+    return(
+      <div className="form" style={{minWidth: '90%'}}>
+        <div>
+          <b style={{fontSize: '1.1rem', textDecoration: 'underline'}}>{position.ticker} - {position.type} {position.quantity} shares - {pct}% of portfolio</b>
+          <p>Why did you make this trade?</p>
+        </div>
+        <div contentEditable='true' onInput={(e)=>updateText(e.target.textContent)} style={{display: 'flex', flex: '1', minWidth: '100%', minHeight: '100%',border: '2px solid grey', borderRadius: '0.3rem'}}>
+          {position.thesis && position.thesis}
+        </div>
+        <div style={{display: 'flex'}}>
+          <button onClick={()=>{submitThesis(props.position, text, user)}} style={{marginLeft: '30%'}}>submit</button>
+          <button style={{marginLeft: '100%'}}onClick={()=>setVisible(false)}>close</button>
+        </div>
+      </div>
     )
   }

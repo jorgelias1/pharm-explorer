@@ -122,6 +122,7 @@ const getPositions = async(id)=>{
         tmpObj.quantity=row.quantity;
         tmpObj.price=row.price;
         tmpObj.initialAvgPrice=row.initialavgprice;
+        tmpObj.thesis=row.thesis
         positions.push(tmpObj);
     }
     return positions
@@ -159,7 +160,7 @@ const updatePositions=async(id, trade, found)=>{
     } else{
         const query = 'UPDATE positions SET price = $1, quantity = $2, initialavgprice = $3 WHERE user_cognito_sub = $4 AND ticker = $5 AND type = $6'
         await pool.query(query, [trade.price, trade.quantity, trade.initialAvgPrice, id, trade.ticker, trade.type])
-    } console.log('success!!!')
+    }
     } 
     catch(error){console.error(error)}
 }
@@ -179,16 +180,14 @@ const addToHistory = async(id, trade)=>{
         console.error(error)
     }
 }
-const addToSubcriptions = async(user, arn)=>{
+const addToSubcriptions = async(user, topicArn)=>{
     const sub = user.attributes.sub;
-    const subscriptionArn = user.subscriptionArn;
-    const obj = {subscriptionArn, topicArn: arn}
     try{
         const query = 
         `UPDATE users 
-        SET subscriptions = array_append(subscriptions, $1::json)
+        SET subscriptions = array_append(subscriptions, $1)
         WHERE cognito_sub = $2`
-        await pool.query(query, [obj, sub])
+        await pool.query(query, [topicArn, sub])
     } catch(error){
         console.error(error)
     }
@@ -197,7 +196,7 @@ const removeFromSubscriptions = async(sub, arn)=>{
     try{
         const query = 
         `UPDATE users 
-        SET subscriptions = array_remove(subscriptions, $1::json)
+        SET subscriptions = array_remove(subscriptions, $1)
         WHERE cognito_sub = $2`
         await pool.query(query, [arn, sub])
     } catch(error){
@@ -212,6 +211,19 @@ const getSubscriptions = async(sub)=>{
         return re
     } catch(error){
         console.error(error)
+    }
+}
+const postThesis = async(sub, obj)=>{
+    const position = obj.position;
+    const text = obj.text;
+    try{
+        const query = 
+        `UPDATE positions 
+        SET thesis=$1 
+        WHERE user_cognito_sub = $2 AND ticker = $3 AND type = $4`
+        await pool.query(query, [text, sub, position.ticker, position.type])
+    } catch(err){
+        console.log(err)
     }
 }
 export default{
@@ -232,4 +244,5 @@ export default{
     addToSubcriptions,
     removeFromSubscriptions,
     getSubscriptions,
+    postThesis,
 }

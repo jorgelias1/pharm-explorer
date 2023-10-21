@@ -1,7 +1,7 @@
 import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 Amplify.configure(awsconfig);
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import service from '../../express-server/services/axiosRequests'
 import { useNavigate } from 'react-router-dom'
 
@@ -124,6 +124,7 @@ export const SubscribeForm=()=>{
   const [ticker, setTicker] = useState('')
   const [invalidTicker, setInvalidTicker] = useState(false)
   const [valid, setValid] = useState(false);
+  
   const handleSub = async (e) =>{
     e.preventDefault();
     const re = await service.getArn();
@@ -139,15 +140,11 @@ export const SubscribeForm=()=>{
       Protocol: 'email',
       TopicArn: company.topicArn,
       Endpoint: email,
+      user: user,
+      company: company,
     }
-    // sns.subscribe(params, (err, data)=>{
-    //   if (err){
-    //     console.error(err)
-    //   } else {
-    //     setValid(true)
-    //     service.addToSubscriptions(user, {topicArn: company.topicArn, subscriptionArn: data.subscriptionArn})
-    //   }
-    // })
+    service.subscribe(params).then(()=>{setValid(true)})
+    .catch((err)=>{console.log(err)})
   }
   return(
     <div>
@@ -157,7 +154,7 @@ export const SubscribeForm=()=>{
         <button type='submit' onClick={handleSub}>submit</button>
       </form>
       {invalidTicker && 'please enter a valid ticker'}
-      {valid && 'you have been successfully signed up for notifs!'}
+      {valid && 'please check your email to confirm your subscription'}
     </div>
   )
 }
@@ -165,41 +162,39 @@ export const UnSubscribeForm=()=>{
   const [ticker, setTicker] = useState('')
   const [noSubs, setNoSubs] = useState(false)
   const [valid, setValid] = useState(false);
-  const handleSub = async (e) =>{
+  const [companySubscriptions, setCompanySubscriptions] = useState(null)
+
+  const handleUnsubClick = async (e) =>{
     e.preventDefault();
     const user = await Auth.currentAuthenticatedUser()
     const re1 = await service.getSubscriptions(user);
     const re2 = await service.getArn();
-    const arnSubs = re1.data.rows[0].subscriptions
-    console.log(arnSubs)
-    // const subs = re2.data.companies.filter(
-    //   company=>arnSubs.includes(company.topicArn))
-    // if (subs.length===0){
-    //   setNoSubs(true);
-    //   return
-    // } 
-    // setNoSubs(false)
-    const email = user.attributes.email
-    const params = {
-      Protocol: 'email',
-      // TopicArn: company.topicArn,
-      Endpoint: email,
+    const subs = re1.data.rows[0].subscriptions
+    const subscriptions = re2.data.companies.filter(
+      company=>subs.includes(`${company.topicArn}`)
+    )
+    setCompanySubscriptions(subscriptions)
+
+    if (subscriptions.length===0){
+      setNoSubs(true);
+      return
     }
-    // sns.subscribe(params, (err)=>{
-    //   if (err){
-    //     console.error(err)
-    //   } else {
-    //     setValid(true)
-    //     service.addToSubscriptions(user, company.topicArn)
-    //   }
-    // })
+    setNoSubs(false)
+  }
+    const unsubscribe=async(topicArn)=>{
+    const user = await Auth.currentAuthenticatedUser()
+    service.unsubscribe(topicArn, user).then(()=>{setValid(true)})
+    .catch((err)=>{console.log(err)})
   }
   return(
     <div>
       <form>
-        <button type='submit' onClick={handleSub}>remove subscriptions</button>
+        <button type='submit' onClick={handleUnsubClick}>remove subscriptions</button>
       </form>
-      {noSubs && 'you are not currently subscribed to receive company updates'}
+      {noSubs ? 'you are not currently subscribed to receive company updates'
+      : companySubscriptions && companySubscriptions.map(company=>(
+        <button key={company.topicArn} onClick={()=>unsubscribe(company.topicArn)}>Click to Remove: {company.ticker}</button>
+      ))}
     </div>
   )
 }
