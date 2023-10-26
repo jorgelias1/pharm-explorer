@@ -10,18 +10,32 @@ export const SignUpForm=()=>{
     const [password, setPassword] = useState('')
     const [verification, showVerification] = useState(null)
     const [verified, setVerified] = useState(false);
+    const [invalidParams, setInvalidParams] = useState(false)
+    const [emptyErr, setEmptyErr] = useState(false);
+    const [passwordErr, setPasswordErr] = useState(false);
+    const navigate = useNavigate();
 
     const handleSignUp = async(e)=>{
       e.preventDefault();
+      if (email==='' || password===''){
+        setEmptyErr(true)
+        return
+      } else if (password.length<8){
+        setPasswordErr(true)
+        return
+      }  
       try{
         await Auth.signUp({
           username: email,
           attributes:{email: email},
           password: password,
         })
+        setPasswordErr(false);
+        setEmptyErr(false);
+        setInvalidParams(false);
         showVerification(true);
-      } catch(error){
-        console.error(error)
+      } catch{
+        setInvalidParams(true)
       }
     }
   
@@ -33,18 +47,26 @@ export const SignUpForm=()=>{
  
         <label>
           Email: <input type='email' value={email} 
-          onChange={e=>setEmail(e.target.value)}/>
+          onChange={e=>setEmail(e.target.value)}
+          placeholder='example@email.com' 
+          autoFocus={true}/>
         </label>
         <label>
           Password: <input type='password' value={password}
-          onChange={e=>setPassword(e.target.value)}/>
+          onChange={e=>setPassword(e.target.value)}
+          placeholder='8 character minimum'/>
         </label>
-        <button type='submit' style={{background:'white', color:'black'}}>Sign Up</button>
-        <div>already have an account? sign in</div>
+        <button type='submit' style={{background:'white', color:'black'}}>Verify</button>
+        {emptyErr && <div className='warning'>Must enter both an email and a password</div>}
+        {passwordErr && <div className='warning'>password must be at least 8 characters</div>}
+        {invalidParams && <div className='warning'>Please re-enter a valid email or password</div>}
+        <div>already have an account? {''}
+          <span onClick={()=>navigate('/login')} className='clickMe'>
+            sign in
+          </span>
+        </div>
+        {verification && <VerificationForm email={email} setVerified={setVerified} password={password}/>}
       </form>
-      {verification && <VerificationForm email={email} setVerified={setVerified} password={password}/>}
-      <SubscribeForm />
-      <UnSubscribeForm/>
     </div>
     )
 }
@@ -78,9 +100,11 @@ const VerificationForm=({email, setVerified, password})=>{
                 <label>
                     Please enter your verification code: <input type="text" value={code} onChange={e=>setCode(e.target.value)}/>
                 </label>
+                <div>
                 <button type='submit'>Verify</button>
+                <button onClick={handleResend}>resend code</button>
+                </div>
             </form>
-            <button onClick={handleResend}>resend code</button>
         </div>
     )
 }
@@ -124,7 +148,16 @@ export const SubscribeForm=()=>{
   const [ticker, setTicker] = useState('')
   const [invalidTicker, setInvalidTicker] = useState(false)
   const [valid, setValid] = useState(false);
-  
+  const [notSignedIn, setNotSignedIn] = useState(false);
+  const navigate = useNavigate();
+  useEffect(()=>{
+    const async = async()=>{
+      try{
+        await Auth.currentAuthenticatedUser()
+      } catch{setNotSignedIn(true)}
+    }
+    async()
+  }, [])
   const handleSub = async (e) =>{
     e.preventDefault();
     const re = await service.getArn();
@@ -147,13 +180,23 @@ export const SubscribeForm=()=>{
     .catch((err)=>{console.log(err)})
   }
   return(
-    <div>
+    <div className='form'>
+      {notSignedIn && <div>
+        <div className='warning'>you must be signed in to sign up for notifications</div>
+        <div className='clickMe' onClick={()=>navigate('/signUp')}>sign up here</div>
+      </div>}
       <form>
-        enter a ticker to sign up for company updates
+        <div className="formHeader">
+          <div>enter a ticker to sign up for company updates</div>
+          <div className="separator"></div>
+        </div>
+        <div style={{maxWidth: '70%'}}>The catalyst calendar updates daily, never miss important updates for companies you are tracking and sign up for notifications!</div>
+        <div>
         <input type='text' placeholder='enter a ticker' value={ticker} onChange={e=>setTicker(e.target.value)}/>
         <button type='submit' onClick={handleSub}>submit</button>
+        </div>
       </form>
-      {invalidTicker && 'please enter a valid ticker'}
+      {invalidTicker && <div className='warning'>please enter a valid ticker <div>(must be a biotech/pharmaceutical company)</div></div>}
       {valid && 'please check your email to confirm your subscription'}
     </div>
   )
@@ -206,5 +249,15 @@ export const Overlay=({content})=>{
         {content}
       </div>
     </div>
+  )
+}
+export const ProfileSvg=()=>{
+  return(
+    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="44" fill="white" />
+        <circle cx="50" cy="50" r="40" fill="black" />
+        <circle cx="50" cy="40" r="16" fill="white" />
+        <ellipse cx="50" cy="73" rx="25" ry="10" fill="white" />
+    </svg>
   )
 }

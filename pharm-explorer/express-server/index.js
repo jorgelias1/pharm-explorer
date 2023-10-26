@@ -258,6 +258,7 @@ app.delete('/api/duplicates', async (request, response)=>{
   }
 })
 app.get('/drugData/:name', async (request, response)=>{
+  try{
   const {name} = request.params
   const re = await drug.getDrugLogic(name);
   const synonyms=re[1].data.InformationList.Information[0].Synonym.slice(0,12)
@@ -296,6 +297,9 @@ app.get('/drugData/:name', async (request, response)=>{
     pubmedTrials,
   ]
   response.send(allResponses)
+} catch{
+  response.send(null).status(404)
+}
 })
 app.get('/api/catalysts/:ticker', async(request, response)=>{
   const {ticker}=request.params

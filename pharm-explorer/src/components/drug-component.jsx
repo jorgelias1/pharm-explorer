@@ -79,10 +79,13 @@ export const Indications=({trialData})=>{
         }
       })
       if (uniqueIndications.length>0){
-        return <div style={miniFlex}> Indications:
-          {uniqueIndications.map(indication=>
-            <div key={indication}>{indication}</div>
-            )}
+        return <div>
+           <b style={{fontSize:'1.3rem'}}>Tested Indications:</b>
+          <div style={{maxWidth:'89vw'}} className="indicationContainer">
+            {uniqueIndications.map(indication=>
+              <div key={indication} className="indication">{indication}</div>
+              )}
+          </div>
         </div>
       }
     }

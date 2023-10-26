@@ -4,6 +4,7 @@ import { Search } from '../App';
 import service from '../../express-server/services/axiosRequests'
 import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
+import { useNavigate } from 'react-router-dom';
 // import tradeService from '../functions/trading'
 Amplify.configure(awsconfig);
 
@@ -15,6 +16,10 @@ export const PaperTradePage=({setQuery, query, setSearchResults, searchResults})
     const [signedIn, setSignedIn] = useState(false)
     const [traded, setTraded] = useState(false)
     const trade=true;
+    const navigate=useNavigate();
+    useEffect(() => {
+      window.scrollTo(0, 0); 
+    }, []); 
     const roundVal=(val)=>{
       return Number(parseFloat(val).toFixed(2))
     }
@@ -50,6 +55,7 @@ export const PaperTradePage=({setQuery, query, setSearchResults, searchResults})
           return{
           ...position, price: updatedPrices[index].price, change: updatedPrices[index].changes
         }})
+        updatePositions(updatedPositions)
       }
     }
     const calculateCash=async(user)=>{
@@ -89,7 +95,7 @@ export const PaperTradePage=({setQuery, query, setSearchResults, searchResults})
         <h2>Paper Trading</h2>
         {!signedIn && (
         <div className='warning' style={{width: '100%'}}>Warning: You are not signed in; your history, including any trades you make, will not be saved. 
-        <div>To save your history, <button>sign in</button> or <button>create an account.</button></div></div>
+        <div>To save your history, <span className='clickMe' onClick={()=>navigate('/logIn')}>sign in</span> or <span onClick={()=>navigate('/signUp')}className='clickMe'>create an account.</span></div></div>
         )}
         <PortfolioTable signedIn={signedIn} positions={positions} cashTotal={currentCash}/>
         <button onClick={handleTradeClick} style={{maxWidth: '8rem'}}>Trade</button>
@@ -376,7 +382,7 @@ export const PaperTradePage=({setQuery, query, setSearchResults, searchResults})
         </div>
         <div style={{display: 'flex'}}>
           <button onClick={()=>{submitThesis(props.position, text, user)}} style={{marginLeft: '30%'}}>submit</button>
-          <button style={{marginLeft: '100%'}}onClick={()=>setVisible(false)}>close</button>
+          <button style={{marginLeft: '70%'}}onClick={()=>setVisible(false)}>close</button>
         </div>
       </div>
     )

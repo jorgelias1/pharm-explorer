@@ -105,6 +105,14 @@ const getSubscriptions = (user) =>{
 const submitThesis=(position, text, sub)=>{
   return axios.post(`${baseUrl}/api/thesis`, {position, text, sub})
 }
+const screen=(indication, moa)=>{
+  moa = moa.trim().replace(/ /g, '+')
+  if (moa===''){
+    return axios.get(`https://api.fda.gov/drug/label.json?search=indications_and_usage:${indication}&limit=1000`)
+  } else{
+    return axios.get(`https://api.fda.gov/drug/label.json?search=indications_and_usage:${indication}+AND+mechanism_of_action:${moa}&limit=1000`)
+  }
+}
 export default{
     getCompanies,
     getSEC,
@@ -126,4 +134,5 @@ export default{
     unsubscribe,
     getSubscriptions,
     submitThesis,
+    screen,
 }
