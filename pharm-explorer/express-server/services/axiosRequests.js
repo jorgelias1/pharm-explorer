@@ -25,15 +25,11 @@ const getQuote=(item)=>{
 }
 const getTrials=(name)=>{
     name=name.split(' ')
-    name=name[0]
+    name=name[0].replace(/,/g, '')
   return axios.get(`${baseUrl}/api/trials/${name}`)
 }
 const getTrialsLogic=(name)=>{
-  const Promises=[
-    axios
-    .get(`https://clinicaltrials.gov/api/v2/studies?format=json&query.spons=${name}&filter.overallStatus=ACTIVE_NOT_RECRUITING%2CRECRUITING&pageSize=100`),
-  ]
-  return Promise.all(Promises)
+    return axios.get(`https://clinicaltrials.gov/api/v2/studies?format=json&query.spons=${name}&filter.overallStatus=ACTIVE_NOT_RECRUITING%2CRECRUITING&pageSize=100`)
 }
 
 const getCik = async (name)=>{

@@ -98,7 +98,7 @@ export const PaperTradePage=({setQuery, query, setSearchResults, searchResults})
         <div>To save your history, <span className='clickMe' onClick={()=>navigate('/logIn')}>sign in</span> or <span onClick={()=>navigate('/signUp')}className='clickMe'>create an account.</span></div></div>
         )}
         <PortfolioTable signedIn={signedIn} positions={positions} cashTotal={currentCash}/>
-        <button onClick={handleTradeClick} style={{maxWidth: '8rem'}}>Trade</button>
+        <button onClick={handleTradeClick} style={{maxWidth: '8rem', background:'black', boxShadow:'0px 0px 2px 2px grey'}}>Trade</button>
         {tradeForm && (
           <Overlay content={<TradeForm setTradeForm={setTradeForm} trade={trade} query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults} updateCash={setCurrentCash} cash={currentCash} history={history} updateHistory={updateHistory} positions={positions} updatePositions={updatePositions} roundVal={roundVal} setTraded={setTraded} signedIn={signedIn}/>}/>
         )}

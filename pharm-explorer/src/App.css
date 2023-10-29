@@ -9,10 +9,11 @@
   justify-content: space-around;
   align-items: center;
   padding:0.5rem;
-  background: linear-gradient(to right, rgb(0, 0, 0), rgb(46, 46, 46));
+  background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(23, 20, 20, 1));
   border-bottom: 2px solid black;
   z-index: 3;
   overflow: hidden;
+  cursor: pointer;
 }
 .sticky{
   position:sticky;
@@ -94,6 +95,9 @@
   max-width: 95vw;
   overflow: scroll;
 }
+table thead tr{
+  background-color: rgb(0, 0, 0);
+}
 td, th{
   border: 1px solid rgb(74, 74, 74);
   padding:0.8rem;
@@ -119,7 +123,7 @@ td.poop{
   min-width: 15rem;
   display: flex;
 }
-td.pee{
+td.table-name{
   min-width: 15rem;
 }
 .form{
@@ -250,6 +254,7 @@ Button[type='search']{
   align-items: center;
   min-height: 100vh;
   padding: none;
+  margin-bottom: 4rem;
 }
 .loading{
   z-index: 2;
@@ -274,6 +279,7 @@ Button[type='search']{
   max-width: 19rem;
   background:white;
   border:2px solid black;
+  z-index: 3;
 }
 .wrapper{
   display:flex;
@@ -294,11 +300,17 @@ Button[type='search']{
   position:absolute;
   width:25%;
   height:100vh;
-  background: black;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(20,20,20, 0.5), transparent 10px),
+    conic-gradient(from 140deg at 20% -3%, rgb(28, 28, 20) 10%, transparent 20%,  rgb(28, 28, 20)),
+    conic-gradient(from 140deg at 20% -3%, rgb(28, 28, 20), transparent, var(--lightning-blue) 50%, transparent, rgb(190, 163, 121),rgb(122, 107, 83), rgb(28, 18, 40), rgb(28, 18, 40) 120%),
+    conic-gradient(from 180deg at 20% 50%, rgb(28, 28, 20), transparent 20%, rgb(110,97,90), rgb(190, 163, 121),rgb(122, 107, 83), rgb(28, 18, 40), rgb(28, 18, 40) 120%),
+    radial-gradient(at 20%, rgb(20,30,50), rgb(40,40,80));  
   top:0;
   right:0;
   transform: translateX(0);
   transition: transform 0.3s ease;
+  
 }
 .sidebarContents{
   display:flex;
@@ -318,6 +330,7 @@ Button[type='search']{
 }
 svg{
   cursor:pointer;
+  fill: ivory;
 }
 form{
   display: flex;
@@ -326,7 +339,13 @@ form{
   gap: 1rem;
 }
 form input{
-  min-width: 10rem;
+  min-width: 15rem;
+  background: transparent;
+  padding-bottom: -0.1rem;
+  border: none;
+  border-bottom: 2px solid white;
+  border-radius: 0;
+  outline: none;
 }
 .clickMe{
   font-weight: bold;
@@ -344,7 +363,7 @@ form input{
   margin: 1rem;
 }
 .menuCard{
-  height: 65vh;
+  height: 50vh;
   aspect-ratio: 7/7.5;
   display: flex;
   flex:1;
@@ -355,30 +374,33 @@ form input{
   background-color: var(--default-bg);
   transition: transform 0.5s, background-color 2s cubic-bezier(0.075, 0.82, 0.165, 1);
   z-index: 1;
+  border: 2px solid black;
+  border-radius: .2rem;
 }
 .menuCard:hover{
   transform: scale(1.06);
   z-index: 2;
-  transition: transform 0.5s, background-color 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: transform 0.5s, background-color 2s cubic-bezier(0.075, 0.82, 0.165, 1) box-shadow 0.5s;
+  box-shadow: 0 0 1rem orange;
+  border: 2px solid rgba(255, 225, 0, 0.65);
+  /* border:2px solid rgba(220, 150, 37, 0.9); */
 }
 .menuCard:hover > div[type='outer']{
-  background: var(--text-bg);
+  background: rgb(106, 97, 42);
   text-shadow: var(--text-shdw);
   transition: 0.5s;
 }
 .menuCard#search > div[type='outer']{
-  background: none;
+  background: var(--txt-bg-default);
   text-shadow: none;
 }
 .menuCard:hover > .division{
-  background: var(--div);
-  transition: 0.5s;
-  opacity: 1;
-  height:1.5%;
+
 }
 .menuCard:hover > .aboveDivision{
   opacity: 1;
   height: 100%;
+  width: 100%;
   transition: 0.5s;
 }
 .menuCard .diagonal-rectangle2{
@@ -495,14 +517,16 @@ form input{
 .aboveDivision{
   background: var(--main-bg);
   height: 50%;
-  min-width: 100%;
+  max-width: 100%;
   transition: 0.5s;
   opacity: 0;
   margin-bottom: -0.1rem;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
+  z-index: 2;
   position: absolute;
+  border-radius: 0.2rem;
 }
 div[type='outer']{
   background: var(--txt-bg-default);
@@ -511,37 +535,58 @@ div[type='outer']{
   display:flex;
   align-items: center;
   justify-content: center;
-  transition: 1s;
+  transition: 0.5s;
   font-size: 1.3rem;
+  border-bottom-left-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
 }
 .menuCard{
   min-height: 100%;
   aspect-ratio: 1/2;
+  opacity: 0.8;
+  transition: 0.5s;
+}
+.menuCard:hover{
+  opacity: 1;
+  transition: 0.5s;
 }
 :root {
-  --main-bg: linear-gradient(to top, rgba(30, 40, 180, 0.8) 15%, rgba(30, 40, 180,0.7) 20%, rgba(33, 34, 60,0.1) 35%,rgba(36,36,36,0) 40%); 
+  /* --main-bg: linear-gradient(to top, rgba(30, 40, 180, 0.8) 15%, rgba(30, 40, 180,0.7) 20%, rgba(33, 34, 60,0.1) 35%,rgba(36,36,36,0) 40%); 
   --secondary-bg: linear-gradient(to top, rgba(40,80,200, 0.8), rgba(40,80,200, 0.8), rgba(0,0,0,0)); 
   --div: var(--nice-yellow);
   --default-bg: rgb(30, 30, 30);
   --nice-yellow: var(--lightning-blue);
   --lightning-blue: rgb(40, 80, 255);
+  --lightning-blue: rgb(40, 80, 255); */
+  --main-bg: linear-gradient(to top, rgba(200,160,54, 0.8) 15%, rgba(200, 160, 54,0.7) 20%, rgba(200, 180, 50,0.1) 35%,rgba(36,36,36,0) 40%); 
+  --secondary-bg: linear-gradient(to top, rgba(234,207,54, 0.8), rgba(234,207,54, 0.8), rgba(0,0,0,0)); 
+  --div: var(--nice-yellow);
+  --default-bg: rgb(30, 30, 30);
+  --nice-yellow: var(--lightning-blue);
+  --lightning-blue: rgb(234, 207, 54);
+
   --text-bg: rgba(30,30,30, 1);
   --text-shdw: 2px 1px 2px black;
-  --txt-bg-default: linear-gradient(to top, rgb(50, 48, 48), rgba(36, 36, 36, 0));
+  --txt-bg-default:
+  /* conic-gradient(from 40deg at 20% -14%, rgb(118, 86, 86), black 20%,  rgb(48, 31, 31)); */
+  linear-gradient(to bottom, rgb(30, 20, 3), rgba(0, 0, 0, 1));
 }
 .division{
-  max-height:1%;
+  max-height:1.5%;
   width:100%;
   transition: 0.5s;
   position: absolute;
   opacity: 0;
   transition: 1.5s;
+  margin-bottom: -0.1rem;
 }
 @media (max-width:40rem) {
   .menuCard#search{
-    order:3; 
+    order:3;
   }
   .aboveDivision{
+    max-width: 100%;
+    max-height: 100%;
   }
   .menuCard:hover .division{
     transition: 0.5s;
@@ -553,17 +598,20 @@ div[type='outer']{
     min-height:auto;
     margin-top: -0.1rem;
     margin-bottom: -0.1rem;
+    opacity: 0.9;
+    transition: 0.5s;
   }
   div[type='outer']{
-    height:25%
+    height:25%;
   }
   #searchImg{
     margin-bottom: -10%;
     min-height:120%;
   }
   .menuCard:hover{
+    opacity: 1;
     transform: scale(1.08);
-    transition: transform 0.5s, background 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: transform 0.5s, background 2s cubic-bezier(0.075, 0.82, 0.165, 1) opacity 0.5s;
   }
   .menuCard#search .diagonal-rectangle2{
     max-width:0.4rem;
@@ -591,6 +639,9 @@ div[type='outer']{
     flex-direction: column;
     gap:1rem
   }
+  .tag{
+    transform: scale(0.8) translateX(-15%) translateY(-40%);
+  }
 }
 .menuCard#search:hover .diagonal-rectangle2{
   opacity: 0;
@@ -611,12 +662,10 @@ div[type='outer']{
 .secondaryCard{
   height:6rem;
   display: flex;
-  flex:1;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;  
-  min-width:25rem;
-  background: var(--default-bg);
+  justify-content: space-evenly;
+  align-items: center; 
+  background: conic-gradient(from 40deg at 20% -14%, rgb(118, 86, 86), black 20%,  rgb(48, 31, 31));
   transition: 0.5s;
   margin-top: 0.5rem;
   font-size: 1.1rem;
@@ -626,7 +675,7 @@ div[type='outer']{
 }
 .secondaryCard:hover{
   transform: scaleY(1.06) scaleX(1.02);
-  background: rgb(180, 120, 50);
+  box-shadow: 0px 0px 1rem orange;
   transition: 0.5s;
 }
 .secondaryCard div[type='outer']{
@@ -647,6 +696,8 @@ div[type='outer']{
   font-size: 2.2rem;
   margin-bottom:1rem;
   margin-right: 1rem;
+  color:rgb(209, 207, 205);
+  text-shadow: 2px 1px 1px black;
 }
 .HomeTitle > * {
   font-size: 1rem;
@@ -707,8 +758,129 @@ div[type='outer']{
   margin:1rem;
 }
 .scrollTable thead{
-  background: rgb(50, 50, 50);
+  background: rgb(10, 3, 10);
 }
 tr:hover{
-  background: rgba(40, 40, 255, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+.potential{
+  width:100%;
+  height: 80%;
+  background: 
+    radial-gradient(ellipse at center, ivory, transparent),
+    conic-gradient(
+      from 0deg, white, black, white
+    );
+  transition: 0.5s;
+  opacity:0.8;
+}
+.menuCard:hover .potential{
+  opacity: 1;
+  transition: 0.5s;
+}
+svg[type='drug']{
+  transform: rotate(-90deg) translate(4px, 0px) scale(1, 1.17);
+}
+.bgColor{
+  position:absolute;
+  background: 
+  radial-gradient(circle at 20% 50%, rgba(20,20,20, 0.5), transparent 10px),
+  conic-gradient(from 140deg at 20% -3%, rgb(28, 28, 20) 10%, transparent 20%,  rgb(28, 28, 20)),
+  conic-gradient(from 140deg at 20% -3%, rgb(28, 28, 20), transparent, black 50%, transparent, rgb(190, 163, 121),rgb(122, 107, 83), rgb(28, 18, 40), rgb(28, 18, 40) 120%),
+  conic-gradient(from 180deg at 20% 50%, rgb(28, 28, 20), transparent 20%, rgb(23,42,50), rgb(190, 163, 121),rgb(122, 107, 83), rgb(28, 18, 40), rgb(28, 18, 40) 120%);
+  width:100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.tag{
+  height:100%;
+  width:100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.tmp{
+  z-index: 3;
+  font-size: 0.9rem;
+  background: linear-gradient(to top, rgb(78, 60, 49),black);
+  border-radius: 0.1rem 0.5rem 1rem 0.1rem;
+  box-shadow: 1px 0px 0px 2px black;
+  padding-top:2%;
+  padding-bottom: 2%;
+  padding-right: 4%;
+  padding-left: 4%;
+  max-height: 1.2rem;
+  font-style: italic;
+}
+.featureContainer{
+  display: flex;
+  gap:1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.featureContainer >*{
+  background: rgb(21, 18, 21);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.tertiaryCard{
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  gap: 2.25vw;
+  height: 30vh;
+  align-items: center;
+}
+.tertiaryCard>*{
+  color:white;
+  width: 37vw;
+  height: 20vh;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 2rem;
+  outline: 2px solid black;
+  background: 
+  radial-gradient(circle at top left, rgba(165, 132, 43, 0.5), transparent 30%),
+  radial-gradient(ellipse at 20% -140%, rgba(101, 64, 31, 0.5), transparent 70%),
+  conic-gradient(from 70deg at 0% 100%, rgb(0, 0, 0, 0.7), rgba(243, 228, 199, 0.5), rgb(0, 0, 0, 0.7))
+    ;
+  opacity: 0.9;
+}
+.tertiaryCard #myid{
+  background: 
+    radial-gradient(circle at top right, rgba(165, 132, 43, 0.5), transparent 30%),
+    radial-gradient(ellipse at 80% -140%, rgb(101, 64, 31, 0.5), transparent 70%),
+    conic-gradient(from 110deg at 100% 100%, rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7), rgb(243, 228, 199, 0.5))
+    /* ,conic-gradient(from 90deg, rgb(0, 0, 0), transparent, black) */
+    ;
+}
+.clickMe2{
+  border: 1px solid white;
+  border-radius: 1rem;
+  padding: 0.3rem;
+  margin-top: -0.5rem;
+  background: 
+  radial-gradient(circle at top left, rgba(143, 99, 79, 0.5), transparent 100px),
+  radial-gradient(circle at top right, rgba(206, 148, 41, 0.7), transparent 100px),
+  radial-gradient(circle at center, rgba(0, 0, 0, 0.3), transparent 400px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.secondaryCard:hover .arrow{
+  transform: translateX(0.25rem);
+  transition: 0.5s;
+}
+.secondaryCard:hover .clickMe2{
+  transform: scale(1.03);
+  transition: 0.5s;
+}
+.home{
+  margin-top:1rem;
+  margin-bottom:-1rem;
+  box-shadow:0px 0px 50px 3px rgb(240, 140, 68, 1);
+  background:rgb(240, 140, 68, 0.5);
 }

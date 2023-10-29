@@ -67,7 +67,7 @@ app.get('/api/trials/:name', (request, response)=>{
   svg.getTrialsLogic(name)
   .then(re=>{
     const currentDate=new Date();
-    const studiesInit=re[0].data.studies.filter(study=>study.protocolSection.sponsorCollaboratorsModule.leadSponsor.class==='INDUSTRY')
+    const studiesInit=re.data.studies.filter(study=>study.protocolSection.sponsorCollaboratorsModule.leadSponsor.class==='INDUSTRY')
     let sortedStudies=studiesInit.sort((a,b)=>{
       // check for known completion date
       let dateA=(a.protocolSection.statusModule.completionDateStruct.date) || '9999-12-31';

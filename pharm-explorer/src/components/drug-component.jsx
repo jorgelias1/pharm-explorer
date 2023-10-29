@@ -1,32 +1,37 @@
 export const BioactivityTable=({bioactivityColumns, activeRows, remove})=>{
     let i=0;
-    return (<table>
-      <caption>Bioactivity</caption>
-      <thead style={{position: 'sticky', top: '0', backgroundColor: 'rgb(36,36,36)'}}>
-        <tr>
-          {bioactivityColumns.map((column, index)=>
-          !remove.includes(index) && 
-          (<th key={column}>{column}</th>)
-          )}
-        </tr>
-      </thead>
-      <tbody>
-         {activeRows.map(row=>
-          <tr key={i}>{row.Cell.map((cell, index)=>
-            { i++;
-              return (!remove.includes(index) &&
-            (<td key={i}>{cell}</td>))
-          }
-          )}</tr>
-         )}
-      </tbody>
-    </table>)
+    return (
+
+    <div style={{background:'rgb(27,27,21)'}}> Experimental Bioactivity
+      <div className="scrollTable">
+        <table>
+          <thead style={{position: 'sticky', top: '0'}}>
+            <tr>
+              {bioactivityColumns.map((column, index)=>
+              !remove.includes(index) &&
+              (<th key={column}>{column}</th>)
+              )}
+            </tr>
+          </thead>
+          <tbody>
+             {activeRows.map(row=>
+              <tr key={i}>{row.Cell.map((cell, index)=>
+                { i++;
+                  return (!remove.includes(index) &&
+                (<td key={i}>{cell}</td>))
+              }
+              )}</tr>
+             )}
+          </tbody>
+        </table>
+      </div>
+    </div>)
   }
 export const PubmedTrials=({pubmedArray, scrollTable})=>{
     return (
       <>
         <div>Clinical Trials from Pubmed</div>
-        <ol style={scrollTable}>
+        <ol className="scrollTable">
         {pubmedArray.map(trial=>
           <li key={trial.url}style={{marginBottom: '1rem'}}>
             <a href={trial.url}>{trial.text}</a>
@@ -135,7 +140,7 @@ export const FDAStatus=({fdaStatus})=>{
 }
 export const Svg=()=>{
     return(
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="8" viewBox="0 0 48 16" transform="rotate(-45) translate(5, 0) scale(1, 1.17)">
+    <svg type="drug" xmlns="http://www.w3.org/2000/svg" width="24" height="8" viewBox="0 0 48 16">
         <rect x="4" y="0" width="24" height="16" rx="4" ry="4" fill="#000"/>
         <circle cx="8" cy="8" r="8" fill="#000"/>
         <circle cx="8" cy="8" r="6" fill="#fff"/>
@@ -154,12 +159,12 @@ export const SearchIcon=()=>{
         height="24"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="currentColor"
+        stroke="white"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <circle cx="11" cy="11" r="8" />
+        <circle cx="11" cy="11" r="8" fill="black"/>
         <line x1="21" y1="21" x2="16.65" y2="16.65" />
       </svg>
     )
