@@ -1,8 +1,10 @@
 import axios from 'axios'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const getSECLogic=(cik, ticker, name)=>{
     const headers={
-        'User-Agent': 'Jorge jorgelias.200421@gmail.com',
+        'User-Agent': process.env.USERAGENT,
         'Accept-Encoding': 'gzip, deflate',
         'Host': 'data.sec.gov',
     }
@@ -19,7 +21,7 @@ const getSECLogic=(cik, ticker, name)=>{
         return Promise.all(Promises)
 }
 const getQuote=(ticker)=>{
-    return axios.get(`https://financialmodelingprep.com/api/v3/profile/${ticker}?apikey=1b6723937facb669b72c54ab25a440b0`)
+    return axios.get(`https://financialmodelingprep.com/api/v3/profile/${ticker}?apikey=${process.env.FINAPIKEY}`)
 }
 
 export default{

@@ -1,39 +1,35 @@
 import { useState, useEffect } from 'react'
 import searchService from '../express-server/services/searching'
 import service from '../express-server/services/axiosRequests'
-import scrape from '../cron/regex-engine'
-import { BrowserRouter as Router, Routes, Route, useAsyncError } from 'react-router-dom'
-import { useNavigate, useParams, useLocation } from 'react-router-dom'
-import drugModule from '../express-server/services/drug.js'
-import axios from 'axios'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import logo from './assets/53.svg'
 import {BioactivityTable, PubmedTrials, PastInvestigators, Indications, FDAStatus, Svg, SearchIcon} from './components/drug-component.jsx'
 import { SignUpForm, Overlay, LoginForm, ProfileSvg, SubscribeForm, UnSubscribeForm } from './components/sign-up'
 import { PaperTradePage } from './components/trading'
 import {Options} from './functions/filterOptions'
-import { CardDecoration, Candles, Symbol, Check, Arrow} from './components/decorations'
-import tmp from '../../../../Desktop/aedrian-OKNJX7B-cbc-unsplash.jpg'
-import tmp2 from '../../../../Desktop/behnam-norouzi-uqlWT5rmMxM-unsplash.jpg'
-import tmp3 from '../../../../Desktop/kaitlyn-baker-vZJdYl5JVXY-unsplash.jpg'
+import { CardDecoration, Symbol, Check, Arrow, Nav, Sidebar} from './components/decorations'
+import tmp from './assets/aedrian-OKNJX7B-cbc-unsplash.jpg'
+import tmp2 from './assets/behnam-norouzi-uqlWT5rmMxM-unsplash.jpg'
 
 import './App.css'
 
 const MainMenuCard=({text, handleClick})=>{
   return(
-    <div className='menuCard' onClick={handleClick} style={{cursor:'pointer'}}>
+    <div className='menuCard' onClick={handleClick}>
       <div className='tag'>
-        <div className='tmp' style={{transform:'translateY(8vh)'}}>
+        <div className='tmp'>
           {text==='Paper Trading' ? 'Refine your strategy' : 'Find upcoming events'}
         </div>
       </div>
       <CardDecoration text={text}/>
       <div className='division'></div>
       {text==='Paper Trading' ? 
-      (<img src={tmp} style={{width:'100%', maxHeight:'80%'}}/>)
+      (<img src={tmp}/>)
       : 
-      (<img src={tmp2} style={{width:'100%', maxHeight:'80%'}}/>)
+      (<img src={tmp2}/>)
     }
-      <div type='outer' style={{cursor:'pointer', fontWeight:'bold', fontStyle:'italic'}}><div style={{zIndex:'3'}}>{text}</div></div>
+      <div type='outer'><div>{text}</div></div>
     </div>
   )
 }
@@ -59,17 +55,13 @@ export const Search=({setQuery, query, setSearchResults, searchResults, trade, s
   const resultWrapper={
     backgroundColor:'white',
     color:'black',
-    borderRadius:'4px',
-    padding:'1px',
+    borderRadius:'0px 0px 4px 4px',
     display: !query ? 'none': 'block',
     fontSize: '1rem',
     textAlign:'left',
     transition: 'border-color 0.4s ease, box-shadow 0.4s ease',
-    maxWidth:'100%',
-  }
-  if (loading){
-    resultWrapper.borderColor='yellow';
-    resultWrapper.boxShadow='0 0 20px black';
+    top:'100%',
+    width:'100%'
   }
   const search=(event)=>{
     setQuery(event.target.value)
@@ -107,12 +99,12 @@ export const Search=({setQuery, query, setSearchResults, searchResults, trade, s
   const handleDrugClick=(item)=>{
     const compoundName=item.name
     setLoading(true);
-    drugModule.getDrugData(compoundName)
+    service.getDrugData(compoundName)
     .then(response=>{
       setLoading(false);
       let data=response.data
       navigate(`/drug`, {state :{data}})
-      setQuery(null)
+      setQuery('')
     })
   }
   const handleHover=(e)=>{
@@ -155,7 +147,7 @@ export const Search=({setQuery, query, setSearchResults, searchResults, trade, s
           <input onChange={search} type='search' placeholder={placeholder} autoFocus value={query}/>
         </div>
         <div style={resultWrapper}>
-          <div style={{maxWidth: '18rem', marginLeft: '0.1rem', padding: '0.05rem', background: 'rgba(0,0,0,0.3)', borderRadius: '4rem'}}></div>
+          <div className='searchSeparator'></div>
             {all}
         </div>
         {loading && <Loading/>}
@@ -195,7 +187,7 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
     service.getTrials(profile.companyName)
     .then(response=>{
     setTrialData(response.data[0])
-    axios.get(`http://127.0.0.1:3001/api/catalysts/${ticker}`)
+    service.getCompanyCatalysts(ticker)
     .then(re=>{
       setCatalysts(re.data)
     })
@@ -203,12 +195,6 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
   }, [profile.companyName])
   const imgStyle={
     width: '10%',
-  }
-  const scrollTable={
-    maxHeight:'20rem',
-    maxWidth:'95vw',
-    overflow: 'auto',
-    position: 'relative',
   }
   const trialTableBody=trialData && (trialData.map(trial=>{
     return <TrialTableRow trial={trial} key={trial.protocolSection.identificationModule.nctId}/>
@@ -229,15 +215,15 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
   return (
   <div className='all'>
   <Search query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults}/>
-  <div style={{fontSize:'3rem'}}>
+  <div className='companyTitle'>
     <img src={profile.image} style={imgStyle}></img>
     {profile.companyName} ({profile.exchangeShortName} - {profile.country}) 
   </div>
-  <div style={{paddingLeft:"1rem", paddingRight:'1rem'}}>
+  <div>
     <div className='flexHorizontal' style={{paddingBottom:'1rem'}}>
       <div>
-        <div style={{display:'flex', justifyContent:'center', alignItems:'flex-end', marginBottom:'1rem'}}>
-          <div style={{fontSize:'2.3rem', fontWeight:'bold'}}>
+        <div className='flexHorizontal price'>
+          <div>
             ${profile.price}
           </div>
           <div style={{color: `${color}`}}>
@@ -274,12 +260,12 @@ const CompanyPage=({query, setQuery, searchResults, setSearchResults})=>{
     </div>
   </div>
   {catalysts && <CalendarTable calendarEvents={catalysts} />}
-  <CTGovTable trialData={trialData} trialTableBody={trialTableBody} scrollTable={scrollTable} title={title}/>
+  <CTGovTable trialData={trialData} trialTableBody={trialTableBody} title={title}/>
   </div>
   )
 
 }
-const CTGovTable=({trialData, trialTableBody, scrollTable, title})=>{
+const CTGovTable=({trialData, trialTableBody, title})=>{
   if (trialData && trialData.length>0){
   return (
     <div>
@@ -318,15 +304,15 @@ const TrialTableRow=({trial})=>{
       if (date.completionDateStruct){return(
         <tr key={NCTID}>
           <td>{date.completionDateStruct.date}</td>
-          <td>{(base.designModule.phases && base.designModule.phases.length>1) ? (base.designModule.phases[0]+', '+base.designModule.phases[1]) : base.designModule.phases}</td>
+          <td>{(base.designModule.phases && base.designModule.phases.length>1) ? (base.designModule.phases[0]+', '+base.designModule.phases[1]) : base.designModule.phases ? base.designModule.phases : 'N/A'}</td>
           <td><a href={`https://clinicaltrials.gov/study/${NCTID}`}>
           {NCTID}
           </a>
           </td>
-          <td>{base.designModule.enrollmentInfo.count}</td>
+          <td>{base.designModule.enrollmentInfo.count || 'N/a'}</td>
           <td><div className='customTd'>{interventions&& interventions.length>0 ? interventions.map(intervention=>intervention.name+', ') : interventions}</div></td>
-          <td><div onClick={read} className='customTd'>{showDesc ? desc : 'click to read'}</div></td>
-          <td>{date.startDateStruct.date}</td>
+          <td><ToggleTd toggleText={read} showText={showDesc} text={desc}/></td>
+          <td>{date.startDateStruct && date.startDateStruct.date}</td>
         </tr>
       )
       }
@@ -364,7 +350,7 @@ const DrugPage=({query, setQuery, searchResults, setSearchResults})=>{
   const fdaStatus=data[5]
 
   const mechanismOfAction=data[7]
-  const properties=data[1].PropertyTable.Properties[0]
+  const properties=data[1] ? data[1].PropertyTable.Properties[0] : null;
   let bioactivityColumns=null, bioactivityRows=null, remove=null, activeRows=null;
   if (data[6]){
     bioactivityColumns=data[6].Table.Columns.Column;
@@ -374,7 +360,7 @@ const DrugPage=({query, setQuery, searchResults, setSearchResults})=>{
     return row.Cell[4]==='Active'
   })
   }
-  const trialData=data[3].studies
+  const trialData=data[3] ? data[3].studies : null;
   const imgSrc = `data:image/png;base64,${png}`
   const flexVertical={
     display: 'flex',
@@ -397,14 +383,14 @@ const DrugPage=({query, setQuery, searchResults, setSearchResults})=>{
     return <TrialTableRow trial={trial} key={trial.protocolSection.identificationModule.nctId}/>
  }))
   return (
-  <div className='all'  style={{maxWidth:'95vw', gap:'2rem'}}>
+  <div className='all' style={{maxWidth:'95vw', gap:'2rem'}}>
   <Search query={query} setQuery={setQuery} searchResults={searchResults} setSearchResults={setSearchResults}/>
   {mechanismOfAction ? 
   <div>
   <h1 style={{textShadow:'2px 0 0 blue'}}>{name}</h1>
   <div className='mainDrugCard'>
     <div style={flexVertical}>
-      <img src={imgSrc} style={{boxShadow: '0 0 10px white', margin: '0.5rem', padding: '0.5rem', backgroundColor: 'rgb(245,245,245)', borderRadius: '5px'}}/>
+      <img src={imgSrc} className='drugImg'/>
     </div>
     <div style={flexVertical}>
       <div>
@@ -428,7 +414,7 @@ const DrugPage=({query, setQuery, searchResults, setSearchResults})=>{
   <div>
     <div style={flexHorizontal}>
       <div style={flexVertical}>
-        <img src={imgSrc} style={{minWidth: '15rem', maxHeight: '20rem',boxShadow: '0 0 10px white', margin: '0.5rem', padding: '0.5rem', backgroundColor: 'rgb(245,245,245)', borderRadius: '5px'}}/>
+        <img src={imgSrc} className='drugImg alternate'/>
       </div>
       <div style={flexVertical}>
         <h2>{name}</h2>
@@ -437,20 +423,18 @@ const DrugPage=({query, setQuery, searchResults, setSearchResults})=>{
         </div>
       </div>
     </div>
-    <div style={miniFlex}>
+    {properties && <div style={miniFlex}>
       <div>Formula: {properties.MolecularFormula}</div>
       <div>Mr: {properties.MolecularWeight} amu</div>
       <div>SMILES: {properties.CanonicalSMILES}</div>
-    </div>
+    </div>}
   </div>
 }
   <FDAStatus fdaStatus={fdaStatus} />
   <Indications trialData={trialData} />
-  <CTGovTable trialData={trialData} trialTableBody={trialTableBody} scrollTable={scrollTable} title={title}/>
-  <PubmedTrials pubmedArray={data[8]} scrollTable={scrollTable}/>
-  <div style={scrollTable}>
+  <CTGovTable trialData={trialData} trialTableBody={trialTableBody} title={title}/>
+  <PubmedTrials pubmedArray={data[8]}/>
     {data[6] && <BioactivityTable bioactivityColumns={bioactivityColumns} activeRows={activeRows} remove={remove}/>}
-  </div>
   </div>
   )
 }
@@ -467,19 +451,19 @@ const CalendarPage=()=>{
     showFilterForm(true);
   }
   const getEvents=async()=>{
-    const events = await axios.get('http://127.0.0.1:3001/api/events')
+    const events = await service.fetchEvents();
     setCalendarEvents(events.data)
   }
   useEffect(()=>{
     getEvents()
   }, [filter])
   return (
-    <div style={{position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', padding:'none', }}>
+    <div className='all' style={{gap:'1rem'}}>
       <div className='calendarTitle' >Catalyst Calendar</div>
       <div className='calendarDesc'>Our calendar is a tool designed to capture binary, price-moving events on a daily basis. Filter by catalyst type, company, or even <span className='clickMe' onClick={()=>navigate('/subscription')}>subscribe</span> to companies you're tracking to receive notifications when we've received an update.</div>
       <div style={{display:'flex', gap:'1rem'}}>
         <button onClick={()=>navigate('/subscription')}>company notifications</button>
-        <div style={{display: 'flex', gap: '1rem'}}>
+        <div className='flexHorizontal'>
           <button onClick={displayFilters}>Filter Content</button>
           <button onClick={()=>{clearFilter(filter+1)}}>clear filters</button>
         </div>
@@ -587,7 +571,12 @@ const ScreenPage=()=>{
   const headers = ['name', 'moa'];
   return(
     <div className='screen'>
-      <div style={{maxWidth: '90vw'}}><div>Welcome to the drug screener.</div> <div style={{marginBottom:'1rem'}}>To get started, enter a disease name - and optionally a mechanism of action.</div> <div>Ex: "Alzheimer's" and "antibody" or</div> "Diabetes" and "alpha-glucosidase inhibitor"</div>
+      <div style={{maxWidth: '90vw'}}>
+        <h3>Welcome to the drug screener.</h3> 
+        <p>To get started, enter a disease name - and optionally a mechanism of action.</p> 
+        <div>Ex: "Alzheimer's" and "antibody" or</div> 
+        "Diabetes" and "alpha-glucosidase inhibitor"
+      </div>
       <form style={{marginTop:'2rem'}}>
         <input type='drug' placeholder='Enter an indication...' onChange={(e)=>setIndication(e.target.value)}value={indication} autoFocus={true}/>
         <input type='drug' placeholder='Enter a MOA...' onChange={(e)=>setMoa(e.target.value)} value={moa}/>
@@ -598,7 +587,7 @@ const ScreenPage=()=>{
       )}
       {err && <div className='warning'>please enter an indication</div> }
       {(finished && results.length>0) ? (
-         <div className='screen'>
+         <div className='scrollTable'>
          <table>
            <thead>
              <tr>{headers.map(h=><th key={h}>{h}</th>)}</tr>
@@ -620,7 +609,7 @@ const ScreenTableRow=({drug, setLoading, trials, setTrials})=>{
   const navigate = useNavigate();
   const navToDrug=(compoundName1, compoundName2)=>{
     setLoading(true);
-    drugModule.getDrugData(compoundName1)
+    service.getDrugData(compoundName1)
     .then(response=>{
       setLoading(false);
       if (response.data===''){
@@ -631,7 +620,7 @@ const ScreenTableRow=({drug, setLoading, trials, setTrials})=>{
       navigate(`/drug`, {state :{data}})
     })
     .catch(()=>{
-      drugModule.getDrugData(compoundName2)
+      service.getDrugData(compoundName2)
       .then(response=>{
         setLoading(false);
         if (response.data===''){
@@ -654,7 +643,7 @@ const ScreenTableRow=({drug, setLoading, trials, setTrials})=>{
   )
 }
 // Pop-up msg that fades
-const Message=({msg, type})=>{
+export const Message=({msg, type})=>{
   const [visible, setVisible] = useState(true);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -691,6 +680,24 @@ const SubscriptionPage=()=>{
     </div>
   )
 }
+const TermsOfUse=()=>{
+  return(
+    <div className='all'>
+      <h2>Terms of Use</h2>
+      <p >This website makes use of various APIs, which themselves cannot guarantee the accuracy of their data. We can not guarantee the accuracy of the data presented herein either, though we do make our best effort to check for quality. Make all financial decisions at your own risk. This site solely aims to provide information.</p>
+      <div>sources</div>
+      <ul className='wrapper'>
+        <li>SEC.gov API</li>
+        <li>Financialmodelingprep</li>
+        <li>globenewswire</li>
+        <li>CT.gov API</li>
+        <li>Pubchem API</li>
+        <li>Pubmed</li>
+        <li>OpenFDA API</li>
+      </ul>
+    </div>
+  )
+}
 const LogInPage=()=>{
   return(
     <LoginForm/>
@@ -708,19 +715,17 @@ const HomeLayout=({children})=>{
   return(
   <>   
   <div>
-  <div className="separator home" style={{background:'transparent'}}></div>
-    <div className='titleMain' style={{display:'flex', justifyContent:'center', position:'absolute', width:'94%', marginTop:'-4rem'}}>
+  <div className="separator home top" style={{background:'rgb(64, 52, 37)'}}></div>
+    <div className='titleContainer'>
       <div className='HomeTitle'>PharmExplorer</div>
-      <div style={{marginTop:'3rem'}}>let's explore some drugs™</div>
+      <div>let's explore some drugs™</div>
     </div>
-    <div style={{height:'1rem'}}></div>
     <div className='homeLayout'>
       <MainMenuCard text='Catalyst Calendar' handleClick={handleCalendarClick}/>
       <div className='menuCard' id='search'>
-        <div className='potential' style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+        <div className='potential'>
           <Symbol/>
         </div>
-        {/* <div style={{overflow:"hidden", width:'100%', height:'100%',marginBottom:'-10%'}}><img src={tmp3} style={{height:'100%', width:'100%'}} id='searchImg'/></div> */}
         <CardDecoration />
         <div className="division"></div>
         <div type='outer'>
@@ -729,14 +734,14 @@ const HomeLayout=({children})=>{
       </div>
       <MainMenuCard text='Paper Trading' handleClick={handleTradeClick}/>
     </div>
-    <div className="separator home" style={{marginTop:'-0.1rem', background:'transparent'}}></div>
-    <h3>Additional Features</h3>
-    <div className="separator home" style={{marginTop:'-1rem'}}></div>
+    <div className='sectionDivider'>
+      <h3 className='sectionTitle'><div>Additional Features</div></h3>
+      <div className="separator home"></div>
+    </div>
     <div className='tertiaryCard'>
       <div className='secondaryCard' onClick={()=>navigate('/screen')}>
-        <div style={{display:'flex', alignItems:'center'}}>
+        <div className='flexCenter'>
           Screen FDA-Approved Drugs
-          <div style={{width:'4rem'}}><Check/></div>
         </div>
         <div className='clickMe2'>try it out now<div className='arrow'><Arrow/></div></div>
       </div>
@@ -745,33 +750,23 @@ const HomeLayout=({children})=>{
         <div className='clickMe2'>subscribe<div className='arrow'><Arrow/></div></div>
       </div>
     </div>
-    <div className="separator home" style={{marginTop:'-1rem'}}></div>
-    <h3>Tool Summary: </h3>
-    {/* <div className="separator home"></div> */}
+    <div className='sectionDivider'>
+      <div className="separator home"></div>
+      <h3 className='sectionTitle'><div>Tool Summary</div></h3>
+    </div>
     <div style={{maxWidth:'90vw'}}>
-      <div className='featureContainer'>
-        <div>Catalyst Calendar</div>
-        <div>Paper Trading</div>
-        <div>Drug Screener</div>
-        <div>Drug Research</div>
-        <div>Company Research</div>
-      </div>
+      <ul className='featureContainer'>
+        <li>Catalyst Calendar</li>
+        <li>Paper Trading</li>
+        <li>Drug Screener</li>
+        <li>Drug Research</li>
+        <li>Company Research</li>
+      </ul>
       <h3>About PharmExplorer</h3>
-      <div>This website is meant to be a starting point to aid both researchers and investors alike in the quest for information. By providing our own tools and by pointing to relevant resources, we hope visitors to the site will be left better prepared to tackle their next challenge.</div>
+      <div>This website is meant to be a starting point to aid both researchers and investors alike in the fundamental analysis of clinical trials. By providing our own tools and by pointing to relevant resources, we hope users will leave more confident in their analyses.</div>
     </div>
   </div>
   </>
-  )
-}
-const Sidebar=()=>{
-  const navigate = useNavigate();
-  return(
-    <div className='sidebarContents' style={{cursor: 'pointer'}}>
-        <div>About</div>
-        <div onClick={()=>navigate('/subscription')}>Manage Subscriptions</div>
-        <div>Features</div>
-        <div>blah</div>
-    </div>
   )
 }
 const Header=()=>{
@@ -794,13 +789,13 @@ const Header=()=>{
         <div className='diagonal-rectangle'></div>
         <div className='diagonal-rectangle'></div>
       <div className='flexLeft' onClick={handleHomeClick}>
-        <img src={logo} style={{maxWidth: '3rem', backgroundColor: 'white', transform:'scaleX(-1)', fill:'transparent'}}/>
+        <img src={logo} className='logo'/>
         <b>PharmExplorer</b>
       </div>
       <div onClick={handleTradeClick} className='headerOption'>trade</div>
       <div onClick={handleCalendarClick} className='headerOption'>calendar</div>
       <div onClick={()=>{navigate('/screen')}} className='headerOption'>screener</div>
-      <div onClick={()=>navigate('/signUp')} style={{display:'flex', alignItems: 'center'}}><ProfileSvg/></div>
+      <div onClick={()=>navigate('/signUp')} className='flexCenter'><ProfileSvg/></div>
     </div>
   )
 }
@@ -809,33 +804,14 @@ const Layout=({children})=>{
     window.scrollTo(0, 0); 
   }, []); 
   return(
-    <div style={{maxWidth:'100vw', overflow:'clip', background:'rgb(27,27,20)'}} className='layout'>
+    <div className='layout'>
       <div className='bgColor'>
       </div>
       <Header />
-      <div style={{position:'sticky', top:'4rem', zIndex:4}}>
-        <Nav />
-      </div>
+      <Nav />
         <div className='all'>
           {children}
         </div>
-    </div>
-  )
-}
-const Nav = ()=>{
-  const [sidebar, showSidebar] = useState(false)
-  return(
-    <div className='nav'>
-      <div className={`sidebar ${!sidebar ? 'slide' : ''}`}>
-      {sidebar && <Sidebar />}
-      </div>
-      <div style={{zIndex:'4'}}>
-        <svg onClick={()=>showSidebar(!sidebar)}style={{padding:'0.8rem', cursor: 'pointer', background:'linear-gradient(to right, rgb(0, 0, 0), rgb(40, 20, 40))', marginTop:'0.5rem', marginRight:'0.5rem', borderRadius:'2rem'}} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill='white' transform='scale(-1, 1)'>
-          <rect x="4" y="4" width="18" height="3" rx='1' ry='1'/>
-          <rect x="4" y="10.5" width="18" height="3"rx='1' ry='1'/>
-          <rect x="4" y="17" width="18" height="3"rx='1' ry='1'/>
-        </svg>
-      </div>
     </div>
   )
 }
@@ -870,6 +846,7 @@ const App=()=>{
           <Route path='/signUp' element={<SignUpPage/>}/>
           <Route path='/logIn' element={<LogInPage/>}/>
           <Route path='/subscription' element={<SubscriptionPage/>}/>
+          <Route path='/tos' element={<TermsOfUse/>}/>
         </Routes>
       </Layout>
     </Router>

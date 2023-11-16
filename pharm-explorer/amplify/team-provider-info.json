@@ -15,6 +15,12 @@
       "auth": {
         "pharmexplorer036628a8036628a8": {},
         "pharmexplorerc6490d86c6490d86": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3sf9z49botsl5",
+          "type": "manual"
+        }
       }
     }
   }

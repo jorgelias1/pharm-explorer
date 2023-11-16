@@ -1,12 +1,8 @@
 
 import axios from 'axios'
 import {load} from 'cheerio'
-import { createCanvas, loadImage } from 'canvas'
-const baseUrl='http://127.0.0.1:3001/'
+// import { createCanvas, loadImage } from 'canvas'
 
-const getDrugData=async(name)=>{
-    return axios.get(`${baseUrl}drugData/${name}`)
-}
 const getDrugLogic=async (name)=>{
     const promises=[
         axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${name}/property/MolecularFormula,MolecularWeight,InChIKey,CanonicalSmiles/json`),
@@ -97,82 +93,81 @@ const findPubmedTrials=(htmlArray)=>{
     }
     return trials;
 }
-async function cropImageToCompound(inputImageData, colorTolerance) {
-    try {
-        const image = await loadImage(inputImageData);
-        const canvas = createCanvas(image.width, image.height);
-        const ctx = canvas.getContext('2d');
+// async function cropImageToCompound(inputImageData, colorTolerance) {
+//     try {
+//         const image = await loadImage(inputImageData);
+//         const canvas = createCanvas(image.width, image.height);
+//         const ctx = canvas.getContext('2d');
     
-        // Draw the image on the canvas
-        ctx.drawImage(image, 0, 0, image.width, image.height);
+//         // Draw the image on the canvas
+//         ctx.drawImage(image, 0, 0, image.width, image.height);
     
-        // Get the image data
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const { data, width, height } = imageData;
+//         // Get the image data
+//         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+//         const { data, width, height } = imageData;
     
-        // Initialize crop boundaries
-        let top = -1;
-        let bottom = -1;
-        let left = -1;
-        let right = -1;
+//         // Initialize crop boundaries
+//         let top = -1;
+//         let bottom = -1;
+//         let left = -1;
+//         let right = -1;
     
-        // Iterate through the pixels and make white pixels transparent
-        for (let y = 0; y < height; y++) {
-          for (let x = 0; x < width; x++) {
-            const index = (y * width + x) * 4;
-            const r = data[index];
-            const g = data[index + 1];
-            const b = data[index + 2];
+//         // Iterate through the pixels and make white pixels transparent
+//         for (let y = 0; y < height; y++) {
+//           for (let x = 0; x < width; x++) {
+//             const index = (y * width + x) * 4;
+//             const r = data[index];
+//             const g = data[index + 1];
+//             const b = data[index + 2];
     
-            // Check if the pixel is nearly white (within the color tolerance)
-            if (r >= 255 - colorTolerance && g >= 255 - colorTolerance && b >= 255 - colorTolerance) {
-              // Set the alpha channel to 0 (transparent)
-              data[index + 3] = 0;
-            } else {
-              // Update crop boundaries if it's not a white pixel
-              if (top === -1) top = y;
-              if (left === -1 || x < left) left = x;
-              if (right === -1 || x > right) right = x;
-              bottom = y;
-            }
-          }
-        }
+//             // Check if the pixel is nearly white (within the color tolerance)
+//             if (r >= 255 - colorTolerance && g >= 255 - colorTolerance && b >= 255 - colorTolerance) {
+//               // Set the alpha channel to 0 (transparent)
+//               data[index + 3] = 0;
+//             } else {
+//               // Update crop boundaries if it's not a white pixel
+//               if (top === -1) top = y;
+//               if (left === -1 || x < left) left = x;
+//               if (right === -1 || x > right) right = x;
+//               bottom = y;
+//             }
+//           }
+//         }
     
-        // Crop the canvas to the non-white region
-        const croppedWidth = right - left + 1;
-        const croppedHeight = bottom - top + 1;
-        const croppedCanvas = createCanvas(croppedWidth, croppedHeight);
-        const croppedCtx = croppedCanvas.getContext('2d');
+//         // Crop the canvas to the non-white region
+//         const croppedWidth = right - left + 1;
+//         const croppedHeight = bottom - top + 1;
+//         const croppedCanvas = createCanvas(croppedWidth, croppedHeight);
+//         const croppedCtx = croppedCanvas.getContext('2d');
     
-        // Copy the non-white region to the cropped canvas
-        croppedCtx.drawImage(
-          canvas,
-          left,
-          top,
-          croppedWidth,
-          croppedHeight,
-          0,
-          0,
-          croppedWidth,
-          croppedHeight
-        );
+//         // Copy the non-white region to the cropped canvas
+//         croppedCtx.drawImage(
+//           canvas,
+//           left,
+//           top,
+//           croppedWidth,
+//           croppedHeight,
+//           0,
+//           0,
+//           croppedWidth,
+//           croppedHeight
+//         );
     
-        // Get the modified image as a Buffer with a transparent background and cropped dimensions
-        const modifiedImageData = croppedCanvas.toBuffer('image/png');
+//         // Get the modified image as a Buffer with a transparent background and cropped dimensions
+//         const modifiedImageData = croppedCanvas.toBuffer('image/png');
     
-        return modifiedImageData;
-      } catch (error) {
-        console.error('An error occurred:', error);
-        return null;
-      }
-  }
+//         return modifiedImageData;
+//       } catch (error) {
+//         console.error('An error occurred:', error);
+//         return null;
+//       }
+//   }
 export default {
-    getDrugData,
     getDrugLogic,
     queryPubmed,
     findMoa,
     findPubmedTrials,
-    cropImageToCompound,
+    // cropImageToCompound,
     getFDA,
     getAssays,
 }

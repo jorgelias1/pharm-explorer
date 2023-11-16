@@ -2,7 +2,7 @@ import axios from 'axios'
 import func from './axiosRequests.js'
 import Fuse from 'fuse.js'
 
-const companyURL='http://localhost:3001/companies';
+const companyURL='https://json-server-companies.s3.us-west-1.amazonaws.com/companies.json';
 
 const showResults=(query, setResults)=>{
     if (query===''){

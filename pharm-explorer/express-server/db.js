@@ -1,18 +1,19 @@
 import pg from 'pg'
 import fs from 'fs'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const pool = new pg.Pool({
     user: 'jorgelias',
-    host: 'host',
-    database: 'db',
-    password: 'pw',
-    port: 5432,
+    host: process.env.HOST,
+    database: process.env.DATABASE,
+    password: process.env.PASSWORD,
+    port: process.env.PORT,
     ssl: {
         rejectUnauthorized: true,
         ca: fs.readFileSync('./global-bundle.pem'),
     }
 });
-
 const getDbKeys=async()=>{
     const query = 'SELECT * from "events"';
     try {
@@ -70,7 +71,7 @@ const getEvents=async()=>{
         tmpObj.url=row.url;
         tmpObj.sentence=row.sentence;
         tmpObj.date=row.matcheddate;
-        tmpObj.stdDate=row.standardDate;
+        tmpObj.stdDate=row.standarddate;
         tmpObj.cik=row.cik;
         tmpObj.stage=row.stage;
         tmpObj.id=row.id;
@@ -123,6 +124,7 @@ const getPositions = async(id)=>{
         tmpObj.price=row.price;
         tmpObj.initialAvgPrice=row.initialavgprice;
         tmpObj.thesis=row.thesis
+        tmpObj.public=row.public
         positions.push(tmpObj);
     }
     return positions
@@ -226,6 +228,40 @@ const postThesis = async(sub, obj)=>{
         console.log(err)
     }
 }
+const togglePublic=async(sub, position)=>{
+    if (!position.public){
+        try{
+            const query = `UPDATE positions 
+            SET public = true 
+            WHERE user_cognito_sub = $1 AND ticker = $2 AND type = $3`
+            await pool.query(query, [sub, position.ticker, position.type])
+        } catch(err){
+            console.log(err)
+        }
+    } else{
+        try{
+            const query = `UPDATE positions 
+            SET public = false 
+            WHERE user_cognito_sub = $1 AND ticker = $2 AND type = $3`
+            await pool.query(query, [sub, position.ticker, position.type])
+        } catch(err){
+            console.log(err)
+        }
+    }
+}
+const getPublicPositions=async(ticker)=>{
+    const query = !ticker
+    ? `SELECT * FROM positions WHERE public = true`
+    : `SELECT * FROM positions WHERE public = true AND ticker = $1`
+    try{
+        const re = !ticker
+        ? await pool.query(query)
+        : await pool.query(query, [ticker.ticker]);
+        return re
+    } catch(err){
+        console.log(err)
+    }
+}
 export default{
     getDbKeys,
     postToDb,
@@ -245,4 +281,6 @@ export default{
     removeFromSubscriptions,
     getSubscriptions,
     postThesis,
+    getPublicPositions,
+    togglePublic,
 }

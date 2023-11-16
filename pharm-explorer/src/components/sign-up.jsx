@@ -4,6 +4,7 @@ Amplify.configure(awsconfig);
 import { useEffect, useState } from 'react'
 import service from '../../express-server/services/axiosRequests'
 import { useNavigate } from 'react-router-dom'
+import {Message} from '../App'
 
 export const SignUpForm=()=>{
     const [email, setEmail] = useState('')
@@ -111,7 +112,10 @@ const VerificationForm=({email, setVerified, password})=>{
 export const LoginForm=()=>{
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    
+    const [forgot, setForgot] = useState(false)
+    const [change, setChange] = useState(false)
+    const [code, setCode] = useState('')
+    const navigate = useNavigate();
     const handleLogin=async(e)=>{
         e.preventDefault()
         try{
@@ -121,18 +125,64 @@ export const LoginForm=()=>{
             console.error(error)
         }
     }
+    const handleForgot=async(e)=>{
+      e.preventDefault()
+      setForgot(true)
+    }
+    const sendCode=async(e)=>{
+      e.preventDefault();
+      try {
+        const re = await Auth.forgotPassword(username)
+        setChange(true)
+      } catch(err){
+        console.log(err)
+      }
+    }
+    const verifyChange=async(e)=>{
+      e.preventDefault()
+      try {
+        const re = await Auth.forgotPasswordSubmit(username, code, password)
+        // this should enable user to login with new password
+        setForgot(false); 
+      } catch (err){
+        console.log(err)
+      }
+    }
     return(
-        <div>
-            <form onSubmit={handleLogin}>
-                <label>
-                    username: <input type='username' value={username} onChange={e=>setUsername(e.target.value)}/>
-                </label>
-                <label>
-                    Password: <input type='password' value={password} onChange={e=>setPassword(e.target.value)}/>
-                </label>
-                <button type='submit'>Login</button>
-            </form>
-        </div>
+      <>
+        {forgot ? <>
+        <Message msg='please enter your email for a reset code' type='success'/>
+        <form onSubmit={handleLogin}>
+          <label>
+              Email: <input type='email' value={username} onChange={e=>setUsername(e.target.value)} autoFocus={true}/>
+          </label>
+          {!change 
+          ? <button type='submit' onClick={sendCode}>send code</button>
+          : (
+          <div className='flexV'>
+            <label>
+              Verification code: <input type='text' value={code} onChange={e=>setCode(e.target.value)}/>
+            </label>
+            <label>
+              New password: <input type='password' value={password} onChange={e=>setPassword(e.target.value)}/>
+            </label>
+            <button type='submit' onClick={verifyChange}>confirm change</button>
+          </div>
+          )}
+        </form>
+      </> :
+      <form onSubmit={handleLogin}>
+          <label>
+              Email: <input type='email' value={username} onChange={e=>setUsername(e.target.value)} autoFocus={true}/>
+          </label>
+          <label>
+              Password: <input type='password' value={password} onChange={e=>setPassword(e.target.value)}/>
+          </label>
+          <button type='submit'>Login</button>
+          <div className='clickMe' onClick={handleForgot}>forgot password?</div>
+      </form>}
+        
+      </>
     )
 }
 export const SignUpButton=()=>{
@@ -238,6 +288,9 @@ export const UnSubscribeForm=()=>{
       : companySubscriptions && companySubscriptions.map(company=>(
         <button key={company.topicArn} onClick={()=>unsubscribe(company.topicArn)}>Click to Remove: {company.ticker}</button>
       ))}
+      {valid && (
+        <Message msg={'Successfully unsubscribed!'} type={'success'}/>
+      )}
     </div>
   )
 }

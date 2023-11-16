@@ -1,8 +1,11 @@
 import axios from 'axios'
-const baseUrl= 'http://127.0.0.1:3001'
+const baseUrl= 'https://36sg2kb115.execute-api.us-west-1.amazonaws.com/dev'
 
+const getDrugData=(name)=>{
+  return axios.get(`${baseUrl}/drugData/${name}`)
+}
 const getCompanies=(response, fuzzyPattern)=>{
-  const filteredData=response.data.filter(item=>{
+  const filteredData=response.data.companies.filter(item=>{
       return(
         item.name.match(fuzzyPattern) ||
         item.ticker.match(fuzzyPattern)
@@ -33,7 +36,7 @@ const getTrialsLogic=(name)=>{
 }
 
 const getCik = async (name)=>{
-  const companyURL = `http://localhost:3001/companies`
+  const companyURL = `https://json-server-companies.s3.us-west-1.amazonaws.com/companies.json`
   const response = await axios.get(companyURL)
   const entityName = new RegExp(`${name.replace(',', ',?')}`, 'i')
   let cik=null;
@@ -104,10 +107,26 @@ const submitThesis=(position, text, sub)=>{
 const screen=(indication, moa)=>{
   moa = moa.trim().replace(/ /g, '+')
   if (moa===''){
-    return axios.get(`https://api.fda.gov/drug/label.json?search=indications_and_usage:${indication}&limit=1000`)
+    return axios.get(`https://api.fda.gov/drug/label.json?search=indications_and_usage:"${indication}"&limit=1000`)
   } else{
-    return axios.get(`https://api.fda.gov/drug/label.json?search=indications_and_usage:${indication}+AND+mechanism_of_action:${moa}&limit=1000`)
+    return axios.get(`https://api.fda.gov/drug/label.json?search=indications_and_usage:"${indication}"+AND+mechanism_of_action:${moa}&limit=1000`)
   }
+}
+const togglePublic=(position, sub)=>{
+  return axios.post(`${baseUrl}/api/public`, {position, sub})
+}
+const getPublicPositions=(ticker)=>{
+  if (!ticker){
+  return axios.get(`${baseUrl}/api/publicPositions`)
+  } else{
+    return axios.get(`${baseUrl}/api/publicPositions/${ticker}`)
+  }
+}
+const getCompanyCatalysts=(ticker)=>{
+  return axios.get(`${baseUrl}/api/catalysts/${ticker}`)
+}
+const fetchEvents=()=>{
+  return axios.get('https://kyqhr40i80.execute-api.us-west-1.amazonaws.com/dev/api/events/')
 }
 export default{
     getCompanies,
@@ -131,4 +150,9 @@ export default{
     getSubscriptions,
     submitThesis,
     screen,
+    getPublicPositions,
+    togglePublic,
+    getDrugData,
+    getCompanyCatalysts,
+    fetchEvents,
 }

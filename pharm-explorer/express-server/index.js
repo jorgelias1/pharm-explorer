@@ -2,8 +2,6 @@ import express from 'express'
 const app = express()
 import cors from 'cors'
 import svg from './services/axiosRequests.js'
-import scrape from '../cron/regex-engine.js'
-import puppeteer from 'puppeteer'
 import {load} from 'cheerio'
 import db from './db.js'
 import drug from './services/drug.js'
@@ -12,6 +10,7 @@ import backendRequests from './services/backendRequests.js'
 import axios from 'axios'
 import dotenv from 'dotenv'
 dotenv.config()
+import awsServerlessExpress from 'aws-serverless-express'
 import AWS from 'aws-sdk'
 AWS.config.update({
   region: 'us-west-1',
@@ -106,7 +105,6 @@ app.get('/api/pressReleases', async(request, response)=>{
   async function pressReleasesLogic(){
     const e=Date.now()
     // wait for SEC page to render content
-    
     let allFileUrls=[];
     let searchUrl;
     let retry;
@@ -283,8 +281,8 @@ app.get('/drugData/:name', async (request, response)=>{
     assays=null
   }
   const pngData=re[3].data
-  const croppedImage=await drug.cropImageToCompound(pngData, 10)
-  const base64=Buffer.from(croppedImage).toString('base64')
+  // const croppedImage=await drug.cropImageToCompound(pngData, 10)
+  const base64=Buffer.from(pngData).toString('base64')
   const allResponses=[
     name,
     re[0].data,
@@ -356,28 +354,28 @@ app.post('/api/subscription', async(request, response)=>{
   await db.addToSubcriptions(user, topicArn)
   response.send('success')
 })
-// app.post('/api/:topicArn/:sub', async(request, response)=>{
-//   const {topicArn, sub} = request.params
-//   const email = request.body
-//   const params = {TopicArn: topicArn}
-//   sns.listSubscriptionsByTopic(params, (err, data) => {
-//     if (err) {
-//       console.error('Error listing subscriptions by topic:', err);
-//     } else {
-//       const match = data.Subscriptions.find(sub=>sub.Endpoint===email.email)
-//       const subArn = match.SubscriptionArn
-//       sns.unsubscribe({ SubscriptionArn: subArn }, (err, data) => {
-//         if (err) {
-//             console.error('Error unsubscribing user:', err);
-//         } else {
-//             console.log('User unsubscribed successfully.');
-//             db.removeFromSubscriptions(sub, topicArn)
-//             response.send('success')
-//         }
-//     });
-//     }
-//   });
-// })
+app.post('/api/:topicArn/:sub', async(request, response)=>{
+  const {topicArn, sub} = request.params
+  const email = request.body
+  const params = {TopicArn: topicArn}
+  sns.listSubscriptionsByTopic(params, (err, data) => {
+    if (err) {
+      console.error('Error listing subscriptions by topic:', err);
+    } else {
+      const match = data.Subscriptions.find(sub=>sub.Endpoint===email.email)
+      const subArn = match.SubscriptionArn
+      sns.unsubscribe({ SubscriptionArn: subArn }, (err, data) => {
+        if (err) {
+            console.error('Error unsubscribing user:', err);
+        } else {
+            console.log('User unsubscribed successfully.');
+            db.removeFromSubscriptions(sub, topicArn)
+            response.send('success')
+        }
+    });
+    }
+  });
+})
 app.post('/api/subscribe', async(request, response)=>{
   const base = request.body
   const params = {Protocol: base.Protocol, TopicArn: base.TopicArn, Endpoint: base.Endpoint}
@@ -404,7 +402,28 @@ app.post('/api/thesis', async(request, response)=>{
   await db.postThesis(sub, obj)
   response.send('success')
 })
-const PORT = 3001
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
+app.post('/api/public', async(request, response)=>{
+  const obj = request.body
+  const sub = obj.sub
+  const position = obj.position
+  await db.togglePublic(sub, position)
+  response.send('success')
 })
+app.get('/api/publicPositions', async(request, response)=>{
+  const re = await db.getPublicPositions()
+  response.send(re)
+})
+app.get('/api/publicPositions/:ticker', async(request, response)=>{
+  const ticker = request.params
+  const re = await db.getPublicPositions(ticker)
+  response.send(re)
+})
+
+const server = awsServerlessExpress.createServer(app);
+export const handler = (event, context) => {
+  awsServerlessExpress.proxy(server, event, context);
+}
+// const PORT = 3001
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`)
+// })

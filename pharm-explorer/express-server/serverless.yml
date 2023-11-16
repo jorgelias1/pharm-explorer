@@ -1,0 +1,17 @@
+service: test
+
+provider:
+  name: aws
+  region: us-west-1
+  runtime: nodejs18.x
+
+functions:
+  expressAppFunction:
+    handler: index.handler
+    layers:
+      - arn:aws:lambda:us-west-1:086519842133:layer:my-layer:1
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+      

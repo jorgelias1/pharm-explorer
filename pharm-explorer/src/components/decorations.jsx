@@ -1,4 +1,6 @@
 import '../App.css'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const CardDecoration=()=>{
   
@@ -24,6 +26,35 @@ export const CardDecoration=()=>{
         <div className="diagonal-rectangle2"></div>
         <div className="diagonal-rectangle2"></div>
       </div>)
+}
+export const Sidebar=()=>{
+  const navigate = useNavigate();
+  return(
+    <div className='sidebarContents'>
+        <div onClick={()=>navigate('/')}>Home</div>
+        <div onClick={()=>navigate('/subscription')}>Manage Subscriptions</div>
+        <div onClick={()=>navigate('/tos')}>Terms of Use</div>
+    </div>
+  )
+}
+export const Nav = ()=>{
+  const [sidebar, showSidebar] = useState(false)
+  return(
+    <div className='navContainer'>
+      <div className='nav'>
+        <div className={`sidebar ${!sidebar ? 'slide' : ''}`}>
+        {sidebar && <Sidebar />}
+        </div>
+        <div>
+          <svg onClick={()=>showSidebar(!sidebar)} className='navSvg' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill='white' transform='scale(-1, 1)'>
+            <rect x="4" y="4" width="18" height="3" rx='1' ry='1'/>
+            <rect x="4" y="10.5" width="18" height="3"rx='1' ry='1'/>
+            <rect x="4" y="17" width="18" height="3"rx='1' ry='1'/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  )
 }
 export const Candles=()=>{
   const random=((Math.random()-0.5)*100)

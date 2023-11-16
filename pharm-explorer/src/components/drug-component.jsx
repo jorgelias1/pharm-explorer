@@ -27,7 +27,7 @@ export const BioactivityTable=({bioactivityColumns, activeRows, remove})=>{
       </div>
     </div>)
   }
-export const PubmedTrials=({pubmedArray, scrollTable})=>{
+export const PubmedTrials=({pubmedArray})=>{
     return (
       <>
         <div>Clinical Trials from Pubmed</div>
@@ -42,7 +42,7 @@ export const PubmedTrials=({pubmedArray, scrollTable})=>{
     )
   }
 export const PastInvestigators=({trialData})=>{
-    if (trialData.length>0){
+    if (trialData && trialData.length>0){
       const investigators=[]
       trialData.map(trial=>{
         investigators.push(trial.protocolSection.sponsorCollaboratorsModule.leadSponsor)

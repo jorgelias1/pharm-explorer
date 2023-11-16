@@ -61,13 +61,14 @@ const getPressReleases=()=>{
     .post('http://127.0.0.1:3001/api/postEvents', finalEvents)
     .then(()=>{console.log('posted! all done :)')})
     .catch(()=>console.log('error posting to the db'))
-  
+    
     return finalEvents;
     } catch (error){
       ()=>{console.log('error at:', error)}
     }
   }
-export default {
+
+  export default {
     getPressReleases,
     filterPressReleases
 }
