@@ -1,1 +1,2 @@
 # pharm-explorer
+Hello! The primary purpose was to make it easy for those seeking information to find it. I am familiar with some sites that monetize or limit the accessibility of certain info, and I am a firm supporter of the idea that free knowledge fosters an environment in which people everywhere can thrive. This was a fun project to work on, with features including: paper trading, sharing trade ideas with others, a daily-updated calendar showing upcoming price-moving company events, screening drugs based on certain criteria, and more. 
