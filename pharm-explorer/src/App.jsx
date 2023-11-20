@@ -509,6 +509,10 @@ const CalendarTable=({calendarEvents})=>{
       </table>
       </div>
     )
+  } else{
+    return(
+      <div>Loading...</div>
+    )
   }
 }
 const CalendarRow=({event})=>{
@@ -714,7 +718,7 @@ const HomeLayout=({children})=>{
   const search=true;
   return(
   <>   
-  <div>
+  <div style={{display:'flex', alignItems:'center', flexDirection:'column'}}>
   <div className="separator home top" style={{background:'rgb(64, 52, 37)'}}></div>
     <div className='titleContainer'>
       <div className='HomeTitle'>PharmExplorer</div>
@@ -736,8 +740,8 @@ const HomeLayout=({children})=>{
     </div>
     <div className='sectionDivider'>
       <h3 className='sectionTitle'><div>Additional Features</div></h3>
-      <div className="separator home"></div>
     </div>
+    <div className="separator home"></div>
     <div className='tertiaryCard'>
       <div className='secondaryCard' onClick={()=>navigate('/screen')}>
         <div className='flexCenter'>
@@ -751,10 +755,10 @@ const HomeLayout=({children})=>{
       </div>
     </div>
     <div className='sectionDivider'>
-      <div className="separator home"></div>
       <h3 className='sectionTitle'><div>Tool Summary</div></h3>
     </div>
-    <div style={{maxWidth:'90vw'}}>
+    <div className="separator home"></div>
+    <div className='flexV'>
       <ul className='featureContainer'>
         <li>Catalyst Calendar</li>
         <li>Paper Trading</li>

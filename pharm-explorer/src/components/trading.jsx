@@ -246,11 +246,11 @@ export const PaperTradePage=({setQuery, query, setSearchResults, searchResults})
               See recent public trade ideas
             </button>
           </div>
-          <div style={{display:'flex', flexWrap:'wrap', maxWidth:'40%', justifyContent:'center', alignItems:'center', paddingTop:'1rem', paddingBottom:'1rem', borderRadius:'1rem', height:'6rem', fontWeight:'bold', background:'black'}} >
+          <div style={{display:'flex', flexWrap:'wrap', maxWidth:'40%', justifyContent:'center', alignItems:'center', padding:'1.5rem', borderRadius:'1rem', height:'6rem', fontWeight:'bold', background:'black'}} >
           Enter a ticker to see what others are saying:
             <form onSubmit={handleSubmit} >
               <div style={{display:'flex'}}>
-                <div style={{width:'5rem', overflow:'hidden'}}>
+                <div style={{width:'4rem', overflow:'hidden'}}>
                   <input style={{width:'2rem', overflow:'hidden'}} autoFocus={true} onChange={(e)=>setTicker((e.target.value).toUpperCase())} value={ticker}/>
                 </div>
                 <button type='submit'>submit</button>
