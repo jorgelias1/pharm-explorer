@@ -120,6 +120,7 @@ export const LoginForm=()=>{
         e.preventDefault()
         try{
             await Auth.signIn(username, password)
+            navigate('/')
             console.log('success!')
         } catch(error){
             console.error(error)

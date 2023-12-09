@@ -509,10 +509,6 @@ const CalendarTable=({calendarEvents})=>{
       </table>
       </div>
     )
-  } else{
-    return(
-      <div>Loading...</div>
-    )
   }
 }
 const CalendarRow=({event})=>{
